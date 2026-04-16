@@ -38,16 +38,10 @@ jobs:
           # Windows R uses a User-Agent-aware CRAN mirror; no __linux__ prefix.
           RENV_CONFIG_REPOS_OVERRIDE: https://packagemanager.posit.co/cran/latest
         # Run from repo root (no .Rprofile) so pipeline/.Rprofile doesn't auto-source
-        # renv/activate.R. Do install + restore in a single Rscript invocation —
-        # cold-starting a second Rscript on Windows kept segfaulting at exit 139.
-        run: |
-          Rscript -e '
-            options(repos = c(CRAN = Sys.getenv("RENV_CONFIG_REPOS_OVERRIDE")));
-            if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv");
-            lock <- renv::lockfile_read("pipeline/renv.lock");
-            pkgs <- setdiff(names(lock$Packages), "renv");
-            renv::restore(project = "pipeline", packages = pkgs, prompt = FALSE)
-          '
+        # renv/activate.R. Multi-line Rscript -e strings segfault on Windows under
+        # Git Bash (CRLF line endings corrupt the parsed expression), so everything
+        # goes on one line.
+        run: Rscript -e 'options(repos = c(CRAN = Sys.getenv("RENV_CONFIG_REPOS_OVERRIDE"))); if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv"); lock <- renv::lockfile_read("pipeline/renv.lock"); pkgs <- setdiff(names(lock$Packages), "renv"); renv::restore(project = "pipeline", packages = pkgs, prompt = FALSE)'
 
       - name: Run nowcast pipeline
         id: nowcast
