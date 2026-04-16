@@ -35,9 +35,10 @@ jobs:
           use-public-rspm: true
 
       - name: Restore R packages (renv)
-        uses: r-lib/actions/setup-renv@v2
-        with:
-          working-directory: pipeline
+        working-directory: pipeline
+        run: |
+          Rscript -e 'options(repos = c(CRAN = "https://packagemanager.posit.co/cran/__linux__/noble/latest")); install.packages("renv")'
+          Rscript -e 'renv::restore(prompt = FALSE)'
 
       - name: Run nowcast pipeline
         id: nowcast
