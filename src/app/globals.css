@@ -40,3 +40,13 @@ body {
   color: #111827;
   background: #ffffff;
 }
+
+/* Suppress the focus outline Recharts/browser draws around charts when clicked.
+   The charts aren't keyboard-interactive, so the outline is just visual noise. */
+.recharts-wrapper,
+.recharts-wrapper:focus,
+.recharts-wrapper *:focus,
+.recharts-surface,
+.recharts-surface:focus {
+  outline: none !important;
+}

@@ -3,17 +3,18 @@
 import {
   ComposedChart,
   Line,
+  Scatter,
   XAxis,
   YAxis,
+  ZAxis,
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
   ReferenceLine,
-  ReferenceDot,
   Label,
 } from "recharts";
 import type { VintageSeries, LatestNowcast } from "@/lib/types";
-import { formatPct, formatDate, formatDayMonth } from "@/lib/format";
+import { formatDate, formatDayMonth } from "@/lib/format";
 import { chartColors, axisTick } from "@/lib/chartTheme";
 
 interface VintageChartProps {
@@ -21,28 +22,38 @@ interface VintageChartProps {
   latest: LatestNowcast;
 }
 
+type VintagePoint = { kind: "vintage"; x: number; y: number; runDate: string };
+type ActualPoint = { kind: "actual"; x: number; y: number; actualQuarter: string };
+
 export default function VintageChart({ nowcasts, latest }: VintageChartProps) {
   const relevant = nowcasts.vintages.filter(
     (v) => v.target_quarter === latest.target_quarter,
   );
-  const points = relevant
+  const vintagePoints: VintagePoint[] = relevant
     .map((v) => ({
+      kind: "vintage" as const,
       x: v.days_until_release,
       y: v.qoq_growth_pct,
       runDate: v.run_date,
     }))
     .sort((a, b) => a.x - b.x);
 
+  const actualPoint: ActualPoint = {
+    kind: "actual",
+    x: latest.latest_actual.released_days_before_next,
+    y: latest.latest_actual.qoq_growth_pct,
+    actualQuarter: latest.latest_actual.quarter,
+  };
+
   return (
     <section className="mb-10">
-      <p className="font-headline text-3xl text-teal">Nowcast evolution</p>
+      <p className="font-headline text-3xl text-black">Nowcast evolution</p>
       <p className="text-xs text-label mb-2">
-        Each green point is a weekly nowcast for {latest.target_quarter}. As new indicator data arrives through the quarter, the nowcast evolves — the line traces those revisions up to the ABS GDP release.
+        Each green point is a weekly nowcast for {latest.target_quarter}. As new indicator data arrives through the quarter, the nowcast evolves — the line traces those revisions up to the ABS GDP release. The dark-teal circle shows the previous quarter&rsquo;s actual GDP growth for context.
       </p>
       <div className="h-[320px]">
         <ResponsiveContainer>
           <ComposedChart
-            data={points}
             margin={{ top: 20, right: 40, bottom: 20, left: 20 }}
           >
             <CartesianGrid strokeDasharray="3 3" stroke={chartColors.border} />
@@ -72,18 +83,26 @@ export default function VintageChart({ nowcasts, latest }: VintageChartProps) {
                 style: { fontSize: 10, fill: chartColors.label },
               }}
             />
+            <ZAxis range={[80, 80]} />
             <Tooltip
+              cursor={false}
               formatter={(v: unknown) => [
-                typeof v === "number" ? `${v.toFixed(3)}%` : "",
+                typeof v === "number" ? `${v.toFixed(2)}%` : "",
                 "",
               ]}
-              labelFormatter={(_, payload) => {
-                const runDate = payload?.[0]?.payload?.runDate;
-                return runDate ? formatDate(runDate) : "";
+              labelFormatter={(_: unknown, payload) => {
+                const p = payload?.[0]?.payload as
+                  | VintagePoint
+                  | ActualPoint
+                  | undefined;
+                if (!p) return "";
+                if (p.kind === "actual") return `${p.actualQuarter} actual`;
+                return formatDate(p.runDate);
               }}
               contentStyle={{ fontSize: 11 }}
             />
             <Line
+              data={vintagePoints}
               type="linear"
               dataKey="y"
               stroke={chartColors.primary}
@@ -93,22 +112,20 @@ export default function VintageChart({ nowcasts, latest }: VintageChartProps) {
                 fill: chartColors.accent,
                 stroke: chartColors.accent,
               }}
+              activeDot={{
+                r: 5,
+                fill: chartColors.accent,
+                stroke: chartColors.accent,
+              }}
               isAnimationActive={false}
             />
-            <ReferenceDot
-              x={latest.latest_actual.released_days_before_next}
-              y={latest.latest_actual.qoq_growth_pct}
-              r={5}
+            <Scatter
+              data={[actualPoint]}
+              dataKey="y"
               fill={chartColors.primary}
-              stroke="none"
-            >
-              <Label
-                position="top"
-                offset={10}
-                value={`Latest actual / ${latest.latest_actual.quarter} / ${formatPct(latest.latest_actual.qoq_growth_pct)}`}
-                style={{ fontSize: 10, fill: chartColors.primary }}
-              />
-            </ReferenceDot>
+              shape="circle"
+              isAnimationActive={false}
+            />
             <ReferenceLine
               x={0}
               stroke={chartColors.label}

@@ -8,7 +8,7 @@ interface Props {
 export default function PerformanceSection({ performance }: Props) {
   return (
     <section className="mb-10">
-      <p className="font-headline text-3xl text-teal mb-2">
+      <p className="font-headline text-3xl text-black mb-2">
         Track record
       </p>
       <div className="grid grid-cols-3 gap-3 mb-4">

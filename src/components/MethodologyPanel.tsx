@@ -11,7 +11,7 @@ export default function MethodologyPanel() {
         onClick={() => setOpen(!open)}
         className={`w-full text-left font-headline border border-border-heavy px-4 py-3 flex items-center justify-between hover:bg-panel ${open ? "border-b-0" : ""}`}
       >
-        <span className="font-headline text-3xl text-teal">Methodology</span>
+        <span className="font-headline text-3xl text-black">Methodology</span>
         <span className="text-xs text-label font-body">{open ? "Hide" : "Show"}</span>
       </button>
       {open && (
