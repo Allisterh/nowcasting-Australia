@@ -6,6 +6,8 @@ import HeadlineCard from "@/components/HeadlineCard";
 import GdpHistoryChart from "@/components/GdpHistoryChart";
 import VintageChart from "@/components/VintageChart";
 import IndicatorGrid from "@/components/IndicatorGrid";
+import PerformanceSection from "@/components/PerformanceSection";
+import MethodologyPanel from "@/components/MethodologyPanel";
 
 export default function Home() {
   const data = loadDashboardData();
@@ -17,7 +19,8 @@ export default function Home() {
       <GdpHistoryChart gdp={data.gdp} latest={data.latest} />
       <VintageChart nowcasts={data.nowcasts} />
       <IndicatorGrid indicators={data.indicators} />
-      <p className="text-label text-sm">More sections landing in subsequent tasks.</p>
+      <PerformanceSection performance={data.performance} />
+      <MethodologyPanel />
       <Footer />
     </main>
   );
