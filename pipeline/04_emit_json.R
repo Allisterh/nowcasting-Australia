@@ -96,8 +96,38 @@ date_to_quarter <- function(d) sprintf("%d Q%d", year(d), quarter(d))
 emit_json <- function(target_dir, nowcast, master, vintage_info) {
   dir.create(target_dir, showWarnings = FALSE, recursive = TRUE)
 
-  target_quarter <- nowcast$target_quarter
-  next_release   <- gdp_release_date(target_quarter)
+  # Read the vintage tracking CSV FIRST. The most recent row is the canonical
+  # "latest nowcast" — it's what the pipeline most recently produced.
+  # We fall back to the passed-in `nowcast` arg only if no vintages exist yet.
+  vintage_csv <- file.path(VINTAGE_BASE_DIR, "vintage_tracking.csv")
+  latest_vintage <- if (file.exists(vintage_csv)) {
+    vraw_all <- read_csv(vintage_csv, show_col_types = FALSE)
+    if (nrow(vraw_all) > 0) {
+      vraw_all |>
+        mutate(run_timestamp_dt = as.POSIXct(run_timestamp, tz = "UTC")) |>
+        arrange(desc(run_timestamp_dt)) |>
+        slice(1)
+    } else NULL
+  } else NULL
+
+  # Use the latest vintage if we have one; otherwise the legacy RDS.
+  if (!is.null(latest_vintage)) {
+    target_quarter        <- as.character(latest_vintage$target_quarter)
+    point_value           <- round(as.numeric(latest_vintage$nowcast_value))
+    qoq_growth_pct        <- round(as.numeric(latest_vintage$qoq_growth), 2)
+    yoy_growth_pct        <- round(as.numeric(latest_vintage$yoy_growth), 2)
+    latest_actual_value   <- round(as.numeric(latest_vintage$latest_actual_value))
+    data_through_date     <- as.Date(latest_vintage$data_as_of_date)
+  } else {
+    target_quarter        <- nowcast$target_quarter
+    point_value           <- round(as.numeric(nowcast$nowcast_value))
+    qoq_growth_pct        <- round(as.numeric(nowcast$qoq_growth), 2)
+    yoy_growth_pct        <- round(as.numeric(nowcast$yoy_growth), 2)
+    latest_actual_value   <- round(as.numeric(nowcast$latest_actual_value))
+    data_through_date     <- max(master$wide$date, na.rm = TRUE)
+  }
+
+  next_release <- gdp_release_date(target_quarter)
 
   # Build a tidy GDP series from master$wide (for gdp.json, the headline reference,
   # and performance actuals).
@@ -111,35 +141,36 @@ emit_json <- function(target_dir, nowcast, master, vintage_info) {
       quarter = vapply(date, date_to_quarter, character(1))
     )
 
-  latest_actual_qoq <- if (nrow(gdp_wide) > 0) tail(gdp_wide$qoq_pct, 1) else NA_real_
+  # Derive the latest actual's quarter + QoQ from the most recent published GDP row.
+  latest_actual_row <- if (nrow(gdp_wide) > 0) tail(gdp_wide, 1) else NULL
+  latest_actual_quarter <- if (!is.null(latest_actual_row)) latest_actual_row$quarter else nowcast$latest_actual_quarter
+  latest_actual_qoq <- if (!is.null(latest_actual_row)) latest_actual_row$qoq_pct else NA_real_
 
   # "Released days before next release" is a negative number; e.g. if Q4 was released
   # 92 days before Q1's scheduled release, this field reads -92.
-  prev_release <- gdp_release_date(nowcast$latest_actual_quarter)
+  prev_release <- gdp_release_date(latest_actual_quarter)
   released_days_before_next <- if (!is.na(prev_release) && !is.na(next_release)) {
     as.integer(as.numeric(difftime(prev_release, next_release, units = "days")))
   } else NA_integer_
-
-  point_value <- round(as.numeric(nowcast$nowcast_value))
 
   # --- 1. latest.json ---
   latest_obj <- list(
     generated_at          = format(Sys.time(), "%Y-%m-%dT%H:%M:%SZ", tz = "UTC"),
     target_quarter        = target_quarter,
-    data_through          = format(max(master$wide$date, na.rm = TRUE), "%Y-%m"),
+    data_through          = format(data_through_date, "%Y-%m"),
     next_gdp_release_date = format(next_release, "%Y-%m-%d"),
     nowcast = list(
       gdp_chain_volume_millions = point_value,
-      qoq_growth_pct            = round(as.numeric(nowcast$qoq_growth), 2),
-      yoy_growth_pct            = round(as.numeric(nowcast$yoy_growth), 2),
+      qoq_growth_pct            = qoq_growth_pct,
+      yoy_growth_pct            = yoy_growth_pct,
       ci_68_low                 = round(point_value * 0.993),
       ci_68_high                = round(point_value * 1.007),
       ci_95_low                 = round(point_value * 0.986),
       ci_95_high                = round(point_value * 1.014)
     ),
     latest_actual = list(
-      quarter                   = nowcast$latest_actual_quarter,
-      gdp_chain_volume_millions = round(as.numeric(nowcast$latest_actual_value)),
+      quarter                   = latest_actual_quarter,
+      gdp_chain_volume_millions = latest_actual_value,
       qoq_growth_pct            = round(latest_actual_qoq, 2),
       released_days_before_next = released_days_before_next
     )
@@ -163,10 +194,9 @@ emit_json <- function(target_dir, nowcast, master, vintage_info) {
   )
 
   # --- 3. nowcasts.json ---
-  vintage_csv <- file.path(VINTAGE_BASE_DIR, "vintage_tracking.csv")
-  vintages_out <- if (file.exists(vintage_csv)) {
-    vraw <- read_csv(vintage_csv, show_col_types = FALSE)
-    vraw |>
+  # Reuse vraw_all read at top of function.
+  vintages_out <- if (exists("vraw_all") && !is.null(vraw_all) && nrow(vraw_all) > 0) {
+    vraw_all |>
       mutate(
         run_date_d    = as.Date(run_timestamp),
         release_d     = as.Date(vapply(target_quarter, function(q) {
