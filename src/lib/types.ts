@@ -1,0 +1,90 @@
+export interface NowcastEstimate {
+  gdp_chain_volume_millions: number;
+  qoq_growth_pct: number;
+  yoy_growth_pct: number;
+  ci_68_low: number;
+  ci_68_high: number;
+  ci_95_low: number;
+  ci_95_high: number;
+}
+
+export interface LatestNowcast {
+  generated_at: string; // ISO 8601
+  target_quarter: string; // e.g. "2026 Q1"
+  data_through: string; // e.g. "2026-04"
+  nowcast: NowcastEstimate;
+  latest_actual: {
+    quarter: string;
+    gdp_chain_volume_millions: number;
+  };
+}
+
+export interface GdpQuarter {
+  quarter: string;
+  value: number;
+  qoq_pct: number;
+  yoy_pct: number;
+}
+
+export interface GdpSeries {
+  series: GdpQuarter[];
+}
+
+export interface Vintage {
+  run_date: string; // "YYYY-MM-DD"
+  target_quarter: string;
+  point: number;
+  ci_68_low: number;
+  ci_68_high: number;
+  ci_95_low: number;
+  ci_95_high: number;
+  data_through: string;
+}
+
+export interface VintageSeries {
+  vintages: Vintage[];
+}
+
+export type IndicatorGroup = "Labour" | "Consumer" | "Business" | "External";
+
+export interface IndicatorPoint {
+  date: string; // "YYYY-MM"
+  value: number;
+}
+
+export interface Indicator {
+  id: string;
+  name: string;
+  group: IndicatorGroup;
+  unit: string;
+  source: string;
+  series: IndicatorPoint[];
+}
+
+export interface IndicatorData {
+  indicators: Indicator[];
+}
+
+export interface AccuracyError {
+  target_quarter: string;
+  final_nowcast: number;
+  actual: number;
+  error_millions: number;
+  error_pct: number;
+}
+
+export interface Performance {
+  mae_millions: number;
+  mae_pct: number;
+  rmse_millions: number;
+  hit_rate_direction: number;
+  errors: AccuracyError[];
+}
+
+export interface DashboardData {
+  latest: LatestNowcast;
+  gdp: GdpSeries;
+  nowcasts: VintageSeries;
+  indicators: IndicatorData;
+  performance: Performance;
+}

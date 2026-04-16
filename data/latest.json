@@ -1,0 +1,18 @@
+{
+  "generated_at": "2026-04-15T21:00:00Z",
+  "target_quarter": "2026 Q1",
+  "data_through": "2026-04",
+  "nowcast": {
+    "gdp_chain_volume_millions": 694649,
+    "qoq_growth_pct": 0.13,
+    "yoy_growth_pct": 2.69,
+    "ci_68_low": 690200,
+    "ci_68_high": 699100,
+    "ci_95_low": 685800,
+    "ci_95_high": 703500
+  },
+  "latest_actual": {
+    "quarter": "2025 Q4",
+    "gdp_chain_volume_millions": 693772
+  }
+}

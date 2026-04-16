@@ -1,0 +1,13 @@
+{
+  "mae_millions": 3481,
+  "mae_pct": 0.53,
+  "rmse_millions": 4200,
+  "hit_rate_direction": 0.82,
+  "errors": [
+    { "target_quarter": "2024 Q4", "final_nowcast": 677100, "actual": 676456, "error_millions": 644, "error_pct": 0.10 },
+    { "target_quarter": "2025 Q1", "final_nowcast": 678900, "actual": 679361, "error_millions": -461, "error_pct": -0.07 },
+    { "target_quarter": "2025 Q2", "final_nowcast": 684200, "actual": 685128, "error_millions": -928, "error_pct": -0.14 },
+    { "target_quarter": "2025 Q3", "final_nowcast": 687900, "actual": 688317, "error_millions": -417, "error_pct": -0.06 },
+    { "target_quarter": "2025 Q4", "final_nowcast": 694500, "actual": 693772, "error_millions": 728, "error_pct": 0.10 }
+  ]
+}

@@ -1,0 +1,256 @@
+{
+  "indicators": [
+    {
+      "id": "employment",
+      "name": "Employment",
+      "group": "Labour",
+      "unit": "persons",
+      "source": "ABS Labour Force Survey (A84423127L)",
+      "series": [
+        { "date": "2025-05", "value": 14320000 },
+        { "date": "2025-06", "value": 14345000 },
+        { "date": "2025-07", "value": 14368000 },
+        { "date": "2025-08", "value": 14395000 },
+        { "date": "2025-09", "value": 14418000 },
+        { "date": "2025-10", "value": 14430000 },
+        { "date": "2025-11", "value": 14452000 },
+        { "date": "2025-12", "value": 14478000 },
+        { "date": "2026-01", "value": 14495000 },
+        { "date": "2026-02", "value": 14512000 },
+        { "date": "2026-03", "value": 14530000 },
+        { "date": "2026-04", "value": 14548000 }
+      ]
+    },
+    {
+      "id": "unemp_rate",
+      "name": "Unemployment Rate",
+      "group": "Labour",
+      "unit": "percent",
+      "source": "ABS Labour Force Survey (A84423050A)",
+      "series": [
+        { "date": "2025-05", "value": 4.20 },
+        { "date": "2025-06", "value": 4.15 },
+        { "date": "2025-07", "value": 4.10 },
+        { "date": "2025-08", "value": 4.10 },
+        { "date": "2025-09", "value": 4.05 },
+        { "date": "2025-10", "value": 4.00 },
+        { "date": "2025-11", "value": 4.00 },
+        { "date": "2025-12", "value": 3.95 },
+        { "date": "2026-01", "value": 3.95 },
+        { "date": "2026-02", "value": 3.92 },
+        { "date": "2026-03", "value": 3.90 },
+        { "date": "2026-04", "value": 3.90 }
+      ]
+    },
+    {
+      "id": "part_rate",
+      "name": "Participation Rate",
+      "group": "Labour",
+      "unit": "percent",
+      "source": "ABS Labour Force Survey (A84423051C)",
+      "series": [
+        { "date": "2025-05", "value": 67.00 },
+        { "date": "2025-06", "value": 67.05 },
+        { "date": "2025-07", "value": 67.10 },
+        { "date": "2025-08", "value": 67.15 },
+        { "date": "2025-09", "value": 67.20 },
+        { "date": "2025-10", "value": 67.20 },
+        { "date": "2025-11", "value": 67.25 },
+        { "date": "2025-12", "value": 67.30 },
+        { "date": "2026-01", "value": 67.35 },
+        { "date": "2026-02", "value": 67.40 },
+        { "date": "2026-03", "value": 67.45 },
+        { "date": "2026-04", "value": 67.50 }
+      ]
+    },
+    {
+      "id": "hours_worked",
+      "name": "Hours Worked",
+      "group": "Labour",
+      "unit": "hours (thousands)",
+      "source": "ABS Labour Force Survey (A84426277X)",
+      "series": [
+        { "date": "2025-05", "value": 1900000 },
+        { "date": "2025-06", "value": 1906000 },
+        { "date": "2025-07", "value": 1912000 },
+        { "date": "2025-08", "value": 1918000 },
+        { "date": "2025-09", "value": 1925000 },
+        { "date": "2025-10", "value": 1931000 },
+        { "date": "2025-11", "value": 1938000 },
+        { "date": "2025-12", "value": 1944000 },
+        { "date": "2026-01", "value": 1950000 },
+        { "date": "2026-02", "value": 1957000 },
+        { "date": "2026-03", "value": 1963000 },
+        { "date": "2026-04", "value": 1970000 }
+      ]
+    },
+    {
+      "id": "retail_trade",
+      "name": "Retail Trade",
+      "group": "Consumer",
+      "unit": "$ millions",
+      "source": "ABS Retail Trade (A3349873A)",
+      "series": [
+        { "date": "2025-05", "value": 36050 },
+        { "date": "2025-06", "value": 36280 },
+        { "date": "2025-07", "value": 36490 },
+        { "date": "2025-08", "value": 36720 },
+        { "date": "2025-09", "value": 36950 },
+        { "date": "2025-10", "value": 37180 },
+        { "date": "2025-11", "value": 37410 },
+        { "date": "2025-12", "value": 37640 },
+        { "date": "2026-01", "value": 37820 },
+        { "date": "2026-02", "value": 38020 },
+        { "date": "2026-03", "value": 38240 },
+        { "date": "2026-04", "value": 38460 }
+      ]
+    },
+    {
+      "id": "cons_conf",
+      "name": "Consumer Confidence",
+      "group": "Consumer",
+      "unit": "index",
+      "source": "OECD via FRED (CSCICP02AUM460S)",
+      "series": [
+        { "date": "2025-05", "value": 97.20 },
+        { "date": "2025-06", "value": 97.80 },
+        { "date": "2025-07", "value": 98.40 },
+        { "date": "2025-08", "value": 98.90 },
+        { "date": "2025-09", "value": 99.30 },
+        { "date": "2025-10", "value": 99.80 },
+        { "date": "2025-11", "value": 100.20 },
+        { "date": "2025-12", "value": 100.70 },
+        { "date": "2026-01", "value": 101.30 },
+        { "date": "2026-02", "value": 101.90 },
+        { "date": "2026-03", "value": 102.40 },
+        { "date": "2026-04", "value": 102.90 }
+      ]
+    },
+    {
+      "id": "building_approvals",
+      "name": "Building Approvals",
+      "group": "Business",
+      "unit": "count",
+      "source": "ABS Building Approvals (A422070J)",
+      "series": [
+        { "date": "2025-05", "value": 15050 },
+        { "date": "2025-06", "value": 15230 },
+        { "date": "2025-07", "value": 15420 },
+        { "date": "2025-08", "value": 15640 },
+        { "date": "2025-09", "value": 15880 },
+        { "date": "2025-10", "value": 16100 },
+        { "date": "2025-11", "value": 16340 },
+        { "date": "2025-12", "value": 16580 },
+        { "date": "2026-01", "value": 16800 },
+        { "date": "2026-02", "value": 17030 },
+        { "date": "2026-03", "value": 17260 },
+        { "date": "2026-04", "value": 17480 }
+      ]
+    },
+    {
+      "id": "bus_conf",
+      "name": "NAB Business Confidence",
+      "group": "Business",
+      "unit": "index",
+      "source": "NAB Monthly Business Survey",
+      "series": [
+        { "date": "2025-05", "value": -4.5 },
+        { "date": "2025-06", "value": -3.2 },
+        { "date": "2025-07", "value": -2.0 },
+        { "date": "2025-08", "value": -0.5 },
+        { "date": "2025-09", "value": 0.8 },
+        { "date": "2025-10", "value": 2.0 },
+        { "date": "2025-11", "value": 3.2 },
+        { "date": "2025-12", "value": 4.3 },
+        { "date": "2026-01", "value": 5.2 },
+        { "date": "2026-02", "value": 6.1 },
+        { "date": "2026-03", "value": 7.0 },
+        { "date": "2026-04", "value": 7.8 }
+      ]
+    },
+    {
+      "id": "goods_exp",
+      "name": "Goods Exports",
+      "group": "External",
+      "unit": "$ millions",
+      "source": "ABS International Trade (A2718577A)",
+      "series": [
+        { "date": "2025-05", "value": 42150 },
+        { "date": "2025-06", "value": 42700 },
+        { "date": "2025-07", "value": 43200 },
+        { "date": "2025-08", "value": 43750 },
+        { "date": "2025-09", "value": 44300 },
+        { "date": "2025-10", "value": 44820 },
+        { "date": "2025-11", "value": 45380 },
+        { "date": "2025-12", "value": 45920 },
+        { "date": "2026-01", "value": 46470 },
+        { "date": "2026-02", "value": 46980 },
+        { "date": "2026-03", "value": 47490 },
+        { "date": "2026-04", "value": 47980 }
+      ]
+    },
+    {
+      "id": "services_exp",
+      "name": "Services Exports",
+      "group": "External",
+      "unit": "$ millions",
+      "source": "ABS International Trade (A3535093X)",
+      "series": [
+        { "date": "2025-05", "value": 8540 },
+        { "date": "2025-06", "value": 8660 },
+        { "date": "2025-07", "value": 8790 },
+        { "date": "2025-08", "value": 8920 },
+        { "date": "2025-09", "value": 9050 },
+        { "date": "2025-10", "value": 9180 },
+        { "date": "2025-11", "value": 9310 },
+        { "date": "2025-12", "value": 9440 },
+        { "date": "2026-01", "value": 9570 },
+        { "date": "2026-02", "value": 9700 },
+        { "date": "2026-03", "value": 9830 },
+        { "date": "2026-04", "value": 9960 }
+      ]
+    },
+    {
+      "id": "goods_imp",
+      "name": "Goods Imports",
+      "group": "External",
+      "unit": "$ millions",
+      "source": "ABS International Trade (A2718603V)",
+      "series": [
+        { "date": "2025-05", "value": 36080 },
+        { "date": "2025-06", "value": 36380 },
+        { "date": "2025-07", "value": 36680 },
+        { "date": "2025-08", "value": 37000 },
+        { "date": "2025-09", "value": 37320 },
+        { "date": "2025-10", "value": 37650 },
+        { "date": "2025-11", "value": 37980 },
+        { "date": "2025-12", "value": 38310 },
+        { "date": "2026-01", "value": 38640 },
+        { "date": "2026-02", "value": 38980 },
+        { "date": "2026-03", "value": 39320 },
+        { "date": "2026-04", "value": 39660 }
+      ]
+    },
+    {
+      "id": "services_imp",
+      "name": "Services Imports",
+      "group": "External",
+      "unit": "$ millions",
+      "source": "ABS International Trade (A3535257J)",
+      "series": [
+        { "date": "2025-05", "value": 9040 },
+        { "date": "2025-06", "value": 9170 },
+        { "date": "2025-07", "value": 9290 },
+        { "date": "2025-08", "value": 9410 },
+        { "date": "2025-09", "value": 9540 },
+        { "date": "2025-10", "value": 9660 },
+        { "date": "2025-11", "value": 9790 },
+        { "date": "2025-12", "value": 9920 },
+        { "date": "2026-01", "value": 10050 },
+        { "date": "2026-02", "value": 10180 },
+        { "date": "2026-03", "value": 10310 },
+        { "date": "2026-04", "value": 10450 }
+      ]
+    }
+  ]
+}
