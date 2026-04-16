@@ -1,0 +1,54 @@
+import fs from "fs";
+import path from "path";
+import type {
+  LatestNowcast,
+  GdpSeries,
+  VintageSeries,
+  IndicatorData,
+  Performance,
+  DashboardData,
+} from "./types";
+
+const DATA_DIR = path.join(process.cwd(), "data");
+
+function readJson<T>(filename: string, fallback: T): T {
+  const filePath = path.join(DATA_DIR, filename);
+  try {
+    const raw = fs.readFileSync(filePath, "utf-8");
+    return JSON.parse(raw) as T;
+  } catch {
+    return fallback;
+  }
+}
+
+const LATEST_FALLBACK: LatestNowcast = {
+  generated_at: "1970-01-01T00:00:00Z",
+  target_quarter: "—",
+  data_through: "—",
+  nowcast: {
+    gdp_chain_volume_millions: 0,
+    qoq_growth_pct: 0,
+    yoy_growth_pct: 0,
+    ci_68_low: 0,
+    ci_68_high: 0,
+    ci_95_low: 0,
+    ci_95_high: 0,
+  },
+  latest_actual: { quarter: "—", gdp_chain_volume_millions: 0 },
+};
+
+export function loadDashboardData(): DashboardData {
+  return {
+    latest: readJson<LatestNowcast>("latest.json", LATEST_FALLBACK),
+    gdp: readJson<GdpSeries>("gdp.json", { series: [] }),
+    nowcasts: readJson<VintageSeries>("nowcasts.json", { vintages: [] }),
+    indicators: readJson<IndicatorData>("indicators.json", { indicators: [] }),
+    performance: readJson<Performance>("performance.json", {
+      mae_millions: 0,
+      mae_pct: 0,
+      rmse_millions: 0,
+      hit_rate_direction: 0,
+      errors: [],
+    }),
+  };
+}
