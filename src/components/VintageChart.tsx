@@ -86,17 +86,22 @@ export default function VintageChart({ nowcasts, latest }: VintageChartProps) {
             <ZAxis range={[80, 80]} />
             <Tooltip
               cursor={false}
-              formatter={(v: unknown) => [
-                typeof v === "number" ? `${v.toFixed(2)}%` : "",
-                "",
-              ]}
+              formatter={(v: unknown, _name: unknown, entry) => {
+                const p = (entry as { payload?: VintagePoint | ActualPoint })
+                  ?.payload;
+                const label = p?.kind === "actual" ? "Latest actual" : "Nowcast";
+                return [
+                  typeof v === "number" ? `${v.toFixed(2)}%` : "",
+                  label,
+                ];
+              }}
               labelFormatter={(_: unknown, payload) => {
                 const p = payload?.[0]?.payload as
                   | VintagePoint
                   | ActualPoint
                   | undefined;
                 if (!p) return "";
-                if (p.kind === "actual") return `${p.actualQuarter} actual`;
+                if (p.kind === "actual") return p.actualQuarter;
                 return formatDate(p.runDate);
               }}
               contentStyle={{ fontSize: 11 }}
