@@ -7,6 +7,8 @@ import IndicatorDetailCard from "./IndicatorDetailCard";
 
 const GROUP_ORDER: IndicatorGroup[] = ["Labour", "Consumer", "Business", "External"];
 
+const LEVEL_INDICATORS = new Set(["unemp_rate", "part_rate", "cons_conf", "bus_conf"]);
+
 interface Props {
   indicators: IndicatorData;
 }
@@ -22,7 +24,7 @@ export default function IndicatorGrid({ indicators }: Props) {
   return (
     <section className="mb-10">
       <p className="text-[10px] uppercase tracking-wider text-label mb-2">
-        High-frequency indicators ({indicators.indicators.length})
+        Indicators
       </p>
       {byGroup.map((g) => (
         <div key={g.group} className="mb-4">
@@ -38,7 +40,10 @@ export default function IndicatorGrid({ indicators }: Props) {
               >
                 <p className="text-xs text-border-heavy">{ind.name}</p>
                 <p className="text-[10px] text-label-light mb-1">{ind.unit}</p>
-                <IndicatorSparkline series={ind.series} />
+                <IndicatorSparkline
+                  series={ind.series}
+                  mode={LEVEL_INDICATORS.has(ind.id) ? "level" : "change"}
+                />
               </button>
             ))}
           </div>

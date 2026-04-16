@@ -1,6 +1,6 @@
 "use client";
 
-import { LineChart, Line, ResponsiveContainer, Dot } from "recharts";
+import { BarChart, Bar, Cell, ResponsiveContainer } from "recharts";
 import type { LatestNowcast, GdpSeries } from "@/lib/types";
 import { formatMillions, formatPct } from "@/lib/format";
 import { chartColors } from "@/lib/chartTheme";
@@ -11,11 +11,18 @@ interface HeadlineCardProps {
 }
 
 export default function HeadlineCard({ latest, gdp }: HeadlineCardProps) {
-  // Last 8 quarters of actuals + the nowcast point
-  const last8 = gdp.series.slice(-8);
-  const sparkData = [
-    ...last8.map((q) => ({ quarter: q.quarter, value: q.value, isNowcast: false })),
-    { quarter: latest.target_quarter, value: latest.nowcast.gdp_chain_volume_millions, isNowcast: true },
+  // Last 12 quarters of QoQ growth + the current nowcast's QoQ growth
+  const data = [
+    ...gdp.series.slice(-12).map((q) => ({
+      quarter: q.quarter,
+      growth: q.qoq_pct,
+      isNowcast: false,
+    })),
+    {
+      quarter: latest.target_quarter,
+      growth: latest.nowcast.qoq_growth_pct,
+      isNowcast: true,
+    },
   ];
 
   return (
@@ -38,26 +45,20 @@ export default function HeadlineCard({ latest, gdp }: HeadlineCardProps) {
       </div>
       <div className="mt-4 h-20">
         <ResponsiveContainer>
-          <LineChart data={sparkData} margin={{ top: 5, right: 5, bottom: 5, left: 5 }}>
-            <Line
-              type="monotone"
-              dataKey="value"
-              stroke={chartColors.primary}
-              strokeWidth={1.5}
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              dot={(props: any) => {
-                const { cx, cy, payload, index } = props;
-                if (payload.isNowcast) {
-                  return <Dot key={`dot-${index}`} cx={cx} cy={cy} r={4} fill={chartColors.accent} stroke={chartColors.primary} strokeWidth={1.5} />;
-                }
-                return <Dot key={`dot-${index}`} cx={cx} cy={cy} r={0} fill="transparent" />;
-              }}
-            />
-          </LineChart>
+          <BarChart data={data} margin={{ top: 5, right: 5, bottom: 5, left: 5 }}>
+            <Bar dataKey="growth">
+              {data.map((row, i) => (
+                <Cell
+                  key={i}
+                  fill={row.isNowcast ? chartColors.accent : chartColors.primary}
+                />
+              ))}
+            </Bar>
+          </BarChart>
         </ResponsiveContainer>
       </div>
       <p className="mt-2 text-[10px] text-label-light">
-        Last 8 quarters of GDP (dark teal) with current nowcast (green). Data through {latest.data_through}.
+        QoQ growth over the last 12 quarters (dark teal) with current nowcast (green). Data through {latest.data_through}.
       </p>
     </section>
   );

@@ -14,8 +14,15 @@ export default function PerformanceSection({ performance }: Props) {
       <div className="grid grid-cols-3 gap-3 mb-4">
         <Tile label="MAE" value={formatMillions(performance.mae_millions)} sub={`${performance.mae_pct.toFixed(2)}% of GDP`} />
         <Tile label="RMSE" value={formatMillions(performance.rmse_millions)} />
-        <Tile label="Directional hit rate" value={`${(performance.hit_rate_direction * 100).toFixed(0)}%`} />
+        <Tile
+          label="Directional hit rate"
+          value={`${(performance.hit_rate_direction * 100).toFixed(0)}%`}
+          sub="Nowcast predicted the correct direction"
+        />
       </div>
+      <p className="text-xs text-label mb-3 max-w-prose">
+        Each quarter, the final nowcast (latest vintage before the release) is compared against the actual GDP value. Directional hit rate is the share of quarters where the nowcast correctly predicted growth or contraction.
+      </p>
       <table className="w-full text-xs border-collapse">
         <thead>
           <tr className="border-b border-border-heavy text-left text-[10px] uppercase text-label">

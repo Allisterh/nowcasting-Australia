@@ -3,7 +3,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import StalenessBanner from "@/components/StalenessBanner";
 import HeadlineCard from "@/components/HeadlineCard";
-import GdpHistoryChart from "@/components/GdpHistoryChart";
 import VintageChart from "@/components/VintageChart";
 import IndicatorGrid from "@/components/IndicatorGrid";
 import PerformanceSection from "@/components/PerformanceSection";
@@ -16,8 +15,7 @@ export default function Home() {
       <StalenessBanner generatedAt={data.latest.generated_at} />
       <Header generatedAt={data.latest.generated_at} />
       <HeadlineCard latest={data.latest} gdp={data.gdp} />
-      <GdpHistoryChart gdp={data.gdp} latest={data.latest} />
-      <VintageChart nowcasts={data.nowcasts} />
+      <VintageChart nowcasts={data.nowcasts} latest={data.latest} />
       <IndicatorGrid indicators={data.indicators} />
       <PerformanceSection performance={data.performance} />
       <MethodologyPanel />

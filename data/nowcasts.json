@@ -1,9 +1,9 @@
 {
   "vintages": [
-    { "run_date": "2026-02-06", "target_quarter": "2025 Q4", "point": 692500, "ci_68_low": 688000, "ci_68_high": 697000, "ci_95_low": 684000, "ci_95_high": 701000, "data_through": "2026-02" },
-    { "run_date": "2026-03-02", "target_quarter": "2026 Q1", "point": 692100, "ci_68_low": 687500, "ci_68_high": 696700, "ci_95_low": 683200, "ci_95_high": 701000, "data_through": "2026-02" },
-    { "run_date": "2026-03-04", "target_quarter": "2026 Q1", "point": 692900, "ci_68_low": 688300, "ci_68_high": 697500, "ci_95_low": 684000, "ci_95_high": 701800, "data_through": "2026-03" },
-    { "run_date": "2026-03-12", "target_quarter": "2026 Q1", "point": 693800, "ci_68_low": 689400, "ci_68_high": 698200, "ci_95_low": 685200, "ci_95_high": 702400, "data_through": "2026-03" },
-    { "run_date": "2026-04-15", "target_quarter": "2026 Q1", "point": 694649, "ci_68_low": 690200, "ci_68_high": 699100, "ci_95_low": 685800, "ci_95_high": 703500, "data_through": "2026-04" }
+    { "run_date": "2026-02-06", "target_quarter": "2025 Q4", "point": 692500, "qoq_growth_pct": 0.61, "days_until_release": -26, "ci_68_low": 688000, "ci_68_high": 697000, "ci_95_low": 684000, "ci_95_high": 701000, "data_through": "2026-02" },
+    { "run_date": "2026-03-02", "target_quarter": "2026 Q1", "point": 692100, "qoq_growth_pct": -0.24, "days_until_release": -94, "ci_68_low": 687500, "ci_68_high": 696700, "ci_95_low": 683200, "ci_95_high": 701000, "data_through": "2026-02" },
+    { "run_date": "2026-03-04", "target_quarter": "2026 Q1", "point": 692900, "qoq_growth_pct": -0.13, "days_until_release": -92, "ci_68_low": 688300, "ci_68_high": 697500, "ci_95_low": 684000, "ci_95_high": 701800, "data_through": "2026-03" },
+    { "run_date": "2026-03-12", "target_quarter": "2026 Q1", "point": 693800, "qoq_growth_pct": 0.00, "days_until_release": -84, "ci_68_low": 689400, "ci_68_high": 698200, "ci_95_low": 685200, "ci_95_high": 702400, "data_through": "2026-03" },
+    { "run_date": "2026-04-15", "target_quarter": "2026 Q1", "point": 694649, "qoq_growth_pct": 0.13, "days_until_release": -50, "ci_68_low": 690200, "ci_68_high": 699100, "ci_95_low": 685800, "ci_95_high": 703500, "data_through": "2026-04" }
   ]
 }

@@ -1,83 +1,125 @@
 "use client";
 
 import {
-  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+  ComposedChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
   ResponsiveContainer,
+  ReferenceLine,
+  ReferenceDot,
+  Label,
 } from "recharts";
-import type { VintageSeries } from "@/lib/types";
-import { formatMillions } from "@/lib/format";
-import { chartColors, chartRamp, axisTick } from "@/lib/chartTheme";
+import type { VintageSeries, LatestNowcast } from "@/lib/types";
+import { formatPct, formatDate } from "@/lib/format";
+import { chartColors, axisTick } from "@/lib/chartTheme";
 
 interface VintageChartProps {
   nowcasts: VintageSeries;
+  latest: LatestNowcast;
 }
 
-interface VintageRow {
-  run_date: string;
-  [targetQuarter: string]: number | string;
-}
+export default function VintageChart({ nowcasts, latest }: VintageChartProps) {
+  const relevant = nowcasts.vintages.filter(
+    (v) => v.target_quarter === latest.target_quarter,
+  );
+  const points = relevant
+    .map((v) => ({ x: v.days_until_release, y: v.qoq_growth_pct }))
+    .sort((a, b) => a.x - b.x);
 
-export default function VintageChart({ nowcasts }: VintageChartProps) {
-  const targetQuarters = Array.from(new Set(nowcasts.vintages.map((v) => v.target_quarter))).sort();
-  const runDates = Array.from(new Set(nowcasts.vintages.map((v) => v.run_date))).sort();
-
-  const rows: VintageRow[] = runDates.map((run_date) => {
-    const row: VintageRow = { run_date };
-    for (const v of nowcasts.vintages) {
-      if (v.run_date === run_date) {
-        row[v.target_quarter] = v.point;
-      }
-    }
-    return row;
-  });
-
-  const colorFor = (idx: number, total: number) => {
-    if (total <= 1) return chartRamp[chartRamp.length - 1];
-    const pos = Math.floor((idx / (total - 1)) * (chartRamp.length - 1));
-    return chartRamp[pos];
-  };
+  const lastPoint = points[points.length - 1];
+  const lastDays = lastPoint ? lastPoint.x : 0;
 
   return (
     <section className="mb-10">
-      <p className="text-[10px] uppercase tracking-wider text-label mb-2">
-        Vintage evolution — how each quarter&apos;s nowcast moved over time
+      <p className="font-headline text-xl text-teal">GDP nowcast evolution</p>
+      <p className="text-xs text-label mb-2">
+        Nowcast for {latest.target_quarter} | Latest: {formatPct(latest.nowcast.qoq_growth_pct)}, QoQ ({lastDays} days until release)
       </p>
-      <div className="h-[300px]">
+      <div className="h-[320px]">
         <ResponsiveContainer>
-          <LineChart data={rows} margin={{ top: 5, right: 10, bottom: 5, left: 10 }}>
+          <ComposedChart
+            data={points}
+            margin={{ top: 20, right: 40, bottom: 20, left: 20 }}
+          >
             <CartesianGrid strokeDasharray="3 3" stroke={chartColors.border} />
-            <XAxis dataKey="run_date" tick={axisTick} />
-            <YAxis
+            <XAxis
+              type="number"
+              dataKey="x"
+              domain={[-95, 5]}
+              ticks={[-90, -75, -60, -45, -30, -15, 0]}
               tick={axisTick}
-              tickFormatter={(v) => `${Math.round(v / 1000)}k`}
+              label={{
+                value: "Days until next GDP release",
+                position: "insideBottom",
+                offset: -10,
+                style: { fontSize: 10, fill: chartColors.label },
+              }}
+            />
+            <YAxis
+              type="number"
+              dataKey="y"
               domain={["auto", "auto"]}
+              tickFormatter={(v) => `${v.toFixed(2)}%`}
+              tick={axisTick}
+              label={{
+                value: "Quarter-on-quarter Growth (%)",
+                angle: -90,
+                position: "insideLeft",
+                style: { fontSize: 10, fill: chartColors.label },
+              }}
             />
             <Tooltip
-              formatter={(v) => {
-                if (typeof v === "number") return [formatMillions(v), ""];
-                return ["", ""];
-              }}
-              labelStyle={{ fontSize: 10 }}
+              formatter={(v: unknown) => [
+                typeof v === "number" ? `${v.toFixed(3)}%` : "",
+                "",
+              ]}
+              labelFormatter={(l) => `${l} days`}
               contentStyle={{ fontSize: 11 }}
             />
-            <Legend wrapperStyle={{ fontSize: 10 }} />
-            {targetQuarters.map((tq, idx) => (
-              <Line
-                key={tq}
-                type="monotone"
-                dataKey={tq}
-                stroke={colorFor(idx, targetQuarters.length)}
-                strokeWidth={1.5}
-                dot={{ r: 2 }}
-                connectNulls
+            <Line
+              type="linear"
+              dataKey="y"
+              stroke={chartColors.primary}
+              strokeWidth={1.5}
+              dot={{
+                r: 4,
+                fill: chartColors.accent,
+                stroke: chartColors.accent,
+              }}
+              isAnimationActive={false}
+            />
+            <ReferenceDot
+              x={latest.latest_actual.released_days_before_next}
+              y={latest.latest_actual.qoq_growth_pct}
+              r={5}
+              fill={chartColors.primary}
+              stroke="none"
+            >
+              <Label
+                position="top"
+                offset={10}
+                value={`Latest actual / ${latest.latest_actual.quarter} / ${formatPct(latest.latest_actual.qoq_growth_pct)}`}
+                style={{ fontSize: 10, fill: chartColors.primary }}
               />
-            ))}
-          </LineChart>
+            </ReferenceDot>
+            <ReferenceLine
+              x={0}
+              stroke={chartColors.label}
+              strokeDasharray="4 3"
+            >
+              <Label
+                position="insideTopRight"
+                offset={10}
+                value={`GDP Release / ${formatDate(latest.next_gdp_release_date)}`}
+                style={{ fontSize: 10, fill: chartColors.label }}
+              />
+            </ReferenceLine>
+          </ComposedChart>
         </ResponsiveContainer>
       </div>
-      <p className="mt-2 text-[10px] text-label-light">
-        One line per target quarter. Older quarters trend teal; latest quarter highlighted in green.
-      </p>
     </section>
   );
 }

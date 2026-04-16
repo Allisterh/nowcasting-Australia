@@ -25,6 +25,7 @@ const LATEST_FALLBACK: LatestNowcast = {
   generated_at: "1970-01-01T00:00:00Z",
   target_quarter: "—",
   data_through: "—",
+  next_gdp_release_date: "1970-01-01",
   nowcast: {
     gdp_chain_volume_millions: 0,
     qoq_growth_pct: 0,
@@ -34,7 +35,12 @@ const LATEST_FALLBACK: LatestNowcast = {
     ci_95_low: 0,
     ci_95_high: 0,
   },
-  latest_actual: { quarter: "—", gdp_chain_volume_millions: 0 },
+  latest_actual: {
+    quarter: "—",
+    gdp_chain_volume_millions: 0,
+    qoq_growth_pct: 0,
+    released_days_before_next: 0,
+  },
 };
 
 export function loadDashboardData(): DashboardData {

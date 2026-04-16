@@ -9,13 +9,13 @@ export default function MethodologyPanel() {
     <section id="methodology" className="mb-10">
       <button
         onClick={() => setOpen(!open)}
-        className="w-full text-left border border-border-heavy px-4 py-3 flex items-center justify-between hover:bg-panel"
+        className={`w-full text-left border border-border-heavy px-4 py-3 flex items-center justify-between hover:bg-panel ${open ? "border-b-0" : ""}`}
       >
         <span className="font-headline text-xl text-teal">Methodology</span>
         <span className="text-xs text-label">{open ? "Hide" : "Show"}</span>
       </button>
       {open && (
-        <div className="border border-t-0 border-border-heavy px-4 py-4 text-sm text-border-heavy space-y-3 max-w-3xl">
+        <div className="border border-t-0 border-border-heavy px-4 py-4 text-sm text-border-heavy space-y-3">
           <p>
             This dashboard displays a nowcast of Australian real GDP growth produced by a Dynamic
             Factor Model (DFM) with an Expectation-Maximization estimator, following the methodology

@@ -6,13 +6,22 @@ import { chartColors } from "@/lib/chartTheme";
 
 interface Props {
   series: IndicatorPoint[];
+  mode?: "level" | "change";
 }
 
-export default function IndicatorSparkline({ series }: Props) {
+export default function IndicatorSparkline({ series, mode = "level" }: Props) {
+  const displaySeries =
+    mode === "change"
+      ? series.slice(1).map((p, i) => ({
+          date: p.date,
+          value: p.value - series[i].value,
+        }))
+      : series;
+
   return (
     <div className="h-10">
       <ResponsiveContainer>
-        <LineChart data={series}>
+        <LineChart data={displaySeries}>
           <Line
             type="monotone"
             dataKey="value"

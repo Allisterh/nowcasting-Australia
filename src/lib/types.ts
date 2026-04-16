@@ -12,10 +12,13 @@ export interface LatestNowcast {
   generated_at: string; // ISO 8601
   target_quarter: string; // e.g. "2026 Q1"
   data_through: string; // e.g. "2026-04"
+  next_gdp_release_date: string; // ISO date, e.g. "2026-06-04"
   nowcast: NowcastEstimate;
   latest_actual: {
     quarter: string;
     gdp_chain_volume_millions: number;
+    qoq_growth_pct: number;
+    released_days_before_next: number; // e.g. -92
   };
 }
 
@@ -34,6 +37,8 @@ export interface Vintage {
   run_date: string; // "YYYY-MM-DD"
   target_quarter: string;
   point: number;
+  qoq_growth_pct: number;
+  days_until_release: number; // negative = before release
   ci_68_low: number;
   ci_68_high: number;
   ci_95_low: number;

@@ -2,6 +2,7 @@
   "generated_at": "2026-04-15T21:00:00Z",
   "target_quarter": "2026 Q1",
   "data_through": "2026-04",
+  "next_gdp_release_date": "2026-06-04",
   "nowcast": {
     "gdp_chain_volume_millions": 694649,
     "qoq_growth_pct": 0.13,
@@ -13,6 +14,8 @@
   },
   "latest_actual": {
     "quarter": "2025 Q4",
-    "gdp_chain_volume_millions": 693772
+    "gdp_chain_volume_millions": 693772,
+    "qoq_growth_pct": 0.79,
+    "released_days_before_next": -92
   }
 }

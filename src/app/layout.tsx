@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Australian GDP Nowcast",
+  title: "Australia GDP nowcast",
   description:
     "Weekly nowcast of Australian GDP using a dynamic factor model over 13 high-frequency indicators.",
 };
