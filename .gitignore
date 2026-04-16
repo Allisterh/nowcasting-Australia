@@ -30,8 +30,14 @@ next-env.d.ts
 /test-results/
 /playwright-report/
 
-# R pipeline cache (local-only)
-/pipeline/.cache/
+# R pipeline cache — local-only, except for the vintage tracking CSV which is the
+# persistent index of past nowcasts and must accumulate across CI runs.
+/pipeline/.cache/*
+!/pipeline/.cache/model_output/
+/pipeline/.cache/model_output/*
+!/pipeline/.cache/model_output/vintages/
+/pipeline/.cache/model_output/vintages/*
+!/pipeline/.cache/model_output/vintages/vintage_tracking.csv
 /pipeline/renv/library/
 /pipeline/renv/staging/
 /pipeline/.Rhistory
