@@ -23,7 +23,7 @@ export default function IndicatorGrid({ indicators }: Props) {
 
   return (
     <section className="mb-10">
-      <p className="text-[10px] uppercase tracking-wider text-label mb-2">
+      <p className="font-headline text-3xl text-teal mb-2">
         Indicators
       </p>
       {byGroup.map((g) => (

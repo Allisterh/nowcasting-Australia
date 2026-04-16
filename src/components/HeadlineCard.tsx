@@ -32,7 +32,7 @@ export default function HeadlineCard({ latest, gdp }: HeadlineCardProps) {
       </p>
       <div className="flex flex-wrap items-baseline gap-x-8 gap-y-2">
         <div className="flex items-baseline gap-x-2">
-          <span className="font-headline text-4xl text-teal">
+          <span className="font-headline text-3xl text-teal">
             {formatPct(latest.nowcast.qoq_growth_pct)}
           </span>
           <span className="text-[10px] uppercase tracking-wider text-label">QoQ</span>
@@ -58,8 +58,8 @@ export default function HeadlineCard({ latest, gdp }: HeadlineCardProps) {
           </BarChart>
         </ResponsiveContainer>
       </div>
-      <p className="mt-2 text-[10px] text-label-light">
-        QoQ growth over the last 12 quarters (dark teal) with current nowcast (green). Data through {latest.data_through}.
+      <p className="text-[10px] text-label-light">
+        QoQ growth over the last 12 quarters (dark teal) with current nowcast (green).
       </p>
     </section>
   );

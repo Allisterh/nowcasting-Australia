@@ -35,8 +35,8 @@ export default function VintageChart({ nowcasts, latest }: VintageChartProps) {
 
   return (
     <section className="mb-10">
-      <p className="font-headline text-3xl text-teal">GDP nowcast evolution</p>
-      <p className="text-xs text-label mb-2 max-w-prose">
+      <p className="font-headline text-3xl text-teal">Nowcast evolution</p>
+      <p className="text-xs text-label mb-2">
         Each green point is a weekly nowcast for {latest.target_quarter}. As new indicator data arrives through the quarter, the nowcast evolves — the line traces those revisions up to the ABS GDP release.
       </p>
       <div className="h-[320px]">

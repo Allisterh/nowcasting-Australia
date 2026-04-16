@@ -8,7 +8,7 @@ interface Props {
 export default function PerformanceSection({ performance }: Props) {
   return (
     <section className="mb-10">
-      <p className="text-[10px] uppercase tracking-wider text-label mb-2">
+      <p className="font-headline text-3xl text-teal mb-2">
         Track record
       </p>
       <div className="grid grid-cols-3 gap-3 mb-4">
@@ -20,7 +20,7 @@ export default function PerformanceSection({ performance }: Props) {
           sub="Nowcast predicted the correct direction"
         />
       </div>
-      <p className="text-xs text-label mb-3 max-w-prose">
+      <p className="text-xs text-label mb-3">
         Each quarter, the final nowcast (latest vintage before the release) is compared against the actual GDP value. Directional hit rate is the share of quarters where the nowcast correctly predicted growth or contraction.
       </p>
       <table className="w-full text-xs border-collapse">
