@@ -37,49 +37,62 @@ fetch_fred_indicator <- function(series_id,
   # Construct FRED download URL
   fred_url <- glue("https://fred.stlouisfed.org/graph/fredgraph.csv?id={series_id}")
 
-  # Fetch data from FRED
-  tryCatch(
-    {
-      # Download CSV
-      raw_data <- read_csv(
-        fred_url,
-        show_col_types = FALSE
-      )
-
-      # Standardize column names (FRED uses "observation_date" and series_id as column names)
-      colnames(raw_data) <- c("date", "value")
-
-      # Convert date to Date type
-      raw_data <- raw_data |>
-        mutate(date = ymd(date))
-
-      # Clean and filter data
-      clean_data <- raw_data |>
-        mutate(
-          series_id = series_id,
-          series_name = paste0("FRED: ", series_id),
-          unit = "Index",
-          series_type = "FRED"
-        ) |>
-        filter(
-          date >= ymd(start_date),
-          !is.na(value)
-        ) |>
-        arrange(date)
-
-      # Save to cache
-      dir.create(dirname(cache_file), recursive = TRUE, showWarnings = FALSE)
-      saveRDS(clean_data, cache_file)
-      message(glue("  → Cached to {cache_file}"))
-      message(glue("  → Fetched {nrow(clean_data)} observations from {min(clean_data$date)} to {max(clean_data$date)}"))
-
-      return(clean_data)
-    },
-    error = function(e) {
-      warning(glue("Error fetching FRED series {series_id}: {e$message}"))
-      return(NULL)
+  # Retry-with-backoff loop. FRED's edge occasionally resets HTTP/2 streams
+  # (seen on Windows CI), which would otherwise silently wipe this indicator
+  # from the model and produce a wrong nowcast.
+  max_attempts <- 3
+  raw_data <- NULL
+  last_error <- NULL
+  for (attempt in seq_len(max_attempts)) {
+    raw_data <- tryCatch(
+      read_csv(fred_url, show_col_types = FALSE),
+      error = function(e) e,
+      warning = function(w) w
+    )
+    if (!inherits(raw_data, c("error", "warning"))) break
+    last_error <- raw_data
+    raw_data <- NULL
+    if (attempt < max_attempts) {
+      backoff <- 5 * attempt
+      message(glue("  → attempt {attempt}/{max_attempts} failed ({conditionMessage(last_error)}); retrying in {backoff}s..."))
+      Sys.sleep(backoff)
     }
-  )
+  }
+  if (is.null(raw_data)) {
+    stop(glue(
+      "FRED fetch for {series_id} failed after {max_attempts} attempts: ",
+      "{conditionMessage(last_error)}"
+    ))
+  }
+
+  # Standardize column names (FRED uses "observation_date" and series_id as column names)
+  colnames(raw_data) <- c("date", "value")
+
+  # Convert date to Date type
+  raw_data <- raw_data |>
+    mutate(date = ymd(date))
+
+  # Clean and filter data
+  clean_data <- raw_data |>
+    mutate(
+      series_id = series_id,
+      series_name = paste0("FRED: ", series_id),
+      unit = "Index",
+      series_type = "FRED"
+    ) |>
+    filter(
+      date >= ymd(start_date),
+      !is.na(value)
+    ) |>
+    arrange(date)
+
+  # Save to cache
+  dir.create(dirname(cache_file), recursive = TRUE, showWarnings = FALSE)
+  saveRDS(clean_data, cache_file)
+  message(glue("  → Cached to {cache_file}"))
+  message(glue("  → Fetched {nrow(clean_data)} observations from {min(clean_data$date)} to {max(clean_data$date)}"))
+
+  return(clean_data)
 }
 
 #' Fetch all FRED indicators for nowcasting
@@ -127,6 +140,18 @@ fetch_all_fred_indicators <- function(use_cache = TRUE,
   }
 
   message(glue("\n✓ Fetched {length(fred_data)} FRED indicators"))
+
+  # Guard against silent indicator drops. fetch_fred_indicator() should now
+  # stop() on failure after retries, but belt-and-suspenders: if any series
+  # ended up NULL, halt loudly rather than let the model run with fewer
+  # indicators than expected.
+  expected <- nrow(fred_series)
+  if (length(fred_data) != expected) {
+    stop(glue(
+      "FRED fetch incomplete: got {length(fred_data)} of {expected} series. ",
+      "Missing: {paste(setdiff(fred_series$indicator_id, names(fred_data)), collapse = ', ')}"
+    ))
+  }
 
   return(fred_data)
 }
