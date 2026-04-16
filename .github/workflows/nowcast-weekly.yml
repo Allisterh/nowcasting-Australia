@@ -36,9 +36,11 @@ jobs:
 
       - name: Restore R packages (renv)
         working-directory: pipeline
+        env:
+          RENV_CONFIG_REPOS_OVERRIDE: https://packagemanager.posit.co/cran/__linux__/noble/latest
         run: |
-          Rscript -e 'options(repos = c(CRAN = "https://packagemanager.posit.co/cran/__linux__/noble/latest")); install.packages("renv")'
-          Rscript -e 'renv::restore(prompt = FALSE)'
+          Rscript -e 'options(repos = c(CRAN = Sys.getenv("RENV_CONFIG_REPOS_OVERRIDE"))); install.packages("renv")'
+          Rscript -e 'options(repos = c(CRAN = Sys.getenv("RENV_CONFIG_REPOS_OVERRIDE"))); renv::restore(prompt = FALSE)'
 
       - name: Run nowcast pipeline
         id: nowcast
