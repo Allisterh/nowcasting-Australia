@@ -9,6 +9,7 @@ on:
 permissions:
   contents: write
   issues: write
+  actions: write
 
 concurrency:
   group: nowcast-weekly
@@ -56,6 +57,7 @@ jobs:
         run: Rscript run_complete_nowcast.R
 
       - name: Commit updated JSON
+        id: commit
         if: success()
         run: |
           git config user.name "github-actions[bot]"
@@ -63,11 +65,19 @@ jobs:
           git add data/
           if git diff --staged --quiet; then
             echo "No JSON changes to commit"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git commit -m "data: weekly nowcast $(date -u +%Y-%m-%d)"
           git pull --rebase origin main
           git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Trigger deploy
+        if: success() && steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run deploy.yml --ref main
 
       - name: Open issue on failure
         if: failure()
