@@ -17,17 +17,15 @@ concurrency:
 
 jobs:
   nowcast:
-    runs-on: ubuntu-latest
-    timeout-minutes: 45
+    runs-on: windows-latest
+    timeout-minutes: 60
+    defaults:
+      run:
+        shell: bash
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Install system dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev libfontconfig1-dev libharfbuzz-dev libfribidi-dev
 
       - name: Set up R
         uses: r-lib/actions/setup-r@v2
@@ -38,7 +36,8 @@ jobs:
       - name: Restore R packages (renv)
         working-directory: pipeline
         env:
-          RENV_CONFIG_REPOS_OVERRIDE: https://packagemanager.posit.co/cran/__linux__/noble/latest
+          # Windows R uses a User-Agent-aware CRAN mirror; no __linux__ prefix.
+          RENV_CONFIG_REPOS_OVERRIDE: https://packagemanager.posit.co/cran/latest
         run: |
           Rscript -e 'options(repos = c(CRAN = Sys.getenv("RENV_CONFIG_REPOS_OVERRIDE"))); install.packages("renv")'
           # Exclude renv itself from the lockfile restore — we already installed it
