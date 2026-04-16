@@ -4,6 +4,9 @@ on:
   schedule:
     # 21:00 UTC Sunday = 07:00 AEST Monday (08:00 AEDT during daylight savings)
     - cron: "0 21 * * 0"
+    # Tuesday 21:00 UTC in Mar/Jun/Sep/Dec — gated below so it only actually runs
+    # when tomorrow is the first Wednesday of the month (i.e. the ABS GDP release day).
+    - cron: "0 21 * 3,6,9,12 2"
   workflow_dispatch:
 
 permissions:
@@ -16,7 +19,34 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      run: ${{ steps.check.outputs.run }}
+    steps:
+      - id: check
+        shell: bash
+        env:
+          TRIGGER_SCHEDULE: ${{ github.event.schedule }}
+        run: |
+          if [ "$TRIGGER_SCHEDULE" != "0 21 * 3,6,9,12 2" ]; then
+            # Manual dispatch or the weekly Sunday cron — always run.
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          tomorrow_dom=$(date -u -d "tomorrow" +%d)
+          tomorrow_dow=$(date -u -d "tomorrow" +%u)
+          if [ "$tomorrow_dow" = "3" ] && [ "$tomorrow_dom" -le 7 ]; then
+            echo "Tomorrow is the first Wednesday — running pre-release nowcast."
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Not the day before a GDP release (tomorrow dow=$tomorrow_dow dom=$tomorrow_dom). Skipping."
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          fi
+
   nowcast:
+    needs: gate
+    if: needs.gate.outputs.run == 'true'
     runs-on: windows-latest
     timeout-minutes: 60
     defaults:

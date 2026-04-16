@@ -13,7 +13,7 @@ import {
   Label,
 } from "recharts";
 import type { VintageSeries, LatestNowcast } from "@/lib/types";
-import { formatPct, formatDate } from "@/lib/format";
+import { formatPct, formatDate, formatDayMonth } from "@/lib/format";
 import { chartColors, axisTick } from "@/lib/chartTheme";
 
 interface VintageChartProps {
@@ -115,10 +115,24 @@ export default function VintageChart({ nowcasts, latest }: VintageChartProps) {
               strokeDasharray="4 3"
             >
               <Label
-                position="insideTopRight"
-                offset={10}
-                value={`GDP Release / ${formatDate(latest.next_gdp_release_date)}`}
-                style={{ fontSize: 10, fill: chartColors.label }}
+                content={(props) => {
+                  const vb = (props as { viewBox?: { x: number; y: number; height: number } }).viewBox;
+                  if (!vb) return null;
+                  const labelX = vb.x + 12;
+                  const labelY = vb.y + vb.height / 2;
+                  return (
+                    <text
+                      x={labelX}
+                      y={labelY}
+                      transform={`rotate(-90, ${labelX}, ${labelY})`}
+                      fontSize={10}
+                      fill={chartColors.label}
+                      textAnchor="middle"
+                    >
+                      {`GDP release: ${formatDayMonth(latest.next_gdp_release_date)}`}
+                    </text>
+                  );
+                }}
               />
             </ReferenceLine>
           </ComposedChart>
