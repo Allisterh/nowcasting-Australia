@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@theme {
+  /* James's personal palette */
+  --color-teal: #034159;
+  --color-teal-600: #034159;
+  --color-teal-500: #065a7a;
+  --color-teal-400: #0a7d99;
+  --color-green: #0cf25d;
+  --color-green-muted: #0ac853;
+
+  /* Neutral chrome (shared with fuel-shipments) */
+  --color-border: #e2e8f0;
+  --color-border-heavy: #111827;
+  --color-label: #6b7280;
+  --color-label-light: #9ca3af;
+  --color-panel: #f8fafc;
+
+  /* Vintage ramp — used by charts for sequential data */
+  --color-ramp-0: #034159;
+  --color-ramp-1: #0a4d66;
+  --color-ramp-2: #125a6e;
+  --color-ramp-3: #1b6775;
+  --color-ramp-4: #27747a;
+  --color-ramp-5: #34827e;
+  --color-ramp-6: #43907f;
+  --color-ramp-7: #569e7e;
+  --color-ramp-8: #6dac79;
+  --color-ramp-9: #87ba6f;
+  --color-ramp-10: #a5c861;
+  --color-ramp-11: #c6d652;
+  --color-ramp-12: #0cf25d;
+
+  --font-headline: "Instrument Serif", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  color: #111827;
+  background: #ffffff;
+}
