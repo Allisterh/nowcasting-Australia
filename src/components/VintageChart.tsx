@@ -26,17 +26,18 @@ export default function VintageChart({ nowcasts, latest }: VintageChartProps) {
     (v) => v.target_quarter === latest.target_quarter,
   );
   const points = relevant
-    .map((v) => ({ x: v.days_until_release, y: v.qoq_growth_pct }))
+    .map((v) => ({
+      x: v.days_until_release,
+      y: v.qoq_growth_pct,
+      runDate: v.run_date,
+    }))
     .sort((a, b) => a.x - b.x);
-
-  const lastPoint = points[points.length - 1];
-  const lastDays = lastPoint ? lastPoint.x : 0;
 
   return (
     <section className="mb-10">
-      <p className="font-headline text-xl text-teal">GDP nowcast evolution</p>
-      <p className="text-xs text-label mb-2">
-        Nowcast for {latest.target_quarter} | Latest: {formatPct(latest.nowcast.qoq_growth_pct)}, QoQ ({lastDays} days until release)
+      <p className="font-headline text-3xl text-teal">GDP nowcast evolution</p>
+      <p className="text-xs text-label mb-2 max-w-prose">
+        Each green point is a weekly nowcast for {latest.target_quarter}. As new indicator data arrives through the quarter, the nowcast evolves — the line traces those revisions up to the ABS GDP release.
       </p>
       <div className="h-[320px]">
         <ResponsiveContainer>
@@ -76,7 +77,10 @@ export default function VintageChart({ nowcasts, latest }: VintageChartProps) {
                 typeof v === "number" ? `${v.toFixed(3)}%` : "",
                 "",
               ]}
-              labelFormatter={(l) => `${l} days`}
+              labelFormatter={(_, payload) => {
+                const runDate = payload?.[0]?.payload?.runDate;
+                return runDate ? formatDate(runDate) : "";
+              }}
               contentStyle={{ fontSize: 11 }}
             />
             <Line

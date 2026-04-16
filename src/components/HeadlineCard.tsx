@@ -2,7 +2,7 @@
 
 import { BarChart, Bar, Cell, ResponsiveContainer } from "recharts";
 import type { LatestNowcast, GdpSeries } from "@/lib/types";
-import { formatMillions, formatPct } from "@/lib/format";
+import { formatPct } from "@/lib/format";
 import { chartColors } from "@/lib/chartTheme";
 
 interface HeadlineCardProps {
@@ -30,18 +30,19 @@ export default function HeadlineCard({ latest, gdp }: HeadlineCardProps) {
       <p className="text-[10px] uppercase tracking-wider text-label mb-2">
         {latest.target_quarter} nowcast
       </p>
-      <div className="flex flex-wrap items-baseline gap-x-6 gap-y-2">
-        <span className="font-headline text-4xl text-teal">
-          {formatPct(latest.nowcast.qoq_growth_pct)}
-        </span>
-        <span className="text-sm text-label">QoQ</span>
-        <span className="font-headline text-2xl text-teal-500">
-          {formatPct(latest.nowcast.yoy_growth_pct)}
-        </span>
-        <span className="text-sm text-label">YoY</span>
-        <span className="ml-auto text-sm text-label">
-          {formatMillions(latest.nowcast.gdp_chain_volume_millions)} chain volume
-        </span>
+      <div className="flex flex-wrap items-baseline gap-x-8 gap-y-2">
+        <div className="flex items-baseline gap-x-2">
+          <span className="font-headline text-4xl text-teal">
+            {formatPct(latest.nowcast.qoq_growth_pct)}
+          </span>
+          <span className="text-[10px] uppercase tracking-wider text-label">QoQ</span>
+        </div>
+        <div className="flex items-baseline gap-x-2">
+          <span className="font-headline text-2xl text-teal-500">
+            {formatPct(latest.nowcast.yoy_growth_pct)}
+          </span>
+          <span className="text-[10px] uppercase tracking-wider text-label">YoY</span>
+        </div>
       </div>
       <div className="mt-4 h-20">
         <ResponsiveContainer>
