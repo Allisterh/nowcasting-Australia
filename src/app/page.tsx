@@ -5,6 +5,7 @@ import StalenessBanner from "@/components/StalenessBanner";
 import HeadlineCard from "@/components/HeadlineCard";
 import GdpHistoryChart from "@/components/GdpHistoryChart";
 import VintageChart from "@/components/VintageChart";
+import IndicatorGrid from "@/components/IndicatorGrid";
 
 export default function Home() {
   const data = loadDashboardData();
@@ -15,6 +16,7 @@ export default function Home() {
       <HeadlineCard latest={data.latest} gdp={data.gdp} />
       <GdpHistoryChart gdp={data.gdp} latest={data.latest} />
       <VintageChart nowcasts={data.nowcasts} />
+      <IndicatorGrid indicators={data.indicators} />
       <p className="text-label text-sm">More sections landing in subsequent tasks.</p>
       <Footer />
     </main>
