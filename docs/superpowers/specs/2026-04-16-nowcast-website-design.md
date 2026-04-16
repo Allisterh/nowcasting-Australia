@@ -153,7 +153,7 @@ Rationale: NAB data is one number per month. Fighting Cloudflare on an aggregato
 
 ## JSON Data Contract
 
-Five files in `public/data/`. Each is independently loadable; each chart component pulls only what it needs.
+Five files in `data/` at the repo root (read build-time via `fs`; the sibling project `aus-fuel-shipments` uses the same pattern). Each is independently loadable; each chart component pulls only what it needs.
 
 ### `latest.json` — hero card / headline
 ```json

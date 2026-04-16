@@ -488,11 +488,13 @@ Build from the nowcast_summary Recent trajectory (2024 Q4 → 2025 Q4) and plaus
 }
 ```
 
-- [ ] **Step 5: Create `data/indicators.json` with all 13 indicators and 12 months of synthetic values each**
+- [ ] **Step 5: Create `data/indicators.json` with all 12 indicators and 12 months of synthetic values each**
 
 **This is a throwaway fixture for building chart components before the R pipeline is wired.** It will be overwritten by Task 14 with real values. Do not invest effort making the numbers economically realistic — they just need to have the right shape and type.
 
-Entries required (exact 13, IDs must match what `04_emit_json.R` will emit in Task 14):
+Note: the spec and prose elsewhere reference "13 indicators" — that count includes GDP itself. GDP is the target variable and lives in `gdp.json`, not `indicators.json`. This file holds the 12 predictors.
+
+Entries required (exact 12, IDs must match what `04_emit_json.R` will emit in Task 14):
 
 | id | name | group | unit | source string |
 |---|---|---|---|---|
