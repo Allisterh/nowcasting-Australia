@@ -40,7 +40,15 @@ jobs:
           RENV_CONFIG_REPOS_OVERRIDE: https://packagemanager.posit.co/cran/__linux__/noble/latest
         run: |
           Rscript -e 'options(repos = c(CRAN = Sys.getenv("RENV_CONFIG_REPOS_OVERRIDE"))); install.packages("renv")'
-          Rscript -e 'options(repos = c(CRAN = Sys.getenv("RENV_CONFIG_REPOS_OVERRIDE"))); renv::restore(prompt = FALSE)'
+          # Exclude renv itself from the lockfile restore — we already installed it
+          # above, and the lockfile's renv entry points at a source that fails to
+          # download in CI.
+          Rscript -e '
+            options(repos = c(CRAN = Sys.getenv("RENV_CONFIG_REPOS_OVERRIDE")));
+            lock <- renv::lockfile_read();
+            pkgs <- setdiff(names(lock$Packages), "renv");
+            renv::restore(packages = pkgs, prompt = FALSE)
+          '
 
       - name: Run nowcast pipeline
         id: nowcast
