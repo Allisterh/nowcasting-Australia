@@ -37,7 +37,10 @@ config <- configure_dfm(n_factors = 3, var_order = 1)
 
 cat("\n== Step 1: wiping pre-MHSI vintages ==\n")
 
-existing <- read_csv(VINTAGE_CSV, show_col_types = FALSE)
+# Read everything as character to avoid datetime-vs-character bind_rows fights
+# when we later merge with reconstructed rows.
+existing <- read_csv(VINTAGE_CSV, show_col_types = FALSE,
+                     col_types = cols(.default = col_character()))
 cat(sprintf("Existing vintages: %d rows\n", nrow(existing)))
 
 keep_row <- existing |> filter(vintage_id == KEEP_VINTAGE_ID)
@@ -131,14 +134,14 @@ for (d in RECONSTRUCTION_DATES) {
     vintage_id           = vintage_id,
     run_timestamp        = run_ts,
     target_quarter       = TARGET_QUARTER,
-    nowcast_value        = point,
-    qoq_growth           = qoq,
-    yoy_growth           = yoy,
-    latest_actual_value  = q4_2025_level,
+    nowcast_value        = as.character(point),
+    qoq_growth           = as.character(qoq),
+    yoy_growth           = as.character(yoy),
+    latest_actual_value  = as.character(q4_2025_level),
     data_as_of_date      = format(d, "%Y-%m-%d"),
-    n_indicators         = 13L,
-    n_indicators_updated = NA_integer_,  # not computed for reconstructions
-    log_likelihood       = NA_real_,
+    n_indicators         = "13",
+    n_indicators_updated = NA_character_,  # not computed for reconstructions
+    log_likelihood       = NA_character_,
     file_path            = rds_path
   )
 }
@@ -159,11 +162,12 @@ source("04_emit_json.R")
 
 # We pass the latest real nowcast state as fallback; emit_json reads the CSV
 # as canonical source, so `nowcast` arg is only used when no vintages exist.
+latest_row <- tail(all_rows, 1)
 latest_vintage_for_arg <- list(
   target_quarter        = TARGET_QUARTER,
-  nowcast_value         = all_rows$nowcast_value[nrow(all_rows)],
-  qoq_growth            = all_rows$qoq_growth[nrow(all_rows)],
-  yoy_growth            = all_rows$yoy_growth[nrow(all_rows)],
+  nowcast_value         = as.numeric(latest_row$nowcast_value),
+  qoq_growth            = as.numeric(latest_row$qoq_growth),
+  yoy_growth            = as.numeric(latest_row$yoy_growth),
   latest_actual_quarter = "2025 Q4",
   latest_actual_value   = q4_2025_level,
   generated_date        = Sys.Date()

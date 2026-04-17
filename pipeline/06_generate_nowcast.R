@@ -45,19 +45,62 @@ generate_nowcast <- function(model,
   # nowcast() with EM back-transforms forecasts to original scale automatically
   tryCatch(
     {
-      # Extract nowcast from nowcasting package model
-      # model$yfcst has columns: y (actual), in (in-sample forecast), out (out-of-sample)
+      # Extract nowcast from nowcasting package model.
+      #
+      # model$yfcst has columns:
+      #   y   — observed GDP (NA for quarters not yet released)
+      #   in  — in-sample Kalman-smoothed fit (non-NA only where y is observed)
+      #   out — out-of-sample nowcast / forecast, populated for quarters where y
+      #         is NA. Per the R Journal paper (RJ-2019-020), this is THE
+      #         mixed-frequency nowcast produced by the package.
+      #
+      # Earlier versions of this function grabbed tail(in[!is.na(in)], 1),
+      # which returned the in-sample fit for the LATEST OBSERVED quarter —
+      # effectively a backcast of the prior quarter, labelled as a nowcast
+      # for target_quarter. Every historical vintage was mis-sourced as a
+      # result. Correct extraction: locate target_quarter in the ts index
+      # and pull yfcst[row, "out"].
       if (!is.null(model$yfcst)) {
-        # Get in-sample forecasts
-        in_fcst <- model$yfcst[, "in"]
+        yf <- model$yfcst
+        target_year    <- as.integer(sub(" Q.*$", "", target_quarter))
+        target_q_num   <- as.integer(sub("^.*Q", "", target_quarter))
+        target_time    <- target_year + (target_q_num - 1) / 4
+        times          <- as.numeric(time(yf))
+        row_idx        <- which(abs(times - target_time) < 1e-8)
 
-        # Find latest non-NA forecast
-        latest_fcst <- tail(in_fcst[!is.na(in_fcst)], 1)
+        if (length(row_idx) != 1) {
+          stop(glue(
+            "generate_nowcast: target_quarter {target_quarter} (t={target_time}) ",
+            "not found in yfcst time index (range {min(times)}..{max(times)}). ",
+            "The nowcasting package extends yfcst one quarter past the last ",
+            "observed GDP by default; if you need a further-ahead target ",
+            "you'll have to extend the forecast horizon at fit time."
+          ))
+        }
 
-        point_estimate <- as.numeric(latest_fcst)
-        prediction_var <- NA  # Not directly available from EM method
+        out_val <- yf[row_idx, "out"]
+        in_val  <- yf[row_idx, "in"]
+        y_val   <- yf[row_idx, "y"]
 
-        message(glue("Latest nowcast (GDP level): {format(round(point_estimate, 2), big.mark = ',')}"))
+        # Prefer out (prospective nowcast). Fall back to in only if target
+        # quarter is ALREADY OBSERVED — useful for historical backtests where
+        # we want the model's smoothed estimate of a released quarter.
+        if (!is.na(out_val)) {
+          point_estimate <- as.numeric(out_val)
+          source_col <- "out (nowcast)"
+        } else if (!is.na(in_val)) {
+          point_estimate <- as.numeric(in_val)
+          source_col <- "in (retrospective fit — target already observed)"
+        } else {
+          stop(glue(
+            "generate_nowcast: yfcst has no value for {target_quarter} ",
+            "(row {row_idx}): both in and out are NA. The target is probably ",
+            "too far ahead for the fitted horizon."
+          ))
+        }
+
+        prediction_var <- NA
+        message(glue("Nowcast for {target_quarter}: {format(round(point_estimate, 2), big.mark = ',')} [{source_col}]"))
 
       } else if (!is.null(model$yfitted)) {
         # Fallback: use yfitted

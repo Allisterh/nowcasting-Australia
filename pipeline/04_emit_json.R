@@ -66,11 +66,28 @@ INDICATOR_RELEASE_LAG_DAYS <- c(
   household_spending = 30,
   cons_conf          = 5,
   building_approvals = 30,
-  bus_conf           = 5,
+  bus_conf           = 11,  # NAB 2nd Tuesday
   goods_exp          = 45,
-  services_exp       = 45,
+  services_exp       = 62,  # BoP 5302.0: ~62-63 days after quarter-end
   goods_imp          = 45,
-  services_imp       = 45
+  services_imp       = 62
+)
+
+# Frequency per indicator — used to compute "next release" spacing (monthly
+# series → +1 month; quarterly series → +3 months).
+INDICATOR_FREQUENCY <- c(
+  employment         = "monthly",
+  unemp_rate         = "monthly",
+  part_rate          = "monthly",
+  hours_worked       = "monthly",
+  household_spending = "monthly",
+  cons_conf          = "monthly",
+  building_approvals = "monthly",
+  bus_conf           = "monthly",
+  goods_exp          = "monthly",
+  services_exp       = "quarterly",
+  goods_imp          = "monthly",
+  services_imp       = "quarterly"
 )
 
 #### Release-date calculation ####
@@ -275,7 +292,10 @@ emit_json <- function(target_dir, nowcast, master, vintage_info) {
       y <- as.integer(parts[1]); m <- as.integer(parts[2])
       month_start <- as.Date(sprintf("%d-%02d-01", y, m))
       this_end <- ceiling_date(month_start, "month") - days(1)
-      next_end <- ceiling_date(month_start + months(1), "month") - days(1)
+      # Quarterly series' next observation is 3 months on, not 1.
+      step_months <- if (!is.null(INDICATOR_FREQUENCY[[json_id]]) &&
+                         INDICATOR_FREQUENCY[[json_id]] == "quarterly") 3L else 1L
+      next_end <- ceiling_date(month_start + months(step_months), "month") - days(1)
       list(
         last = format(this_end + days(lag_days), "%Y-%m-%d"),
         next_ = format(next_end + days(lag_days), "%Y-%m-%d")

@@ -37,18 +37,21 @@ abs_release_schedule <- tribble(
   # quarter-end so the lag only matters for the monthly goods rows.
   "exports_goods", 7, 45, "monthly",
   "imports_goods", 7, 45, "monthly",
-  "exports_servs", 7, 45, "quarterly",
-  "imports_servs", 7, 45, "quarterly",
+  "exports_servs", 7, 62, "quarterly",  # BoP 5302.0: ~62-63 days post quarter-end
+  "imports_servs", 7, 62, "quarterly",
 
   # Building Approvals (released ~30 days after reference month)
   "building_app", 30, 30, "monthly",
 
-  # Confidence indicators (typically released within days)
+  # Consumer confidence (OECD via FRED) — typically released within days.
   "cons_conf", 5, 5, "monthly",
-  "bus_conf", 5, 5, "monthly",
 
-  # GDP (released ~60 days after reference quarter)
-  "gdp_quarterly", 5, 60, "quarterly"
+  # NAB Business Confidence — 2nd Tuesday of following month (~8-14 days
+  # after reference month-end, avg ≈ 11). Was 5 days; too aggressive.
+  "bus_conf", 11, 11, "monthly",
+
+  # GDP (ABS 5206.0) — Q4 2025 released 2026-03-05 = 64d after quarter-end.
+  "gdp_quarterly", 5, 64, "quarterly"
 )
 
 message("ABS Release Schedule:")
@@ -56,22 +59,43 @@ print(abs_release_schedule)
 
 #### Release Date Calculation Functions ####
 
-#' Calculate expected release date for a data point
+#' Calculate expected release date for a data point.
 #'
-#' @param reference_date Date of the economic activity (e.g., month-end)
-#' @param indicator_id Indicator identifier
-#' @return Expected release date
+#' Convention: lag days are measured from the END of the reference period.
+#' Master stores `reference_date` as first-of-month (for monthly series) or
+#' first of the last month of the quarter (for quarterly series). So:
+#'   monthly    → anchor = ceiling_date(reference_date, "month") - 1 day
+#'                        = end of the reference month (e.g. Feb 28 for Feb)
+#'   quarterly  → anchor = ceiling_date(reference_date, "quarter") - 1 day
+#'                        = end of the reference quarter (e.g. Dec 31 for Q4)
+#' Then release = anchor + lag_days.
+#'
+#' This matches the end-of-period convention the lag values (15, 30, 45, 62…)
+#' were calibrated against and keeps `get_available_data` in sync with the
+#' release-date logic in pipeline/04_emit_json.R.
+#'
+#' @param reference_date Date of the economic activity.
+#' @param indicator_id Indicator identifier.
+#' @return Expected release date.
 calculate_release_date <- function(reference_date, indicator_id) {
   schedule <- abs_release_schedule |>
     filter(indicator_id == !!indicator_id)
 
   if (nrow(schedule) == 0) {
     warning(glue("No release schedule found for {indicator_id}"))
-    return(reference_date + days(30)) # Default to 30 days
+    # Default: 30 days after month-end of the reference period.
+    anchor <- ceiling_date(reference_date, "month") - days(1)
+    return(anchor + days(30))
   }
 
   lag_days <- schedule$release_lag_days[1]
-  release_date <- reference_date + days(lag_days)
+  freq     <- schedule$release_frequency[1]
+  anchor   <- if (isTRUE(freq == "quarterly")) {
+    ceiling_date(reference_date, "quarter") - days(1)
+  } else {
+    ceiling_date(reference_date, "month") - days(1)
+  }
+  release_date <- anchor + days(lag_days)
 
   return(release_date)
 }
