@@ -18,7 +18,9 @@ You are updating the NAB Business Confidence CSV in the nowcasting repository. R
 1. Open Chrome (via Chrome MCP) and navigate to:
    https://www.investing.com/economic-calendar/nab-business-confidence-217
 
-2. From the historical table on that page, read the most recent "Actual" value for NAB Business Confidence. Note the month the value corresponds to — the release is for the PREVIOUS calendar month. For example, a release dated 2026-05-13 reports April 2026 data.
+2. From the historical table on that page, read the TWO most recent "Actual" values for NAB Business Confidence:
+   a. The most recent row — this is the new observation for the PREVIOUS calendar month. (A release dated 2026-05-13 reports April 2026 data.)
+   b. The row before that — this is the prior month's value. NAB frequently revises the previous month's figure on release day, so it may differ from what is currently in the CSV.
 
 3. Change directory to the nowcasting repo:
    cd C:/Users/wilso/Documents/Claude/Projects/nowcasting
@@ -26,18 +28,27 @@ You are updating the NAB Business Confidence CSV in the nowcasting repository. R
 4. Pull latest:
    git pull origin main
 
-5. Append the new observation to pipeline/nab_business_confidence_raw.csv. Format:
+5. Read the current contents of pipeline/nab_business_confidence_raw.csv and locate the row for the prior month (the one identified in step 2b). Compare its value to what investing.com now shows for that month.
+
+   - If the values match: no revision needed.
+   - If the values differ: UPDATE that row's value in place. Do NOT add a duplicate row and do NOT modify any row older than the prior month.
+
+6. Append the new observation (from step 2a) to pipeline/nab_business_confidence_raw.csv. Format:
    date,value
    YYYY-MM-01,<integer or decimal>
 
-   Use the first day of the reported month as the date. Preserve chronological order; append at the bottom. Do not modify existing rows.
+   Use the first day of the reported month as the date. Preserve chronological order; append at the bottom.
 
-6. Commit and push:
+7. Commit and push. The commit message depends on whether a revision happened in step 5:
+   - New month only:
+     git commit -m "data: NAB Business Confidence for <Month YYYY>"
+   - New month + revision of prior month:
+     git commit -m "data: NAB Business Confidence for <Month YYYY> (+ <Prior Month> revision)"
+
    git add pipeline/nab_business_confidence_raw.csv
-   git commit -m "data: NAB Business Confidence for <Month YYYY>"
    git push
 
-7. Report: what value was recorded for what month, and the commit URL.
+8. Report: the new month's value, whether the prior month was revised (and if so, from → to), and the commit URL.
 
 If the investing.com page is blocked, the table is missing the expected row, or the value cannot be read with confidence: STOP. Do NOT write a fabricated value. Report the failure so James can update manually.
 ```
