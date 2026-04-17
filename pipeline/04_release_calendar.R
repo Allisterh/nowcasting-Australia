@@ -28,7 +28,7 @@ abs_release_schedule <- tribble(
   "hours_worked", 15, 15, "monthly",
 
   # Retail Trade (released ~30 days after reference month)
-  "retail", 30, 30, "monthly",
+  "household_spending", 30, 30, "monthly",
 
   # International Trade (released ~6 weeks after reference month)
   "exports", 7, 45, "monthly",

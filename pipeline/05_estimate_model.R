@@ -250,7 +250,7 @@ estimate_dfm <- function(data_prepared, config) {
       #
       # Per-series codes kept here for reference if switching to a package that
       # handles back-transformation (e.g. bvartools, MARSS):
-      #   gdp=7, retail=1, cons_conf=2, building_app=1, bus_conf=2,
+      #   gdp=7, household_spending=1, cons_conf=2, building_app=1, bus_conf=2,
       #   exports_goods=1, exports_servs=7, imports_goods=1, imports_servs=7,
       #   employment=1, unemp_rate=2, participation=2, hours_worked=1
 

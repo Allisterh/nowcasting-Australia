@@ -97,7 +97,7 @@ stopifnot(length(gdp_j$series) > 0 || nrow(gdp_j$series) > 0)
 ind_j <- fromJSON(file.path(out_dir, "indicators.json"), simplifyVector = FALSE)
 stopifnot(length(ind_j$indicators) == 12)  # exactly 12 predictors
 stopifnot(all(sapply(ind_j$indicators, function(x) x$id) %in%
-  c("employment","unemp_rate","part_rate","hours_worked","retail_trade","cons_conf",
+  c("employment","unemp_rate","part_rate","hours_worked","household_spending","cons_conf",
     "building_approvals","bus_conf","goods_exp","services_exp","goods_imp","services_imp")))
 
 cat("\n✅ emit_json smoke test PASSED\n")

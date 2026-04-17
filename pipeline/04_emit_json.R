@@ -24,7 +24,7 @@ INDICATOR_ID_MAP <- c(
   unemp_rate    = "unemp_rate",
   participation = "part_rate",
   hours_worked  = "hours_worked",
-  retail        = "retail_trade",
+  household_spending = "household_spending",
   cons_conf     = "cons_conf",
   building_app  = "building_approvals",
   bus_conf      = "bus_conf",
@@ -36,7 +36,7 @@ INDICATOR_ID_MAP <- c(
 
 INDICATOR_GROUPS <- list(
   Labour   = c("employment", "unemp_rate", "part_rate", "hours_worked"),
-  Consumer = c("retail_trade", "cons_conf"),
+  Consumer = c("household_spending", "cons_conf"),
   Business = c("building_approvals", "bus_conf"),
   External = c("goods_exp", "services_exp", "goods_imp", "services_imp")
 )
@@ -46,7 +46,7 @@ INDICATOR_META <- list(
   unemp_rate         = list(name = "Unemployment Rate",     unit = "percent",           source = "ABS Labour Force Survey"),
   part_rate          = list(name = "Participation Rate",    unit = "percent",           source = "ABS Labour Force Survey"),
   hours_worked       = list(name = "Hours Worked",          unit = "hours (thousands)", source = "ABS Labour Force Survey"),
-  retail_trade       = list(name = "Retail Trade",          unit = "$ millions",        source = "ABS Retail Trade"),
+  household_spending = list(name = "Household Spending",    unit = "$ millions",        source = "ABS Monthly Household Spending Indicator"),
   cons_conf          = list(name = "Consumer Confidence",   unit = "index",             source = "OECD via FRED"),
   building_approvals = list(name = "Building Approvals",    unit = "count",             source = "ABS Building Approvals"),
   bus_conf           = list(name = "Business Confidence",   unit = "index",             source = "NAB Monthly Business Survey"),
@@ -63,7 +63,7 @@ INDICATOR_RELEASE_LAG_DAYS <- c(
   unemp_rate         = 15,
   part_rate          = 15,
   hours_worked       = 15,
-  retail_trade       = 30,
+  household_spending = 30,
   cons_conf          = 5,
   building_approvals = 30,
   bus_conf           = 5,
