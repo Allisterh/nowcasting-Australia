@@ -2,12 +2,25 @@
 
 import { useState } from "react";
 import type { IndicatorData, Indicator, IndicatorGroup } from "@/lib/types";
-import IndicatorSparkline from "./IndicatorSparkline";
+import IndicatorSparkline, { type SparklineMode } from "./IndicatorSparkline";
 import IndicatorDetailCard from "./IndicatorDetailCard";
 
 const GROUP_ORDER: IndicatorGroup[] = ["Labour", "Consumer", "Business", "External"];
 
-const LEVEL_INDICATORS = new Set(["unemp_rate", "part_rate", "cons_conf", "bus_conf"]);
+const SPARKLINE_MODE: Record<string, SparklineMode> = {
+  employment: "bar",
+  unemp_rate: "level",
+  part_rate: "level",
+  hours_worked: "level",
+  retail_trade: "bar",
+  cons_conf: "level",
+  building_approvals: "level",
+  bus_conf: "level",
+  goods_exp: "level",
+  services_exp: "level",
+  goods_imp: "level",
+  services_imp: "level",
+};
 
 interface Props {
   indicators: IndicatorData;
@@ -42,7 +55,7 @@ export default function IndicatorGrid({ indicators }: Props) {
                 <p className="text-[10px] text-label-light mb-1">{ind.unit}</p>
                 <IndicatorSparkline
                   series={ind.series}
-                  mode={LEVEL_INDICATORS.has(ind.id) ? "level" : "change"}
+                  mode={SPARKLINE_MODE[ind.id] ?? "level"}
                 />
               </button>
             ))}

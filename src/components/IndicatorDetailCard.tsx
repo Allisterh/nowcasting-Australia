@@ -27,7 +27,7 @@ export default function IndicatorDetailCard({ indicator, onClose }: Props) {
           Close
         </button>
       </div>
-      <div className="h-[240px]">
+      <div className="h-[240px]" key={indicator.id}>
         <ResponsiveContainer>
           <LineChart data={indicator.series} margin={{ top: 5, right: 10, bottom: 5, left: 10 }}>
             <CartesianGrid strokeDasharray="3 3" stroke={chartColors.border} />

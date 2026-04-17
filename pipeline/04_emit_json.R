@@ -49,7 +49,7 @@ INDICATOR_META <- list(
   retail_trade       = list(name = "Retail Trade",          unit = "$ millions",        source = "ABS Retail Trade"),
   cons_conf          = list(name = "Consumer Confidence",   unit = "index",             source = "OECD via FRED"),
   building_approvals = list(name = "Building Approvals",    unit = "count",             source = "ABS Building Approvals"),
-  bus_conf           = list(name = "NAB Business Confidence", unit = "index",           source = "NAB Monthly Business Survey"),
+  bus_conf           = list(name = "Business Confidence",   unit = "index",             source = "NAB Monthly Business Survey"),
   goods_exp          = list(name = "Goods Exports",         unit = "$ millions",        source = "ABS International Trade"),
   services_exp       = list(name = "Services Exports",      unit = "$ millions",        source = "ABS International Trade"),
   goods_imp          = list(name = "Goods Imports",         unit = "$ millions",        source = "ABS International Trade"),

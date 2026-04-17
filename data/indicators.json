@@ -8845,7 +8845,7 @@
     },
     {
       "id": "bus_conf",
-      "name": "NAB Business Confidence",
+      "name": "Business Confidence",
       "group": "Business",
       "unit": "index",
       "source": "NAB Monthly Business Survey",

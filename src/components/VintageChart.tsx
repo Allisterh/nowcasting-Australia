@@ -86,25 +86,37 @@ export default function VintageChart({ nowcasts, latest }: VintageChartProps) {
             <ZAxis range={[80, 80]} />
             <Tooltip
               cursor={false}
-              formatter={(v: unknown, _name: unknown, entry) => {
-                const p = (entry as { payload?: VintagePoint | ActualPoint })
-                  ?.payload;
-                const label = p?.kind === "actual" ? "Latest actual" : "Nowcast";
-                return [
-                  typeof v === "number" ? `${v.toFixed(2)}%` : "",
-                  label,
-                ];
+              shared={false}
+              content={({ active, payload }) => {
+                if (!active || !payload || payload.length === 0) return null;
+                const p = payload.find((entry) => {
+                  const data = entry?.payload as
+                    | VintagePoint
+                    | ActualPoint
+                    | undefined;
+                  return data?.kind === "vintage" || data?.kind === "actual";
+                })?.payload as VintagePoint | ActualPoint | undefined;
+                if (!p) return null;
+                const isActual = p.kind === "actual";
+                const heading = isActual ? p.actualQuarter : formatDate(p.runDate);
+                const rowLabel = isActual ? "Latest actual" : "Nowcast";
+                return (
+                  <div
+                    style={{
+                      background: "#fff",
+                      border: `1px solid ${chartColors.border}`,
+                      padding: "6px 8px",
+                      fontSize: 11,
+                      lineHeight: 1.4,
+                    }}
+                  >
+                    <div style={{ color: chartColors.label }}>{heading}</div>
+                    <div>
+                      {rowLabel}: {p.y.toFixed(2)}%
+                    </div>
+                  </div>
+                );
               }}
-              labelFormatter={(_: unknown, payload) => {
-                const p = payload?.[0]?.payload as
-                  | VintagePoint
-                  | ActualPoint
-                  | undefined;
-                if (!p) return "";
-                if (p.kind === "actual") return p.actualQuarter;
-                return formatDate(p.runDate);
-              }}
-              contentStyle={{ fontSize: 11 }}
             />
             <Line
               data={vintagePoints}
