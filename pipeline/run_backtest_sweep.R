@@ -8,9 +8,14 @@
 #
 # Expected total runtime: 2-3 hours (3 × ~45 min per r).
 
-setwd(dirname(sys.frame(1)$ofile))  # ensure cwd = pipeline/
-# Rscript doesn't populate sys.frame for top-level; fall back:
-if (!dir.exists(".cache")) setwd("pipeline")
+# Must be run from pipeline/ (same convention as run_complete_nowcast.R).
+if (!file.exists("09_backtest_model.R")) {
+  if (file.exists("pipeline/09_backtest_model.R")) {
+    setwd("pipeline")
+  } else {
+    stop("run_backtest_sweep.R: run from the pipeline/ directory")
+  }
+}
 
 cat("\n========================================\n")
 cat("  FACTOR-COUNT BACKTEST SWEEP\n")

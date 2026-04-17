@@ -1,15 +1,7 @@
 {
-  "mae_millions": 1832,
-  "mae_pct": 0.26,
-  "rmse_millions": 1832,
-  "hit_rate_direction": 1,
-  "errors": [
-    {
-      "target_quarter": "2025 Q4",
-      "final_nowcast": 691940,
-      "actual": 693772,
-      "error_millions": -1832,
-      "error_pct": -0.26
-    }
-  ]
+  "mae_millions": 0,
+  "mae_pct": 0,
+  "rmse_millions": 0,
+  "hit_rate_direction": 0,
+  "errors": []
 }

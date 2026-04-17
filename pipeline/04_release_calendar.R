@@ -30,9 +30,15 @@ abs_release_schedule <- tribble(
   # Retail Trade (released ~30 days after reference month)
   "household_spending", 30, 30, "monthly",
 
-  # International Trade (released ~6 weeks after reference month)
-  "exports", 7, 45, "monthly",
-  "imports", 7, 45, "monthly",
+  # International Trade (released ~6 weeks after reference month).
+  # Master splits goods (monthly) from services (quarterly, published with
+  # the National Accounts). Use the same ~45-day lag for all four; services
+  # are really longer, but the master's quarterly services row is aligned to
+  # quarter-end so the lag only matters for the monthly goods rows.
+  "exports_goods", 7, 45, "monthly",
+  "imports_goods", 7, 45, "monthly",
+  "exports_servs", 7, 45, "quarterly",
+  "imports_servs", 7, 45, "quarterly",
 
   # Building Approvals (released ~30 days after reference month)
   "building_app", 30, 30, "monthly",
