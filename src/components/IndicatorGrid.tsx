@@ -13,7 +13,7 @@ const SPARKLINE_MODE: Record<string, SparklineMode> = {
   unemp_rate: "level",
   part_rate: "level",
   hours_worked: "level",
-  retail_trade: "bar",
+  household_spending: "bar",
   cons_conf: "level",
   building_approvals: "level",
   bus_conf: "level",

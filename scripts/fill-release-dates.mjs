@@ -10,7 +10,7 @@ const LAG_DAYS = {
   unemp_rate: 15,
   part_rate: 15,
   hours_worked: 15,
-  retail_trade: 30,
+  household_spending: 30,
   cons_conf: 5,
   building_approvals: 30,
   bus_conf: 5,
