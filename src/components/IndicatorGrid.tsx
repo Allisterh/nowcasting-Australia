@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { IndicatorData, Indicator, IndicatorGroup } from "@/lib/types";
 import IndicatorSparkline, { type SparklineMode } from "./IndicatorSparkline";
 import IndicatorDetailCard from "./IndicatorDetailCard";
+import IndicatorsTable from "./IndicatorsTable";
 
 const GROUP_ORDER: IndicatorGroup[] = ["Labour", "Consumer", "Business", "External"];
 
@@ -63,6 +64,11 @@ export default function IndicatorGrid({ indicators }: Props) {
         </div>
       ))}
       {selected && <IndicatorDetailCard indicator={selected} onClose={() => setSelected(null)} />}
+      <IndicatorsTable
+        indicators={indicators.indicators}
+        selectedId={selected?.id ?? null}
+        onSelect={setSelected}
+      />
     </section>
   );
 }
