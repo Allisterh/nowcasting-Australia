@@ -64,6 +64,8 @@ export interface Indicator {
   unit: string;
   source: string;
   series: IndicatorPoint[];
+  last_release_date?: string;       // ISO "YYYY-MM-DD" — when the latest point was released
+  next_release_estimate?: string;   // ISO "YYYY-MM-DD" — when the next point is expected
 }
 
 export interface IndicatorData {
