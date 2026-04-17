@@ -56,6 +56,23 @@ INDICATOR_META <- list(
   services_imp       = list(name = "Services Imports",      unit = "$ millions",        source = "ABS International Trade")
 )
 
+# Release lag (days) from reference-month-end to the actual ABS release.
+# Mirrors pipeline/04_release_calendar.R — keep in sync.
+INDICATOR_RELEASE_LAG_DAYS <- c(
+  employment         = 15,
+  unemp_rate         = 15,
+  part_rate          = 15,
+  hours_worked       = 15,
+  retail_trade       = 30,
+  cons_conf          = 5,
+  building_approvals = 30,
+  bus_conf           = 5,
+  goods_exp          = 45,
+  services_exp       = 45,
+  goods_imp          = 45,
+  services_imp       = 45
+)
+
 #### Release-date calculation ####
 # ABS releases quarterly GDP on the first Wednesday of the month 3 months after
 # the quarter ends. e.g. Q1 ends Mar → release in Jun; Q4 ends Dec → release in Mar (of following year).
@@ -246,13 +263,36 @@ emit_json <- function(target_dir, nowcast, master, vintage_info) {
         value = round(value, 3)
       )
 
+    last_ref_month <- if (nrow(series_df) > 0) tail(series_df$date, 1) else NA_character_
+    lag_days <- INDICATOR_RELEASE_LAG_DAYS[[json_id]]
+    if (is.null(lag_days) || !is.finite(lag_days)) {
+      warning(sprintf("no release lag for %s — defaulting to 30 days", json_id))
+      lag_days <- 30
+    }
+
+    release_dates <- if (!is.na(last_ref_month)) {
+      parts <- strsplit(last_ref_month, "-", fixed = TRUE)[[1]]
+      y <- as.integer(parts[1]); m <- as.integer(parts[2])
+      month_start <- as.Date(sprintf("%d-%02d-01", y, m))
+      this_end <- ceiling_date(month_start, "month") - days(1)
+      next_end <- ceiling_date(month_start + months(1), "month") - days(1)
+      list(
+        last = format(this_end + days(lag_days), "%Y-%m-%d"),
+        next_ = format(next_end + days(lag_days), "%Y-%m-%d")
+      )
+    } else {
+      list(last = NA_character_, next_ = NA_character_)
+    }
+
     list(
-      id     = json_id,
-      name   = meta$name,
-      group  = group,
-      unit   = meta$unit,
-      source = meta$source,
-      series = series_df
+      id                    = json_id,
+      name                  = meta$name,
+      group                 = group,
+      unit                  = meta$unit,
+      source                = meta$source,
+      series                = series_df,
+      last_release_date     = release_dates$last,
+      next_release_estimate = release_dates$next_
     )
   })
   write(
