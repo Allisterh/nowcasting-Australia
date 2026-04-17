@@ -29,3 +29,30 @@ export function formatDayMonth(iso: string): string {
   const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
   return `${d.getDate()} ${months[d.getMonth()]}`;
 }
+
+export function formatRawChange(delta: number, unit: string): string {
+  const abs = Math.abs(delta);
+  const sign = delta > 0 ? "+" : delta < 0 ? "−" : "";
+
+  switch (unit) {
+    case "$ millions": {
+      if (abs >= 1000) return `${sign}$${(abs / 1000).toFixed(1)}bn`;
+      if (abs >= 100) return `${sign}$${abs.toFixed(0)}M`;
+      return `${sign}$${abs.toFixed(1)}M`;
+    }
+    case "persons": {
+      if (abs >= 1000) return `${sign}${(abs / 1000).toFixed(1)}m`;
+      return `${sign}${abs.toFixed(1)}k`;
+    }
+    case "hours (thousands)":
+      return `${sign}${abs.toFixed(0)}k hrs`;
+    case "count":
+      return `${sign}${Math.round(abs).toLocaleString("en-AU")}`;
+    case "percent":
+      return `${delta === 0 ? "" : sign}${abs.toFixed(1)}pp`;
+    case "index":
+      return `${delta === 0 ? "" : sign}${abs.toFixed(1)} pts`;
+    default:
+      return `${sign}${abs.toFixed(1)}`;
+  }
+}
