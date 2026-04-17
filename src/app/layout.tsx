@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Australia GDP nowcast",
   description:
-    "Weekly nowcast of Australian GDP using a dynamic factor model over 13 high-frequency indicators.",
+    "Weekly nowcast of Australian GDP using a dynamic factor model over 13 indicators.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

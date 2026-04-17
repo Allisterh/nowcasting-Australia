@@ -22,7 +22,7 @@ export default function MethodologyPanel() {
             of the New York Fed Staff Nowcast.
           </p>
           <p>
-            The model combines 13 high-frequency indicators spanning labour, consumer, business, and
+            The model combines 13 indicators spanning labour, consumer, business, and
             external sectors. Indicators are released at different times within each month (&ldquo;ragged
             edge&rdquo;); the Kalman filter naturally handles the missing data. The nowcast updates each
             week as new data arrives.
