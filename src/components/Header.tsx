@@ -11,7 +11,7 @@ export default function Header({ generatedAt }: HeaderProps) {
         Australia GDP nowcast
       </h1>
       <p className="mt-2 text-xs text-label max-w-2xl">
-        A weekly nowcast of Australian GDP using a dynamic factor model over 13 high-frequency indicators.
+        A nowcast is a real-time estimate of GDP growth for the current quarter, produced before the ABS publishes the official figure by combining timely monthly indicators. Updated weekly using a dynamic factor model.
       </p>
       <p className="mt-1 text-xs text-label">
         Last updated: {formatDate(generatedAt)}
