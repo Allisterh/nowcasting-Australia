@@ -2,7 +2,6 @@
 
 import {
   ComposedChart,
-  Line,
   Scatter,
   XAxis,
   YAxis,
@@ -118,22 +117,13 @@ export default function VintageChart({ nowcasts, latest }: VintageChartProps) {
                 );
               }}
             />
-            <Line
+            <Scatter
               data={vintagePoints}
-              type="linear"
               dataKey="y"
-              stroke={chartColors.primary}
-              strokeWidth={1.5}
-              dot={{
-                r: 4,
-                fill: chartColors.accent,
-                stroke: chartColors.accent,
-              }}
-              activeDot={{
-                r: 5,
-                fill: chartColors.accent,
-                stroke: chartColors.accent,
-              }}
+              fill={chartColors.accent}
+              line={{ stroke: chartColors.primary, strokeWidth: 1.5 }}
+              lineType="joint"
+              shape="circle"
               isAnimationActive={false}
             />
             <Scatter
