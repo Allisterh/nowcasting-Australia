@@ -62,10 +62,22 @@ run_backtest <- function(master_data,
   }
 
   if (frequency == "quarterly") {
+    # Explicit quarter-end dates per year. Earlier versions used
+    #   seq.Date(..., by = "3 months")
+    # starting from Mar 31, but the month-arithmetic overflows 2020-06-31 →
+    # 2020-07-01 (and similarly Sep 30 → Oct 1). floor_date then assigned those
+    # as-of dates to Q3/Q4 respectively, producing a sample with 12 Q4s, zero
+    # Q2s, and only 6 each of Q1/Q3 across 2020–2025.
     start <- as.Date(start_date)
-    end <- as.Date(end_date)
-    first_quarter <- ceiling_date(start, "quarter") - days(1)
-    backtest_dates <- seq.Date(from = first_quarter, to = end, by = "3 months")
+    end   <- as.Date(end_date)
+    years <- seq.int(year(start), year(end))
+    quarter_ends <- do.call(c, lapply(years, function(y) as.Date(c(
+      sprintf("%d-03-31", y),
+      sprintf("%d-06-30", y),
+      sprintf("%d-09-30", y),
+      sprintf("%d-12-31", y)
+    ))))
+    backtest_dates <- quarter_ends[quarter_ends >= start & quarter_ends <= end]
   } else {
     backtest_dates <- generate_backtest_dates(
       start_date = as.Date(start_date),
