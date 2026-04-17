@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import {
   ComposedChart,
   Scatter,
@@ -7,7 +8,6 @@ import {
   YAxis,
   ZAxis,
   CartesianGrid,
-  Tooltip,
   ResponsiveContainer,
   ReferenceLine,
   Label,
@@ -23,8 +23,11 @@ interface VintageChartProps {
 
 type VintagePoint = { kind: "vintage"; x: number; y: number; runDate: string };
 type ActualPoint = { kind: "actual"; x: number; y: number; actualQuarter: string };
+type HoverState = { point: VintagePoint | ActualPoint; cx: number; cy: number } | null;
 
 export default function VintageChart({ nowcasts, latest }: VintageChartProps) {
+  const [hover, setHover] = useState<HoverState>(null);
+
   const relevant = nowcasts.vintages.filter(
     (v) => v.target_quarter === latest.target_quarter,
   );
@@ -44,13 +47,36 @@ export default function VintageChart({ nowcasts, latest }: VintageChartProps) {
     actualQuarter: latest.latest_actual.quarter,
   };
 
+  function makeDot(fill: string, radius: number) {
+    return function Dot(props: unknown) {
+      const { cx, cy, payload } = props as {
+        cx?: number;
+        cy?: number;
+        payload?: VintagePoint | ActualPoint;
+      };
+      if (cx == null || cy == null || !payload) return <g />;
+      return (
+        <circle
+          cx={cx}
+          cy={cy}
+          r={radius}
+          fill={fill}
+          stroke={fill}
+          onMouseEnter={() => setHover({ point: payload, cx, cy })}
+          onMouseLeave={() => setHover(null)}
+          style={{ cursor: "pointer" }}
+        />
+      );
+    };
+  }
+
   return (
     <section className="mb-10">
       <p className="font-headline text-3xl text-black">Nowcast evolution</p>
       <p className="text-xs text-label mb-2">
         Each green point is a weekly nowcast for {latest.target_quarter}. As new indicator data arrives through the quarter, the nowcast evolves — the line traces those revisions up to the ABS GDP release. The dark-teal circle shows the previous quarter&rsquo;s actual GDP growth for context.
       </p>
-      <div className="h-[320px]">
+      <div className="h-[320px] relative">
         <ResponsiveContainer>
           <ComposedChart
             margin={{ top: 20, right: 40, bottom: 20, left: 20 }}
@@ -83,54 +109,18 @@ export default function VintageChart({ nowcasts, latest }: VintageChartProps) {
               }}
             />
             <ZAxis range={[80, 80]} />
-            <Tooltip
-              cursor={false}
-              shared={false}
-              content={({ active, payload }) => {
-                if (!active || !payload || payload.length === 0) return null;
-                const p = payload.find((entry) => {
-                  const data = entry?.payload as
-                    | VintagePoint
-                    | ActualPoint
-                    | undefined;
-                  return data?.kind === "vintage" || data?.kind === "actual";
-                })?.payload as VintagePoint | ActualPoint | undefined;
-                if (!p) return null;
-                const isActual = p.kind === "actual";
-                const heading = isActual ? p.actualQuarter : formatDate(p.runDate);
-                const rowLabel = isActual ? "Latest actual" : "Nowcast";
-                return (
-                  <div
-                    style={{
-                      background: "#fff",
-                      border: `1px solid ${chartColors.border}`,
-                      padding: "6px 8px",
-                      fontSize: 11,
-                      lineHeight: 1.4,
-                    }}
-                  >
-                    <div style={{ color: chartColors.label }}>{heading}</div>
-                    <div>
-                      {rowLabel}: {p.y.toFixed(2)}%
-                    </div>
-                  </div>
-                );
-              }}
-            />
             <Scatter
               data={vintagePoints}
               dataKey="y"
-              fill={chartColors.accent}
               line={{ stroke: chartColors.primary, strokeWidth: 1.5 }}
               lineType="joint"
-              shape="circle"
+              shape={makeDot(chartColors.accent, 4)}
               isAnimationActive={false}
             />
             <Scatter
               data={[actualPoint]}
               dataKey="y"
-              fill={chartColors.primary}
-              shape="circle"
+              shape={makeDot(chartColors.primary, 5)}
               isAnimationActive={false}
             />
             <ReferenceLine
@@ -161,6 +151,33 @@ export default function VintageChart({ nowcasts, latest }: VintageChartProps) {
             </ReferenceLine>
           </ComposedChart>
         </ResponsiveContainer>
+        {hover && (
+          <div
+            style={{
+              position: "absolute",
+              left: hover.cx + 12,
+              top: hover.cy - 12,
+              background: "#fff",
+              border: `1px solid ${chartColors.border}`,
+              padding: "6px 8px",
+              fontSize: 11,
+              lineHeight: 1.4,
+              pointerEvents: "none",
+              whiteSpace: "nowrap",
+              boxShadow: "0 1px 2px rgba(0,0,0,0.04)",
+            }}
+          >
+            <div style={{ color: chartColors.label }}>
+              {hover.point.kind === "actual"
+                ? hover.point.actualQuarter
+                : formatDate(hover.point.runDate)}
+            </div>
+            <div>
+              {hover.point.kind === "actual" ? "Latest actual" : "Nowcast"}:{" "}
+              {hover.point.y.toFixed(2)}%
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
