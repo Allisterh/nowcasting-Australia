@@ -98,7 +98,12 @@ export default function VintageChart({ nowcasts, latest }: VintageChartProps) {
             <YAxis
               type="number"
               dataKey="y"
-              domain={["auto", "auto"]}
+              // Anchor at 0% so the chart visually grounds the reader;
+              // extend below 0 only if any nowcast/actual is negative.
+              domain={[
+                (dataMin: number) => (dataMin >= 0 ? 0 : dataMin - 0.2),
+                "auto",
+              ]}
               tickFormatter={(v) => `${v.toFixed(2)}%`}
               tick={axisTick}
               label={{
