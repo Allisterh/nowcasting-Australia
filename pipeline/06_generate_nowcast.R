@@ -85,11 +85,17 @@ generate_nowcast <- function(model,
         # Prefer out (prospective nowcast). Fall back to in only if target
         # quarter is ALREADY OBSERVED — useful for historical backtests where
         # we want the model's smoothed estimate of a released quarter.
+        #
+        # IMPORTANT: with GDP trans=7 (3-mo % change) wired into Bpanel,
+        # yfcst is returned in the TRANSFORMED scale — i.e., a fractional
+        # QoQ growth rate (e.g., 0.0081 = 0.81% QoQ). This must be back-
+        # transformed to a $-level before consumers downstream (latest.json
+        # schema, CI calculation, site cards) see it.
         if (!is.na(out_val)) {
-          point_estimate <- as.numeric(out_val)
+          qoq_fraction <- as.numeric(out_val)
           source_col <- "out (nowcast)"
         } else if (!is.na(in_val)) {
-          point_estimate <- as.numeric(in_val)
+          qoq_fraction <- as.numeric(in_val)
           source_col <- "in (retrospective fit — target already observed)"
         } else {
           stop(glue(
@@ -100,42 +106,43 @@ generate_nowcast <- function(model,
         }
 
         prediction_var <- NA
-        message(glue("Nowcast for {target_quarter}: {format(round(point_estimate, 2), big.mark = ',')} [{source_col}]"))
 
       } else if (!is.null(model$yfitted)) {
-        # Fallback: use yfitted
-        point_estimate <- as.numeric(tail(model$yfitted[, 1], 1))
+        # Fallback: use yfitted (assumed same transformed scale)
+        qoq_fraction <- as.numeric(tail(model$yfitted[, 1], 1))
         prediction_var <- NA
+        source_col <- "yfitted (fallback)"
       } else {
-        # Manual Kalman filter prediction (fallback)
-        data_prepared <- prepare_data_for_dfm(current_data)
-        data_transformed <- transform_data(data_prepared, transform_type = "standardize")
-        nowcast_result <- predict_with_kalman(model, data_transformed)
-        point_estimate <- as.numeric(nowcast_result)
-        prediction_var <- NA
+        stop("generate_nowcast: model has no yfcst/yfitted output")
       }
 
-      message(glue("Nowcast (GDP forecast): {format(round(point_estimate, 2), big.mark = ',')}"))
-
-      # Calculate growth rates
+      # Back-transform: QoQ fraction → $M level + percent
       gdp_data <- current_data |>
         filter(!is.na(gdp_quarterly)) |>
         arrange(date)
 
-      latest_actual_value <- tail(gdp_data$gdp_quarterly, 1)
-      latest_actual_date <- tail(gdp_data$date, 1)
+      latest_actual_value   <- tail(gdp_data$gdp_quarterly, 1)
+      latest_actual_date    <- tail(gdp_data$date, 1)
       latest_actual_quarter <- paste0(year(latest_actual_date), " Q", quarter(latest_actual_date))
 
-      # Calculate QoQ growth
-      qoq_growth <- ((point_estimate - latest_actual_value) / latest_actual_value) * 100
+      # Level = last_observed * (1 + QoQ_fraction)
+      point_estimate <- latest_actual_value * (1 + qoq_fraction)
+      qoq_growth     <- qoq_fraction * 100
 
-      # Calculate YoY growth (compare to 4 quarters ago)
+      # YoY: target is one quarter past latest_actual, so 4 quarters before
+      # target = 3 quarters before latest_actual = tail(,4)[1]
       if (nrow(gdp_data) >= 4) {
-        gdp_4q_ago <- tail(gdp_data$gdp_quarterly, 5)[1]  # 5th from last
-        yoy_growth <- ((point_estimate - gdp_4q_ago) / gdp_4q_ago) * 100
+        gdp_4q_ago_from_target <- tail(gdp_data$gdp_quarterly, 4)[1]
+        yoy_growth <- ((point_estimate - gdp_4q_ago_from_target) / gdp_4q_ago_from_target) * 100
       } else {
         yoy_growth <- NA
       }
+
+      message(glue(
+        "Nowcast for {target_quarter}: QoQ={sprintf('%+.2f%%', qoq_growth)}  ",
+        "implied level=${format(round(point_estimate), big.mark=',')}M  ",
+        "YoY={sprintf('%+.2f%%', yoy_growth)}  [{source_col}]"
+      ))
 
       return(list(
         point_estimate = point_estimate,

@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-04-17T18:55:02Z",
+  "generated_at": "2026-04-19T21:31:26Z",
   "target_quarter": "2026 Q1",
   "data_through": "2026-04",
   "next_gdp_release_date": "2026-06-03",
   "nowcast": {
-    "gdp_chain_volume_millions": 694956,
-    "qoq_growth_pct": 0.17,
-    "yoy_growth_pct": 2.73,
-    "ci_68_low": 690091,
-    "ci_68_high": 699821,
-    "ci_95_low": 685227,
-    "ci_95_high": 704685
+    "gdp_chain_volume_millions": 699340,
+    "qoq_growth_pct": 0.8,
+    "yoy_growth_pct": 2.94,
+    "ci_68_low": 694445,
+    "ci_68_high": 704235,
+    "ci_95_low": 689549,
+    "ci_95_high": 709131
   },
   "latest_actual": {
     "quarter": "2025 Q4",

@@ -24,9 +24,19 @@ source("08_vintage_tracking.R")   # provides VINTAGE_BASE_DIR / VINTAGE_CSV
 #### Config ####
 
 TARGET_QUARTER <- "2026 Q1"
-KEEP_VINTAGE_ID <- "vintage_20260417_125842"
+# Keep the 2026-04-19 live vintage — first run under the fixed stationarity
+# transforms + Mar–Jul 2020 COVID mask. All April 17 vintages were produced
+# under the broken trans=0 model and must be wiped.
+KEEP_VINTAGE_ID <- "vintage_20260419_214053"
 
 RECONSTRUCTION_DATES <- as.Date(c(
+  # Pre-Q4-2025-release (target forced to Q1 2026, model produces
+  # 2-quarter-ahead projection — Q4 2025 GDP not yet observed)
+  "2026-02-09",  # first Jan 2026 data: consumer confidence
+  "2026-02-16",  # labour force Jan 2026 bundle + bus_conf
+  "2026-02-23",  # identical snapshot to Feb 16 (no new releases)
+  "2026-03-02",  # household_spending + building_app Jan 2026
+  # Q4 2025 GDP released 2026-03-04; subsequent runs are true 1-quarter nowcasts
   "2026-03-09", "2026-03-16", "2026-03-23",
   "2026-03-30", "2026-04-06", "2026-04-13"
 ))

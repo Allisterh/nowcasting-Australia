@@ -237,30 +237,48 @@ estimate_dfm <- function(data_prepared, config) {
       message("  na.prop = 1 (don't discard any series)")
       message("  aggregate = FALSE (don't apply MA filter that creates more NAs!)")
 
-      # Transformation codes for Bpanel()
-      # The nowcasting package's EM-DFM works best with trans = 0 (no transformation)
-      # because:
-      #   - Transforming indicators to stationarity removes trend information that
-      #     the factors need to track GDP levels
-      #   - Transforming GDP itself produces sparse, near-zero growth rate forecasts
-      #   - With raw levels, factors capture trend + cycle, which naturally tracks
-      #     GDP's level for near-term forecasting
-      # Tested via 2020-2025 backtest: trans=0 gives MAE ~$1-2K vs ~$100K with
-      # indicator stationarity transforms.
-      #
-      # Per-series codes kept here for reference if switching to a package that
-      # handles back-transformation (e.g. bvartools, MARSS):
-      #   gdp=7, household_spending=1, cons_conf=2, building_app=1, bus_conf=2,
-      #   exports_goods=1, exports_servs=7, imports_goods=1, imports_servs=7,
-      #   employment=1, unemp_rate=2, participation=2, hours_worked=1
+      # Transformation codes for Bpanel() — per-series, driven by metadata.
+      # Codes validated by pipeline/tests/stationarity_check.R (ADF+KPSS).
+      #   1=MoM %, 2=first diff, 7=3-mo %. See seed/component_metadata.rds.
+      # The GDP column (named "gdp" in ts_data) maps to indicator_id
+      # "gdp_quarterly" in the metadata.
+      trans_lookup <- component_metadata$indicators |>
+        select(indicator_id, trans_code) |>
+        deframe()
+      # Build vector in ts_data column order; "gdp" aliases "gdp_quarterly"
+      trans_vec <- vapply(colnames(ts_data), function(col) {
+        key <- if (col == "gdp") "gdp_quarterly" else col
+        if (!key %in% names(trans_lookup)) {
+          stop(glue("No trans_code in metadata for '{col}'"))
+        }
+        as.integer(trans_lookup[[key]])
+      }, integer(1))
+      message("\nPer-series trans codes:")
+      message(paste(names(trans_vec), "=", trans_vec, collapse = ", "))
 
       ts_data_balanced <- Bpanel(
         base = ts_data,
-        trans = rep(0, ncol(ts_data)),  # No transformation — see comment above
+        trans = trans_vec,
         NA.replace = FALSE,  # Don't fill NAs (EM handles them)
-        aggregate = FALSE,   # CRITICAL: Don't apply MA filter!
+        aggregate = FALSE,   # Don't apply MA filter
         na.prop = 1          # Allow series with any % of NAs
       )
+
+      # COVID intervention: mask Mar–Jul 2020 as NA so the Kalman smoother
+      # imputes those quarters from surrounding data rather than letting
+      # the initial shock (Mar, JobKeeper announced 30 Mar), peak lockdown
+      # (Apr–May), reopening rebound (Jun), and Melbourne second-wave onset
+      # (Jul) drive factor loadings. Standard treatment in DFM literature
+      # (e.g. Schorfheide & Song 2020). Wider Mar 2020–Dec 2021 mask tested
+      # 2026-04-19 but barely moved the nowcast (+0.80→+0.78 pp), so not
+      # worth the shock-detection capability we'd lose.
+      tt <- time(ts_data_balanced)
+      covid_mask <- (floor(tt) == 2020) & (round((tt - 2020) * 12) + 1) %in% 3:7
+      n_masked <- sum(covid_mask)
+      if (n_masked > 0) {
+        ts_data_balanced[covid_mask, ] <- NA
+        message(glue("COVID mask applied: {n_masked} months × {ncol(ts_data_balanced)} series set to NA"))
+      }
 
       message(glue("Balanced panel: {paste(dim(ts_data_balanced), collapse='x')}"))
       message(glue("Variables: {paste(colnames(ts_data_balanced), collapse=', ')}"))
