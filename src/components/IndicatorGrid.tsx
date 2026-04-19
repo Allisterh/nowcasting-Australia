@@ -8,19 +8,22 @@ import IndicatorsTable from "./IndicatorsTable";
 
 const GROUP_ORDER: IndicatorGroup[] = ["Labour", "Consumer", "Business", "External"];
 
+// Keys must match indicator IDs in data/indicators.json (source of truth:
+// pipeline/seed/component_metadata.rds). Any unknown key falls through to
+// "level" in the component.
 const SPARKLINE_MODE: Record<string, SparklineMode> = {
   employment: "bar",
   unemp_rate: "level",
-  part_rate: "level",
+  participation: "level",
   hours_worked: "level",
   household_spending: "bar",
   cons_conf: "level",
-  building_approvals: "level",
+  building_app: "level",
   bus_conf: "level",
-  goods_exp: "level",
-  services_exp: "level",
-  goods_imp: "level",
-  services_imp: "level",
+  exports_goods: "level",
+  exports_servs: "level",
+  imports_goods: "level",
+  imports_servs: "level",
 };
 
 interface Props {
