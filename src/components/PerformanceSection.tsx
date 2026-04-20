@@ -25,13 +25,13 @@ export default function PerformanceSection({ performance }: Props) {
           sub={`${formatPct(performance.bias_pct)} · ${performance.bias_millions < 0 ? "underpredicts" : performance.bias_millions > 0 ? "overpredicts" : "neutral"}`}
         />
         <Tile
-          label="Edge vs RBA"
+          label="Accuracy gap vs RBA"
           value={edgeValue}
           sub={edgeSub}
         />
       </div>
       <p className="text-xs text-label mb-3">
-        Each quarter, the final nowcast (latest vintage before the release) is compared against the actual GDP value. Bias is the average signed error — negative means we systematically underpredict. Edge vs RBA compares our year-ended error to the RBA Statement on Monetary Policy forecast closest to quarter-end; a negative edge means our nowcast was closer to the final number.
+        Each quarter, the final nowcast (latest vintage before the release) is compared against the actual GDP value. Bias is the average signed error, so a negative value means we systematically underpredict. Accuracy gap vs RBA compares our year-ended error to the RBA Statement on Monetary Policy forecast closest to quarter-end; a negative gap means our nowcast was closer to the final number.
       </p>
       <table className="w-full text-xs border-collapse">
         <thead>
@@ -42,7 +42,7 @@ export default function PerformanceSection({ performance }: Props) {
             <th className="py-2">Error ($M)</th>
             <th className="py-2">Error (%)</th>
             <th className="py-2">RBA (YE)</th>
-            <th className="py-2">Edge (pp)</th>
+            <th className="py-2">Gap (pp)</th>
           </tr>
         </thead>
         <tbody>
