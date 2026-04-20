@@ -6,6 +6,12 @@ interface Props {
 }
 
 export default function PerformanceSection({ performance }: Props) {
+  const edge = performance.rba_comparison.avg_edge_pp;
+  const edgeValue = edge === null ? "—" : `${edge > 0 ? "+" : edge < 0 ? "−" : ""}${Math.abs(edge).toFixed(2)}pp`;
+  const edgeSub = performance.rba_comparison.n === 0
+    ? "Year-ended forecast, updates twice yearly (Q2 & Q4)"
+    : `${performance.rba_comparison.n} comparison${performance.rba_comparison.n === 1 ? "" : "s"} · ${edge !== null && edge < 0 ? "we beat RBA" : "RBA beats us"}`;
+
   return (
     <section className="mb-10">
       <p className="font-headline text-3xl text-black mb-2">
@@ -13,15 +19,19 @@ export default function PerformanceSection({ performance }: Props) {
       </p>
       <div className="grid grid-cols-3 gap-3 mb-4">
         <Tile label="MAE" value={formatMillions(performance.mae_millions)} sub={`${performance.mae_pct.toFixed(2)}% of GDP`} />
-        <Tile label="RMSE" value={formatMillions(performance.rmse_millions)} />
         <Tile
-          label="Directional hit rate"
-          value={`${(performance.hit_rate_direction * 100).toFixed(0)}%`}
-          sub="Nowcast predicted the correct direction"
+          label="Bias"
+          value={formatMillions(performance.bias_millions)}
+          sub={`${formatPct(performance.bias_pct)} · ${performance.bias_millions < 0 ? "underpredicts" : performance.bias_millions > 0 ? "overpredicts" : "neutral"}`}
+        />
+        <Tile
+          label="Edge vs RBA"
+          value={edgeValue}
+          sub={edgeSub}
         />
       </div>
       <p className="text-xs text-label mb-3">
-        Each quarter, the final nowcast (latest vintage before the release) is compared against the actual GDP value. Directional hit rate is the share of quarters where the nowcast correctly predicted growth or contraction.
+        Each quarter, the final nowcast (latest vintage before the release) is compared against the actual GDP value. Bias is the average signed error — negative means we systematically underpredict. Edge vs RBA compares our year-ended error to the RBA Statement on Monetary Policy forecast closest to quarter-end; a negative edge means our nowcast was closer to the final number.
       </p>
       <table className="w-full text-xs border-collapse">
         <thead>
@@ -31,6 +41,8 @@ export default function PerformanceSection({ performance }: Props) {
             <th className="py-2">Actual</th>
             <th className="py-2">Error ($M)</th>
             <th className="py-2">Error (%)</th>
+            <th className="py-2">RBA (YE)</th>
+            <th className="py-2">Edge (pp)</th>
           </tr>
         </thead>
         <tbody>
@@ -44,6 +56,12 @@ export default function PerformanceSection({ performance }: Props) {
               </td>
               <td className={`py-2 ${e.error_pct > 0 ? "text-teal" : "text-[#c0392b]"}`}>
                 {formatPct(e.error_pct)}
+              </td>
+              <td className="py-2 text-label">
+                {e.yoy_rba === null ? "—" : `${e.yoy_rba.toFixed(2)}%`}
+              </td>
+              <td className={`py-2 ${e.edge_pp === null ? "text-label" : e.edge_pp < 0 ? "text-teal" : "text-[#c0392b]"}`}>
+                {e.edge_pp === null ? "—" : `${e.edge_pp > 0 ? "+" : e.edge_pp < 0 ? "−" : ""}${Math.abs(e.edge_pp).toFixed(2)}`}
               </td>
             </tr>
           ))}

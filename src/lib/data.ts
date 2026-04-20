@@ -52,8 +52,9 @@ export function loadDashboardData(): DashboardData {
     performance: readJson<Performance>("performance.json", {
       mae_millions: 0,
       mae_pct: 0,
-      rmse_millions: 0,
-      hit_rate_direction: 0,
+      bias_millions: 0,
+      bias_pct: 0,
+      rba_comparison: { n: 0, avg_edge_pp: null },
       errors: [],
     }),
   };

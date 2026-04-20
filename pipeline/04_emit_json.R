@@ -321,39 +321,103 @@ emit_json <- function(target_dir, nowcast, master, vintage_info) {
   )
 
   # --- 5. performance.json ---
-  # For each target quarter that has both a final nowcast AND a published actual,
-  # compute level-error (nowcast_value − actual_value) and percent-error. Aggregate
-  # to MAE / RMSE / directional hit rate.
+  # For each target quarter with both a final nowcast AND a published actual,
+  # compute level-error, percent-error, and year-ended-growth error. Aggregate
+  # to MAE / bias / (optional) RBA edge using the SoMP forecast CSV.
+  perf_empty <- list(
+    mae_millions = 0, mae_pct = 0,
+    bias_millions = 0, bias_pct = 0,
+    rba_comparison = list(n = 0L, avg_edge_pp = NA),
+    errors = list()
+  )
+  minus_4q <- function(q) {
+    parts <- strsplit(q, " Q", fixed = TRUE)[[1]]
+    paste0(as.integer(parts[1]) - 1L, " Q", parts[2])
+  }
+  # SoMP CSV lives alongside the pipeline scripts. Try a few candidate locations
+  # to tolerate being called from either repo root or `pipeline/`.
+  somp_candidates <- c(
+    "pipeline/rba_somp_forecasts.csv",
+    "rba_somp_forecasts.csv",
+    file.path(dirname(target_dir), "pipeline", "rba_somp_forecasts.csv")
+  )
+  somp_path <- somp_candidates[file.exists(somp_candidates)][1]
+  # Fall back to the same directory as the fetcher script if nothing exists yet.
+  if (is.na(somp_path) || !nzchar(somp_path)) {
+    somp_path <- "pipeline/rba_somp_forecasts.csv"
+  }
+  # Source the SoMP fetcher from an adjacent file.
+  somp_fetcher_candidates <- c(
+    "pipeline/04a_fetch_somp.R",
+    "04a_fetch_somp.R",
+    file.path(dirname(target_dir), "pipeline", "04a_fetch_somp.R")
+  )
+  somp_fetcher <- somp_fetcher_candidates[file.exists(somp_fetcher_candidates)][1]
+  if (!is.na(somp_fetcher)) source(somp_fetcher, local = TRUE)
+
   perf_obj <- local({
-    if (nrow(vintages_out) == 0 || nrow(gdp_wide) == 0) {
-      return(list(
-        mae_millions = 0, mae_pct = 0, rmse_millions = 0,
-        hit_rate_direction = 0, errors = list()
-      ))
-    }
+    if (nrow(vintages_out) == 0 || nrow(gdp_wide) == 0) return(perf_empty)
+
     finals <- vintages_out |>
       group_by(target_quarter) |>
       slice_max(run_date, n = 1, with_ties = FALSE) |>
       ungroup()
 
     gdp_match <- gdp_wide |>
-      transmute(target_quarter = quarter, actual = value, actual_qoq = qoq_pct)
+      transmute(target_quarter = quarter, actual = value,
+                actual_qoq = qoq_pct, actual_yoy = yoy_pct)
 
-    paired <- finals |>
-      inner_join(gdp_match, by = "target_quarter")
+    paired <- finals |> inner_join(gdp_match, by = "target_quarter")
+    if (nrow(paired) == 0) return(perf_empty)
 
-    if (nrow(paired) == 0) {
-      return(list(
-        mae_millions = 0, mae_pct = 0, rmse_millions = 0,
-        hit_rate_direction = 0, errors = list()
-      ))
+    # Refresh SoMP cache for any paired target quarters not yet seen. Fetcher
+    # handles 404s (SoMP not yet published) and Q1/Q3 targets (no match) by
+    # simply not appending a row.
+    somp_df <- if (exists("ensure_somp_cache")) {
+      tryCatch(
+        ensure_somp_cache(paired$target_quarter, somp_path),
+        error = function(e) {
+          message(sprintf("[somp] cache refresh failed: %s", conditionMessage(e)))
+          if (file.exists(somp_path)) {
+            suppressWarnings(read_csv(somp_path, show_col_types = FALSE))
+          } else {
+            tibble::tibble(target_quarter = character(), somp_release = character(),
+                           yoy_forecast_pct = numeric(), source_url = character())
+          }
+        }
+      )
+    } else if (file.exists(somp_path)) {
+      suppressWarnings(read_csv(somp_path, show_col_types = FALSE))
+    } else {
+      tibble::tibble(target_quarter = character(), somp_release = character(),
+                     yoy_forecast_pct = numeric(), source_url = character())
     }
 
+    # Year-ended nowcast: point / GDP at (target − 4 quarters) − 1.
+    ref_lookup <- gdp_wide |> transmute(ref_quarter = quarter, ref_value = value)
     paired <- paired |>
+      mutate(ref_quarter = vapply(target_quarter, minus_4q, character(1))) |>
+      left_join(ref_lookup, by = "ref_quarter") |>
       mutate(
         error_millions = point - actual,
         error_pct      = (point - actual) / actual * 100,
-        direction_ok   = sign(qoq_growth_pct) == sign(actual_qoq)
+        yoy_nowcast    = ifelse(is.na(ref_value), NA_real_,
+                                (point / ref_value - 1) * 100)
+      ) |>
+      left_join(
+        somp_df |> transmute(
+          target_quarter,
+          somp_release,
+          yoy_rba = yoy_forecast_pct
+        ),
+        by = "target_quarter"
+      ) |>
+      mutate(
+        edge_pp = ifelse(
+          is.na(yoy_rba) | is.na(yoy_nowcast) | is.na(actual_yoy),
+          NA_real_,
+          abs(yoy_nowcast - actual_yoy) - abs(yoy_rba - actual_yoy)
+        )
       ) |>
       arrange(target_quarter)
 
@@ -363,15 +427,27 @@ emit_json <- function(target_dir, nowcast, master, vintage_info) {
         final_nowcast  = round(point),
         actual         = round(actual),
         error_millions = round(error_millions),
-        error_pct      = round(error_pct, 2)
+        error_pct      = round(error_pct, 2),
+        yoy_nowcast    = ifelse(is.na(yoy_nowcast), NA_real_, round(yoy_nowcast, 2)),
+        yoy_actual     = ifelse(is.na(actual_yoy), NA_real_, round(actual_yoy, 2)),
+        yoy_rba        = ifelse(is.na(yoy_rba), NA_real_, round(yoy_rba, 2)),
+        somp_release   = ifelse(is.na(somp_release), NA_character_, somp_release),
+        edge_pp        = ifelse(is.na(edge_pp), NA_real_, round(edge_pp, 2))
       )
 
+    edge_vec <- paired$edge_pp[!is.na(paired$edge_pp)]
+    rba_block <- list(
+      n = length(edge_vec),
+      avg_edge_pp = if (length(edge_vec) > 0) round(mean(edge_vec), 2) else NA_real_
+    )
+
     list(
-      mae_millions       = round(mean(abs(paired$error_millions))),
-      mae_pct            = round(mean(abs(paired$error_pct)), 2),
-      rmse_millions      = round(sqrt(mean(paired$error_millions^2))),
-      hit_rate_direction = round(mean(paired$direction_ok, na.rm = TRUE), 2),
-      errors             = errors_df
+      mae_millions   = round(mean(abs(paired$error_millions))),
+      mae_pct        = round(mean(abs(paired$error_pct)), 2),
+      bias_millions  = round(mean(paired$error_millions)),
+      bias_pct       = round(mean(paired$error_pct), 2),
+      rba_comparison = rba_block,
+      errors         = errors_df
     )
   })
   write(

@@ -78,13 +78,24 @@ export interface AccuracyError {
   actual: number;
   error_millions: number;
   error_pct: number;
+  yoy_nowcast: number | null;
+  yoy_actual: number | null;
+  yoy_rba: number | null;
+  somp_release: string | null;
+  edge_pp: number | null;
+}
+
+export interface RbaComparison {
+  n: number;
+  avg_edge_pp: number | null;
 }
 
 export interface Performance {
   mae_millions: number;
   mae_pct: number;
-  rmse_millions: number;
-  hit_rate_direction: number;
+  bias_millions: number;
+  bias_pct: number;
+  rba_comparison: RbaComparison;
   errors: AccuracyError[];
 }
 
