@@ -70,13 +70,15 @@ jobs:
         # Run from repo root (no .Rprofile) so pipeline/.Rprofile doesn't auto-source
         # renv/activate.R. Multi-line Rscript -e strings segfault on Windows under
         # Git Bash (CRLF line endings corrupt the parsed expression), so everything
-        # goes on one line.
-        run: Rscript -e 'options(repos = c(CRAN = Sys.getenv("RENV_CONFIG_REPOS_OVERRIDE"))); if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv"); lock <- renv::lockfile_read("pipeline/renv.lock"); pkgs <- setdiff(names(lock$Packages), "renv"); renv::restore(project = "pipeline", packages = pkgs, prompt = FALSE)'
+        # goes on one line. Prepend the pipeline renv library to .libPaths() so
+        # restore writes there — otherwise packages land in system lib and the
+        # pipeline step (which activates renv via pipeline/.Rprofile) can't see them.
+        run: Rscript -e 'options(repos = c(CRAN = Sys.getenv("RENV_CONFIG_REPOS_OVERRIDE"))); if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv"); lib <- renv::paths$library(project = "pipeline"); dir.create(lib, recursive = TRUE, showWarnings = FALSE); .libPaths(c(lib, .libPaths())); lock <- renv::lockfile_read("pipeline/renv.lock"); pkgs <- setdiff(names(lock$Packages), "renv"); renv::restore(project = "pipeline", packages = pkgs, prompt = FALSE)'
 
       - name: Verify all locked packages installed
-        # renv::restore can warn-and-continue when a package fails to install,
-        # which then surfaces as "no package called X" mid-pipeline. Fail loudly here.
-        run: Rscript -e 'lock <- renv::lockfile_read("pipeline/renv.lock"); pkgs <- setdiff(names(lock$Packages), "renv"); ok <- vapply(pkgs, requireNamespace, logical(1), quietly = TRUE); if (!all(ok)) { cat("MISSING:", paste(pkgs[!ok], collapse = ", "), "\n"); quit(status = 1) }'
+        # Check the pipeline renv library on the search path — same lib the pipeline
+        # step will see — not whatever happens to be in system lib.
+        run: Rscript -e 'lib <- renv::paths$library(project = "pipeline"); .libPaths(c(lib, .libPaths())); lock <- renv::lockfile_read("pipeline/renv.lock"); pkgs <- setdiff(names(lock$Packages), "renv"); ok <- vapply(pkgs, requireNamespace, logical(1), quietly = TRUE); if (!all(ok)) { cat("MISSING:", paste(pkgs[!ok], collapse = ", "), "\n"); quit(status = 1) }'
 
       - name: Run nowcast pipeline
         id: nowcast
