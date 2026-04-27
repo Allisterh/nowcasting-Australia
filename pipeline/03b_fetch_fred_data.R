@@ -9,6 +9,7 @@ library(readr)
 library(tibble)
 library(lubridate)
 library(glue)
+library(httr)
 
 # Note: We'll use direct CSV download from FRED since fredr package requires API key
 # Alternative: Install fredr package and set API key for programmatic access
@@ -39,39 +40,36 @@ fetch_fred_indicator <- function(series_id,
   # Construct FRED download URL
   fred_url <- glue("https://fred.stlouisfed.org/graph/fredgraph.csv?id={series_id}")
 
-  # Download via curl with HTTP/1.1 forced and a tight per-attempt timeout.
-  # The Windows GH Actions runner's egress to FRED has been unreliable —
-  # both HTTP/2 stream resets and HTTP/1.1 mid-response "Recv failure:
-  # Connection was reset" have been observed (the latter hanging for ~4
-  # minutes per attempt before timing out).
-  fetch_csv_http11 <- function(url) {
-    tmp <- tempfile(fileext = ".csv")
-    h <- curl::new_handle()
-    curl::handle_setopt(
-      h,
-      http_version = 2,    # CURL_HTTP_VERSION_1_1
-      connecttimeout = 10, # seconds to establish TCP/TLS
-      timeout = 30         # seconds for the whole transfer
-    )
-    curl::curl_download(url, tmp, handle = h)
-    on.exit(unlink(tmp), add = TRUE)
-    read_csv(tmp, show_col_types = FALSE)
-  }
-  max_attempts <- 2
+  # Fetch via httr::GET with a browser-style User-Agent. The previous
+  # curl::curl_download approach (HTTP/1.1 + 30s timeout) still dropped on
+  # Windows GHA runners because FRED's edge resets connections to the
+  # default libcurl UA mid-transfer. Setting an explicit UA fixes the
+  # actual cause; the per-request timeout keeps failed attempts cheap so
+  # retries can do their job.
+  ua <- user_agent("nowcasting/1.0 (+https://nowcast.wlsn.me)")
+  max_attempts <- 5
   raw_data <- NULL
   last_error <- NULL
   for (attempt in seq_len(max_attempts)) {
-    raw_data <- tryCatch(
-      fetch_csv_http11(fred_url),
-      error = function(e) e,
-      warning = function(w) w
+    resp <- tryCatch(
+      GET(fred_url, ua, timeout(60)),
+      error = function(e) e
     )
-    if (!inherits(raw_data, c("error", "warning"))) break
-    last_error <- raw_data
-    raw_data <- NULL
+    parsed <- tryCatch({
+      if (inherits(resp, "error")) stop(conditionMessage(resp))
+      stop_for_status(resp)
+      body <- content(resp, as = "text", encoding = "UTF-8")
+      read_csv(I(body), show_col_types = FALSE)
+    }, error = function(e) e, warning = function(w) w)
+    if (!inherits(parsed, c("error", "warning"))) {
+      raw_data <- parsed
+      break
+    }
+    last_error <- parsed
     if (attempt < max_attempts) {
-      message(glue("  → attempt {attempt}/{max_attempts} failed ({conditionMessage(last_error)}); retrying in 5s..."))
-      Sys.sleep(5)
+      backoff <- min(60, 5 * 2^(attempt - 1))
+      message(glue("  → attempt {attempt}/{max_attempts} failed ({conditionMessage(last_error)}); retrying in {backoff}s..."))
+      Sys.sleep(backoff)
     }
   }
 
