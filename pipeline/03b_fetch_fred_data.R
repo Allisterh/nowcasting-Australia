@@ -39,20 +39,25 @@ fetch_fred_indicator <- function(series_id,
   # Construct FRED download URL
   fred_url <- glue("https://fred.stlouisfed.org/graph/fredgraph.csv?id={series_id}")
 
-  # Download via curl with HTTP/1.1 forced. Windows libcurl + FRED's HTTP/2
-  # edge resets streams mid-response ("stream 1 was not closed cleanly:
-  # INTERNAL_ERROR"), which the previous read_csv(url) path can't recover from.
-  # Retry with backoff is kept for transient network blips.
+  # Download via curl with HTTP/1.1 forced and a tight per-attempt timeout.
+  # The Windows GH Actions runner's egress to FRED has been unreliable —
+  # both HTTP/2 stream resets and HTTP/1.1 mid-response "Recv failure:
+  # Connection was reset" have been observed (the latter hanging for ~4
+  # minutes per attempt before timing out).
   fetch_csv_http11 <- function(url) {
     tmp <- tempfile(fileext = ".csv")
     h <- curl::new_handle()
-    # CURLOPT_HTTP_VERSION = 2  →  CURL_HTTP_VERSION_1_1
-    curl::handle_setopt(h, http_version = 2)
+    curl::handle_setopt(
+      h,
+      http_version = 2,    # CURL_HTTP_VERSION_1_1
+      connecttimeout = 10, # seconds to establish TCP/TLS
+      timeout = 30         # seconds for the whole transfer
+    )
     curl::curl_download(url, tmp, handle = h)
     on.exit(unlink(tmp), add = TRUE)
     read_csv(tmp, show_col_types = FALSE)
   }
-  max_attempts <- 3
+  max_attempts <- 2
   raw_data <- NULL
   last_error <- NULL
   for (attempt in seq_len(max_attempts)) {
@@ -65,15 +70,25 @@ fetch_fred_indicator <- function(series_id,
     last_error <- raw_data
     raw_data <- NULL
     if (attempt < max_attempts) {
-      backoff <- 5 * attempt
-      message(glue("  → attempt {attempt}/{max_attempts} failed ({conditionMessage(last_error)}); retrying in {backoff}s..."))
-      Sys.sleep(backoff)
+      message(glue("  → attempt {attempt}/{max_attempts} failed ({conditionMessage(last_error)}); retrying in 5s..."))
+      Sys.sleep(5)
     }
+  }
+
+  # Fall back to the in-repo last-known-good CSV (refreshed manually, like NAB).
+  # Keeps the pipeline shippable when FRED is unreachable from the runner.
+  fallback_path <- file.path("fred_cache", paste0(series_id, ".csv"))
+  if (is.null(raw_data) && file.exists(fallback_path)) {
+    message(glue(
+      "  ⚠ FRED unreachable after {max_attempts} attempts ({conditionMessage(last_error)}); ",
+      "falling back to in-repo cache at {fallback_path}"
+    ))
+    raw_data <- read_csv(fallback_path, show_col_types = FALSE)
   }
   if (is.null(raw_data)) {
     stop(glue(
-      "FRED fetch for {series_id} failed after {max_attempts} attempts: ",
-      "{conditionMessage(last_error)}"
+      "FRED fetch for {series_id} failed after {max_attempts} attempts and no ",
+      "in-repo fallback exists at {fallback_path}: {conditionMessage(last_error)}"
     ))
   }
 
