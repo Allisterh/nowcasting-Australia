@@ -4,7 +4,9 @@
 # Date: 2026-01-01
 
 #### Load dependencies ####
-library(tidyverse)
+library(dplyr)
+library(readr)
+library(tibble)
 library(lubridate)
 library(glue)
 

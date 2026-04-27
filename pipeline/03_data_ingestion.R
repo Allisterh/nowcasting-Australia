@@ -4,7 +4,8 @@
 # Date: 2025-12-30
 
 #### Load dependencies ####
-library(tidyverse)
+library(dplyr)
+library(tidyr)
 library(readabs)
 library(lubridate)
 library(janitor)

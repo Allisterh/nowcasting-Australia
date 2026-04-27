@@ -9,7 +9,10 @@
 #   3. Enables comparison of vintages over time
 #   4. Supports visualization of nowcast evolution
 
-library(tidyverse)
+library(dplyr)
+library(tidyr)
+library(readr)
+library(tibble)
 library(lubridate)
 library(glue)
 

@@ -4,7 +4,9 @@
 # Date: 2025-12-30
 
 #### Load dependencies ####
-library(tidyverse)
+library(dplyr)
+library(purrr)
+library(tibble)
 library(nowcasting)
 library(lubridate)
 library(glue)
