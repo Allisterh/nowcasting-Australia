@@ -39,15 +39,25 @@ fetch_fred_indicator <- function(series_id,
   # Construct FRED download URL
   fred_url <- glue("https://fred.stlouisfed.org/graph/fredgraph.csv?id={series_id}")
 
-  # Retry-with-backoff loop. FRED's edge occasionally resets HTTP/2 streams
-  # (seen on Windows CI), which would otherwise silently wipe this indicator
-  # from the model and produce a wrong nowcast.
+  # Download via curl with HTTP/1.1 forced. Windows libcurl + FRED's HTTP/2
+  # edge resets streams mid-response ("stream 1 was not closed cleanly:
+  # INTERNAL_ERROR"), which the previous read_csv(url) path can't recover from.
+  # Retry with backoff is kept for transient network blips.
+  fetch_csv_http11 <- function(url) {
+    tmp <- tempfile(fileext = ".csv")
+    h <- curl::new_handle()
+    # CURLOPT_HTTP_VERSION = 2  →  CURL_HTTP_VERSION_1_1
+    curl::handle_setopt(h, http_version = 2)
+    curl::curl_download(url, tmp, handle = h)
+    on.exit(unlink(tmp), add = TRUE)
+    read_csv(tmp, show_col_types = FALSE)
+  }
   max_attempts <- 3
   raw_data <- NULL
   last_error <- NULL
   for (attempt in seq_len(max_attempts)) {
     raw_data <- tryCatch(
-      read_csv(fred_url, show_col_types = FALSE),
+      fetch_csv_http11(fred_url),
       error = function(e) e,
       warning = function(w) w
     )
