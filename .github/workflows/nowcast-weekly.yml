@@ -2,8 +2,10 @@ name: Weekly Nowcast
 
 on:
   schedule:
-    # 21:00 UTC Sunday = 07:00 AEST Monday (08:00 AEDT during daylight savings)
-    - cron: "0 21 * * 0"
+    # 02:00 UTC Monday = 12:00 AEST Monday (13:00 AEDT during daylight savings).
+    # Sits ~30 min after the 11:30 AEST ABS release window so Monday's drops
+    # (e.g. Building Approvals) get ingested in the same run.
+    - cron: "0 2 * * 1"
     # Tuesday 21:00 UTC in Mar/Jun/Sep/Dec — gated below so it only actually runs
     # when tomorrow is the first Wednesday of the month (i.e. the ABS GDP release day).
     - cron: "0 21 * 3,6,9,12 2"
