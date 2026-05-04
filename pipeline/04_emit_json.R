@@ -56,21 +56,34 @@ INDICATOR_META <- list(
   services_imp       = list(name = "Services Imports",      unit = "$ millions",        source = "ABS International Trade")
 )
 
-# Release lag (days) from reference-month-end to the actual ABS release.
-# Mirrors pipeline/04_release_calendar.R — keep in sync.
-INDICATOR_RELEASE_LAG_DAYS <- c(
-  employment         = 15,
-  unemp_rate         = 15,
-  part_rate          = 15,
-  hours_worked       = 15,
-  household_spending = 30,
-  cons_conf          = 5,
-  building_approvals = 30,
-  bus_conf           = 11,  # NAB 2nd Tuesday
-  goods_exp          = 45,
-  services_exp       = 62,  # BoP 5302.0: ~62-63 days after quarter-end
-  goods_imp          = 45,
-  services_imp       = 62
+# Per-indicator release-date rule. Used as a fallback when the ABS
+# latest-release scrape (04b_release_calendar_fetch.R) can't reach the page.
+# Each rule yields the expected release date for a given reference period:
+#
+#   month_offset : how many months past the reference period the release
+#                  falls (Labour Force = N+1; MHSI = N+2; quarterly BoP/GDP
+#                  use the quarter-end month as N).
+#   weekday      : 1=Mon, 2=Tue, 3=Wed, 4=Thu, 5=Fri (NA → use lag_days).
+#   occurrence   : nth occurrence of that weekday in the offset month.
+#   lag_days     : fallback for non-ABS indicators where the publisher
+#                  doesn't lock to a weekday (cons_conf via FRED).
+#
+# These match the ABS calendar at the time of writing (May 2026); ABS shifts
+# dates around public holidays and operational tweaks, so the scrape in
+# 04b_release_calendar_fetch.R is preferred — this rule is only the fallback.
+INDICATOR_RELEASE_RULE <- list(
+  employment         = list(month_offset = 1, weekday = 4, occurrence = 3),  # 3rd Thu of N+1
+  unemp_rate         = list(month_offset = 1, weekday = 4, occurrence = 3),
+  part_rate          = list(month_offset = 1, weekday = 4, occurrence = 3),
+  hours_worked       = list(month_offset = 1, weekday = 4, occurrence = 3),
+  household_spending = list(month_offset = 2, weekday = 2, occurrence = 1),  # 1st Tue of N+2
+  cons_conf          = list(month_offset = 1, weekday = NA, lag_days = 5),    # FRED — variable
+  building_approvals = list(month_offset = 2, weekday = 1, occurrence = 1),  # 1st Mon of N+2 (approx)
+  bus_conf           = list(month_offset = 1, weekday = 2, occurrence = 2),  # NAB 2nd Tue of N+1
+  goods_exp          = list(month_offset = 2, weekday = 4, occurrence = 1),  # 1st Thu of N+2
+  goods_imp          = list(month_offset = 2, weekday = 4, occurrence = 1),
+  services_exp       = list(month_offset = 3, weekday = 2, occurrence = 1, anchor = "quarter_end"),
+  services_imp       = list(month_offset = 3, weekday = 2, occurrence = 1, anchor = "quarter_end")
 )
 
 # Frequency per indicator — used to compute "next release" spacing (monthly
@@ -113,6 +126,102 @@ gdp_release_date <- function(quarter_str) {
 }
 
 date_to_quarter <- function(d) sprintf("%d Q%d", year(d), quarter(d))
+
+# Source the ABS release-calendar scraper (sibling file). Tolerate being
+# called from either repo root or the pipeline/ directory.
+local({
+  candidates <- c(
+    "pipeline/04b_release_calendar_fetch.R",
+    "04b_release_calendar_fetch.R"
+  )
+  hit <- candidates[file.exists(candidates)][1]
+  if (!is.na(hit)) source(hit, local = FALSE)
+})
+
+#' nth occurrence of a given weekday in a given month.
+#' @param weekday 1=Mon, 2=Tue, ..., 7=Sun (ISO).
+nth_weekday_of_month <- function(year, month, weekday, occurrence) {
+  month_start <- as.Date(sprintf("%d-%02d-01", year, month))
+  # `as.POSIXlt(d)$wday` is 0=Sun..6=Sat. Convert to ISO 1=Mon..7=Sun.
+  iso_dow <- function(d) { w <- as.POSIXlt(d)$wday; if (w == 0) 7L else as.integer(w) }
+  first_dow <- iso_dow(month_start)
+  offset_to_first <- (weekday - first_dow) %% 7
+  month_start + offset_to_first + 7 * (occurrence - 1)
+}
+
+#' Apply the per-indicator weekday rule to compute an expected release date.
+#' Returns Date or NA. Does not handle public-holiday shifts — that's why
+#' the scraped calendar is preferred.
+release_date_from_rule <- function(json_id, ref_year, ref_month) {
+  rule <- INDICATOR_RELEASE_RULE[[json_id]]
+  if (is.null(rule)) return(as.Date(NA))
+  rel_month <- ref_month + rule$month_offset
+  rel_year  <- ref_year
+  while (rel_month > 12L) { rel_month <- rel_month - 12L; rel_year <- rel_year + 1L }
+
+  if (is.null(rule$weekday) || is.na(rule$weekday)) {
+    # Fallback: lag_days from end of reference month.
+    ref_end <- ceiling_date(as.Date(sprintf("%d-%02d-01", ref_year, ref_month)),
+                            "month") - days(1)
+    return(ref_end + days(rule$lag_days))
+  }
+  nth_weekday_of_month(rel_year, rel_month, rule$weekday, rule$occurrence)
+}
+
+#' Compute (last_release_date, next_release_estimate) for a given indicator.
+#'
+#' Preference order:
+#'   1. Scraped ABS calendar (if a row is present and dates are non-NA).
+#'   2. Per-indicator weekday rule applied to the latest reference period
+#'      (and the next reference period for `next_release_estimate`).
+#'   3. NA.
+#'
+#' If the rule-derived `next_release_estimate` is already in the past
+#' (because we haven't yet ingested the data ABS has already published),
+#' ratchet it forward one period at a time until it is in the future.
+compute_release_dates <- function(json_id, last_ref_month, abs_calendar = NULL) {
+  scraped <- if (!is.null(abs_calendar)) {
+    abs_calendar |> filter(json_id == !!json_id) |> head(1)
+  } else NULL
+
+  scraped_last <- if (!is.null(scraped) && nrow(scraped) == 1) scraped$last_release_date else as.Date(NA)
+  scraped_next <- if (!is.null(scraped) && nrow(scraped) == 1) scraped$next_release_estimate else as.Date(NA)
+
+  if (is.na(last_ref_month)) {
+    return(list(
+      last  = if (!is.na(scraped_last)) format(scraped_last, "%Y-%m-%d") else NA_character_,
+      next_ = if (!is.na(scraped_next)) format(scraped_next, "%Y-%m-%d") else NA_character_
+    ))
+  }
+
+  parts <- strsplit(last_ref_month, "-", fixed = TRUE)[[1]]
+  y <- as.integer(parts[1]); m <- as.integer(parts[2])
+
+  rule_last <- release_date_from_rule(json_id, y, m)
+
+  step_months <- if (!is.null(INDICATOR_FREQUENCY[[json_id]]) &&
+                     INDICATOR_FREQUENCY[[json_id]] == "quarterly") 3L else 1L
+  next_y <- y; next_m <- m + step_months
+  while (next_m > 12L) { next_m <- next_m - 12L; next_y <- next_y + 1L }
+  rule_next <- release_date_from_rule(json_id, next_y, next_m)
+
+  # Ratchet rule_next forward if it's already in the past.
+  today <- Sys.Date()
+  while (!is.na(rule_next) && rule_next < today) {
+    next_m <- next_m + step_months
+    while (next_m > 12L) { next_m <- next_m - 12L; next_y <- next_y + 1L }
+    rule_next <- release_date_from_rule(json_id, next_y, next_m)
+    if (is.na(rule_next)) break
+  }
+
+  final_last <- if (!is.na(scraped_last)) scraped_last else rule_last
+  final_next <- if (!is.na(scraped_next)) scraped_next else rule_next
+
+  list(
+    last  = if (!is.na(final_last)) format(final_last, "%Y-%m-%d") else NA_character_,
+    next_ = if (!is.na(final_next)) format(final_next, "%Y-%m-%d") else NA_character_
+  )
+}
 
 #### Main emitter ####
 #' Write the 5 JSON artifacts consumed by the Next.js site.
@@ -266,6 +375,18 @@ emit_json <- function(target_dir, nowcast, master, vintage_info) {
   )
 
   # --- 4. indicators.json ---
+  # Pull the actual release dates published on each ABS latest-release page
+  # once per emit. Failures (offline runner, page-structure change) leave the
+  # tibble's dates NA and the caller falls back to a per-indicator weekday
+  # rule. Non-ABS indicators (cons_conf, bus_conf) are always rule-driven.
+  abs_calendar <- tryCatch(
+    fetch_abs_release_calendar(),
+    error = function(e) {
+      message("ABS release-calendar fetch failed: ", conditionMessage(e))
+      NULL
+    }
+  )
+
   long_df <- master$long
   indicators_list <- lapply(names(INDICATOR_ID_MAP), function(r_id) {
     json_id <- unname(INDICATOR_ID_MAP[[r_id]])
@@ -281,28 +402,7 @@ emit_json <- function(target_dir, nowcast, master, vintage_info) {
       )
 
     last_ref_month <- if (nrow(series_df) > 0) tail(series_df$date, 1) else NA_character_
-    lag_days <- INDICATOR_RELEASE_LAG_DAYS[[json_id]]
-    if (is.null(lag_days) || !is.finite(lag_days)) {
-      warning(sprintf("no release lag for %s — defaulting to 30 days", json_id))
-      lag_days <- 30
-    }
-
-    release_dates <- if (!is.na(last_ref_month)) {
-      parts <- strsplit(last_ref_month, "-", fixed = TRUE)[[1]]
-      y <- as.integer(parts[1]); m <- as.integer(parts[2])
-      month_start <- as.Date(sprintf("%d-%02d-01", y, m))
-      this_end <- ceiling_date(month_start, "month") - days(1)
-      # Quarterly series' next observation is 3 months on, not 1.
-      step_months <- if (!is.null(INDICATOR_FREQUENCY[[json_id]]) &&
-                         INDICATOR_FREQUENCY[[json_id]] == "quarterly") 3L else 1L
-      next_end <- ceiling_date(month_start + months(step_months), "month") - days(1)
-      list(
-        last = format(this_end + days(lag_days), "%Y-%m-%d"),
-        next_ = format(next_end + days(lag_days), "%Y-%m-%d")
-      )
-    } else {
-      list(last = NA_character_, next_ = NA_character_)
-    }
+    release_dates  <- compute_release_dates(json_id, last_ref_month, abs_calendar)
 
     list(
       id                    = json_id,
