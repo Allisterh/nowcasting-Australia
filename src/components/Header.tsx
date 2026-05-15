@@ -11,7 +11,7 @@ export default function Header({ generatedAt }: HeaderProps) {
         Australia GDP nowcast
       </h1>
       <p className="mt-2 text-xs text-label">
-        A nowcast is a real-time estimate of GDP growth for the current quarter, produced before the ABS publishes the official figure with a roughly 3-month lag after the end of the quarter.
+        This nowcast is a real-time estimate of GDP growth for the latest quarter, produced before the ABS publishes the official figure with a roughly 3-month lag after the end of the quarter.
       </p>
       <p className="mt-1 text-xs text-label">
         Last updated: {formatDate(generatedAt)}
