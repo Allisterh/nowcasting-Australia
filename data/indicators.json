@@ -7021,9 +7021,13 @@
         {
           "date": "2026-03",
           "value": -8
+        },
+        {
+          "date": "2026-04",
+          "value": -20
         }
       ],
-      "last_release_date": "2026-04-05",
+      "last_release_date": "2026-05-05",
       "next_release_estimate": "2026-06-05"
     },
     {
@@ -9567,10 +9571,14 @@
         {
           "date": "2026-03",
           "value": -29
+        },
+        {
+          "date": "2026-04",
+          "value": -24
         }
       ],
-      "last_release_date": "2026-04-14",
-      "next_release_estimate": "2026-05-12"
+      "last_release_date": "2026-05-12",
+      "next_release_estimate": "2026-06-09"
     },
     {
       "id": "goods_exp",
