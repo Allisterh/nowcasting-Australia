@@ -10,6 +10,8 @@
 
 **Design reference (the "spec"):** `docs/candidate-variables-2026-06-03.md` (annotated) + `docs/backtest-recommendation-2026-04-17.md` (baseline metrics). Diagnosis recap: the model over-forecast Q1 2026 (+0.77% vs actual **+0.30%**, level 695,945) because the labour/hard-activity-dominated panel was deaf to soft + commodity signals; the fix under test is an evidence-gated panel expansion (commodity/ToT + real-activity, no financial block).
 
+**Execution environment:** this work runs on the **Lenovo Y530 (Windows, i5-8300H 4C/8T, 16 GB RAM, active cooling)** — chosen for RAM headroom + core count to parallelise the backtests. Shell commands below use bash idioms (`cd … && Rscript`, `curl`, `cp`, heredocs); on Windows adapt as needed (`cp`→`copy`/`Copy-Item`, `curl` is available on Win10+, run R via `Rscript`). The repo already carries Windows-runner fixes (FRED `httr::GET`/HTTP-1.1, `renv`-on-Windows) so this is a tested path. First action on the laptop is Task 0.1 (`renv::restore()`).
+
 ---
 
 ## Karpathy guardrails (apply to every task)
@@ -347,6 +349,7 @@ for (r in c(2, 3, 4)) {
 
 - [ ] **Step 1: Implement** a helper `bt_subset(master, keep_cols, r)` that runs `run_backtest` on `master` restricted to `gdp_quarterly` + `keep_cols` and returns post-COVID QoQ RMSE + hit rate + the 2026 Q1 forecast.
 - [ ] **Step 2: Compute compute-cheaply** — run all four panels at **r=2 first** (~12 min each) to rank, then re-confirm the chosen panel(s) at **r=3** (~145 min each). Do NOT run the full ladder at r=3.
+- [ ] **Step 2b: Parallelise across the Lenovo's 4 cores.** The four panels are independent → run them concurrently instead of in a sequential loop, collapsing the r=2 ladder from ~4× a run to ~1 run of wall-clock. **Windows-safe approach only:** the Lenovo (Windows) has no `fork`, so `parallel::mclapply` will silently run serial — do NOT use it. Instead either (a) launch four separate `Rscript` processes, each running one panel and writing its own `panel_ladder_<name>.csv`, then combine; or (b) `future::plan(multisession, workers = 4)` + `furrr::future_map` (multisession spawns independent R sessions, works on Windows). Each worker holds its own copy of the panel — 4 × ~2–3 GB fits comfortably in 16 GB.
 - [ ] **Step 3: Write** `experimental/backtest_output/panel_ladder.csv` with columns `panel, n_indicators, r, qoq_rmse, hit_rate, q1_2026_qoq`.
 - [ ] **Step 4: Verify** all four panels present at r=2 and the chosen panel at r=3. **Commit** the script.
 
