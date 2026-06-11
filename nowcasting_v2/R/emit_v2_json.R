@@ -39,8 +39,10 @@ CI_UMIDAS <- "../pipeline/seed/ci_params_v2_umidas.json"
 # the lag-45 ABS-activity block and lag-30 financial block withheld data that was
 # actually public (MHSI April released 28 May; daily AGS yields/spreads/BBSW are
 # available within days). Used for the LIVE as-of truncation here and mirrored in
-# the indicators release-date generator. NB: the CI params remain calibrated on
-# the backtest's coarser lags — a known follow-up to recalibrate.
+# the indicators release-date generator. The CI params (ci_params_v2*.json) are now
+# calibrated on these accurate lags (backtest_v2.R .lag_acc), EXCEPT MHSI which the
+# calibration holds at its true historical 35d (the 28d schedule only began Apr 2026,
+# after the calibration window; using 28d historically would leak look-ahead).
 .LAG_ACC <- c(emp = 15, ft_emp = 15, pt_emp = 15, ue = 15, ud = 15, hours = 15,
               household_spending = 28, rt = 33, export = 35, building_app = 33,
               credit = 30, credit_housing = 30, credit_business = 30, credit_card = 30,

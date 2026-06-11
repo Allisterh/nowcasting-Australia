@@ -1,14 +1,15 @@
 {
   "basis": "post-COVID (target quarter >= 2022-01-01)",
+  "factor_count": 1,
   "n": 17,
-  "qoq_bias_pp": 0.1998,
-  "qoq_sd_pp": 0.354,
-  "qoq_rmse_pp": 0.3973,
+  "qoq_bias_pp": 0.2006,
+  "qoq_sd_pp": 0.3528,
+  "qoq_rmse_pp": 0.3967,
   "z_68": 1,
   "z_95": 1.96,
   "method": "bias-aware: interval centred on (forecast - bias), half-width z*sd",
-  "source": "../nowcasting_v2/cache/sweep_v2/B3_nab_wmi_qa_a05_q1_l01.csv",
-  "computed_at": "2026-06-10T23:16:51Z",
+  "source": "../nowcasting_v2/cache/ci_recalib/qa_a05_acc.csv",
+  "computed_at": "2026-06-11T18:10:44Z",
   "model": "qa_a05 (dfm_q=1)",
   "dfm_q": 1
 }

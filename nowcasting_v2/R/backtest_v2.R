@@ -71,16 +71,36 @@ suppressMessages({
   30L
 }
 
+# Accurate, HISTORICALLY-FAITHFUL publication lags for CI calibration. Matches
+# the live emit's .LAG_ACC EXCEPT household_spending = 35 (not 28): ABS published
+# the MHSI ~35-38d after the reference month for the entire calibration window
+# (post-COVID .. 2026 Q1). The faster ~28d schedule only began with the Apr-2026
+# edition, which is AFTER this window, so 35 is correct here and avoids the
+# look-ahead leakage Fable caught (28d falsely surfaced month-2 MHSI at quarter
+# ends). NB: if the calibration window ever extends past Apr 2026, MHSI must
+# become month-aware (28d only for non-quarter-month editions). At quarter-end
+# as-of dates this map yields the SAME information set as the coarse .lag_for_id,
+# so the calibrated bands should match the shipped ones (modulo panel revisions).
+.LAG_ACC_BT <- c(emp = 15, ft_emp = 15, pt_emp = 15, ue = 15, ud = 15, hours = 15,
+                 household_spending = 35, rt = 33, export = 35, building_app = 33,
+                 credit = 30, credit_housing = 30, credit_business = 30, credit_card = 30,
+                 fcmygbag3 = 2, fcmygbag5 = 2, fcmygbag10 = 2,
+                 scrigbag3 = 2, scrigbag5 = 2, scrigbag10 = 2, firmmbab90 = 2,
+                 nab_conf = 10, nab_cond = 10, nab_trade = 10, nab_profit = 10,
+                 nab_emp = 10, nab_forward = 10, nab_stocks = 10, nab_cu = 10,
+                 anz_ads = 10, anz_sent = 10, wmi_sent = -15)
+.lag_acc <- function(id) if (id %in% names(.LAG_ACC_BT)) .LAG_ACC_BT[[id]] else 30L
+
 # Truncate the wide raw panel to data published by as_of_date.
 # `date` column is first-of-(reference)-month. Reference period END = end of that
 # month; an obs is available when end-of-month + lag <= as_of.
-.truncate_panel <- function(wide, as_of_date) {
+.truncate_panel <- function(wide, as_of_date, lag_fn = .lag_for_id) {
   as_of_date <- as.Date(as_of_date)
   ids <- setdiff(names(wide), "date")
   ref_end <- lubridate::ceiling_date(wide$date, unit = "month") - lubridate::days(1)
   out <- wide
   for (id in ids) {
-    lag <- .lag_for_id(id)
+    lag <- lag_fn(id)
     rel <- ref_end + lubridate::days(lag)
     out[[id]][rel > as_of_date] <- NA_real_
   }
@@ -121,6 +141,7 @@ backtest_v2 <- function(panel_rds      = "cache/panel_vintage_latest.rds",
                         sel_alpha      = 0.10,           # sweep: targeted-predictor selection threshold
                         dfm_q          = 1L,             # sweep: number of dynamic factors in the MAI
                         qa_lag         = 0L:1L,          # sweep: QA quarterly lag in nowcast_midas
+                        lag_fn         = .lag_for_id,    # publication lags; pass .lag_acc for CI calibration
                         verbose        = TRUE) {
   model <- match.arg(model)
 
@@ -170,7 +191,7 @@ backtest_v2 <- function(panel_rds      = "cache/panel_vintage_latest.rds",
     as_of <- as.Date(as_of, origin = "1970-01-01")
     res <- tryCatch({
       # 1. truncate raw panel + GDP to as-of
-      wide_t <- .truncate_panel(wide_full, as_of)
+      wide_t <- .truncate_panel(wide_full, as_of, lag_fn = lag_fn)
       gdp_t  <- .truncate_gdp(gdp_full, as_of, gdp_lag = gdp_lag)
 
       # drop all-NA columns (series not yet started as of this date)
