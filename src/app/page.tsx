@@ -31,7 +31,7 @@ export default function Home() {
       ) : (
         <HeadlineCard latest={data.latest} gdp={data.gdp} />
       )}
-      <VintageChart nowcasts={v2Nowcasts} latest={data.latest} />
+      <VintageChart nowcasts={v2Nowcasts} latest={data.latest} targetQuarter={v2 ? v2.target_quarter : undefined} />
       <IndicatorGrid indicators={data.indicatorsV2 ?? data.indicators} />
       <PerformanceSection
         performance={data.performanceV2 ?? data.performance}

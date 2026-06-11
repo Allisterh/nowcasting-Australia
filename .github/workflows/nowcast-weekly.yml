@@ -139,6 +139,11 @@ jobs:
           # freshly-fetched data_raw. Python stdlib only; reads data_raw, so it
           # picks up both the RBA/ABS fetch above and the survey commits on main.
           python gen_indicators_v2.py
+          # Refresh the v2 track record (data/performance_v2.json) so a newly
+          # released GDP actual (now in data/gdp.json from the v1 pipeline above)
+          # is scored for any quarter that already has a backcast. NB: brand-new
+          # quarters need the v2 backtest re-run to gain a backcast (separate job).
+          python gen_performance_v2.py
 
       # The v2 step is continue-on-error so it can't stale the live v1 site; surface
       # its failure loudly here instead (the job-level "Alert on failure" never

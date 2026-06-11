@@ -20,6 +20,12 @@ import { chartColors, axisTick } from "@/lib/chartTheme";
 interface VintageChartProps {
   nowcasts: VintageSeries;
   latest: LatestNowcast;
+  // Quarter to plot the nowcast evolution for. Pass the v2 target quarter when
+  // rendering v2 — the v1 `latest` updates on a different schedule, so keying the
+  // vintage filter off it silently empties the chart when the two diverge. The
+  // release-date line and the prior-actual dot below come from `latest` because
+  // they are model-independent facts (the ABS release calendar + last actual GDP).
+  targetQuarter?: string;
 }
 
 type VintagePoint = {
@@ -32,11 +38,12 @@ type VintagePoint = {
 type ActualPoint = { kind: "actual"; x: number; y: number; actualQuarter: string };
 type HoverState = { point: VintagePoint | ActualPoint; cx: number; cy: number } | null;
 
-export default function VintageChart({ nowcasts, latest }: VintageChartProps) {
+export default function VintageChart({ nowcasts, latest, targetQuarter }: VintageChartProps) {
   const [hover, setHover] = useState<HoverState>(null);
 
+  const plotQuarter = targetQuarter ?? latest.target_quarter;
   const relevant = nowcasts.vintages.filter(
-    (v) => v.target_quarter === latest.target_quarter,
+    (v) => v.target_quarter === plotQuarter,
   );
   const vintagePoints: VintagePoint[] = relevant
     .map((v) => {
@@ -67,7 +74,7 @@ export default function VintageChart({ nowcasts, latest }: VintageChartProps) {
     0,
     actualPoint.y,
     ...vintagePoints.flatMap((p) => p.range),
-  ];
+  ].filter((v) => Number.isFinite(v));
   // Round to nice 0.25%% gridlines so the axis labels are sensible.
   const STEP = 0.25;
   const yMin = Math.floor((Math.min(...yVals) - 0.05) / STEP) * STEP;
