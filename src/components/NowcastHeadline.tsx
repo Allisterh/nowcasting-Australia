@@ -50,7 +50,7 @@ export default function NowcastHeadline({ headline, stress, prevLevel, gdp }: Pr
             onClick={() => setMode("volatile")}
             className={`px-3 py-1 border-l border-border-heavy ${mode === "volatile" ? "bg-border-heavy text-white" : "text-label hover:bg-panel"}`}
           >
-            Volatile-times
+            Volatility model
           </button>
         </div>
       </div>
@@ -63,7 +63,7 @@ export default function NowcastHeadline({ headline, stress, prevLevel, gdp }: Pr
         </div>
         <div className="flex items-baseline gap-x-2">
           <span className="font-headline text-2xl text-teal-500">{formatPct(model.yoy_growth_pct)}</span>
-          <span className="text-[10px] uppercase tracking-wider text-label">vs a year ago</span>
+          <span className="text-xs text-label">vs a year ago</span>
         </div>
       </div>
 

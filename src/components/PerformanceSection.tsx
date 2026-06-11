@@ -38,19 +38,16 @@ export default function PerformanceSection({ performance, isBacktest = false }: 
       </div>
       {isBacktest ? (
         <p className="text-xs text-label mb-3">
-          These are <strong>tested results</strong>: the new model run on past quarters before it went
-          live, not real-time predictions, so it has a track record from day one. Each quarter the
-          estimate is compared with the actual GDP figure. <strong>MAE</strong> (mean absolute error)
-          is the average size of the miss, ignoring direction. <strong>Bias</strong> is the average
-          signed miss, so a positive value means the model tends to come in a little high. The{" "}
-          <strong>RBA gap</strong> compares our year-ended estimate with the RBA&rsquo;s forecast
-          published mid-quarter (about two months before our full-quarter estimate) for each June and
-          December quarter; a negative gap means we landed closer to the final figure. We use more
-          within-quarter data than that RBA forecast, and both are measured against later-revised GDP.
+          MAE (mean absolute error) is the average size of the miss, ignoring direction. Bias is the
+          average signed miss, so a positive value means the model tends to come in a little high. The
+          RBA gap compares our year-ended estimate with the RBA&rsquo;s forecast published mid-quarter
+          (about two months before our full-quarter estimate) for each June and December quarter; a
+          negative gap means we landed closer to the final figure. We use more within-quarter data
+          than that RBA forecast, and both are measured against later-revised GDP.
         </p>
       ) : (
         <p className="text-xs text-label mb-3">
-          Each quarter the final nowcast (latest vintage before the release) is compared against the actual GDP value. <strong>MAE</strong> (mean absolute error) is the average size of the miss, ignoring direction. <strong>Bias</strong> is the average signed error, so a negative value means we systematically underpredict. The <strong>RBA gap</strong> compares our year-ended error to the RBA Statement on Monetary Policy forecast closest to quarter-end; a negative gap means our nowcast was closer to the final number.
+          Each quarter the final nowcast (latest vintage before the release) is compared against the actual GDP value. MAE (mean absolute error) is the average size of the miss, ignoring direction. Bias is the average signed error, so a negative value means we systematically underpredict. The RBA gap compares our year-ended error to the RBA Statement on Monetary Policy forecast closest to quarter-end; a negative gap means our nowcast was closer to the final number.
         </p>
       )}
       <table className="w-full text-xs border-collapse">

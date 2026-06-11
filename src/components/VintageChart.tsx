@@ -162,7 +162,7 @@ export default function VintageChart({ nowcasts, latest }: VintageChartProps) {
             <Scatter
               data={[actualPoint]}
               dataKey="y"
-              shape={makeDot(chartColors.primary, 5)}
+              shape={makeDot(chartColors.primary, 4)}
               isAnimationActive={false}
             />
             <ReferenceLine

@@ -40,12 +40,12 @@ export default function MethodologyPanel() {
           </p>
           <p>
             Two specifications are available. The <strong>Main</strong> estimate is tuned for
-            precision in normal quarters. The <strong>Volatile-times</strong> estimate places more
+            precision in normal quarters. The <strong>Volatility model</strong> estimate places more
             weight on recent months, trading some precision for faster response around shocks. Both
             are fit on the same panel and differ only in that weighting.
           </p>
           <p>
-            The confidence intervals are empirical, derived from the model&rsquo;s out-of-sample
+            The confidence intervals are derived from the model&rsquo;s out-of-sample
             backtest errors: we take the distribution of past nowcast errors against final GDP, size
             the 68% interval from that spread, and bias-correct for any systematic over- or
             under-prediction. They are calibrated on a limited run of recent quarters, so treat them
