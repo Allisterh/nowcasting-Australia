@@ -17,9 +17,9 @@ export default function MethodologyPanel() {
       {open && (
         <div className="border border-t-0 border-border-heavy px-4 py-4 text-sm text-border-heavy space-y-3">
           <p>
-            This dashboard estimates Australia&rsquo;s quarterly GDP growth before the ABS publishes
-            the official figure. It uses a Monthly Activity Indicator (MAI) and a MIDAS regression,
-            the approach the Reserve Bank of Australia set out in{" "}
+            This dashboard nowcasts Australia&rsquo;s quarterly real GDP growth ahead of the ABS
+            release using a Monthly Activity Indicator (MAI) and an unrestricted MIDAS (U-MIDAS)
+            regression, following the Reserve Bank of Australia&rsquo;s approach in{" "}
             <a
               href="https://www.rba.gov.au/publications/rdp/2024/2024-04.html"
               target="_blank"
@@ -31,24 +31,25 @@ export default function MethodologyPanel() {
             .
           </p>
           <p>
-            The MAI is a single monthly gauge of economic activity. A dynamic factor model builds it
-            by pulling the common signal out of about 30 monthly series: jobs, household spending,
-            trade, credit, financial markets, and business and consumer surveys. The MIDAS step links
-            the months of the MAI we already have to quarterly GDP growth, even when the latest month
-            for some series has not been published yet. The estimate updates every week as new data
-            comes in.
+            The MAI is a single monthly activity factor extracted by a dynamic factor model from
+            roughly 30 monthly series spanning labour, household spending, trade, credit, financial
+            markets, and business and consumer surveys. The U-MIDAS step regresses quarterly GDP
+            growth on the mixed-frequency MAI, accommodating the ragged edge of the panel where the
+            latest month of some series has not yet been published. Estimates are re-run weekly as new
+            observations arrive.
           </p>
           <p>
-            There are two estimates you can switch between. The <strong>Main</strong> estimate is
-            built for accuracy in normal quarters. The <strong>Volatile-times</strong> estimate
-            reacts faster to large swings, so it tends to do better around shocks. Both use the same
-            data; they differ in how much weight they put on the most recent months.
+            Two specifications are available. The <strong>Main</strong> estimate is tuned for
+            precision in normal quarters. The <strong>Volatile-times</strong> estimate places more
+            weight on recent months, trading some precision for faster response around shocks. Both
+            are fit on the same panel and differ only in that weighting.
           </p>
           <p>
-            The likely range comes from the model&rsquo;s own track record. We look at how far past
-            estimates landed from the final GDP figure, then use that spread to size the range and
-            adjust for any tendency to run high or low. It is based on a limited run of recent
-            quarters, so treat it as a guide rather than a precise interval.
+            The confidence intervals are empirical, derived from the model&rsquo;s out-of-sample
+            backtest errors: we take the distribution of past nowcast errors against final GDP, size
+            the 68% interval from that spread, and bias-correct for any systematic over- or
+            under-prediction. They are calibrated on a limited run of recent quarters, so treat them
+            as approximate.
           </p>
         </div>
       )}

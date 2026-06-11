@@ -146,15 +146,15 @@ export default function VintageChart({ nowcasts, latest }: VintageChartProps) {
               dataKey="range"
               type="linear"
               stroke="none"
-              fill={chartColors.primary}
-              fillOpacity={0.12}
+              fill={chartColors.band}
+              fillOpacity={0.18}
               isAnimationActive={false}
               activeDot={false}
             />
             <Scatter
               data={vintagePoints}
               dataKey="y"
-              line={{ stroke: chartColors.primary, strokeWidth: 1.5 }}
+              line={{ stroke: chartColors.accent, strokeWidth: 1.5 }}
               lineType="joint"
               shape={makeDot(chartColors.accent, 4)}
               isAnimationActive={false}

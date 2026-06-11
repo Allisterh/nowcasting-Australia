@@ -5136,7 +5136,7 @@
     },
     {
       "id": "nab_stocks",
-      "name": "Stocks",
+      "name": "Inventories",
       "group": "Business surveys",
       "unit": "net balance",
       "source": "NAB survey",
