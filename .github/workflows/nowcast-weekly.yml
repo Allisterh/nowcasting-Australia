@@ -131,6 +131,10 @@ jobs:
           Rscript R/fetch/fetch_rba_panel.R
           Rscript R/fetch/fetch_abs_panel.R
           Rscript R/emit_v2_json.R
+          # Refresh the indicator-grid display (data/indicators_v2.json) from the
+          # freshly-fetched data_raw. Python stdlib only; reads data_raw, so it
+          # picks up both the RBA/ABS fetch above and the survey commits on main.
+          python gen_indicators_v2.py
 
       - name: Commit updated JSON and vintage index
         id: commit
