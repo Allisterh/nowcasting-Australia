@@ -102,9 +102,15 @@ ABS_PANEL_IDS <- c(
   ud     = "A85255719L",  # Underemployed total ; Persons ; SA ('000)(6202.0 t23)
   hours  = "A84426277X",  # Monthly hours worked all jobs ; Persons ; SA
   rt     = "A3348585R",   # Retail turnover ; Total state/industry ; SA ($m)
-  export = "A2718577A"    # International trade: credits, total goods ; SA ($m)
+  export = "A2718577A",   # International trade: credits, total goods ; SA ($m)
+  building_app = "A422070J" # Building approvals; total dwelling units ; SA (8731.0)
   # house_prices: see note below -- no maintained free long-history series.
 )
+
+# household_spending (MHSI) is a DERIVED predictor: the model uses the REAL
+# (CPI-deflated) MHSI, so it can't be a plain fetch_abs_id. See fetch_mhsi_real().
+MHSI_NOMINAL_ID <- "A130200584T"  # MHSI total ; current prices ; SA   (5682.0)
+CPI_ID          <- "A2325846C"    # CPI all groups (6401.0 Table 17), quarterly
 
 fetch_emp        <- function() fetch_abs_id("emp",    ABS_PANEL_IDS[["emp"]])
 fetch_ft_emp     <- function() fetch_abs_id("ft_emp", ABS_PANEL_IDS[["ft_emp"]])
@@ -125,6 +131,31 @@ fetch_house_prices <- function() {
   fetch_abs_id("house_prices", "A83728455L")
 }
 
+# -----------------------------------------------------------------------------
+# household_spending = REAL (CPI-deflated) Monthly Household Spending Indicator.
+# real = nominal MHSI / CPI * 100, with quarterly CPI linearly interpolated to
+# monthly (and flat-extrapolated past the last CPI quarter). Mirrors the v2
+# deflation recorded in seed/panel_info.csv. Writes household_spending.csv +
+# household_spending_real.csv + household_spending_nominal.csv + cpi_monthly.csv.
+# -----------------------------------------------------------------------------
+fetch_mhsi_real <- function(write = TRUE) {
+  message("Fetching MHSI (real, CPI-deflated) ...")
+  nom <- fetch_abs_id("household_spending_nominal", MHSI_NOMINAL_ID, write = write)
+  cpi_q <- fetch_abs_id("cpi_quarterly_tmp", CPI_ID, write = FALSE)
+  # quarterly CPI -> monthly spine, linear interpolation; rule=2 = flat extrapolate
+  spine <- seq(min(cpi_q$date), max(nom$date), by = "month")
+  cpi_v <- approx(as.numeric(cpi_q$date), cpi_q$value, xout = as.numeric(spine),
+                  rule = 2)$y
+  cpi_monthly <- data.frame(date = spine, value = round(cpi_v, 4))
+  if (write) .write_series(cpi_monthly, "cpi_monthly")
+  idx <- cpi_monthly$value[match(nom$date, cpi_monthly$date)]
+  if (any(is.na(idx))) stop("fetch_mhsi_real: CPI does not cover the MHSI span")
+  real <- data.frame(date = nom$date, value = nom$value / idx * 100)
+  if (write) { .write_series(real, "household_spending")
+               .write_series(real, "household_spending_real") }
+  invisible(real)
+}
+
 fetch_abs_panel <- function(ids = setdiff(names(ABS_PANEL_IDS), character(0))) {
   res <- list()
   for (id in ids) {
@@ -136,6 +167,9 @@ fetch_abs_panel <- function(ids = setdiff(names(ABS_PANEL_IDS), character(0))) {
       }
     )
   }
+  res[["household_spending"]] <- tryCatch(
+    fetch_mhsi_real(),
+    error = function(e) { message(sprintf("  !! MHSI real FAILED: %s", conditionMessage(e))); NULL })
   invisible(res)
 }
 
