@@ -1,60 +1,0 @@
-- The project is out-of-sync -- use `renv::status()` for details.
-- Querying repositories for available source packages ... Done!
-The following package(s) will be installed:
-- colorspace    [2.1-2]
-- forecast      [9.0.2]
-- Formula       [1.2-5]
-- fracdiff      [1.5-4]
-- MatrixModels  [0.5-4]
-- midasr        [0.9]
-- nloptr        [2.2.1]
-- numDeriv      [2016.8-1.1]
-- optimx        [2025-4.9]
-- pracma        [2.4.6]
-- quantreg      [6.1]
-- Rcpp          [1.1.1-1.1]
-- RcppArmadillo [15.2.7-1]
-- SparseM       [1.84-2]
-- texreg        [1.39.5]
-- timeDate      [4052.112]
-These packages will be installed into "~/Documents/Claude/Projects/nowcasting/pipeline/renv/library/windows/R-4.5/x86_64-w64-mingw32".
-
-# Downloading packages -------------------------------------------------------
-[?25l  (0/16) Downloading: Rcpp, MatrixModels, Formula, nloptr, ...                                                                                                  [32m✔[0m numDeriv 2016.8-1.1                      [118 kB in 0.17s]
-  (1/16) Downloading: Rcpp, MatrixModels, Formula, nloptr, ...                                                                                                  [32m✔[0m Formula 1.2-5                            [162 kB in 0.48s]
-  (2/16) Downloading: Rcpp, MatrixModels, nloptr, forecast, ...                                                                                                 [32m✔[0m fracdiff 1.5-4                           [108 kB in 1.0s]
-  (3/16) Downloading: Rcpp, MatrixModels, nloptr, forecast, ...                                                                                                 [32m✔[0m MatrixModels 0.5-4                       [410 kB in 1.9s]
-  (4/16) Downloading: Rcpp, nloptr, forecast, timeDate, ...                                                                                                     [32m✔[0m nloptr 2.2.1                             [905 kB in 2.8s]
-  (5/16) Downloading: Rcpp, forecast, timeDate, quantreg, ...                                                                                                   [32m✔[0m SparseM 1.84-2                           [889 kB in 2.8s]
-  (6/16) Downloading: Rcpp, forecast, timeDate, quantreg, ...                                                                                                   [32m✔[0m texreg 1.39.5                            [1.4 MB in 3.9s]
-  (7/16) Downloading: Rcpp, forecast, timeDate, quantreg, ...                                                                                                   [32m✔[0m quantreg 6.1                             [1.5 MB in 4.5s]
-  (8/16) Downloading: Rcpp, forecast, timeDate, RcppArmadillo, ...                                                                                              [32m✔[0m midasr 0.9                               [1.2 MB in 4.5s]
-  (9/16) Downloading: Rcpp, forecast, timeDate, RcppArmadillo, ...                                                                                              [32m✔[0m RcppArmadillo 15.2.7-1                   [2.1 MB in 4.9s]
-  (10/16) Downloading: Rcpp, forecast, timeDate, pracma, ...                                                                                                    [32m✔[0m pracma 2.4.6                             [1.8 MB in 5.2s]
-  (11/16) Downloading: Rcpp, forecast, timeDate, optimx, ...                                                                                                    [32m✔[0m forecast 9.0.2                           [2.0 MB in 5.3s]
-  (12/16) Downloading: Rcpp, timeDate, optimx, colorspace                                                                                                       [32m✔[0m colorspace 2.1-2                         [2.7 MB in 5.5s]
-  (13/16) Downloading: Rcpp, timeDate, optimx                                                                                                                   [32m✔[0m Rcpp 1.1.1-1.1                           [2.9 MB in 6.9s]
-  (14/16) Downloading: timeDate, optimx                                                                                                                         [32m✔[0m timeDate 4052.112                        [1.5 MB in 7.1s]
-  (15/16) Downloading: optimx                                                                                                                                   [32m✔[0m optimx 2025-4.9                          [2.7 MB in 7.7s]
-                                                                                Successfully downloaded 16 packages in 8.4 seconds.
-
-# Installing packages --------------------------------------------------------
-                                                                                [32m✔[0m colorspace 2.1-2                         [installed binary]
-                                                                                [32m✔[0m Formula 1.2-5                            [installed binary]
-                                                                                [32m✔[0m fracdiff 1.5-4                           [installed binary]
-                                                                                [32m✔[0m MatrixModels 0.5-4                       [installed binary]
-                                                                                [32m✔[0m nloptr 2.2.1                             [installed binary]
-                                                                                [32m✔[0m numDeriv 2016.8-1.1                      [installed binary]
-                                                                                [32m✔[0m pracma 2.4.6                             [installed binary]
-                                                                                [32m✔[0m Rcpp 1.1.1-1.1                           [installed binary in 1.3s]
-                                                                                [32m✔[0m SparseM 1.84-2                           [installed binary]
-                                                                                [32m✔[0m texreg 1.39.5                            [installed binary]
-                                                                                [32m✔[0m timeDate 4052.112                        [installed binary]
-                                                                                [32m✔[0m optimx 2025-4.9                          [installed binary]
-                                                                                [32m✔[0m RcppArmadillo 15.2.7-1                   [installed binary in 2.1s]
-                                                                                [32m✔[0m quantreg 6.1                             [installed binary]
-                                                                                [32m✔[0m forecast 9.0.2                           [installed binary]
-                                                                                [32m✔[0m midasr 0.9                               [installed binary]
-Successfully installed 16 packages in 13 seconds.
-[?25hmidasr installed: TRUE 
-MIDASR_EXIT=0

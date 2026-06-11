@@ -42,3 +42,19 @@ next-env.d.ts
 /pipeline/renv/staging/
 /pipeline/.Rhistory
 /pipeline/.RData
+
+# local editor / agent / cache dirs (never track on the public repo)
+/.obsidian/
+/.claude/
+/.cache/
+__pycache__/
+*.pyc
+# local notes / pasted images
+/Feedback*.md
+/feedback*.md
+/Pasted image*.png
+# scratch working dir + experimental backtest outputs (regenerable binaries)
+/nowcast_new_scrape_results/
+/pipeline/experimental/
+# scratch render from the NAB parser
+/nowcasting_v2/nab_t1.png

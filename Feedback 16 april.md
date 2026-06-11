@@ -1,9 +1,0 @@
-- Page title should be "Australia GDP nowcast"
-- i'd like the text "A weekly nowcast of Australian GDP using a dynamic factor model over 13 high-frequency indicators." to match the colour and size of the "Last updated: 15 Apr 2026" text below it
-- Q1 nowcast box: I want this chart to be a bar chart showing GDP growth over the past 12 quarters, plus the current nowcast in green
-- Don't need the GDP chain volume — quarterly chart box
-- "Vintage evolution — how each quarter's nowcast moved over time" chart: I want this to be similar to the vintage_evolution chart that's exported from R. So it had a point for the previous quarter's GDP growth, then each nowcast vintage is a green dot (they're connected as a line graph), with the X axes being days until next GDP release (which should go from -90 to 0 on the right). Vertical dotted line at the 0 mark with the date of the next gdp release labelled.
-- "High-frequency indicators (12)" section. 1) just call them indicators. 2) you'll need to decide if these are best presented as monthly change (in units, e.g. for employment) or if a linegraph of the indicator is fine.
-- "Track record" love this section. 1) you'll need to explain what "direction hit rate" is, because idk what that is. 
-- "Methodology". I like having this as an expandable box. when you click "show" i'd like all the text to be inside the same box that's the same width as the page. not as a separate box.
-- footer. I just want "With love from James Wilson" with my name linking to home.wlsn.me
