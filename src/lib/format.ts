@@ -35,21 +35,30 @@ export function formatRawChange(delta: number, unit: string): string {
   const sign = delta > 0 ? "+" : delta < 0 ? "−" : "";
 
   switch (unit) {
-    case "$ millions": {
+    case "$ millions":
+    case "$m": {
       if (abs >= 1000) return `${sign}$${(abs / 1000).toFixed(1)}bn`;
       if (abs >= 100) return `${sign}$${abs.toFixed(0)}M`;
       return `${sign}$${abs.toFixed(1)}M`;
     }
-    case "persons": {
+    case "$bn":
+      return `${sign}$${abs.toFixed(1)}bn`;
+    case "persons":
+    case "000s persons": {
       if (abs >= 1000) return `${sign}${(abs / 1000).toFixed(1)}m`;
       return `${sign}${abs.toFixed(1)}k`;
     }
     case "hours (thousands)":
       return `${sign}${abs.toFixed(0)}k hrs`;
+    case "mn hours":
+    case "dwellings":
     case "count":
       return `${sign}${Math.round(abs).toLocaleString("en-AU")}`;
     case "percent":
+    case "%":
       return `${delta === 0 ? "" : sign}${abs.toFixed(1)}pp`;
+    case "net balance":
+      return `${delta === 0 ? "" : sign}${abs.toFixed(0)} pts`;
     case "index":
       return `${delta === 0 ? "" : sign}${abs.toFixed(1)} pts`;
     default:

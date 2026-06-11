@@ -33,9 +33,9 @@ def lvl(q):  # realised GDP level ($m) for a quarter
     return gdp[q]["value"]
 
 errors, edges = [], []
-for q in sorted(bc, key=lambda x: gq.index(x) if x in gq else 1e9):
-    if q not in gdp:
-        continue
+# Only score quarters present in BOTH the backcast set and realised GDP, in GDP
+# order (avoids the 1e9 sort-key collision for quarters missing from gdp.json).
+for q in sorted(set(bc) & set(gq), key=gq.index):
     i = gq.index(q)
     prev = lvl(gq[i - 1]) if i > 0 else lvl(q) / (1 + bc[q]["qoq_actual_pct"] / 100)
     fc_level = round(prev * (1 + bc[q]["qoq_forecast_pct"] / 100))

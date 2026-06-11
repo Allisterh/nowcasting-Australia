@@ -16,24 +16,14 @@ const GROUP_PREF: IndicatorGroup[] = [
 // Keys must match indicator IDs in data/indicators.json (source of truth:
 // pipeline/seed/component_metadata.rds). Any unknown key falls through to
 // "level" in the component.
+// Monthly-change bars for the series whose levels are near-flat lines (credit
+// aggregates + household spending); everything else falls back to "level".
 const SPARKLINE_MODE: Record<string, SparklineMode> = {
-  employment: "bar",
-  unemp_rate: "level",
-  participation: "level",
-  hours_worked: "level",
-  household_spending: "bar",
-  cons_conf: "level",
-  building_app: "level",
-  bus_conf: "level",
-  exports_goods: "level",
-  exports_servs: "level",
-  imports_goods: "level",
-  imports_servs: "level",
-  // v2 credit series: monthly change shown as bars (levels are near-flat lines)
   credit: "bar",
   credit_housing: "bar",
   credit_business: "bar",
   credit_card: "bar",
+  household_spending: "bar",
 };
 
 interface Props {

@@ -1,0 +1,6 @@
+kind,detail
+dup_disagree,"2008-05-01|[0.2, 2.7, 0.0]"
+chain_break,2008-06-01|2.7|0.2
+chain_break,2008-02-01|-8.4|1.8
+chain_break,1988-05-01|2.4|4.8
+chain_break,1987-12-01|-15.7|9.4

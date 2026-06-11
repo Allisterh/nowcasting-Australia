@@ -1,0 +1,6 @@
+[Thu Jun  4 05:03:50 GMTDT 2026] START expanded sweep (17-series free)
+[Thu Jun  4 06:24:28 GMTDT 2026] expanded exit=0  START core analysis (baseline vs free)
+[Thu Jun  4 06:24:32 GMTDT 2026] CORE_ANALYSIS_DONE exit=0
+[Thu Jun  4 06:24:32 GMTDT 2026] START full sweep (19-series free+NAB)
+[Thu Jun  4 07:49:27 GMTDT 2026] full exit=0  START 3-panel analysis
+[Thu Jun  4 07:49:35 GMTDT 2026] ALL_DONE_V2 exit=0

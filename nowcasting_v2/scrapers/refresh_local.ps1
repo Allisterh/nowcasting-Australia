@@ -1,18 +1,20 @@
 <#
-  refresh_local.ps1 - the R-dependent half of the weekly v2 refresh, for the
-  LOCAL (Claude Cowork) task. The cloud routine can't do these (no R; and ABS/RBA
-  aside, NAB/ANZ are Akamai-WAF-blocked from datacenter IPs). On the laptop we
-  have R + a residential IP + a browser, so one task can refresh everything.
+  refresh_local.ps1 — MANUAL FALLBACK for the R-dependent half of the v2 refresh.
 
-  This script does the DETERMINISTIC, R-dependent steps:
-    1. fetch_rba_panel.R   -> credit, housing/business credit, yields, spreads,
-                              BBSW, credit_card   (RBA CSV; closes the stale gap)
+  NOT the scheduled routine. The GitHub Actions weekly cron is now canonical for
+  all v2 R work (fetch RBA/ABS, fetch GDP, emit, regenerate the indicator grid).
+  Use this only for an ad-hoc local refresh (e.g. the cron is down, or you want a
+  same-day refresh after a data drop). The scheduled local task is surveys-only
+  and R-free — see docs/cowork-weekly-refresh.md.
+
+  Runs the same R + Python steps the cron runs, in the same order:
+    1. fetch_rba_panel.R   -> credit, yields, spreads, BBSW, credit_card  (RBA)
     2. fetch_abs_panel.R   -> employment, hours, MHSI, exports, building approvals
-    3. emit_v2_json.R      -> re-run the nowcast -> data/latest_v2.json
+    3. fetch_rt_gdp.R      -> GDP regressand + target-quarter driver (ABS)
+    4. emit_v2_json.R      -> re-run the nowcast -> data/latest_v2.json
+    5. gen_indicators_v2.py-> refresh the indicator grid -> data/indicators_v2.json
 
-  RUN ORDER in the Cowork task: do the SURVEY scrapes first (NAB/ANZ/Westpac via
-  the agent + scrapers/nab_monthly.py), THEN run this script, THEN commit + push.
-  That way emit_v2_json.R sees every fresh series.
+  Then review `git status` and commit + push yourself.
 
   Usage (from anywhere):  pwsh nowcasting_v2/scrapers/refresh_local.ps1
 #>
@@ -24,9 +26,14 @@ $repo = Resolve-Path (Join-Path $here "..\..")
 $v2   = Join-Path $repo "nowcasting_v2"
 $lib  = Join-Path $repo "pipeline\renv\library\windows\R-4.5\x86_64-w64-mingw32"
 
-# locate Rscript
-$rs = (Get-Command Rscript -ErrorAction SilentlyContinue).Source
-if (-not $rs) { $rs = (Get-ChildItem "C:\Program Files\R\*\bin\x64\Rscript.exe" -ErrorAction SilentlyContinue | Select-Object -Last 1).FullName }
+# locate Rscript — prefer a 4.5.x (matches the renv lib), else the highest version
+# present. Sort by parsed [version], NOT lexically (so R-4.10 > R-4.5).
+$rs = $null
+$cands = Get-ChildItem "C:\Program Files\R\R-*\bin\x64\Rscript.exe" -ErrorAction SilentlyContinue |
+         Sort-Object { [version]($_.FullName -replace '.*\\R-([\d.]+)\\.*', '$1') }
+$rs = ($cands | Where-Object { $_.FullName -match '\\R-4\.5\.' } | Select-Object -Last 1).FullName
+if (-not $rs) { $rs = ($cands | Select-Object -Last 1).FullName }
+if (-not $rs) { $rs = (Get-Command Rscript -ErrorAction SilentlyContinue).Source }
 if (-not $rs) { throw "Rscript not found - install R 4.5.x" }
 if (-not (Test-Path $lib)) { throw "renv library not found at $lib" }
 
@@ -39,8 +46,9 @@ Write-Host "== R_LIBS: $lib`n"
 
 foreach ($step in @(
     @{ name = "RBA panel (incl. credit_card)"; script = "R/fetch/fetch_rba_panel.R" },
-    @{ name = "ABS panel";                     script = "R/fetch/fetch_abs_panel.R" },
-    @{ name = "nowcast emit (latest_v2.json)"; script = "R/emit_v2_json.R" }
+    @{ name = "ABS panel (incl. MHSI, building approvals)"; script = "R/fetch/fetch_abs_panel.R" },
+    @{ name = "GDP regressand / target driver";  script = "R/fetch_rt_gdp.R" },
+    @{ name = "nowcast emit (latest_v2.json)";    script = "R/emit_v2_json.R" }
 )) {
     Write-Host "==== $($step.name) ===="
     & $rs $step.script
@@ -48,4 +56,8 @@ foreach ($step in @(
     Write-Host ""
 }
 
-Write-Host "== refresh_local.ps1 done. Review 'git status', then commit + push."
+Write-Host "==== indicator grid (indicators_v2.json) ===="
+python gen_indicators_v2.py
+if ($LASTEXITCODE -ne 0) { throw "gen_indicators_v2.py failed (exit $LASTEXITCODE)" }
+
+Write-Host "`n== refresh_local.ps1 done. Review 'git status', then commit + push."

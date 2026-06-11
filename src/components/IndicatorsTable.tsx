@@ -9,20 +9,30 @@ interface Props {
   onSelect: (ind: Indicator) => void;
 }
 
-const NO_PCT_UNITS = new Set(["percent", "index"]);
+// % change is meaningless for rates, diffusion indices and index levels.
+const NO_PCT_UNITS = new Set(["percent", "index", "%", "net balance"]);
 
 function formatLatestValue(value: number, unit: string): string {
   switch (unit) {
     case "$ millions":
+    case "$m":
       return `$${Math.round(value).toLocaleString("en-AU")}M`;
+    case "$bn":
+      return `$${value.toLocaleString("en-AU", { maximumFractionDigits: 1 })}bn`;
     case "persons":
+    case "000s persons":
       return `${value.toLocaleString("en-AU", { maximumFractionDigits: 1 })}k`;
     case "hours (thousands)":
       return `${Math.round(value).toLocaleString("en-AU")}k hrs`;
+    case "mn hours":
+    case "dwellings":
     case "count":
       return Math.round(value).toLocaleString("en-AU");
     case "percent":
+    case "%":
       return `${value.toFixed(1)}%`;
+    case "net balance":
+      return value.toFixed(0);
     case "index":
       return value.toFixed(1);
     default:

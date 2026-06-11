@@ -1,0 +1,1919 @@
+series,ref_month,value,source_pdf,release_date
+aig_pmi,2001-05-01,-5.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2001-06-01
+aig_pmi,2001-06-01,6.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2001-07-01
+aig_pmi,2001-07-01,1.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2001-08-01
+aig_pmi,2001-08-01,7.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2001-09-01
+aig_pmi,2001-09-01,9.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2001-10-01
+aig_pmi,2001-10-01,6.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2001-11-01
+aig_pmi,2001-11-01,9.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2001-12-01
+aig_pmi,2001-12-01,0.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2002-01-01
+aig_pmi,2002-01-01,12.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2002-02-01
+aig_pmi,2002-02-01,15.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2002-03-01
+aig_pmi,2002-03-01,21.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2002-04-01
+aig_pmi,2002-04-01,16.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2002-05-01
+aig_pmi,2002-05-01,24.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2002-06-01
+aig_pmi,2002-06-01,16.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2002-07-01
+aig_pmi,2002-07-01,6.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2002-08-01
+aig_pmi,2002-08-01,16.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2002-09-01
+aig_pmi,2002-09-01,7.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2002-10-01
+aig_pmi,2002-10-01,12.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2002-11-01
+aig_pmi,2002-11-01,16.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2002-12-01
+aig_pmi,2002-12-01,10.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2003-01-01
+aig_pmi,2003-01-01,8.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2003-02-01
+aig_pmi,2003-02-01,11.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2003-03-01
+aig_pmi,2003-03-01,2.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2003-04-01
+aig_pmi,2003-04-01,8.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2003-05-01
+aig_pmi,2003-05-01,5.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2003-06-01
+aig_pmi,2003-06-01,0.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2003-07-01
+aig_pmi,2003-07-01,5.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2003-08-01
+aig_pmi,2003-08-01,4.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2003-09-01
+aig_pmi,2003-09-01,2.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2003-10-01
+aig_pmi,2003-10-01,13.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2003-11-01
+aig_pmi,2003-11-01,15.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2003-12-01
+aig_pmi,2003-12-01,5.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2004-01-01
+aig_pmi,2004-01-01,14.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2004-02-01
+aig_pmi,2004-02-01,4.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2004-03-01
+aig_pmi,2004-03-01,8.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2004-04-01
+aig_pmi,2004-04-01,16.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2004-05-01
+aig_pmi,2004-05-01,6.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2004-06-01
+aig_pmi,2004-06-01,2.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2004-07-01
+aig_pmi,2004-07-01,11.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2004-08-01
+aig_pmi,2004-08-01,4.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2004-09-01
+aig_pmi,2004-09-01,0.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2004-10-01
+aig_pmi,2004-10-01,5.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2004-11-01
+aig_pmi,2004-11-01,7.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2004-12-01
+aig_pmi,2004-12-01,15.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2005-01-01
+aig_pmi,2005-01-01,11.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2005-02-01
+aig_pmi,2005-02-01,4.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2005-03-01
+aig_pmi,2005-03-01,2.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2005-04-01
+aig_pmi,2005-04-01,5.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2005-05-01
+aig_pmi,2005-05-01,1.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2005-06-01
+aig_pmi,2005-06-01,9.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2005-07-01
+aig_pmi,2005-07-01,0.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2005-08-01
+aig_pmi,2005-08-01,-12.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2005-09-01
+aig_pmi,2005-09-01,2.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2005-10-01
+aig_pmi,2005-10-01,-5.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2005-11-01
+aig_pmi,2005-11-01,-10.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2005-12-01
+aig_pmi,2005-12-01,1.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2006-01-01
+aig_pmi,2006-01-01,-0.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2006-02-01
+aig_pmi,2006-02-01,-3.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2006-03-01
+aig_pmi,2006-03-01,5.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2006-04-01
+aig_pmi,2006-04-01,2.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2006-05-01
+aig_pmi,2006-05-01,-3.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2006-06-01
+aig_pmi,2006-06-01,10.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2006-07-01
+aig_pmi,2006-07-01,-2.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2006-08-01
+aig_pmi,2006-08-01,-1.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2006-09-01
+aig_pmi,2006-09-01,4.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2006-10-01
+aig_pmi,2006-10-01,2.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2006-11-01
+aig_pmi,2006-11-01,7.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2006-12-01
+aig_pmi,2006-12-01,6.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2007-01-01
+aig_pmi,2007-01-01,5.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2007-02-01
+aig_pmi,2007-02-01,15.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2007-03-01
+aig_pmi,2007-03-01,7.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2007-04-01
+aig_pmi,2007-04-01,4.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2007-05-01
+aig_pmi,2007-05-01,10.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2007-06-01
+aig_pmi,2007-06-01,5.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2007-07-01
+aig_pmi,2007-07-01,15.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2007-08-01
+aig_pmi,2007-08-01,3.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2007-09-01
+aig_pmi,2007-09-01,-0.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2007-10-01
+aig_pmi,2007-10-01,4.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2007-11-01
+aig_pmi,2007-11-01,9.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2007-12-01
+aig_pmi,2007-12-01,12.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2008-01-01
+aig_pmi,2008-01-01,-6.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2008-02-01
+aig_pmi,2008-02-01,2.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2008-03-02
+aig_pmi,2008-03-01,2.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2008-03-31
+aig_pmi,2008-04-01,5.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2008-05-01
+aig_pmi,2008-05-01,2.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2008-06-02
+aig_pmi,2008-06-01,-6.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2008-07-01
+aig_pmi,2008-07-01,-6.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2008-07-31
+aig_pmi,2008-10-01,-19.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2008-11-02
+aig_pmi,2008-12-01,-32.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2009-01-01
+aig_pmi,2009-01-01,-26.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2009-02-01
+aig_pmi,2009-02-01,-36.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2009-03-01
+aig_pmi,2009-03-01,-33.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2009-03-31
+aig_pmi,2009-04-01,-39.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2009-05-01
+aig_pmi,2009-05-01,-25.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2009-06-01
+aig_pmi,2009-06-01,-23.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2009-07-01
+aig_pmi,2009-07-01,-11.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2009-08-03
+aig_pmi,2009-08-01,3.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2009-09-01
+aig_pmi,2009-09-01,4.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2009-10-01
+aig_pmi,2009-10-01,3.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2009-11-01
+aig_pmi,2009-11-01,2.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2009-11-30
+aig_pmi,2009-12-01,-3.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2010-01-03
+aig_pmi,2010-01-01,2.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2010-01-31
+aig_pmi,2010-02-01,7.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2010-02-28
+aig_pmi,2010-03-01,0.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2010-03-31
+aig_pmi,2010-04-01,19.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2010-05-03
+aig_pmi,2010-05-01,12.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2010-06-01
+aig_pmi,2010-06-01,5.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2010-07-01
+aig_pmi,2010-07-01,8.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2010-08-02
+aig_pmi,2010-08-01,3.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2010-09-01
+aig_pmi,2010-09-01,-5.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2010-10-01
+aig_pmi,2010-10-01,-1.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2010-10-31
+aig_pmi,2010-11-01,-4.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2010-11-30
+aig_pmi,2010-12-01,-7.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2011-01-03
+aig_pmi,2011-01-01,-6.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2011-01-31
+aig_pmi,2011-02-01,2.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2011-02-28
+aig_pmi,2011-03-01,-4.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2011-03-31
+aig_pmi,2011-04-01,-3.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2011-05-02
+aig_pmi,2011-05-01,-4.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2011-06-01
+aig_pmi,2011-06-01,5.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2011-07-01
+aig_pmi,2011-07-01,-13.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2011-08-01
+aig_pmi,2011-08-01,-13.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2011-09-01
+aig_pmi,2011-09-01,-15.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2011-10-02
+aig_pmi,2011-10-01,-5.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2011-10-31
+aig_pmi,2011-11-01,-4.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2011-11-30
+aig_pmi,2011-12-01,0.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2012-01-02
+aig_pmi,2012-01-01,3.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2012-01-31
+aig_pmi,2012-02-01,2.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2012-02-29
+aig_pmi,2012-03-01,-1.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2012-04-02
+aig_pmi,2012-04-01,-12.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2012-05-01
+aig_pmi,2012-05-01,-15.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2012-06-01
+aig_pmi,2012-06-01,-5.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2012-07-02
+aig_pmi,2012-07-01,-19.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2012-08-01
+aig_pmi,2012-08-01,-9.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2012-09-03
+aig_pmi,2012-09-01,-11.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2012-10-01
+aig_pmi,2012-10-01,-9.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2012-10-31
+aig_pmi,2012-11-01,-12.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2012-12-02
+aig_pmi,2012-12-01,-11.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2013-01-01
+aig_pmi,2013-01-01,-19.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2013-01-31
+aig_pmi,2013-02-01,-8.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2013-02-28
+aig_pmi,2013-03-01,-11.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2013-04-01
+aig_pmi,2013-04-01,-26.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2013-05-01
+aig_pmi,2013-05-01,-12.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2013-06-03
+aig_pmi,2013-06-01,-0.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2013-07-01
+aig_pmi,2013-07-01,-16.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2013-08-01
+aig_pmi,2013-08-01,-7.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2013-09-02
+aig_pmi,2013-09-01,3.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2013-10-01
+aig_pmi,2013-10-01,6.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2013-10-31
+aig_pmi,2013-11-01,-4.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2013-12-01
+aig_pmi,2013-12-01,-4.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2014-01-01
+aig_pmi,2014-01-01,-6.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2014-02-02
+aig_pmi,2014-02-01,-2.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2014-03-02
+aig_pmi,2014-03-01,-4.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2014-03-31
+aig_pmi,2014-04-01,-10.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2014-05-01
+aig_pmi,2014-05-01,-1.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2014-06-02
+aig_pmi,2014-06-01,-2.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2014-07-01
+aig_pmi,2014-07-01,1.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2014-08-01
+aig_pmi,2014-08-01,-5.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2014-09-01
+aig_pmi,2014-09-01,-7.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2014-10-01
+aig_pmi,2014-10-01,-1.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2014-11-02
+aig_pmi,2014-11-01,0.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2014-11-30
+aig_pmi,2014-12-01,-6.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2015-01-04
+aig_pmi,2015-01-01,-2.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2015-02-01
+aig_pmi,2015-02-01,-9.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2015-03-01
+aig_pmi,2015-03-01,-7.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2015-03-31
+aig_pmi,2015-04-01,-4.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2015-05-01
+aig_pmi,2015-05-01,4.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2015-06-01
+aig_pmi,2015-06-01,-11.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2015-07-01
+aig_pmi,2015-07-01,0.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2015-08-03
+aig_pmi,2015-08-01,3.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2015-09-01
+aig_pmi,2015-09-01,4.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2015-10-01
+aig_pmi,2015-10-01,0.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2015-11-01
+aig_pmi,2015-11-01,5.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2015-11-30
+aig_pmi,2015-12-01,3.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2016-01-03
+aig_pmi,2016-01-01,3.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2016-01-31
+aig_pmi,2016-02-01,7.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2016-02-29
+aig_pmi,2016-03-01,16.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2016-03-31
+aig_pmi,2016-04-01,6.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2016-05-02
+aig_pmi,2016-05-01,2.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2016-06-02
+aig_pmi,2016-06-01,3.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2016-07-01
+aig_pmi,2016-07-01,12.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2016-08-01
+aig_pmi,2016-08-01,-6.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2016-09-01
+aig_pmi,2016-09-01,-0.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2016-10-02
+aig_pmi,2016-10-01,1.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2016-10-31
+aig_pmi,2016-11-01,8.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2016-11-30
+aig_pmi,2016-12-01,10.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2017-01-02
+aig_pmi,2017-01-01,2.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2017-02-01
+aig_pmi,2017-02-01,18.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2017-02-28
+aig_pmi,2017-03-01,15.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2017-04-03
+aig_pmi,2017-04-01,18.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2017-05-01
+aig_pmi,2017-05-01,10.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2017-07-03
+aig_pmi,2017-07-01,12.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2017-08-01
+aig_pmi,2017-08-01,19.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2017-09-01
+aig_pmi,2017-09-01,8.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2017-10-01
+aig_pmi,2017-10-01,2.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2017-10-31
+aig_pmi,2017-11-01,14.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2017-11-30
+aig_pmi,2017-12-01,12.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2018-01-01
+aig_pmi,2018-01-01,17.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2018-01-31
+aig_pmi,2018-02-01,15.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2018-02-28
+aig_pmi,2018-03-01,26.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2018-04-02
+aig_pmi,2018-04-01,16.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2018-04-30
+aig_pmi,2018-05-01,15.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2018-06-01
+aig_pmi,2018-06-01,14.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2018-07-01
+aig_pmi,2018-07-01,4.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2018-07-31
+aig_pmi,2018-08-01,13.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2018-09-02
+aig_pmi,2018-09-01,18.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2018-10-01
+aig_pmi,2018-10-01,16.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2018-10-31
+aig_pmi,2018-11-01,2.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2018-12-02
+aig_pmi,2018-12-01,-1.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2019-01-06
+aig_pmi,2019-01-01,5.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2019-01-31
+aig_pmi,2019-02-01,8.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2019-02-28
+aig_pmi,2019-03-01,2.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2019-03-31
+aig_pmi,2019-04-01,9.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2019-04-30
+aig_pmi,2019-05-01,5.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2019-06-02
+aig_pmi,2019-06-01,-1.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2019-06-30
+aig_pmi,2019-07-01,2.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2019-07-31
+aig_pmi,2019-08-01,6.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2019-09-01
+aig_pmi,2019-09-01,9.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2019-09-30
+aig_pmi,2019-10-01,3.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2019-10-31
+aig_pmi,2019-11-01,-3.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2019-12-01
+aig_pmi,2019-12-01,-3.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2020-01-05
+aig_pmi,2020-01-01,-9.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2020-02-02
+aig_pmi,2020-02-01,-11.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2020-03-01
+aig_pmi,2020-03-01,7.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2020-03-31
+aig_pmi,2020-04-01,-28.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2020-04-30
+aig_pmi,2020-05-01,-16.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2020-05-31
+aig_pmi,2020-06-01,3.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2020-06-30
+aig_pmi,2020-07-01,7.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2020-08-02
+aig_pmi,2020-08-01,-1.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2020-08-31
+aig_pmi,2020-09-01,-6.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2020-09-30
+aig_pmi,2020-10-01,12.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2020-11-01
+aig_pmi,2020-11-01,4.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2020-11-30
+aig_pmi,2021-01-01,10.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2021-01-31
+aig_pmi,2021-02-01,17.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2021-02-28
+aig_pmi,2021-03-01,19.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2021-03-31
+aig_pmi,2021-04-01,23.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2021-05-02
+aig_pmi,2021-05-01,23.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2021-05-31
+aig_pmi,2021-06-01,26.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2021-06-30
+aig_pmi,2021-07-01,21.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2021-08-01
+aig_pmi,2021-08-01,3.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2021-08-31
+aig_pmi,2021-09-01,2.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2021-09-30
+aig_pmi,2021-10-01,0.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2021-10-31
+aig_pmi,2021-11-01,9.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2021-11-30
+aig_pmi,2021-12-01,-3.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2022-01-31
+aig_pmi,2022-02-01,6.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2022-02-28
+aig_pmi,2022-03-01,11.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2022-03-31
+aig_pmi,2022-04-01,17.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2022-05-01
+aig_pmi,2022-05-01,4.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2022-05-31
+aig_pmi,2022-06-01,8.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2022-06-30
+aig_pmi,2022-07-01,5.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2022-07-31
+aig_pmi,2022-08-01,-1.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2022-08-31
+aig_pmi,2022-09-01,0.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2022-10-03
+aig_pmi,2022-10-01,-0.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2022-11-01
+aig_pmi,2022-11-01,-10.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2022-11-30
+aig_pmi,2023-02-01,-6.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2023-02-28
+aig_pmi,2023-03-01,5.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2023-04-05
+aig_pmi,2023-04-01,-20.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2023-05-03
+aig_pmi,2023-05-01,-5.1,Australian Industry Group (AIG) Manufacturing Index.pdf,2023-06-07
+aig_pmi,2023-06-01,-19.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2023-07-05
+aig_pmi,2023-07-01,-25.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2023-08-02
+aig_pmi,2023-08-01,-19.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2023-09-06
+aig_pmi,2023-09-01,-12.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2023-10-04
+aig_pmi,2023-10-01,-20.9,Australian Industry Group (AIG) Manufacturing Index.pdf,2023-10-31
+aig_pmi,2023-11-01,-25.3,Australian Industry Group (AIG) Manufacturing Index.pdf,2023-12-05
+aig_pmi,2023-12-01,-23.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2024-02-06
+aig_pmi,2024-02-01,-12.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2024-03-05
+aig_pmi,2024-03-01,-7.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2024-04-02
+aig_pmi,2024-04-01,-13.9,Australian Industry Group (AIG) Manufacturing Index.pdf,2024-05-01
+aig_pmi,2024-05-01,-31.1,Australian Industry Group (AIG) Manufacturing Index.pdf,2024-06-05
+aig_pmi,2024-06-01,-26.5,Australian Industry Group (AIG) Manufacturing Index.pdf,2024-07-03
+aig_pmi,2024-07-01,-19.5,Australian Industry Group (AIG) Manufacturing Index.pdf,2024-08-07
+aig_pmi,2024-08-01,-30.8,Australian Industry Group (AIG) Manufacturing Index.pdf,2024-09-04
+aig_pmi,2024-09-01,-33.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2024-10-02
+aig_pmi,2024-10-01,-19.7,Australian Industry Group (AIG) Manufacturing Index.pdf,2024-11-05
+aig_pmi,2024-11-01,-17.9,Australian Industry Group (AIG) Manufacturing Index.pdf,2024-12-03
+aig_pmi,2024-12-01,-22.7,Australian Industry Group (AIG) Manufacturing Index.pdf,2025-02-04
+aig_pmi,2025-02-01,-8.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2025-03-04
+aig_pmi,2025-03-01,-29.7,Australian Industry Group (AIG) Manufacturing Index.pdf,2025-04-01
+aig_pmi,2025-04-01,-26.5,Australian Industry Group (AIG) Manufacturing Index.pdf,2025-05-07
+aig_pmi,2025-05-01,-23.5,Australian Industry Group (AIG) Manufacturing Index.pdf,2025-06-04
+aig_pmi,2025-06-01,-29.3,Australian Industry Group (AIG) Manufacturing Index.pdf,2025-07-02
+aig_pmi,2025-07-01,-23.9,Australian Industry Group (AIG) Manufacturing Index.pdf,2025-08-06
+aig_pmi,2025-08-01,-20.9,Australian Industry Group (AIG) Manufacturing Index.pdf,2025-09-03
+aig_pmi,2025-09-01,-13.2,Australian Industry Group (AIG) Manufacturing Index.pdf,2025-10-01
+aig_pmi,2025-10-01,-22.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2025-11-04
+aig_pmi,2025-11-01,-18.0,Australian Industry Group (AIG) Manufacturing Index.pdf,2025-12-02
+aig_pmi,2026-01-01,-19.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2026-02-03
+aig_pmi,2026-02-01,-15.6,Australian Industry Group (AIG) Manufacturing Index.pdf,2026-03-03
+aig_pmi,2026-03-01,-27.9,Australian Industry Group (AIG) Manufacturing Index.pdf,2026-03-31
+aig_pmi,2026-04-01,-27.9,Australian Industry Group (AIG) Manufacturing Index.pdf,2026-05-06
+aig_pmi,2026-05-01,-22.4,Australian Industry Group (AIG) Manufacturing Index.pdf,2026-06-03
+aig_pci,2005-09-01,10.0,Australian Industry Group (AIG) Construction Index.pdf,2005-10-01
+aig_pci,2005-10-01,8.0,Australian Industry Group (AIG) Construction Index.pdf,2005-11-01
+aig_pci,2005-11-01,8.0,Australian Industry Group (AIG) Construction Index.pdf,2005-12-01
+aig_pci,2005-12-01,10.0,Australian Industry Group (AIG) Construction Index.pdf,2006-01-01
+aig_pci,2006-01-01,10.0,Australian Industry Group (AIG) Construction Index.pdf,2006-02-01
+aig_pci,2006-02-01,6.0,Australian Industry Group (AIG) Construction Index.pdf,2006-03-01
+aig_pci,2006-03-01,2.0,Australian Industry Group (AIG) Construction Index.pdf,2006-04-01
+aig_pci,2006-04-01,-4.0,Australian Industry Group (AIG) Construction Index.pdf,2006-05-01
+aig_pci,2006-05-01,0.0,Australian Industry Group (AIG) Construction Index.pdf,2006-06-01
+aig_pci,2006-06-01,10.0,Australian Industry Group (AIG) Construction Index.pdf,2006-07-01
+aig_pci,2006-07-01,8.0,Australian Industry Group (AIG) Construction Index.pdf,2006-08-01
+aig_pci,2006-08-01,-6.0,Australian Industry Group (AIG) Construction Index.pdf,2006-09-01
+aig_pci,2006-09-01,2.0,Australian Industry Group (AIG) Construction Index.pdf,2006-10-01
+aig_pci,2006-10-01,-4.0,Australian Industry Group (AIG) Construction Index.pdf,2006-11-01
+aig_pci,2006-11-01,0.0,Australian Industry Group (AIG) Construction Index.pdf,2006-12-01
+aig_pci,2006-12-01,0.0,Australian Industry Group (AIG) Construction Index.pdf,2007-01-01
+aig_pci,2007-01-01,-12.0,Australian Industry Group (AIG) Construction Index.pdf,2007-02-01
+aig_pci,2007-02-01,4.0,Australian Industry Group (AIG) Construction Index.pdf,2007-03-01
+aig_pci,2007-03-01,8.0,Australian Industry Group (AIG) Construction Index.pdf,2007-04-01
+aig_pci,2007-04-01,4.0,Australian Industry Group (AIG) Construction Index.pdf,2007-05-01
+aig_pci,2007-05-01,-4.0,Australian Industry Group (AIG) Construction Index.pdf,2007-06-01
+aig_pci,2007-06-01,0.0,Australian Industry Group (AIG) Construction Index.pdf,2007-07-01
+aig_pci,2007-07-01,-2.0,Australian Industry Group (AIG) Construction Index.pdf,2007-08-01
+aig_pci,2007-08-01,0.0,Australian Industry Group (AIG) Construction Index.pdf,2007-09-01
+aig_pci,2007-09-01,6.0,Australian Industry Group (AIG) Construction Index.pdf,2007-10-01
+aig_pci,2007-10-01,8.0,Australian Industry Group (AIG) Construction Index.pdf,2007-11-01
+aig_pci,2007-11-01,8.0,Australian Industry Group (AIG) Construction Index.pdf,2007-12-01
+aig_pci,2007-12-01,16.0,Australian Industry Group (AIG) Construction Index.pdf,2008-01-01
+aig_pci,2008-01-01,8.0,Australian Industry Group (AIG) Construction Index.pdf,2008-02-01
+aig_pci,2008-02-01,7.8,Australian Industry Group (AIG) Construction Index.pdf,2008-03-06
+aig_pci,2008-03-01,-3.2,Australian Industry Group (AIG) Construction Index.pdf,2008-04-07
+aig_pci,2008-04-01,-14.8,Australian Industry Group (AIG) Construction Index.pdf,2008-05-07
+aig_pci,2008-05-01,-26.2,Australian Industry Group (AIG) Construction Index.pdf,2008-06-06
+aig_pci,2008-06-01,-19.4,Australian Industry Group (AIG) Construction Index.pdf,2008-07-07
+aig_pci,2008-08-01,-13.8,Australian Industry Group (AIG) Construction Index.pdf,2008-09-05
+aig_pci,2008-09-01,-36.4,Australian Industry Group (AIG) Construction Index.pdf,2008-10-06
+aig_pci,2008-10-01,-27.2,Australian Industry Group (AIG) Construction Index.pdf,2008-11-06
+aig_pci,2008-11-01,-36.0,Australian Industry Group (AIG) Construction Index.pdf,2008-12-04
+aig_pci,2008-12-01,-38.2,Australian Industry Group (AIG) Construction Index.pdf,2009-01-07
+aig_pci,2009-01-01,-31.8,Australian Industry Group (AIG) Construction Index.pdf,2009-02-05
+aig_pci,2009-02-01,-41.0,Australian Industry Group (AIG) Construction Index.pdf,2009-03-05
+aig_pci,2009-03-01,-39.2,Australian Industry Group (AIG) Construction Index.pdf,2009-04-07
+aig_pci,2009-04-01,-27.0,Australian Industry Group (AIG) Construction Index.pdf,2009-05-07
+aig_pci,2009-05-01,-6.2,Australian Industry Group (AIG) Construction Index.pdf,2009-06-05
+aig_pci,2009-06-01,-14.8,Australian Industry Group (AIG) Construction Index.pdf,2009-07-07
+aig_pci,2009-07-01,-21.0,Australian Industry Group (AIG) Construction Index.pdf,2009-08-07
+aig_pci,2009-08-01,-15.2,Australian Industry Group (AIG) Construction Index.pdf,2009-09-07
+aig_pci,2009-09-01,1.6,Australian Industry Group (AIG) Construction Index.pdf,2009-10-06
+aig_pci,2009-10-01,1.8,Australian Industry Group (AIG) Construction Index.pdf,2009-11-05
+aig_pci,2009-11-01,-4.8,Australian Industry Group (AIG) Construction Index.pdf,2009-12-06
+aig_pci,2009-12-01,-1.4,Australian Industry Group (AIG) Construction Index.pdf,2010-01-07
+aig_pci,2010-01-01,15.4,Australian Industry Group (AIG) Construction Index.pdf,2010-02-04
+aig_pci,2010-02-01,5.6,Australian Industry Group (AIG) Construction Index.pdf,2010-03-04
+aig_pci,2010-03-01,-2.6,Australian Industry Group (AIG) Construction Index.pdf,2010-04-09
+aig_pci,2010-04-01,11.6,Australian Industry Group (AIG) Construction Index.pdf,2010-05-07
+aig_pci,2010-05-01,6.4,Australian Industry Group (AIG) Construction Index.pdf,2010-06-07
+aig_pci,2010-06-01,-7.2,Australian Industry Group (AIG) Construction Index.pdf,2010-07-07
+aig_pci,2010-07-01,-13.4,Australian Industry Group (AIG) Construction Index.pdf,2010-08-06
+aig_pci,2010-08-01,-13.6,Australian Industry Group (AIG) Construction Index.pdf,2010-09-07
+aig_pci,2010-09-01,-18.4,Australian Industry Group (AIG) Construction Index.pdf,2010-10-06
+aig_pci,2010-10-01,-12.0,Australian Industry Group (AIG) Construction Index.pdf,2010-11-04
+aig_pci,2010-11-01,-15.6,Australian Industry Group (AIG) Construction Index.pdf,2010-12-06
+aig_pci,2010-12-01,-12.4,Australian Industry Group (AIG) Construction Index.pdf,2011-01-09
+aig_pci,2011-01-01,-19.6,Australian Industry Group (AIG) Construction Index.pdf,2011-02-06
+aig_pci,2011-02-01,-10.8,Australian Industry Group (AIG) Construction Index.pdf,2011-03-06
+aig_pci,2011-03-01,-21.2,Australian Industry Group (AIG) Construction Index.pdf,2011-04-07
+aig_pci,2011-04-01,-24.2,Australian Industry Group (AIG) Construction Index.pdf,2011-05-06
+aig_pci,2011-05-01,-20.8,Australian Industry Group (AIG) Construction Index.pdf,2011-06-07
+aig_pci,2011-06-01,-28.4,Australian Industry Group (AIG) Construction Index.pdf,2011-07-07
+aig_pci,2011-07-01,-27.8,Australian Industry Group (AIG) Construction Index.pdf,2011-08-05
+aig_pci,2011-08-01,-35.8,Australian Industry Group (AIG) Construction Index.pdf,2011-09-07
+aig_pci,2011-09-01,-40.0,Australian Industry Group (AIG) Construction Index.pdf,2011-10-06
+aig_pci,2011-10-01,-30.6,Australian Industry Group (AIG) Construction Index.pdf,2011-11-06
+aig_pci,2011-11-01,-20.8,Australian Industry Group (AIG) Construction Index.pdf,2011-12-06
+aig_pci,2011-12-01,-18.0,Australian Industry Group (AIG) Construction Index.pdf,2012-01-08
+aig_pci,2012-01-01,-20.4,Australian Industry Group (AIG) Construction Index.pdf,2012-02-06
+aig_pci,2012-02-01,-28.8,Australian Industry Group (AIG) Construction Index.pdf,2012-03-06
+aig_pci,2012-03-01,-27.6,Australian Industry Group (AIG) Construction Index.pdf,2012-04-10
+aig_pci,2012-04-01,-30.2,Australian Industry Group (AIG) Construction Index.pdf,2012-05-07
+aig_pci,2012-05-01,-30.6,Australian Industry Group (AIG) Construction Index.pdf,2012-06-07
+aig_pci,2012-06-01,-30.4,Australian Industry Group (AIG) Construction Index.pdf,2012-07-06
+aig_pci,2012-07-01,-34.8,Australian Industry Group (AIG) Construction Index.pdf,2012-08-07
+aig_pci,2012-08-01,-35.6,Australian Industry Group (AIG) Construction Index.pdf,2012-09-07
+aig_pci,2012-09-01,-38.2,Australian Industry Group (AIG) Construction Index.pdf,2012-10-05
+aig_pci,2012-10-01,-28.4,Australian Industry Group (AIG) Construction Index.pdf,2012-11-06
+aig_pci,2012-11-01,-26.0,Australian Industry Group (AIG) Construction Index.pdf,2012-12-06
+aig_pci,2012-12-01,-22.4,Australian Industry Group (AIG) Construction Index.pdf,2013-01-07
+aig_pci,2013-01-01,-27.6,Australian Industry Group (AIG) Construction Index.pdf,2013-02-06
+aig_pci,2013-02-01,-8.8,Australian Industry Group (AIG) Construction Index.pdf,2013-03-06
+aig_pci,2013-03-01,-22.0,Australian Industry Group (AIG) Construction Index.pdf,2013-04-08
+aig_pci,2013-04-01,-29.6,Australian Industry Group (AIG) Construction Index.pdf,2013-05-07
+aig_pci,2013-05-01,-29.4,Australian Industry Group (AIG) Construction Index.pdf,2013-06-07
+aig_pci,2013-06-01,-21.0,Australian Industry Group (AIG) Construction Index.pdf,2013-07-05
+aig_pci,2013-07-01,-11.8,Australian Industry Group (AIG) Construction Index.pdf,2013-08-07
+aig_pci,2013-08-01,-12.6,Australian Industry Group (AIG) Construction Index.pdf,2013-09-06
+aig_pci,2013-09-01,-4.8,Australian Industry Group (AIG) Construction Index.pdf,2013-10-06
+aig_pci,2013-10-01,8.8,Australian Industry Group (AIG) Construction Index.pdf,2013-11-06
+aig_pci,2013-11-01,10.4,Australian Industry Group (AIG) Construction Index.pdf,2013-12-05
+aig_pci,2013-12-01,1.6,Australian Industry Group (AIG) Construction Index.pdf,2014-01-07
+aig_pci,2014-01-01,-3.6,Australian Industry Group (AIG) Construction Index.pdf,2014-02-06
+aig_pci,2014-02-01,-11.6,Australian Industry Group (AIG) Construction Index.pdf,2014-03-06
+aig_pci,2014-03-01,-7.6,Australian Industry Group (AIG) Construction Index.pdf,2014-04-07
+aig_pci,2014-04-01,-8.2,Australian Industry Group (AIG) Construction Index.pdf,2014-05-07
+aig_pci,2014-05-01,-6.6,Australian Industry Group (AIG) Construction Index.pdf,2014-06-06
+aig_pci,2014-06-01,3.6,Australian Industry Group (AIG) Construction Index.pdf,2014-07-07
+aig_pci,2014-07-01,5.2,Australian Industry Group (AIG) Construction Index.pdf,2014-08-07
+aig_pci,2014-09-01,18.2,Australian Industry Group (AIG) Construction Index.pdf,2014-10-06
+aig_pci,2014-10-01,6.8,Australian Industry Group (AIG) Construction Index.pdf,2014-11-06
+aig_pci,2014-11-01,-9.2,Australian Industry Group (AIG) Construction Index.pdf,2014-12-04
+aig_pci,2014-12-01,-11.2,Australian Industry Group (AIG) Construction Index.pdf,2015-01-08
+aig_pci,2015-01-01,-8.2,Australian Industry Group (AIG) Construction Index.pdf,2015-02-05
+aig_pci,2015-02-01,-12.2,Australian Industry Group (AIG) Construction Index.pdf,2015-03-05
+aig_pci,2015-03-01,0.2,Australian Industry Group (AIG) Construction Index.pdf,2015-04-09
+aig_pci,2015-04-01,-6.0,Australian Industry Group (AIG) Construction Index.pdf,2015-05-07
+aig_pci,2015-05-01,-4.4,Australian Industry Group (AIG) Construction Index.pdf,2015-06-05
+aig_pci,2015-06-01,-7.2,Australian Industry Group (AIG) Construction Index.pdf,2015-07-07
+aig_pci,2015-07-01,-5.8,Australian Industry Group (AIG) Construction Index.pdf,2015-08-07
+aig_pci,2015-08-01,7.6,Australian Industry Group (AIG) Construction Index.pdf,2015-09-07
+aig_pci,2015-09-01,3.8,Australian Industry Group (AIG) Construction Index.pdf,2015-10-06
+aig_pci,2015-10-01,4.2,Australian Industry Group (AIG) Construction Index.pdf,2015-11-05
+aig_pci,2015-11-01,1.4,Australian Industry Group (AIG) Construction Index.pdf,2015-12-06
+aig_pci,2015-12-01,-6.4,Australian Industry Group (AIG) Construction Index.pdf,2016-01-07
+aig_pci,2016-01-01,-7.4,Australian Industry Group (AIG) Construction Index.pdf,2016-02-04
+aig_pci,2016-02-01,-7.8,Australian Industry Group (AIG) Construction Index.pdf,2016-03-06
+aig_pci,2016-03-01,-9.6,Australian Industry Group (AIG) Construction Index.pdf,2016-04-07
+aig_pci,2016-04-01,1.6,Australian Industry Group (AIG) Construction Index.pdf,2016-05-06
+aig_pci,2016-05-01,-6.6,Australian Industry Group (AIG) Construction Index.pdf,2016-06-07
+aig_pci,2016-06-01,6.4,Australian Industry Group (AIG) Construction Index.pdf,2016-07-07
+aig_pci,2016-07-01,3.2,Australian Industry Group (AIG) Construction Index.pdf,2016-08-05
+aig_pci,2016-08-01,-6.8,Australian Industry Group (AIG) Construction Index.pdf,2016-09-07
+aig_pci,2016-09-01,2.8,Australian Industry Group (AIG) Construction Index.pdf,2016-10-06
+aig_pci,2016-10-01,-8.2,Australian Industry Group (AIG) Construction Index.pdf,2016-11-06
+aig_pci,2016-11-01,-6.8,Australian Industry Group (AIG) Construction Index.pdf,2016-12-06
+aig_pci,2016-12-01,-6.0,Australian Industry Group (AIG) Construction Index.pdf,2017-01-08
+aig_pci,2017-01-01,-4.6,Australian Industry Group (AIG) Construction Index.pdf,2017-02-06
+aig_pci,2017-02-01,6.2,Australian Industry Group (AIG) Construction Index.pdf,2017-03-06
+aig_pci,2017-03-01,2.4,Australian Industry Group (AIG) Construction Index.pdf,2017-04-07
+aig_pci,2017-04-01,3.8,Australian Industry Group (AIG) Construction Index.pdf,2017-05-05
+aig_pci,2017-05-01,13.4,Australian Industry Group (AIG) Construction Index.pdf,2017-06-07
+aig_pci,2017-06-01,12.0,Australian Industry Group (AIG) Construction Index.pdf,2017-07-07
+aig_pci,2017-07-01,21.0,Australian Industry Group (AIG) Construction Index.pdf,2017-08-07
+aig_pci,2017-08-01,10.6,Australian Industry Group (AIG) Construction Index.pdf,2017-09-07
+aig_pci,2017-09-01,9.4,Australian Industry Group (AIG) Construction Index.pdf,2017-10-05
+aig_pci,2017-10-01,6.4,Australian Industry Group (AIG) Construction Index.pdf,2017-11-06
+aig_pci,2017-11-01,15.0,Australian Industry Group (AIG) Construction Index.pdf,2017-12-06
+aig_pci,2017-12-01,5.6,Australian Industry Group (AIG) Construction Index.pdf,2018-01-07
+aig_pci,2018-01-01,8.6,Australian Industry Group (AIG) Construction Index.pdf,2018-02-06
+aig_pci,2018-02-01,12.0,Australian Industry Group (AIG) Construction Index.pdf,2018-03-06
+aig_pci,2018-03-01,14.4,Australian Industry Group (AIG) Construction Index.pdf,2018-04-08
+aig_pci,2018-04-01,10.8,Australian Industry Group (AIG) Construction Index.pdf,2018-05-06
+aig_pci,2018-05-01,8.0,Australian Industry Group (AIG) Construction Index.pdf,2018-06-06
+aig_pci,2018-06-01,1.2,Australian Industry Group (AIG) Construction Index.pdf,2018-07-05
+aig_pci,2018-07-01,4.0,Australian Industry Group (AIG) Construction Index.pdf,2018-08-06
+aig_pci,2018-08-01,3.6,Australian Industry Group (AIG) Construction Index.pdf,2018-09-06
+aig_pci,2018-09-01,-1.4,Australian Industry Group (AIG) Construction Index.pdf,2018-10-04
+aig_pci,2018-10-01,-7.2,Australian Industry Group (AIG) Construction Index.pdf,2018-11-06
+aig_pci,2018-11-01,-11.0,Australian Industry Group (AIG) Construction Index.pdf,2018-12-06
+aig_pci,2018-12-01,-14.8,Australian Industry Group (AIG) Construction Index.pdf,2019-01-10
+aig_pci,2019-01-01,-13.8,Australian Industry Group (AIG) Construction Index.pdf,2019-02-06
+aig_pci,2019-02-01,-12.4,Australian Industry Group (AIG) Construction Index.pdf,2019-03-06
+aig_pci,2019-03-01,-8.8,Australian Industry Group (AIG) Construction Index.pdf,2019-04-04
+aig_pci,2019-04-01,-14.8,Australian Industry Group (AIG) Construction Index.pdf,2019-05-06
+aig_pci,2019-05-01,-19.2,Australian Industry Group (AIG) Construction Index.pdf,2019-06-06
+aig_pci,2019-06-01,-14.0,Australian Industry Group (AIG) Construction Index.pdf,2019-07-04
+aig_pci,2019-07-01,-21.8,Australian Industry Group (AIG) Construction Index.pdf,2019-08-06
+aig_pci,2019-08-01,-10.8,Australian Industry Group (AIG) Construction Index.pdf,2019-09-05
+aig_pci,2019-09-01,-14.8,Australian Industry Group (AIG) Construction Index.pdf,2019-10-06
+aig_pci,2019-10-01,-12.2,Australian Industry Group (AIG) Construction Index.pdf,2019-11-06
+aig_pci,2019-11-01,-20.0,Australian Industry Group (AIG) Construction Index.pdf,2019-12-05
+aig_pci,2019-12-01,-22.2,Australian Industry Group (AIG) Construction Index.pdf,2020-01-07
+aig_pci,2020-01-01,-17.4,Australian Industry Group (AIG) Construction Index.pdf,2020-02-04
+aig_pci,2020-02-01,-14.6,Australian Industry Group (AIG) Construction Index.pdf,2020-03-03
+aig_pci,2020-03-01,-24.2,Australian Industry Group (AIG) Construction Index.pdf,2020-04-02
+aig_pci,2020-04-01,-56.8,Australian Industry Group (AIG) Construction Index.pdf,2020-05-04
+aig_pci,2020-05-01,-50.2,Australian Industry Group (AIG) Construction Index.pdf,2020-06-02
+aig_pci,2020-06-01,-29.0,Australian Industry Group (AIG) Construction Index.pdf,2020-07-02
+aig_pci,2020-07-01,-14.6,Australian Industry Group (AIG) Construction Index.pdf,2020-08-04
+aig_pci,2020-08-01,-9.6,Australian Industry Group (AIG) Construction Index.pdf,2020-10-04
+aig_pci,2020-10-01,5.4,Australian Industry Group (AIG) Construction Index.pdf,2020-11-03
+aig_pci,2020-11-01,10.6,Australian Industry Group (AIG) Construction Index.pdf,2020-12-02
+aig_pci,2020-12-01,15.2,Australian Industry Group (AIG) Construction Index.pdf,2021-02-02
+aig_pci,2021-02-01,14.8,Australian Industry Group (AIG) Construction Index.pdf,2021-03-02
+aig_pci,2021-03-01,23.6,Australian Industry Group (AIG) Construction Index.pdf,2021-04-06
+aig_pci,2021-04-01,18.2,Australian Industry Group (AIG) Construction Index.pdf,2021-05-04
+aig_pci,2021-05-01,16.6,Australian Industry Group (AIG) Construction Index.pdf,2021-06-02
+aig_pci,2021-06-01,11.0,Australian Industry Group (AIG) Construction Index.pdf,2021-07-04
+aig_pci,2021-07-01,-2.6,Australian Industry Group (AIG) Construction Index.pdf,2021-08-03
+aig_pci,2021-08-01,-23.2,Australian Industry Group (AIG) Construction Index.pdf,2021-09-02
+aig_pci,2021-09-01,6.6,Australian Industry Group (AIG) Construction Index.pdf,2021-10-04
+aig_pci,2021-10-01,15.2,Australian Industry Group (AIG) Construction Index.pdf,2021-11-02
+aig_pci,2021-11-01,14.0,Australian Industry Group (AIG) Construction Index.pdf,2021-12-02
+aig_pci,2021-12-01,-8.2,Australian Industry Group (AIG) Construction Index.pdf,2022-02-02
+aig_pci,2022-02-01,6.8,Australian Industry Group (AIG) Construction Index.pdf,2022-03-02
+aig_pci,2022-03-01,13.0,Australian Industry Group (AIG) Construction Index.pdf,2022-04-04
+aig_pci,2022-04-01,11.8,Australian Industry Group (AIG) Construction Index.pdf,2022-05-03
+aig_pci,2022-05-01,0.8,Australian Industry Group (AIG) Construction Index.pdf,2022-06-02
+aig_pci,2022-06-01,-7.6,Australian Industry Group (AIG) Construction Index.pdf,2022-07-04
+aig_pci,2022-07-01,-9.4,Australian Industry Group (AIG) Construction Index.pdf,2022-08-02
+aig_pci,2022-08-01,-4.2,Australian Industry Group (AIG) Construction Index.pdf,2022-09-04
+aig_pci,2022-09-01,-7.0,Australian Industry Group (AIG) Construction Index.pdf,2022-10-05
+aig_pci,2022-10-01,-13.4,Australian Industry Group (AIG) Construction Index.pdf,2022-11-03
+aig_pci,2022-11-01,-3.6,Australian Industry Group (AIG) Construction Index.pdf,2022-12-04
+aig_pci,2023-01-01,-5.0,Australian Industry Group (AIG) Construction Index.pdf,2023-02-28
+aig_pci,2023-03-01,-5.8,Australian Industry Group (AIG) Construction Index.pdf,2023-04-05
+aig_pci,2023-04-01,-12.4,Australian Industry Group (AIG) Construction Index.pdf,2023-05-03
+aig_pci,2023-05-01,-6.6,Australian Industry Group (AIG) Construction Index.pdf,2023-06-07
+aig_pci,2023-06-01,10.6,Australian Industry Group (AIG) Construction Index.pdf,2023-07-05
+aig_pci,2023-07-01,-9.2,Australian Industry Group (AIG) Construction Index.pdf,2023-08-02
+aig_pci,2023-08-01,-9.9,Australian Industry Group (AIG) Construction Index.pdf,2023-09-06
+aig_pci,2023-09-01,7.1,Australian Industry Group (AIG) Construction Index.pdf,2023-10-04
+aig_pci,2023-10-01,18.5,Australian Industry Group (AIG) Construction Index.pdf,2023-10-31
+aig_pci,2023-11-01,-22.2,Australian Industry Group (AIG) Construction Index.pdf,2023-12-05
+aig_pci,2023-12-01,-11.5,Australian Industry Group (AIG) Construction Index.pdf,2024-02-06
+aig_pci,2024-02-01,-18.4,Australian Industry Group (AIG) Construction Index.pdf,2024-03-05
+aig_pci,2024-03-01,-12.9,Australian Industry Group (AIG) Construction Index.pdf,2024-04-02
+aig_pci,2024-04-01,-25.6,Australian Industry Group (AIG) Construction Index.pdf,2024-05-01
+aig_pci,2024-05-01,-68.1,Australian Industry Group (AIG) Construction Index.pdf,2024-06-05
+aig_pci,2024-06-01,-23.2,Australian Industry Group (AIG) Construction Index.pdf,2024-07-03
+aig_pci,2024-07-01,-20.7,Australian Industry Group (AIG) Construction Index.pdf,2024-08-07
+aig_pci,2024-08-01,-38.1,Australian Industry Group (AIG) Construction Index.pdf,2024-09-04
+aig_pci,2024-09-01,-19.8,Australian Industry Group (AIG) Construction Index.pdf,2024-10-02
+aig_pci,2024-10-01,-40.9,Australian Industry Group (AIG) Construction Index.pdf,2024-11-05
+aig_pci,2024-11-01,-19.0,Australian Industry Group (AIG) Construction Index.pdf,2024-12-03
+aig_pci,2024-12-01,-20.0,Australian Industry Group (AIG) Construction Index.pdf,2025-02-04
+aig_pci,2025-02-01,-3.7,Australian Industry Group (AIG) Construction Index.pdf,2025-03-04
+aig_pci,2025-03-01,-19.3,Australian Industry Group (AIG) Construction Index.pdf,2025-04-01
+aig_pci,2025-04-01,-7.9,Australian Industry Group (AIG) Construction Index.pdf,2025-05-07
+aig_pci,2025-05-01,-6.4,Australian Industry Group (AIG) Construction Index.pdf,2025-06-04
+aig_pci,2025-06-01,-14.9,Australian Industry Group (AIG) Construction Index.pdf,2025-07-02
+aig_pci,2025-07-01,-1.3,Australian Industry Group (AIG) Construction Index.pdf,2025-08-06
+aig_pci,2025-08-01,1.0,Australian Industry Group (AIG) Construction Index.pdf,2025-09-03
+aig_pci,2025-09-01,12.3,Australian Industry Group (AIG) Construction Index.pdf,2025-10-01
+aig_pci,2025-10-01,-7.1,Australian Industry Group (AIG) Construction Index.pdf,2025-11-04
+aig_pci,2025-11-01,-18.7,Australian Industry Group (AIG) Construction Index.pdf,2025-12-02
+aig_pci,2026-01-01,5.2,Australian Industry Group (AIG) Construction Index.pdf,2026-02-03
+aig_pci,2026-02-01,-8.2,Australian Industry Group (AIG) Construction Index.pdf,2026-03-03
+aig_pci,2026-03-01,-31.4,Australian Industry Group (AIG) Construction Index.pdf,2026-03-31
+aig_pci,2026-04-01,-19.3,Australian Industry Group (AIG) Construction Index.pdf,2026-05-06
+aig_pci,2026-05-01,-9.9,Australian Industry Group (AIG) Construction Index.pdf,2026-06-03
+aig_psi,2003-02-01,13.6,Australian Industry Group (AIG) Services Index.pdf,2003-03-01
+aig_psi,2003-03-01,13.0,Australian Industry Group (AIG) Services Index.pdf,2003-04-01
+aig_psi,2003-04-01,11.2,Australian Industry Group (AIG) Services Index.pdf,2003-05-01
+aig_psi,2003-05-01,16.2,Australian Industry Group (AIG) Services Index.pdf,2003-06-01
+aig_psi,2003-06-01,14.4,Australian Industry Group (AIG) Services Index.pdf,2003-07-01
+aig_psi,2003-07-01,12.2,Australian Industry Group (AIG) Services Index.pdf,2003-08-01
+aig_psi,2003-08-01,13.6,Australian Industry Group (AIG) Services Index.pdf,2003-09-01
+aig_psi,2003-09-01,15.4,Australian Industry Group (AIG) Services Index.pdf,2003-10-01
+aig_psi,2003-10-01,19.6,Australian Industry Group (AIG) Services Index.pdf,2003-11-01
+aig_psi,2003-11-01,13.8,Australian Industry Group (AIG) Services Index.pdf,2003-12-01
+aig_psi,2003-12-01,12.6,Australian Industry Group (AIG) Services Index.pdf,2004-01-01
+aig_psi,2004-01-01,13.6,Australian Industry Group (AIG) Services Index.pdf,2004-02-01
+aig_psi,2004-02-01,16.2,Australian Industry Group (AIG) Services Index.pdf,2004-03-01
+aig_psi,2004-03-01,10.4,Australian Industry Group (AIG) Services Index.pdf,2004-04-01
+aig_psi,2004-04-01,6.8,Australian Industry Group (AIG) Services Index.pdf,2004-05-01
+aig_psi,2004-05-01,10.8,Australian Industry Group (AIG) Services Index.pdf,2004-06-01
+aig_psi,2004-06-01,2.2,Australian Industry Group (AIG) Services Index.pdf,2004-07-01
+aig_psi,2004-07-01,10.0,Australian Industry Group (AIG) Services Index.pdf,2004-08-01
+aig_psi,2004-08-01,7.2,Australian Industry Group (AIG) Services Index.pdf,2004-09-01
+aig_psi,2004-09-01,10.2,Australian Industry Group (AIG) Services Index.pdf,2004-10-01
+aig_psi,2004-10-01,7.0,Australian Industry Group (AIG) Services Index.pdf,2004-11-01
+aig_psi,2004-11-01,11.4,Australian Industry Group (AIG) Services Index.pdf,2004-12-01
+aig_psi,2004-12-01,21.0,Australian Industry Group (AIG) Services Index.pdf,2005-01-01
+aig_psi,2005-01-01,5.0,Australian Industry Group (AIG) Services Index.pdf,2005-02-01
+aig_psi,2005-02-01,4.8,Australian Industry Group (AIG) Services Index.pdf,2005-03-01
+aig_psi,2005-03-01,9.0,Australian Industry Group (AIG) Services Index.pdf,2005-04-01
+aig_psi,2005-04-01,6.8,Australian Industry Group (AIG) Services Index.pdf,2005-05-01
+aig_psi,2005-05-01,0.6,Australian Industry Group (AIG) Services Index.pdf,2005-06-01
+aig_psi,2005-06-01,2.8,Australian Industry Group (AIG) Services Index.pdf,2005-07-01
+aig_psi,2005-07-01,7.8,Australian Industry Group (AIG) Services Index.pdf,2005-08-01
+aig_psi,2005-08-01,12.8,Australian Industry Group (AIG) Services Index.pdf,2005-09-01
+aig_psi,2005-09-01,7.4,Australian Industry Group (AIG) Services Index.pdf,2005-10-01
+aig_psi,2005-10-01,-1.0,Australian Industry Group (AIG) Services Index.pdf,2005-11-01
+aig_psi,2005-11-01,6.0,Australian Industry Group (AIG) Services Index.pdf,2005-12-01
+aig_psi,2005-12-01,4.0,Australian Industry Group (AIG) Services Index.pdf,2006-01-01
+aig_psi,2006-01-01,4.0,Australian Industry Group (AIG) Services Index.pdf,2006-02-01
+aig_psi,2006-02-01,4.6,Australian Industry Group (AIG) Services Index.pdf,2006-03-01
+aig_psi,2006-03-01,7.6,Australian Industry Group (AIG) Services Index.pdf,2006-04-01
+aig_psi,2006-04-01,10.8,Australian Industry Group (AIG) Services Index.pdf,2006-05-01
+aig_psi,2006-05-01,-3.4,Australian Industry Group (AIG) Services Index.pdf,2006-06-01
+aig_psi,2006-06-01,1.0,Australian Industry Group (AIG) Services Index.pdf,2006-07-01
+aig_psi,2006-07-01,-0.2,Australian Industry Group (AIG) Services Index.pdf,2006-08-01
+aig_psi,2006-08-01,4.0,Australian Industry Group (AIG) Services Index.pdf,2006-09-01
+aig_psi,2006-09-01,-3.2,Australian Industry Group (AIG) Services Index.pdf,2006-10-01
+aig_psi,2006-10-01,1.2,Australian Industry Group (AIG) Services Index.pdf,2006-11-01
+aig_psi,2006-11-01,0.8,Australian Industry Group (AIG) Services Index.pdf,2006-12-01
+aig_psi,2006-12-01,1.2,Australian Industry Group (AIG) Services Index.pdf,2007-01-01
+aig_psi,2007-01-01,0.0,Australian Industry Group (AIG) Services Index.pdf,2007-02-01
+aig_psi,2007-02-01,7.8,Australian Industry Group (AIG) Services Index.pdf,2007-03-01
+aig_psi,2007-03-01,5.6,Australian Industry Group (AIG) Services Index.pdf,2007-04-01
+aig_psi,2007-04-01,10.6,Australian Industry Group (AIG) Services Index.pdf,2007-05-01
+aig_psi,2007-05-01,17.8,Australian Industry Group (AIG) Services Index.pdf,2007-06-01
+aig_psi,2007-06-01,5.8,Australian Industry Group (AIG) Services Index.pdf,2007-07-01
+aig_psi,2007-07-01,11.8,Australian Industry Group (AIG) Services Index.pdf,2007-08-01
+aig_psi,2007-08-01,6.2,Australian Industry Group (AIG) Services Index.pdf,2007-09-01
+aig_psi,2007-09-01,8.0,Australian Industry Group (AIG) Services Index.pdf,2007-10-01
+aig_psi,2007-10-01,6.0,Australian Industry Group (AIG) Services Index.pdf,2007-11-01
+aig_psi,2007-11-01,12.2,Australian Industry Group (AIG) Services Index.pdf,2007-12-01
+aig_psi,2007-12-01,12.8,Australian Industry Group (AIG) Services Index.pdf,2008-01-01
+aig_psi,2008-01-01,9.4,Australian Industry Group (AIG) Services Index.pdf,2008-02-01
+aig_psi,2008-02-01,6.4,Australian Industry Group (AIG) Services Index.pdf,2008-03-04
+aig_psi,2008-03-01,7.6,Australian Industry Group (AIG) Services Index.pdf,2008-04-02
+aig_psi,2008-04-01,-5.4,Australian Industry Group (AIG) Services Index.pdf,2008-05-05
+aig_psi,2008-05-01,-0.6,Australian Industry Group (AIG) Services Index.pdf,2008-06-04
+aig_psi,2008-06-01,-9.2,Australian Industry Group (AIG) Services Index.pdf,2008-07-03
+aig_psi,2008-07-01,-14.4,Australian Industry Group (AIG) Services Index.pdf,2008-08-05
+aig_psi,2008-08-01,-21.4,Australian Industry Group (AIG) Services Index.pdf,2008-09-03
+aig_psi,2008-09-01,-10.2,Australian Industry Group (AIG) Services Index.pdf,2008-10-03
+aig_psi,2008-10-01,-15.8,Australian Industry Group (AIG) Services Index.pdf,2008-11-04
+aig_psi,2008-11-01,-24.4,Australian Industry Group (AIG) Services Index.pdf,2008-12-02
+aig_psi,2008-12-01,-21.4,Australian Industry Group (AIG) Services Index.pdf,2009-01-05
+aig_psi,2009-01-01,-18.0,Australian Industry Group (AIG) Services Index.pdf,2009-02-03
+aig_psi,2009-02-01,-35.6,Australian Industry Group (AIG) Services Index.pdf,2009-03-03
+aig_psi,2009-03-01,-28.8,Australian Industry Group (AIG) Services Index.pdf,2009-04-02
+aig_psi,2009-04-01,-20.4,Australian Industry Group (AIG) Services Index.pdf,2009-05-05
+aig_psi,2009-05-01,-20.2,Australian Industry Group (AIG) Services Index.pdf,2009-06-03
+aig_psi,2009-06-01,0.4,Australian Industry Group (AIG) Services Index.pdf,2009-07-03
+aig_psi,2009-07-01,-11.8,Australian Industry Group (AIG) Services Index.pdf,2009-08-05
+aig_psi,2009-08-01,-4.0,Australian Industry Group (AIG) Services Index.pdf,2009-09-03
+aig_psi,2009-09-01,-1.4,Australian Industry Group (AIG) Services Index.pdf,2009-10-04
+aig_psi,2009-10-01,9.6,Australian Industry Group (AIG) Services Index.pdf,2009-11-03
+aig_psi,2009-11-01,5.0,Australian Industry Group (AIG) Services Index.pdf,2009-12-02
+aig_psi,2009-12-01,0.0,Australian Industry Group (AIG) Services Index.pdf,2010-01-05
+aig_psi,2010-01-01,-5.2,Australian Industry Group (AIG) Services Index.pdf,2010-02-02
+aig_psi,2010-02-01,-3.4,Australian Industry Group (AIG) Services Index.pdf,2010-03-02
+aig_psi,2010-03-01,-3.2,Australian Industry Group (AIG) Services Index.pdf,2010-04-07
+aig_psi,2010-04-01,4.6,Australian Industry Group (AIG) Services Index.pdf,2010-05-05
+aig_psi,2010-05-01,-5.0,Australian Industry Group (AIG) Services Index.pdf,2010-06-03
+aig_psi,2010-06-01,-2.4,Australian Industry Group (AIG) Services Index.pdf,2010-07-05
+aig_psi,2010-07-01,-6.8,Australian Industry Group (AIG) Services Index.pdf,2010-08-04
+aig_psi,2010-08-01,-5.0,Australian Industry Group (AIG) Services Index.pdf,2010-09-03
+aig_psi,2010-09-01,-8.8,Australian Industry Group (AIG) Services Index.pdf,2010-10-04
+aig_psi,2010-10-01,1.4,Australian Industry Group (AIG) Services Index.pdf,2010-11-02
+aig_psi,2010-11-01,-7.6,Australian Industry Group (AIG) Services Index.pdf,2010-12-02
+aig_psi,2010-12-01,-7.2,Australian Industry Group (AIG) Services Index.pdf,2011-01-05
+aig_psi,2011-01-01,-9.0,Australian Industry Group (AIG) Services Index.pdf,2011-02-02
+aig_psi,2011-02-01,-2.6,Australian Industry Group (AIG) Services Index.pdf,2011-03-02
+aig_psi,2011-03-01,-7.0,Australian Industry Group (AIG) Services Index.pdf,2011-04-05
+aig_psi,2011-04-01,3.0,Australian Industry Group (AIG) Services Index.pdf,2011-05-04
+aig_psi,2011-05-01,-0.2,Australian Industry Group (AIG) Services Index.pdf,2011-06-03
+aig_psi,2011-06-01,-3.0,Australian Industry Group (AIG) Services Index.pdf,2011-07-05
+aig_psi,2011-07-01,-2.4,Australian Industry Group (AIG) Services Index.pdf,2011-08-03
+aig_psi,2011-08-01,4.2,Australian Industry Group (AIG) Services Index.pdf,2011-09-05
+aig_psi,2011-09-01,0.6,Australian Industry Group (AIG) Services Index.pdf,2011-10-04
+aig_psi,2011-10-01,-2.4,Australian Industry Group (AIG) Services Index.pdf,2011-11-02
+aig_psi,2011-11-01,-4.6,Australian Industry Group (AIG) Services Index.pdf,2011-12-04
+aig_psi,2011-12-01,-2.0,Australian Industry Group (AIG) Services Index.pdf,2012-01-04
+aig_psi,2012-01-01,3.8,Australian Industry Group (AIG) Services Index.pdf,2012-02-02
+aig_psi,2012-02-01,-6.6,Australian Industry Group (AIG) Services Index.pdf,2012-03-04
+aig_psi,2012-03-01,-6.0,Australian Industry Group (AIG) Services Index.pdf,2012-04-04
+aig_psi,2012-04-01,-20.8,Australian Industry Group (AIG) Services Index.pdf,2012-05-03
+aig_psi,2012-05-01,-13.0,Australian Industry Group (AIG) Services Index.pdf,2012-06-05
+aig_psi,2012-06-01,-2.4,Australian Industry Group (AIG) Services Index.pdf,2012-07-04
+aig_psi,2012-07-01,-7.0,Australian Industry Group (AIG) Services Index.pdf,2012-08-03
+aig_psi,2012-08-01,-15.2,Australian Industry Group (AIG) Services Index.pdf,2012-09-05
+aig_psi,2012-09-01,-16.2,Australian Industry Group (AIG) Services Index.pdf,2012-10-03
+aig_psi,2012-10-01,-14.4,Australian Industry Group (AIG) Services Index.pdf,2012-11-04
+aig_psi,2012-11-01,-5.8,Australian Industry Group (AIG) Services Index.pdf,2012-12-04
+aig_psi,2012-12-01,-13.6,Australian Industry Group (AIG) Services Index.pdf,2013-01-03
+aig_psi,2013-01-01,-9.4,Australian Industry Group (AIG) Services Index.pdf,2013-02-04
+aig_psi,2013-02-01,-3.0,Australian Industry Group (AIG) Services Index.pdf,2013-03-04
+aig_psi,2013-03-01,-0.8,Australian Industry Group (AIG) Services Index.pdf,2013-04-03
+aig_psi,2013-04-01,-11.8,Australian Industry Group (AIG) Services Index.pdf,2013-05-03
+aig_psi,2013-05-01,-18.8,Australian Industry Group (AIG) Services Index.pdf,2013-06-05
+aig_psi,2013-06-01,-17.0,Australian Industry Group (AIG) Services Index.pdf,2013-07-03
+aig_psi,2013-07-01,-21.2,Australian Industry Group (AIG) Services Index.pdf,2013-08-05
+aig_psi,2013-08-01,-22.0,Australian Industry Group (AIG) Services Index.pdf,2013-09-04
+aig_psi,2013-09-01,-5.8,Australian Industry Group (AIG) Services Index.pdf,2013-10-03
+aig_psi,2013-10-01,-4.2,Australian Industry Group (AIG) Services Index.pdf,2013-11-04
+aig_psi,2013-11-01,-2.2,Australian Industry Group (AIG) Services Index.pdf,2013-12-03
+aig_psi,2013-12-01,-7.8,Australian Industry Group (AIG) Services Index.pdf,2014-01-05
+aig_psi,2014-01-01,-1.4,Australian Industry Group (AIG) Services Index.pdf,2014-02-04
+aig_psi,2014-02-01,10.4,Australian Industry Group (AIG) Services Index.pdf,2014-03-04
+aig_psi,2014-03-01,-2.2,Australian Industry Group (AIG) Services Index.pdf,2014-04-02
+aig_psi,2014-04-01,-2.8,Australian Industry Group (AIG) Services Index.pdf,2014-05-05
+aig_psi,2014-05-01,-0.2,Australian Industry Group (AIG) Services Index.pdf,2014-06-04
+aig_psi,2014-06-01,-4.8,Australian Industry Group (AIG) Services Index.pdf,2014-07-03
+aig_psi,2014-07-01,-1.4,Australian Industry Group (AIG) Services Index.pdf,2014-08-05
+aig_psi,2014-08-01,-1.2,Australian Industry Group (AIG) Services Index.pdf,2014-09-03
+aig_psi,2014-09-01,-9.2,Australian Industry Group (AIG) Services Index.pdf,2014-10-03
+aig_psi,2014-10-01,-12.8,Australian Industry Group (AIG) Services Index.pdf,2014-11-04
+aig_psi,2014-11-01,-12.4,Australian Industry Group (AIG) Services Index.pdf,2014-12-02
+aig_psi,2014-12-01,-5.0,Australian Industry Group (AIG) Services Index.pdf,2015-01-06
+aig_psi,2015-01-01,-0.2,Australian Industry Group (AIG) Services Index.pdf,2015-02-03
+aig_psi,2015-02-01,3.4,Australian Industry Group (AIG) Services Index.pdf,2015-03-03
+aig_psi,2015-03-01,0.4,Australian Industry Group (AIG) Services Index.pdf,2015-04-07
+aig_psi,2015-04-01,-0.6,Australian Industry Group (AIG) Services Index.pdf,2015-05-05
+aig_psi,2015-05-01,-0.8,Australian Industry Group (AIG) Services Index.pdf,2015-06-03
+aig_psi,2015-06-01,2.4,Australian Industry Group (AIG) Services Index.pdf,2015-07-03
+aig_psi,2015-07-01,8.2,Australian Industry Group (AIG) Services Index.pdf,2015-08-05
+aig_psi,2015-08-01,11.2,Australian Industry Group (AIG) Services Index.pdf,2015-09-03
+aig_psi,2015-09-01,4.6,Australian Industry Group (AIG) Services Index.pdf,2015-10-04
+aig_psi,2015-10-01,-2.2,Australian Industry Group (AIG) Services Index.pdf,2015-11-03
+aig_psi,2015-11-01,-3.6,Australian Industry Group (AIG) Services Index.pdf,2015-12-02
+aig_psi,2015-12-01,-7.4,Australian Industry Group (AIG) Services Index.pdf,2016-01-05
+aig_psi,2016-01-01,-3.2,Australian Industry Group (AIG) Services Index.pdf,2016-02-02
+aig_psi,2016-02-01,3.6,Australian Industry Group (AIG) Services Index.pdf,2016-03-02
+aig_psi,2016-03-01,-1.0,Australian Industry Group (AIG) Services Index.pdf,2016-04-05
+aig_psi,2016-04-01,-0.6,Australian Industry Group (AIG) Services Index.pdf,2016-05-04
+aig_psi,2016-05-01,3.0,Australian Industry Group (AIG) Services Index.pdf,2016-06-03
+aig_psi,2016-06-01,2.6,Australian Industry Group (AIG) Services Index.pdf,2016-07-05
+aig_psi,2016-07-01,7.8,Australian Industry Group (AIG) Services Index.pdf,2016-08-03
+aig_psi,2016-08-01,-10.0,Australian Industry Group (AIG) Services Index.pdf,2016-09-05
+aig_psi,2016-09-01,-2.2,Australian Industry Group (AIG) Services Index.pdf,2016-10-04
+aig_psi,2016-10-01,1.0,Australian Industry Group (AIG) Services Index.pdf,2016-11-02
+aig_psi,2016-11-01,2.2,Australian Industry Group (AIG) Services Index.pdf,2016-12-04
+aig_psi,2016-12-01,15.4,Australian Industry Group (AIG) Services Index.pdf,2017-01-04
+aig_psi,2017-01-01,9.0,Australian Industry Group (AIG) Services Index.pdf,2017-02-02
+aig_psi,2017-02-01,-2.0,Australian Industry Group (AIG) Services Index.pdf,2017-03-02
+aig_psi,2017-03-01,3.4,Australian Industry Group (AIG) Services Index.pdf,2017-04-05
+aig_psi,2017-04-01,6.0,Australian Industry Group (AIG) Services Index.pdf,2017-05-03
+aig_psi,2017-05-01,3.0,Australian Industry Group (AIG) Services Index.pdf,2017-06-05
+aig_psi,2017-06-01,9.6,Australian Industry Group (AIG) Services Index.pdf,2017-07-05
+aig_psi,2017-07-01,12.8,Australian Industry Group (AIG) Services Index.pdf,2017-08-03
+aig_psi,2017-08-01,6.0,Australian Industry Group (AIG) Services Index.pdf,2017-09-05
+aig_psi,2017-09-01,4.2,Australian Industry Group (AIG) Services Index.pdf,2017-10-03
+aig_psi,2017-10-01,2.8,Australian Industry Group (AIG) Services Index.pdf,2017-11-02
+aig_psi,2017-11-01,3.4,Australian Industry Group (AIG) Services Index.pdf,2017-12-04
+aig_psi,2017-12-01,4.0,Australian Industry Group (AIG) Services Index.pdf,2018-01-03
+aig_psi,2018-01-01,9.8,Australian Industry Group (AIG) Services Index.pdf,2018-02-04
+aig_psi,2018-02-01,8.0,Australian Industry Group (AIG) Services Index.pdf,2018-03-04
+aig_psi,2018-03-01,13.8,Australian Industry Group (AIG) Services Index.pdf,2018-04-05
+aig_psi,2018-04-01,10.4,Australian Industry Group (AIG) Services Index.pdf,2018-05-02
+aig_psi,2018-05-01,18.0,Australian Industry Group (AIG) Services Index.pdf,2018-06-04
+aig_psi,2018-06-01,26.0,Australian Industry Group (AIG) Services Index.pdf,2018-07-03
+aig_psi,2018-07-01,7.2,Australian Industry Group (AIG) Services Index.pdf,2018-08-02
+aig_psi,2018-08-01,4.4,Australian Industry Group (AIG) Services Index.pdf,2018-09-04
+aig_psi,2018-09-01,5.0,Australian Industry Group (AIG) Services Index.pdf,2018-10-02
+aig_psi,2018-10-01,2.2,Australian Industry Group (AIG) Services Index.pdf,2018-11-04
+aig_psi,2018-11-01,10.2,Australian Industry Group (AIG) Services Index.pdf,2018-12-04
+aig_psi,2018-12-01,4.2,Australian Industry Group (AIG) Services Index.pdf,2019-01-08
+aig_psi,2019-01-01,-11.4,Australian Industry Group (AIG) Services Index.pdf,2019-02-04
+aig_psi,2019-02-01,-11.0,Australian Industry Group (AIG) Services Index.pdf,2019-03-04
+aig_psi,2019-03-01,-10.4,Australian Industry Group (AIG) Services Index.pdf,2019-04-02
+aig_psi,2019-04-01,-7.0,Australian Industry Group (AIG) Services Index.pdf,2019-05-02
+aig_psi,2019-05-01,5.0,Australian Industry Group (AIG) Services Index.pdf,2019-06-04
+aig_psi,2019-06-01,4.4,Australian Industry Group (AIG) Services Index.pdf,2019-07-02
+aig_psi,2019-07-01,-12.2,Australian Industry Group (AIG) Services Index.pdf,2019-08-04
+aig_psi,2019-08-01,2.8,Australian Industry Group (AIG) Services Index.pdf,2019-09-03
+aig_psi,2019-09-01,3.0,Australian Industry Group (AIG) Services Index.pdf,2019-10-02
+aig_psi,2019-10-01,8.4,Australian Industry Group (AIG) Services Index.pdf,2019-11-04
+aig_psi,2019-11-01,7.4,Australian Industry Group (AIG) Services Index.pdf,2019-12-03
+aig_psi,2019-12-01,-2.6,Australian Industry Group (AIG) Services Index.pdf,2020-01-09
+aig_psi,2020-01-01,-6.8,Australian Industry Group (AIG) Services Index.pdf,2020-02-06
+aig_psi,2020-02-01,-6.0,Australian Industry Group (AIG) Services Index.pdf,2020-03-05
+aig_psi,2020-03-01,-22.6,Australian Industry Group (AIG) Services Index.pdf,2020-04-06
+aig_psi,2020-04-01,-45.8,Australian Industry Group (AIG) Services Index.pdf,2020-05-06
+aig_psi,2020-05-01,-36.8,Australian Industry Group (AIG) Services Index.pdf,2020-06-04
+aig_psi,2020-06-01,-37.0,Australian Industry Group (AIG) Services Index.pdf,2020-07-06
+aig_psi,2020-07-01,-12.0,Australian Industry Group (AIG) Services Index.pdf,2020-08-06
+aig_psi,2020-08-01,-15.0,Australian Industry Group (AIG) Services Index.pdf,2020-09-06
+aig_psi,2020-09-01,-27.6,Australian Industry Group (AIG) Services Index.pdf,2020-10-06
+aig_psi,2020-10-01,2.8,Australian Industry Group (AIG) Services Index.pdf,2020-11-05
+aig_psi,2020-11-01,5.8,Australian Industry Group (AIG) Services Index.pdf,2020-12-06
+aig_psi,2020-12-01,8.6,Australian Industry Group (AIG) Services Index.pdf,2021-02-04
+aig_psi,2021-02-01,11.6,Australian Industry Group (AIG) Services Index.pdf,2021-03-04
+aig_psi,2021-03-01,17.4,Australian Industry Group (AIG) Services Index.pdf,2021-04-08
+aig_psi,2021-04-01,22.0,Australian Industry Group (AIG) Services Index.pdf,2021-05-06
+aig_psi,2021-05-01,22.4,Australian Industry Group (AIG) Services Index.pdf,2021-06-06
+aig_psi,2021-06-01,15.6,Australian Industry Group (AIG) Services Index.pdf,2021-07-06
+aig_psi,2021-07-01,3.4,Australian Industry Group (AIG) Services Index.pdf,2021-08-05
+aig_psi,2021-08-01,-8.8,Australian Industry Group (AIG) Services Index.pdf,2021-09-06
+aig_psi,2021-09-01,-8.6,Australian Industry Group (AIG) Services Index.pdf,2021-10-06
+aig_psi,2021-10-01,-4.8,Australian Industry Group (AIG) Services Index.pdf,2021-11-04
+aig_psi,2021-11-01,-0.8,Australian Industry Group (AIG) Services Index.pdf,2021-12-06
+aig_psi,2021-12-01,12.4,Australian Industry Group (AIG) Services Index.pdf,2022-02-06
+aig_psi,2022-02-01,20.0,Australian Industry Group (AIG) Services Index.pdf,2022-03-06
+aig_psi,2022-03-01,12.4,Australian Industry Group (AIG) Services Index.pdf,2022-04-06
+aig_psi,2022-04-01,15.6,Australian Industry Group (AIG) Services Index.pdf,2022-05-05
+aig_psi,2022-05-01,-1.6,Australian Industry Group (AIG) Services Index.pdf,2022-06-06
+aig_psi,2022-06-01,-2.4,Australian Industry Group (AIG) Services Index.pdf,2022-07-06
+aig_psi,2022-07-01,3.4,Australian Industry Group (AIG) Services Index.pdf,2022-08-04
+aig_psi,2022-08-01,6.6,Australian Industry Group (AIG) Services Index.pdf,2022-09-06
+aig_psi,2022-09-01,-4.0,Australian Industry Group (AIG) Services Index.pdf,2022-10-09
+aig_psi,2022-10-01,-4.6,Australian Industry Group (AIG) Services Index.pdf,2022-11-07
+aig_psi,2022-11-01,-8.8,Australian Industry Group (AIG) Services Index.pdf,2022-12-06
+nab_cond,1997-03-01,-5.0,National Australia Bank (NAB) Business Conditions.pdf,1997-04-01
+nab_cond,1997-04-01,-3.0,National Australia Bank (NAB) Business Conditions.pdf,1997-05-01
+nab_cond,1997-05-01,-1.0,National Australia Bank (NAB) Business Conditions.pdf,1997-06-01
+nab_cond,1997-06-01,0.0,National Australia Bank (NAB) Business Conditions.pdf,1997-07-01
+nab_cond,1997-07-01,-5.0,National Australia Bank (NAB) Business Conditions.pdf,1997-08-01
+nab_cond,1997-08-01,-3.0,National Australia Bank (NAB) Business Conditions.pdf,1997-09-01
+nab_cond,1997-09-01,0.0,National Australia Bank (NAB) Business Conditions.pdf,1997-10-01
+nab_cond,1997-10-01,3.0,National Australia Bank (NAB) Business Conditions.pdf,1997-11-01
+nab_cond,1997-11-01,0.0,National Australia Bank (NAB) Business Conditions.pdf,1997-12-01
+nab_cond,1997-12-01,-3.0,National Australia Bank (NAB) Business Conditions.pdf,1998-01-01
+nab_cond,1998-01-01,6.0,National Australia Bank (NAB) Business Conditions.pdf,1998-02-01
+nab_cond,1998-02-01,4.0,National Australia Bank (NAB) Business Conditions.pdf,1998-03-01
+nab_cond,1998-03-01,-8.0,National Australia Bank (NAB) Business Conditions.pdf,1998-04-01
+nab_cond,1998-04-01,9.0,National Australia Bank (NAB) Business Conditions.pdf,1998-05-01
+nab_cond,1998-05-01,-4.0,National Australia Bank (NAB) Business Conditions.pdf,1998-06-01
+nab_cond,1998-06-01,-11.0,National Australia Bank (NAB) Business Conditions.pdf,1998-07-01
+nab_cond,1998-07-01,-1.0,National Australia Bank (NAB) Business Conditions.pdf,1998-08-01
+nab_cond,1998-08-01,-3.0,National Australia Bank (NAB) Business Conditions.pdf,1998-09-01
+nab_cond,1998-09-01,-2.0,National Australia Bank (NAB) Business Conditions.pdf,1998-10-01
+nab_cond,1998-10-01,3.0,National Australia Bank (NAB) Business Conditions.pdf,1998-11-01
+nab_cond,1998-11-01,3.0,National Australia Bank (NAB) Business Conditions.pdf,1998-12-01
+nab_cond,1998-12-01,3.0,National Australia Bank (NAB) Business Conditions.pdf,1999-01-01
+nab_cond,1999-01-01,9.0,National Australia Bank (NAB) Business Conditions.pdf,1999-02-01
+nab_cond,1999-02-01,6.0,National Australia Bank (NAB) Business Conditions.pdf,1999-03-01
+nab_cond,1999-03-01,9.0,National Australia Bank (NAB) Business Conditions.pdf,1999-04-01
+nab_cond,1999-04-01,10.0,National Australia Bank (NAB) Business Conditions.pdf,1999-05-01
+nab_cond,1999-05-01,11.0,National Australia Bank (NAB) Business Conditions.pdf,1999-06-01
+nab_cond,1999-06-01,8.0,National Australia Bank (NAB) Business Conditions.pdf,1999-07-01
+nab_cond,1999-07-01,10.0,National Australia Bank (NAB) Business Conditions.pdf,1999-08-01
+nab_cond,1999-08-01,8.0,National Australia Bank (NAB) Business Conditions.pdf,1999-09-01
+nab_cond,1999-09-01,9.0,National Australia Bank (NAB) Business Conditions.pdf,1999-10-01
+nab_cond,1999-10-01,9.0,National Australia Bank (NAB) Business Conditions.pdf,1999-11-01
+nab_cond,1999-11-01,12.0,National Australia Bank (NAB) Business Conditions.pdf,1999-12-01
+nab_cond,1999-12-01,15.0,National Australia Bank (NAB) Business Conditions.pdf,2000-01-01
+nab_cond,2000-01-01,11.0,National Australia Bank (NAB) Business Conditions.pdf,2000-02-01
+nab_cond,2000-02-01,9.0,National Australia Bank (NAB) Business Conditions.pdf,2000-03-01
+nab_cond,2000-03-01,10.0,National Australia Bank (NAB) Business Conditions.pdf,2000-04-01
+nab_cond,2000-04-01,7.0,National Australia Bank (NAB) Business Conditions.pdf,2000-05-01
+nab_cond,2000-05-01,3.0,National Australia Bank (NAB) Business Conditions.pdf,2000-06-01
+nab_cond,2000-06-01,13.0,National Australia Bank (NAB) Business Conditions.pdf,2000-07-01
+nab_cond,2000-07-01,0.0,National Australia Bank (NAB) Business Conditions.pdf,2000-08-01
+nab_cond,2000-08-01,1.0,National Australia Bank (NAB) Business Conditions.pdf,2000-09-01
+nab_cond,2000-09-01,-7.0,National Australia Bank (NAB) Business Conditions.pdf,2000-10-01
+nab_cond,2000-10-01,-12.0,National Australia Bank (NAB) Business Conditions.pdf,2000-11-01
+nab_cond,2000-11-01,-11.0,National Australia Bank (NAB) Business Conditions.pdf,2000-12-01
+nab_cond,2000-12-01,-12.0,National Australia Bank (NAB) Business Conditions.pdf,2001-01-01
+nab_cond,2001-01-01,-11.0,National Australia Bank (NAB) Business Conditions.pdf,2001-02-01
+nab_cond,2001-02-01,-12.0,National Australia Bank (NAB) Business Conditions.pdf,2001-03-01
+nab_cond,2001-03-01,-11.0,National Australia Bank (NAB) Business Conditions.pdf,2001-04-01
+nab_cond,2001-04-01,-14.0,National Australia Bank (NAB) Business Conditions.pdf,2001-05-01
+nab_cond,2001-05-01,-10.0,National Australia Bank (NAB) Business Conditions.pdf,2001-06-01
+nab_cond,2001-06-01,-1.0,National Australia Bank (NAB) Business Conditions.pdf,2001-07-01
+nab_cond,2001-07-01,-1.0,National Australia Bank (NAB) Business Conditions.pdf,2001-08-01
+nab_cond,2001-08-01,-3.0,National Australia Bank (NAB) Business Conditions.pdf,2001-09-01
+nab_cond,2001-09-01,-0.0,National Australia Bank (NAB) Business Conditions.pdf,2001-10-01
+nab_cond,2001-10-01,-8.0,National Australia Bank (NAB) Business Conditions.pdf,2001-11-01
+nab_cond,2001-11-01,-3.0,National Australia Bank (NAB) Business Conditions.pdf,2001-12-01
+nab_cond,2001-12-01,2.0,National Australia Bank (NAB) Business Conditions.pdf,2002-01-01
+nab_cond,2002-01-01,2.0,National Australia Bank (NAB) Business Conditions.pdf,2002-02-01
+nab_cond,2002-02-01,8.0,National Australia Bank (NAB) Business Conditions.pdf,2002-03-01
+nab_cond,2002-03-01,7.0,National Australia Bank (NAB) Business Conditions.pdf,2002-04-01
+nab_cond,2002-04-01,11.0,National Australia Bank (NAB) Business Conditions.pdf,2002-05-01
+nab_cond,2002-05-01,12.0,National Australia Bank (NAB) Business Conditions.pdf,2002-06-01
+nab_cond,2002-06-01,9.0,National Australia Bank (NAB) Business Conditions.pdf,2002-07-01
+nab_cond,2002-07-01,10.0,National Australia Bank (NAB) Business Conditions.pdf,2002-08-01
+nab_cond,2002-08-01,10.0,National Australia Bank (NAB) Business Conditions.pdf,2002-09-01
+nab_cond,2002-09-01,13.0,National Australia Bank (NAB) Business Conditions.pdf,2002-10-01
+nab_cond,2002-10-01,11.0,National Australia Bank (NAB) Business Conditions.pdf,2002-11-01
+nab_cond,2002-11-01,10.0,National Australia Bank (NAB) Business Conditions.pdf,2002-12-01
+nab_cond,2002-12-01,7.0,National Australia Bank (NAB) Business Conditions.pdf,2003-01-01
+nab_cond,2003-01-01,9.0,National Australia Bank (NAB) Business Conditions.pdf,2003-02-01
+nab_cond,2003-02-01,8.0,National Australia Bank (NAB) Business Conditions.pdf,2003-03-01
+nab_cond,2003-03-01,8.0,National Australia Bank (NAB) Business Conditions.pdf,2003-04-01
+nab_cond,2003-04-01,8.0,National Australia Bank (NAB) Business Conditions.pdf,2003-05-01
+nab_cond,2003-05-01,10.0,National Australia Bank (NAB) Business Conditions.pdf,2003-06-01
+nab_cond,2003-06-01,9.0,National Australia Bank (NAB) Business Conditions.pdf,2003-07-01
+nab_cond,2003-07-01,13.0,National Australia Bank (NAB) Business Conditions.pdf,2003-08-01
+nab_cond,2003-08-01,15.0,National Australia Bank (NAB) Business Conditions.pdf,2003-09-01
+nab_cond,2003-09-01,14.0,National Australia Bank (NAB) Business Conditions.pdf,2003-10-01
+nab_cond,2003-10-01,15.0,National Australia Bank (NAB) Business Conditions.pdf,2003-11-01
+nab_cond,2003-11-01,18.0,National Australia Bank (NAB) Business Conditions.pdf,2003-12-01
+nab_cond,2003-12-01,15.0,National Australia Bank (NAB) Business Conditions.pdf,2004-01-01
+nab_cond,2004-01-01,11.0,National Australia Bank (NAB) Business Conditions.pdf,2004-02-01
+nab_cond,2004-02-01,14.0,National Australia Bank (NAB) Business Conditions.pdf,2004-03-01
+nab_cond,2004-03-01,16.0,National Australia Bank (NAB) Business Conditions.pdf,2004-04-01
+nab_cond,2004-04-01,17.0,National Australia Bank (NAB) Business Conditions.pdf,2004-05-01
+nab_cond,2004-05-01,16.0,National Australia Bank (NAB) Business Conditions.pdf,2004-06-01
+nab_cond,2004-06-01,17.0,National Australia Bank (NAB) Business Conditions.pdf,2004-07-01
+nab_cond,2004-07-01,15.0,National Australia Bank (NAB) Business Conditions.pdf,2004-08-01
+nab_cond,2004-08-01,13.0,National Australia Bank (NAB) Business Conditions.pdf,2004-09-01
+nab_cond,2004-09-01,13.0,National Australia Bank (NAB) Business Conditions.pdf,2004-10-01
+nab_cond,2004-10-01,15.0,National Australia Bank (NAB) Business Conditions.pdf,2004-11-01
+nab_cond,2004-11-01,14.0,National Australia Bank (NAB) Business Conditions.pdf,2004-12-01
+nab_cond,2004-12-01,13.0,National Australia Bank (NAB) Business Conditions.pdf,2005-01-01
+nab_cond,2005-01-01,12.0,National Australia Bank (NAB) Business Conditions.pdf,2005-02-01
+nab_cond,2005-02-01,14.0,National Australia Bank (NAB) Business Conditions.pdf,2005-03-01
+nab_cond,2005-03-01,8.0,National Australia Bank (NAB) Business Conditions.pdf,2005-04-01
+nab_cond,2005-04-01,8.0,National Australia Bank (NAB) Business Conditions.pdf,2005-05-01
+nab_cond,2005-05-01,13.0,National Australia Bank (NAB) Business Conditions.pdf,2005-06-01
+nab_cond,2005-06-01,10.0,National Australia Bank (NAB) Business Conditions.pdf,2005-07-01
+nab_cond,2005-07-01,8.0,National Australia Bank (NAB) Business Conditions.pdf,2005-08-01
+nab_cond,2005-08-01,10.0,National Australia Bank (NAB) Business Conditions.pdf,2005-09-01
+nab_cond,2005-09-01,11.0,National Australia Bank (NAB) Business Conditions.pdf,2005-10-01
+nab_cond,2005-10-01,5.0,National Australia Bank (NAB) Business Conditions.pdf,2005-11-01
+nab_cond,2005-11-01,10.0,National Australia Bank (NAB) Business Conditions.pdf,2005-12-01
+nab_cond,2005-12-01,11.0,National Australia Bank (NAB) Business Conditions.pdf,2006-01-01
+nab_cond,2006-01-01,9.0,National Australia Bank (NAB) Business Conditions.pdf,2006-02-01
+nab_cond,2006-02-01,10.0,National Australia Bank (NAB) Business Conditions.pdf,2006-03-01
+nab_cond,2006-03-01,20.0,National Australia Bank (NAB) Business Conditions.pdf,2006-04-01
+nab_cond,2006-04-01,13.0,National Australia Bank (NAB) Business Conditions.pdf,2006-05-01
+nab_cond,2006-05-01,11.0,National Australia Bank (NAB) Business Conditions.pdf,2006-06-01
+nab_cond,2006-06-01,14.0,National Australia Bank (NAB) Business Conditions.pdf,2006-07-01
+nab_cond,2006-07-01,12.0,National Australia Bank (NAB) Business Conditions.pdf,2006-08-01
+nab_cond,2006-08-01,10.0,National Australia Bank (NAB) Business Conditions.pdf,2006-09-01
+nab_cond,2006-09-01,14.0,National Australia Bank (NAB) Business Conditions.pdf,2006-10-01
+nab_cond,2006-10-01,15.0,National Australia Bank (NAB) Business Conditions.pdf,2006-11-01
+nab_cond,2006-11-01,15.0,National Australia Bank (NAB) Business Conditions.pdf,2006-12-01
+nab_cond,2006-12-01,9.0,National Australia Bank (NAB) Business Conditions.pdf,2007-01-01
+nab_cond,2007-01-01,17.0,National Australia Bank (NAB) Business Conditions.pdf,2007-02-01
+nab_cond,2007-02-01,18.0,National Australia Bank (NAB) Business Conditions.pdf,2007-03-01
+nab_cond,2007-03-01,18.0,National Australia Bank (NAB) Business Conditions.pdf,2007-04-01
+nab_cond,2007-04-01,17.0,National Australia Bank (NAB) Business Conditions.pdf,2007-05-01
+nab_cond,2007-05-01,17.0,National Australia Bank (NAB) Business Conditions.pdf,2007-06-01
+nab_cond,2007-06-01,16.0,National Australia Bank (NAB) Business Conditions.pdf,2007-07-01
+nab_cond,2007-07-01,20.0,National Australia Bank (NAB) Business Conditions.pdf,2007-08-01
+nab_cond,2007-08-01,18.0,National Australia Bank (NAB) Business Conditions.pdf,2007-09-01
+nab_cond,2007-09-01,15.0,National Australia Bank (NAB) Business Conditions.pdf,2007-10-01
+nab_cond,2007-10-01,19.0,National Australia Bank (NAB) Business Conditions.pdf,2007-11-01
+nab_cond,2007-11-01,16.0,National Australia Bank (NAB) Business Conditions.pdf,2007-12-01
+nab_cond,2007-12-01,13.0,National Australia Bank (NAB) Business Conditions.pdf,2008-01-01
+nab_cond,2008-01-01,15.0,National Australia Bank (NAB) Business Conditions.pdf,2008-02-01
+nab_cond,2008-02-01,14.0,National Australia Bank (NAB) Business Conditions.pdf,2008-03-01
+nab_cond,2008-03-01,9.0,National Australia Bank (NAB) Business Conditions.pdf,2008-04-01
+nab_cond,2008-04-01,7.0,National Australia Bank (NAB) Business Conditions.pdf,2008-05-01
+nab_cond,2008-05-01,8.0,National Australia Bank (NAB) Business Conditions.pdf,2008-06-01
+nab_cond,2008-06-01,1.0,National Australia Bank (NAB) Business Conditions.pdf,2008-07-01
+nab_cond,2008-07-01,-5.0,National Australia Bank (NAB) Business Conditions.pdf,2008-08-01
+nab_cond,2008-08-01,-4.0,National Australia Bank (NAB) Business Conditions.pdf,2008-09-01
+nab_cond,2008-09-01,-3.0,National Australia Bank (NAB) Business Conditions.pdf,2008-10-01
+nab_cond,2008-10-01,-12.0,National Australia Bank (NAB) Business Conditions.pdf,2008-11-01
+nab_cond,2008-11-01,-16.0,National Australia Bank (NAB) Business Conditions.pdf,2008-12-01
+nab_cond,2008-12-01,-10.0,National Australia Bank (NAB) Business Conditions.pdf,2009-01-01
+nab_cond,2009-01-01,-8.0,National Australia Bank (NAB) Business Conditions.pdf,2009-02-01
+nab_cond,2009-02-01,-17.0,National Australia Bank (NAB) Business Conditions.pdf,2009-03-01
+nab_cond,2009-03-01,-16.0,National Australia Bank (NAB) Business Conditions.pdf,2009-04-01
+nab_cond,2009-04-01,-11.0,National Australia Bank (NAB) Business Conditions.pdf,2009-05-01
+nab_cond,2009-05-01,-13.0,National Australia Bank (NAB) Business Conditions.pdf,2009-06-01
+nab_cond,2009-06-01,-3.0,National Australia Bank (NAB) Business Conditions.pdf,2009-07-01
+nab_cond,2009-07-01,1.0,National Australia Bank (NAB) Business Conditions.pdf,2009-08-01
+nab_cond,2009-08-01,4.0,National Australia Bank (NAB) Business Conditions.pdf,2009-09-01
+nab_cond,2009-09-01,3.0,National Australia Bank (NAB) Business Conditions.pdf,2009-10-01
+nab_cond,2009-10-01,11.0,National Australia Bank (NAB) Business Conditions.pdf,2009-11-01
+nab_cond,2009-11-01,9.0,National Australia Bank (NAB) Business Conditions.pdf,2009-12-01
+nab_cond,2009-12-01,9.0,National Australia Bank (NAB) Business Conditions.pdf,2010-01-01
+nab_cond,2010-01-01,7.0,National Australia Bank (NAB) Business Conditions.pdf,2010-02-01
+nab_cond,2010-02-01,8.0,National Australia Bank (NAB) Business Conditions.pdf,2010-03-01
+nab_cond,2010-03-01,11.0,National Australia Bank (NAB) Business Conditions.pdf,2010-04-01
+nab_cond,2010-04-01,7.0,National Australia Bank (NAB) Business Conditions.pdf,2010-05-01
+nab_cond,2010-05-01,8.0,National Australia Bank (NAB) Business Conditions.pdf,2010-06-01
+nab_cond,2010-06-01,6.0,National Australia Bank (NAB) Business Conditions.pdf,2010-07-01
+nab_cond,2010-07-01,6.0,National Australia Bank (NAB) Business Conditions.pdf,2010-08-01
+nab_cond,2010-08-01,5.0,National Australia Bank (NAB) Business Conditions.pdf,2010-09-01
+nab_cond,2010-09-01,6.0,National Australia Bank (NAB) Business Conditions.pdf,2010-10-01
+nab_cond,2010-10-01,2.0,National Australia Bank (NAB) Business Conditions.pdf,2010-11-01
+nab_cond,2010-11-01,3.0,National Australia Bank (NAB) Business Conditions.pdf,2010-12-01
+nab_cond,2010-12-01,3.0,National Australia Bank (NAB) Business Conditions.pdf,2011-01-01
+nab_cond,2011-01-01,-3.0,National Australia Bank (NAB) Business Conditions.pdf,2011-02-01
+nab_cond,2011-02-01,-1.0,National Australia Bank (NAB) Business Conditions.pdf,2011-03-01
+nab_cond,2011-03-01,7.0,National Australia Bank (NAB) Business Conditions.pdf,2011-04-01
+nab_cond,2011-04-01,4.0,National Australia Bank (NAB) Business Conditions.pdf,2011-05-01
+nab_cond,2011-05-01,1.0,National Australia Bank (NAB) Business Conditions.pdf,2011-06-01
+nab_cond,2011-06-01,2.0,National Australia Bank (NAB) Business Conditions.pdf,2011-07-01
+nab_cond,2011-07-01,-0.0,National Australia Bank (NAB) Business Conditions.pdf,2011-08-01
+nab_cond,2011-08-01,-2.0,National Australia Bank (NAB) Business Conditions.pdf,2011-09-01
+nab_cond,2011-09-01,2.0,National Australia Bank (NAB) Business Conditions.pdf,2011-10-01
+nab_cond,2011-10-01,1.0,National Australia Bank (NAB) Business Conditions.pdf,2011-11-01
+nab_cond,2011-11-01,2.0,National Australia Bank (NAB) Business Conditions.pdf,2011-12-01
+nab_cond,2011-12-01,0.0,National Australia Bank (NAB) Business Conditions.pdf,2012-01-01
+nab_cond,2012-01-01,-1.0,National Australia Bank (NAB) Business Conditions.pdf,2012-02-01
+nab_cond,2012-02-01,2.0,National Australia Bank (NAB) Business Conditions.pdf,2012-03-01
+nab_cond,2012-03-01,3.0,National Australia Bank (NAB) Business Conditions.pdf,2012-04-01
+nab_cond,2012-04-01,-0.0,National Australia Bank (NAB) Business Conditions.pdf,2012-05-01
+nab_cond,2012-05-01,-4.0,National Australia Bank (NAB) Business Conditions.pdf,2012-06-01
+nab_cond,2012-06-01,-1.0,National Australia Bank (NAB) Business Conditions.pdf,2012-07-01
+nab_cond,2012-07-01,-4.0,National Australia Bank (NAB) Business Conditions.pdf,2012-08-01
+nab_cond,2012-08-01,2.0,National Australia Bank (NAB) Business Conditions.pdf,2012-09-01
+nab_cond,2012-09-01,-4.0,National Australia Bank (NAB) Business Conditions.pdf,2012-10-01
+nab_cond,2012-10-01,-5.0,National Australia Bank (NAB) Business Conditions.pdf,2012-11-01
+nab_cond,2012-11-01,-6.0,National Australia Bank (NAB) Business Conditions.pdf,2012-12-01
+nab_cond,2012-12-01,-7.0,National Australia Bank (NAB) Business Conditions.pdf,2013-01-01
+nab_cond,2013-01-01,-5.0,National Australia Bank (NAB) Business Conditions.pdf,2013-02-01
+nab_cond,2013-02-01,-4.0,National Australia Bank (NAB) Business Conditions.pdf,2013-03-01
+nab_cond,2013-03-01,-8.0,National Australia Bank (NAB) Business Conditions.pdf,2013-04-01
+nab_cond,2013-04-01,-6.0,National Australia Bank (NAB) Business Conditions.pdf,2013-05-01
+nab_cond,2013-05-01,-4.0,National Australia Bank (NAB) Business Conditions.pdf,2013-06-11
+nab_cond,2013-06-01,-8.0,National Australia Bank (NAB) Business Conditions.pdf,2013-07-09
+nab_cond,2013-07-01,-7.0,National Australia Bank (NAB) Business Conditions.pdf,2013-08-13
+nab_cond,2013-08-01,-6.0,National Australia Bank (NAB) Business Conditions.pdf,2013-09-10
+nab_cond,2013-09-01,-4.0,National Australia Bank (NAB) Business Conditions.pdf,2013-10-08
+nab_cond,2013-10-01,-4.0,National Australia Bank (NAB) Business Conditions.pdf,2013-11-12
+nab_cond,2013-11-01,-3.0,National Australia Bank (NAB) Business Conditions.pdf,2013-12-10
+nab_cond,2014-01-01,4.0,National Australia Bank (NAB) Business Conditions.pdf,2014-02-11
+nab_cond,2014-02-01,0.0,National Australia Bank (NAB) Business Conditions.pdf,2014-03-11
+nab_cond,2014-03-01,1.0,National Australia Bank (NAB) Business Conditions.pdf,2014-04-08
+nab_cond,2014-04-01,0.0,National Australia Bank (NAB) Business Conditions.pdf,2014-05-12
+nab_cond,2014-05-01,-1.0,National Australia Bank (NAB) Business Conditions.pdf,2014-06-10
+nab_cond,2014-06-01,2.0,National Australia Bank (NAB) Business Conditions.pdf,2014-07-08
+nab_cond,2014-07-01,8.0,National Australia Bank (NAB) Business Conditions.pdf,2014-08-12
+nab_cond,2014-08-01,4.0,National Australia Bank (NAB) Business Conditions.pdf,2014-09-09
+nab_cond,2014-09-01,1.0,National Australia Bank (NAB) Business Conditions.pdf,2014-10-14
+nab_cond,2014-10-01,13.0,National Australia Bank (NAB) Business Conditions.pdf,2014-11-11
+nab_cond,2014-11-01,5.0,National Australia Bank (NAB) Business Conditions.pdf,2014-12-09
+nab_cond,2014-12-01,4.0,National Australia Bank (NAB) Business Conditions.pdf,2015-01-27
+nab_cond,2015-01-01,2.0,National Australia Bank (NAB) Business Conditions.pdf,2015-02-10
+nab_cond,2015-02-01,2.0,National Australia Bank (NAB) Business Conditions.pdf,2015-03-10
+nab_cond,2015-03-01,6.0,National Australia Bank (NAB) Business Conditions.pdf,2015-04-14
+nab_cond,2015-04-01,4.0,National Australia Bank (NAB) Business Conditions.pdf,2015-05-11
+nab_cond,2015-05-01,7.0,National Australia Bank (NAB) Business Conditions.pdf,2015-06-09
+nab_cond,2015-06-01,11.0,National Australia Bank (NAB) Business Conditions.pdf,2015-07-14
+nab_cond,2015-07-01,6.0,National Australia Bank (NAB) Business Conditions.pdf,2015-08-11
+nab_cond,2015-08-01,11.0,National Australia Bank (NAB) Business Conditions.pdf,2015-09-08
+nab_cond,2015-09-01,9.0,National Australia Bank (NAB) Business Conditions.pdf,2015-10-13
+nab_cond,2015-10-01,9.0,National Australia Bank (NAB) Business Conditions.pdf,2015-11-10
+nab_cond,2015-11-01,10.0,National Australia Bank (NAB) Business Conditions.pdf,2015-12-08
+nab_cond,2015-12-01,7.0,National Australia Bank (NAB) Business Conditions.pdf,2016-01-25
+nab_cond,2016-01-01,5.0,National Australia Bank (NAB) Business Conditions.pdf,2016-02-09
+nab_cond,2016-02-01,8.0,National Australia Bank (NAB) Business Conditions.pdf,2016-03-08
+nab_cond,2016-03-01,12.0,National Australia Bank (NAB) Business Conditions.pdf,2016-04-12
+nab_cond,2016-04-01,9.0,National Australia Bank (NAB) Business Conditions.pdf,2016-05-02
+nab_cond,2016-05-01,10.0,National Australia Bank (NAB) Business Conditions.pdf,2016-06-14
+nab_cond,2016-06-01,12.0,National Australia Bank (NAB) Business Conditions.pdf,2016-07-12
+nab_cond,2016-07-01,8.0,National Australia Bank (NAB) Business Conditions.pdf,2016-08-09
+nab_cond,2016-08-01,7.0,National Australia Bank (NAB) Business Conditions.pdf,2016-09-13
+nab_cond,2016-09-01,8.0,National Australia Bank (NAB) Business Conditions.pdf,2016-10-11
+nab_cond,2016-10-01,6.0,National Australia Bank (NAB) Business Conditions.pdf,2016-11-08
+nab_cond,2016-11-01,5.0,National Australia Bank (NAB) Business Conditions.pdf,2016-12-13
+nab_cond,2016-12-01,11.0,National Australia Bank (NAB) Business Conditions.pdf,2017-01-31
+nab_cond,2017-01-01,16.0,National Australia Bank (NAB) Business Conditions.pdf,2017-02-14
+nab_cond,2017-02-01,9.0,National Australia Bank (NAB) Business Conditions.pdf,2017-03-14
+nab_cond,2017-03-01,14.0,National Australia Bank (NAB) Business Conditions.pdf,2017-04-11
+nab_cond,2017-04-01,14.0,National Australia Bank (NAB) Business Conditions.pdf,2017-05-08
+nab_cond,2017-05-01,12.0,National Australia Bank (NAB) Business Conditions.pdf,2017-06-13
+nab_cond,2017-06-01,15.0,National Australia Bank (NAB) Business Conditions.pdf,2017-07-11
+nab_cond,2017-07-01,15.0,National Australia Bank (NAB) Business Conditions.pdf,2017-08-08
+nab_cond,2017-08-01,15.0,National Australia Bank (NAB) Business Conditions.pdf,2017-09-12
+nab_cond,2017-09-01,14.0,National Australia Bank (NAB) Business Conditions.pdf,2017-10-10
+nab_cond,2017-10-01,21.0,National Australia Bank (NAB) Business Conditions.pdf,2017-11-14
+nab_cond,2017-11-01,12.0,National Australia Bank (NAB) Business Conditions.pdf,2017-12-12
+nab_cond,2017-12-01,13.0,National Australia Bank (NAB) Business Conditions.pdf,2018-01-30
+nab_cond,2018-01-01,19.0,National Australia Bank (NAB) Business Conditions.pdf,2018-02-13
+nab_cond,2018-02-01,21.0,National Australia Bank (NAB) Business Conditions.pdf,2018-03-13
+nab_cond,2018-03-01,14.0,National Australia Bank (NAB) Business Conditions.pdf,2018-04-10
+nab_cond,2018-04-01,21.0,National Australia Bank (NAB) Business Conditions.pdf,2018-05-07
+nab_cond,2018-05-01,15.0,National Australia Bank (NAB) Business Conditions.pdf,2018-06-12
+nab_cond,2018-06-01,15.0,National Australia Bank (NAB) Business Conditions.pdf,2018-07-10
+nab_cond,2018-07-01,12.0,National Australia Bank (NAB) Business Conditions.pdf,2018-08-14
+nab_cond,2018-08-01,15.0,National Australia Bank (NAB) Business Conditions.pdf,2018-09-11
+nab_cond,2018-09-01,15.0,National Australia Bank (NAB) Business Conditions.pdf,2018-10-09
+nab_cond,2018-10-01,12.0,National Australia Bank (NAB) Business Conditions.pdf,2018-11-13
+nab_cond,2018-11-01,11.0,National Australia Bank (NAB) Business Conditions.pdf,2018-12-11
+nab_cond,2018-12-01,2.0,National Australia Bank (NAB) Business Conditions.pdf,2019-01-29
+nab_cond,2019-01-01,7.0,National Australia Bank (NAB) Business Conditions.pdf,2019-02-12
+nab_cond,2019-02-01,4.0,National Australia Bank (NAB) Business Conditions.pdf,2019-03-12
+nab_cond,2019-03-01,7.0,National Australia Bank (NAB) Business Conditions.pdf,2019-04-01
+nab_cond,2019-04-01,3.0,National Australia Bank (NAB) Business Conditions.pdf,2019-05-14
+nab_cond,2019-05-01,1.0,National Australia Bank (NAB) Business Conditions.pdf,2019-06-11
+nab_cond,2019-06-01,3.0,National Australia Bank (NAB) Business Conditions.pdf,2019-07-09
+nab_cond,2019-07-01,2.0,National Australia Bank (NAB) Business Conditions.pdf,2019-08-13
+nab_cond,2019-08-01,1.0,National Australia Bank (NAB) Business Conditions.pdf,2019-09-10
+nab_cond,2019-09-01,2.0,National Australia Bank (NAB) Business Conditions.pdf,2019-10-08
+nab_cond,2019-10-01,3.0,National Australia Bank (NAB) Business Conditions.pdf,2019-11-12
+nab_cond,2019-11-01,4.0,National Australia Bank (NAB) Business Conditions.pdf,2019-12-10
+nab_cond,2019-12-01,3.0,National Australia Bank (NAB) Business Conditions.pdf,2020-01-28
+nab_cond,2020-01-01,3.0,National Australia Bank (NAB) Business Conditions.pdf,2020-02-11
+nab_cond,2020-02-01,0.0,National Australia Bank (NAB) Business Conditions.pdf,2020-03-10
+nab_cond,2020-03-01,-21.0,National Australia Bank (NAB) Business Conditions.pdf,2020-04-14
+nab_cond,2020-04-01,-34.0,National Australia Bank (NAB) Business Conditions.pdf,2020-05-12
+nab_cond,2020-05-01,-24.0,National Australia Bank (NAB) Business Conditions.pdf,2020-06-09
+nab_cond,2020-06-01,-7.0,National Australia Bank (NAB) Business Conditions.pdf,2020-07-14
+nab_cond,2020-07-01,0.0,National Australia Bank (NAB) Business Conditions.pdf,2020-08-11
+nab_cond,2020-08-01,-6.0,National Australia Bank (NAB) Business Conditions.pdf,2020-09-08
+nab_cond,2020-10-01,1.0,National Australia Bank (NAB) Business Conditions.pdf,2020-11-10
+nab_cond,2020-11-01,9.0,National Australia Bank (NAB) Business Conditions.pdf,2020-12-08
+nab_cond,2020-12-01,14.0,National Australia Bank (NAB) Business Conditions.pdf,2021-01-27
+nab_cond,2021-01-01,7.0,National Australia Bank (NAB) Business Conditions.pdf,2021-02-09
+nab_cond,2021-02-01,15.0,National Australia Bank (NAB) Business Conditions.pdf,2021-03-09
+nab_cond,2021-03-01,25.0,National Australia Bank (NAB) Business Conditions.pdf,2021-04-13
+nab_cond,2021-04-01,32.0,National Australia Bank (NAB) Business Conditions.pdf,2021-05-10
+nab_cond,2021-05-01,37.0,National Australia Bank (NAB) Business Conditions.pdf,2021-06-08
+nab_cond,2021-06-01,24.0,National Australia Bank (NAB) Business Conditions.pdf,2021-07-13
+nab_cond,2021-07-01,11.0,National Australia Bank (NAB) Business Conditions.pdf,2021-08-10
+nab_cond,2021-08-01,14.0,National Australia Bank (NAB) Business Conditions.pdf,2021-09-14
+nab_cond,2021-09-01,5.0,National Australia Bank (NAB) Business Conditions.pdf,2021-10-12
+nab_cond,2021-10-01,11.0,National Australia Bank (NAB) Business Conditions.pdf,2021-11-09
+nab_cond,2021-11-01,12.0,National Australia Bank (NAB) Business Conditions.pdf,2021-12-14
+nab_cond,2021-12-01,8.0,National Australia Bank (NAB) Business Conditions.pdf,2022-01-25
+nab_cond,2022-01-01,3.0,National Australia Bank (NAB) Business Conditions.pdf,2022-02-08
+nab_cond,2022-02-01,9.0,National Australia Bank (NAB) Business Conditions.pdf,2022-03-08
+nab_cond,2022-03-01,18.0,National Australia Bank (NAB) Business Conditions.pdf,2022-04-12
+nab_cond,2022-04-01,20.0,National Australia Bank (NAB) Business Conditions.pdf,2022-05-10
+nab_cond,2022-05-01,16.0,National Australia Bank (NAB) Business Conditions.pdf,2022-06-14
+nab_cond,2022-06-01,13.0,National Australia Bank (NAB) Business Conditions.pdf,2022-07-12
+nab_cond,2022-07-01,20.0,National Australia Bank (NAB) Business Conditions.pdf,2022-08-09
+nab_cond,2022-08-01,20.0,National Australia Bank (NAB) Business Conditions.pdf,2022-09-13
+nab_cond,2022-09-01,25.0,National Australia Bank (NAB) Business Conditions.pdf,2022-10-11
+nab_cond,2022-10-01,22.0,National Australia Bank (NAB) Business Conditions.pdf,2022-11-08
+nab_cond,2022-11-01,20.0,National Australia Bank (NAB) Business Conditions.pdf,2022-12-13
+nab_cond,2022-12-01,12.0,National Australia Bank (NAB) Business Conditions.pdf,2023-01-24
+nab_cond,2023-01-01,18.0,National Australia Bank (NAB) Business Conditions.pdf,2023-02-14
+nab_cond,2023-02-01,17.0,National Australia Bank (NAB) Business Conditions.pdf,2023-03-14
+nab_cond,2023-03-01,16.0,National Australia Bank (NAB) Business Conditions.pdf,2023-04-11
+nab_cond,2023-04-01,14.0,National Australia Bank (NAB) Business Conditions.pdf,2023-05-08
+nab_cond,2023-05-01,8.0,National Australia Bank (NAB) Business Conditions.pdf,2023-06-13
+nab_cond,2023-06-01,9.0,National Australia Bank (NAB) Business Conditions.pdf,2023-07-11
+nab_cond,2023-07-01,10.0,National Australia Bank (NAB) Business Conditions.pdf,2023-08-08
+nab_cond,2023-08-01,13.0,National Australia Bank (NAB) Business Conditions.pdf,2023-09-12
+nab_cond,2023-09-01,11.0,National Australia Bank (NAB) Business Conditions.pdf,2023-10-10
+nab_cond,2023-10-01,13.0,National Australia Bank (NAB) Business Conditions.pdf,2023-11-14
+nab_cond,2023-11-01,9.0,National Australia Bank (NAB) Business Conditions.pdf,2023-12-12
+nab_cond,2023-12-01,7.0,National Australia Bank (NAB) Business Conditions.pdf,2024-01-23
+nab_cond,2024-01-01,6.0,National Australia Bank (NAB) Business Conditions.pdf,2024-02-13
+nab_cond,2024-02-01,10.0,National Australia Bank (NAB) Business Conditions.pdf,2024-03-12
+nab_cond,2024-03-01,9.0,National Australia Bank (NAB) Business Conditions.pdf,2024-04-09
+nab_cond,2024-04-01,7.0,National Australia Bank (NAB) Business Conditions.pdf,2024-05-13
+nab_cond,2024-05-01,6.0,National Australia Bank (NAB) Business Conditions.pdf,2024-06-11
+nab_cond,2024-06-01,4.0,National Australia Bank (NAB) Business Conditions.pdf,2024-07-09
+nab_cond,2024-07-01,6.0,National Australia Bank (NAB) Business Conditions.pdf,2024-08-13
+nab_cond,2024-08-01,3.0,National Australia Bank (NAB) Business Conditions.pdf,2024-09-10
+nab_cond,2024-09-01,7.0,National Australia Bank (NAB) Business Conditions.pdf,2024-10-08
+nab_cond,2024-10-01,7.0,National Australia Bank (NAB) Business Conditions.pdf,2024-11-12
+nab_cond,2024-11-01,2.0,National Australia Bank (NAB) Business Conditions.pdf,2024-12-10
+nab_cond,2024-12-01,6.0,National Australia Bank (NAB) Business Conditions.pdf,2025-01-28
+nab_cond,2025-01-01,3.0,National Australia Bank (NAB) Business Conditions.pdf,2025-02-11
+nab_cond,2025-02-01,4.0,National Australia Bank (NAB) Business Conditions.pdf,2025-03-11
+nab_cond,2025-03-01,4.0,National Australia Bank (NAB) Business Conditions.pdf,2025-04-08
+nab_cond,2025-04-01,2.0,National Australia Bank (NAB) Business Conditions.pdf,2025-05-13
+nab_cond,2025-05-01,0.0,National Australia Bank (NAB) Business Conditions.pdf,2025-06-10
+nab_cond,2025-06-01,9.0,National Australia Bank (NAB) Business Conditions.pdf,2025-07-08
+nab_cond,2025-07-01,5.0,National Australia Bank (NAB) Business Conditions.pdf,2025-08-12
+nab_cond,2025-08-01,7.0,National Australia Bank (NAB) Business Conditions.pdf,2025-09-09
+nab_cond,2025-09-01,8.0,National Australia Bank (NAB) Business Conditions.pdf,2025-10-14
+nab_cond,2025-10-01,9.0,National Australia Bank (NAB) Business Conditions.pdf,2025-11-11
+nab_cond,2025-11-01,7.0,National Australia Bank (NAB) Business Conditions.pdf,2025-12-09
+nab_cond,2025-12-01,9.0,National Australia Bank (NAB) Business Conditions.pdf,2026-01-27
+nab_cond,2026-01-01,7.0,National Australia Bank (NAB) Business Conditions.pdf,2026-02-10
+nab_cond,2026-02-01,7.0,National Australia Bank (NAB) Business Conditions.pdf,2026-03-10
+nab_cond,2026-03-01,6.0,National Australia Bank (NAB) Business Conditions.pdf,2026-04-14
+nab_cond,2026-04-01,3.0,National Australia Bank (NAB) Business Conditions.pdf,2026-05-12
+nab_cond,2026-05-01,3.0,National Australia Bank (NAB) Business Conditions.pdf,2026-06-09
+nab_conf,1997-03-01,9.0,National Australia Bank (NAB) Business Confidence.pdf,1997-04-01
+nab_conf,1997-04-01,14.0,National Australia Bank (NAB) Business Confidence.pdf,1997-05-01
+nab_conf,1997-05-01,14.0,National Australia Bank (NAB) Business Confidence.pdf,1997-06-01
+nab_conf,1997-06-01,14.0,National Australia Bank (NAB) Business Confidence.pdf,1997-07-01
+nab_conf,1997-07-01,15.0,National Australia Bank (NAB) Business Confidence.pdf,1997-08-01
+nab_conf,1997-08-01,15.0,National Australia Bank (NAB) Business Confidence.pdf,1997-09-01
+nab_conf,1997-09-01,12.0,National Australia Bank (NAB) Business Confidence.pdf,1997-10-01
+nab_conf,1997-10-01,3.0,National Australia Bank (NAB) Business Confidence.pdf,1997-11-01
+nab_conf,1997-11-01,10.0,National Australia Bank (NAB) Business Confidence.pdf,1997-12-01
+nab_conf,1997-12-01,8.0,National Australia Bank (NAB) Business Confidence.pdf,1998-01-01
+nab_conf,1998-01-01,5.0,National Australia Bank (NAB) Business Confidence.pdf,1998-02-01
+nab_conf,1998-02-01,7.0,National Australia Bank (NAB) Business Confidence.pdf,1998-03-01
+nab_conf,1998-03-01,8.0,National Australia Bank (NAB) Business Confidence.pdf,1998-04-01
+nab_conf,1998-04-01,3.0,National Australia Bank (NAB) Business Confidence.pdf,1998-05-01
+nab_conf,1998-05-01,2.0,National Australia Bank (NAB) Business Confidence.pdf,1998-06-01
+nab_conf,1998-06-01,0.0,National Australia Bank (NAB) Business Confidence.pdf,1998-07-01
+nab_conf,1998-07-01,-1.0,National Australia Bank (NAB) Business Confidence.pdf,1998-08-01
+nab_conf,1998-08-01,-1.0,National Australia Bank (NAB) Business Confidence.pdf,1998-09-01
+nab_conf,1998-09-01,2.0,National Australia Bank (NAB) Business Confidence.pdf,1998-10-01
+nab_conf,1998-10-01,8.0,National Australia Bank (NAB) Business Confidence.pdf,1998-11-01
+nab_conf,1998-11-01,6.0,National Australia Bank (NAB) Business Confidence.pdf,1998-12-01
+nab_conf,1998-12-01,11.0,National Australia Bank (NAB) Business Confidence.pdf,1999-01-01
+nab_conf,1999-01-01,8.0,National Australia Bank (NAB) Business Confidence.pdf,1999-02-01
+nab_conf,1999-02-01,12.0,National Australia Bank (NAB) Business Confidence.pdf,1999-03-01
+nab_conf,1999-03-01,10.0,National Australia Bank (NAB) Business Confidence.pdf,1999-04-01
+nab_conf,1999-04-01,10.0,National Australia Bank (NAB) Business Confidence.pdf,1999-05-01
+nab_conf,1999-05-01,12.0,National Australia Bank (NAB) Business Confidence.pdf,1999-06-01
+nab_conf,1999-06-01,19.0,National Australia Bank (NAB) Business Confidence.pdf,1999-07-01
+nab_conf,1999-07-01,6.0,National Australia Bank (NAB) Business Confidence.pdf,1999-08-01
+nab_conf,1999-08-01,10.0,National Australia Bank (NAB) Business Confidence.pdf,1999-09-01
+nab_conf,1999-09-01,11.0,National Australia Bank (NAB) Business Confidence.pdf,1999-10-01
+nab_conf,1999-10-01,7.0,National Australia Bank (NAB) Business Confidence.pdf,1999-11-01
+nab_conf,1999-11-01,9.0,National Australia Bank (NAB) Business Confidence.pdf,1999-12-01
+nab_conf,1999-12-01,7.0,National Australia Bank (NAB) Business Confidence.pdf,2000-01-01
+nab_conf,2000-01-01,5.0,National Australia Bank (NAB) Business Confidence.pdf,2000-02-01
+nab_conf,2000-02-01,2.0,National Australia Bank (NAB) Business Confidence.pdf,2000-03-01
+nab_conf,2000-03-01,7.0,National Australia Bank (NAB) Business Confidence.pdf,2000-04-01
+nab_conf,2000-04-01,0.0,National Australia Bank (NAB) Business Confidence.pdf,2000-05-01
+nab_conf,2000-06-01,-1.0,National Australia Bank (NAB) Business Confidence.pdf,2000-07-01
+nab_conf,2000-07-01,5.0,National Australia Bank (NAB) Business Confidence.pdf,2000-08-01
+nab_conf,2000-08-01,2.0,National Australia Bank (NAB) Business Confidence.pdf,2000-09-01
+nab_conf,2000-09-01,3.0,National Australia Bank (NAB) Business Confidence.pdf,2000-10-01
+nab_conf,2000-10-01,4.0,National Australia Bank (NAB) Business Confidence.pdf,2000-11-01
+nab_conf,2000-11-01,0.0,National Australia Bank (NAB) Business Confidence.pdf,2000-12-01
+nab_conf,2000-12-01,-3.0,National Australia Bank (NAB) Business Confidence.pdf,2001-01-01
+nab_conf,2001-01-01,4.0,National Australia Bank (NAB) Business Confidence.pdf,2001-02-01
+nab_conf,2001-02-01,2.0,National Australia Bank (NAB) Business Confidence.pdf,2001-03-01
+nab_conf,2001-03-01,1.0,National Australia Bank (NAB) Business Confidence.pdf,2001-04-01
+nab_conf,2001-04-01,4.0,National Australia Bank (NAB) Business Confidence.pdf,2001-05-01
+nab_conf,2001-05-01,12.0,National Australia Bank (NAB) Business Confidence.pdf,2001-06-01
+nab_conf,2001-06-01,19.0,National Australia Bank (NAB) Business Confidence.pdf,2001-07-01
+nab_conf,2001-07-01,11.0,National Australia Bank (NAB) Business Confidence.pdf,2001-08-01
+nab_conf,2001-08-01,18.0,National Australia Bank (NAB) Business Confidence.pdf,2001-09-01
+nab_conf,2001-09-01,-15.0,National Australia Bank (NAB) Business Confidence.pdf,2001-10-01
+nab_conf,2001-10-01,-1.0,National Australia Bank (NAB) Business Confidence.pdf,2001-11-01
+nab_conf,2001-11-01,8.0,National Australia Bank (NAB) Business Confidence.pdf,2001-12-01
+nab_conf,2001-12-01,14.0,National Australia Bank (NAB) Business Confidence.pdf,2002-01-01
+nab_conf,2002-01-01,13.0,National Australia Bank (NAB) Business Confidence.pdf,2002-02-01
+nab_conf,2002-02-01,18.0,National Australia Bank (NAB) Business Confidence.pdf,2002-03-01
+nab_conf,2002-03-01,16.0,National Australia Bank (NAB) Business Confidence.pdf,2002-04-01
+nab_conf,2002-04-01,20.0,National Australia Bank (NAB) Business Confidence.pdf,2002-05-01
+nab_conf,2002-05-01,18.0,National Australia Bank (NAB) Business Confidence.pdf,2002-06-01
+nab_conf,2002-06-01,13.0,National Australia Bank (NAB) Business Confidence.pdf,2002-07-01
+nab_conf,2002-07-01,3.0,National Australia Bank (NAB) Business Confidence.pdf,2002-08-01
+nab_conf,2002-08-01,14.0,National Australia Bank (NAB) Business Confidence.pdf,2002-09-01
+nab_conf,2002-09-01,10.0,National Australia Bank (NAB) Business Confidence.pdf,2002-10-01
+nab_conf,2002-10-01,8.0,National Australia Bank (NAB) Business Confidence.pdf,2002-11-01
+nab_conf,2002-11-01,12.0,National Australia Bank (NAB) Business Confidence.pdf,2002-12-01
+nab_conf,2002-12-01,6.0,National Australia Bank (NAB) Business Confidence.pdf,2003-01-01
+nab_conf,2003-01-01,7.0,National Australia Bank (NAB) Business Confidence.pdf,2003-02-01
+nab_conf,2003-02-01,4.0,National Australia Bank (NAB) Business Confidence.pdf,2003-03-01
+nab_conf,2003-03-01,4.0,National Australia Bank (NAB) Business Confidence.pdf,2003-04-01
+nab_conf,2003-04-01,9.0,National Australia Bank (NAB) Business Confidence.pdf,2003-05-01
+nab_conf,2003-05-01,6.0,National Australia Bank (NAB) Business Confidence.pdf,2003-06-01
+nab_conf,2003-06-01,14.0,National Australia Bank (NAB) Business Confidence.pdf,2003-07-01
+nab_conf,2003-07-01,12.0,National Australia Bank (NAB) Business Confidence.pdf,2003-08-01
+nab_conf,2003-08-01,16.0,National Australia Bank (NAB) Business Confidence.pdf,2003-09-01
+nab_conf,2003-09-01,14.0,National Australia Bank (NAB) Business Confidence.pdf,2003-10-01
+nab_conf,2003-10-01,19.0,National Australia Bank (NAB) Business Confidence.pdf,2003-11-01
+nab_conf,2003-11-01,14.0,National Australia Bank (NAB) Business Confidence.pdf,2003-12-01
+nab_conf,2003-12-01,14.0,National Australia Bank (NAB) Business Confidence.pdf,2004-01-01
+nab_conf,2004-01-01,13.0,National Australia Bank (NAB) Business Confidence.pdf,2004-02-01
+nab_conf,2004-02-01,12.0,National Australia Bank (NAB) Business Confidence.pdf,2004-03-01
+nab_conf,2004-03-01,15.0,National Australia Bank (NAB) Business Confidence.pdf,2004-04-01
+nab_conf,2004-04-01,11.0,National Australia Bank (NAB) Business Confidence.pdf,2004-05-01
+nab_conf,2004-05-01,10.0,National Australia Bank (NAB) Business Confidence.pdf,2004-06-01
+nab_conf,2004-06-01,11.0,National Australia Bank (NAB) Business Confidence.pdf,2004-07-01
+nab_conf,2004-07-01,11.0,National Australia Bank (NAB) Business Confidence.pdf,2004-08-01
+nab_conf,2004-08-01,10.0,National Australia Bank (NAB) Business Confidence.pdf,2004-09-01
+nab_conf,2004-09-01,14.0,National Australia Bank (NAB) Business Confidence.pdf,2004-10-01
+nab_conf,2004-10-01,13.0,National Australia Bank (NAB) Business Confidence.pdf,2004-11-01
+nab_conf,2004-11-01,11.0,National Australia Bank (NAB) Business Confidence.pdf,2004-12-01
+nab_conf,2004-12-01,13.0,National Australia Bank (NAB) Business Confidence.pdf,2005-01-01
+nab_conf,2005-01-01,16.0,National Australia Bank (NAB) Business Confidence.pdf,2005-02-01
+nab_conf,2005-02-01,11.0,National Australia Bank (NAB) Business Confidence.pdf,2005-03-01
+nab_conf,2005-03-01,6.0,National Australia Bank (NAB) Business Confidence.pdf,2005-04-01
+nab_conf,2005-04-01,4.0,National Australia Bank (NAB) Business Confidence.pdf,2005-05-01
+nab_conf,2005-05-01,7.0,National Australia Bank (NAB) Business Confidence.pdf,2005-06-01
+nab_conf,2005-06-01,5.0,National Australia Bank (NAB) Business Confidence.pdf,2005-07-01
+nab_conf,2005-07-01,4.0,National Australia Bank (NAB) Business Confidence.pdf,2005-08-01
+nab_conf,2005-08-01,5.0,National Australia Bank (NAB) Business Confidence.pdf,2005-09-01
+nab_conf,2005-09-01,5.0,National Australia Bank (NAB) Business Confidence.pdf,2005-10-01
+nab_conf,2005-10-01,4.0,National Australia Bank (NAB) Business Confidence.pdf,2005-11-01
+nab_conf,2005-11-01,8.0,National Australia Bank (NAB) Business Confidence.pdf,2005-12-01
+nab_conf,2005-12-01,7.0,National Australia Bank (NAB) Business Confidence.pdf,2006-01-01
+nab_conf,2006-01-01,12.0,National Australia Bank (NAB) Business Confidence.pdf,2006-02-01
+nab_conf,2006-02-01,12.0,National Australia Bank (NAB) Business Confidence.pdf,2006-03-01
+nab_conf,2006-03-01,15.0,National Australia Bank (NAB) Business Confidence.pdf,2006-04-01
+nab_conf,2006-04-01,13.0,National Australia Bank (NAB) Business Confidence.pdf,2006-05-01
+nab_conf,2006-05-01,8.0,National Australia Bank (NAB) Business Confidence.pdf,2006-06-01
+nab_conf,2006-06-01,8.0,National Australia Bank (NAB) Business Confidence.pdf,2006-07-01
+nab_conf,2006-07-01,9.0,National Australia Bank (NAB) Business Confidence.pdf,2006-08-01
+nab_conf,2006-08-01,5.0,National Australia Bank (NAB) Business Confidence.pdf,2006-09-01
+nab_conf,2006-09-01,7.0,National Australia Bank (NAB) Business Confidence.pdf,2006-10-01
+nab_conf,2006-10-01,6.0,National Australia Bank (NAB) Business Confidence.pdf,2006-11-01
+nab_conf,2006-11-01,7.0,National Australia Bank (NAB) Business Confidence.pdf,2006-12-01
+nab_conf,2006-12-01,6.0,National Australia Bank (NAB) Business Confidence.pdf,2007-01-01
+nab_conf,2007-01-01,10.0,National Australia Bank (NAB) Business Confidence.pdf,2007-02-01
+nab_conf,2007-02-01,12.0,National Australia Bank (NAB) Business Confidence.pdf,2007-03-01
+nab_conf,2007-03-01,10.0,National Australia Bank (NAB) Business Confidence.pdf,2007-04-01
+nab_conf,2007-04-01,13.0,National Australia Bank (NAB) Business Confidence.pdf,2007-05-01
+nab_conf,2007-05-01,12.0,National Australia Bank (NAB) Business Confidence.pdf,2007-06-01
+nab_conf,2007-06-01,14.0,National Australia Bank (NAB) Business Confidence.pdf,2007-07-01
+nab_conf,2007-07-01,11.0,National Australia Bank (NAB) Business Confidence.pdf,2007-08-01
+nab_conf,2007-08-01,8.0,National Australia Bank (NAB) Business Confidence.pdf,2007-09-01
+nab_conf,2007-09-01,7.0,National Australia Bank (NAB) Business Confidence.pdf,2007-10-01
+nab_conf,2007-10-01,8.0,National Australia Bank (NAB) Business Confidence.pdf,2007-11-01
+nab_conf,2007-11-01,6.0,National Australia Bank (NAB) Business Confidence.pdf,2007-12-01
+nab_conf,2007-12-01,5.0,National Australia Bank (NAB) Business Confidence.pdf,2008-01-01
+nab_conf,2008-01-01,-4.0,National Australia Bank (NAB) Business Confidence.pdf,2008-02-12
+nab_conf,2008-03-01,-4.0,National Australia Bank (NAB) Business Confidence.pdf,2008-04-29
+nab_conf,2008-04-01,-8.0,National Australia Bank (NAB) Business Confidence.pdf,2008-05-12
+nab_conf,2008-05-01,-4.0,National Australia Bank (NAB) Business Confidence.pdf,2008-06-10
+nab_conf,2008-06-01,-9.0,National Australia Bank (NAB) Business Confidence.pdf,2008-07-08
+nab_conf,2008-07-01,-9.0,National Australia Bank (NAB) Business Confidence.pdf,2008-08-12
+nab_conf,2008-08-01,-7.0,National Australia Bank (NAB) Business Confidence.pdf,2008-09-09
+nab_conf,2008-09-01,-7.0,National Australia Bank (NAB) Business Confidence.pdf,2008-10-28
+nab_conf,2008-10-01,-29.0,National Australia Bank (NAB) Business Confidence.pdf,2008-11-11
+nab_conf,2008-11-01,-30.0,National Australia Bank (NAB) Business Confidence.pdf,2008-12-09
+nab_conf,2008-12-01,-20.0,National Australia Bank (NAB) Business Confidence.pdf,2009-01-27
+nab_conf,2009-01-01,-42.0,National Australia Bank (NAB) Business Confidence.pdf,2009-02-12
+nab_conf,2009-02-01,-22.0,National Australia Bank (NAB) Business Confidence.pdf,2009-03-10
+nab_conf,2009-03-01,-13.0,National Australia Bank (NAB) Business Confidence.pdf,2009-04-14
+nab_conf,2009-04-01,-14.0,National Australia Bank (NAB) Business Confidence.pdf,2009-05-11
+nab_conf,2009-05-01,-2.0,National Australia Bank (NAB) Business Confidence.pdf,2009-06-09
+nab_conf,2009-06-01,4.0,National Australia Bank (NAB) Business Confidence.pdf,2009-07-14
+nab_conf,2009-07-01,10.0,National Australia Bank (NAB) Business Confidence.pdf,2009-08-11
+nab_conf,2009-08-01,18.0,National Australia Bank (NAB) Business Confidence.pdf,2009-09-08
+nab_conf,2009-09-01,14.0,National Australia Bank (NAB) Business Confidence.pdf,2009-10-13
+nab_conf,2009-10-01,16.0,National Australia Bank (NAB) Business Confidence.pdf,2009-11-10
+nab_conf,2009-11-01,19.0,National Australia Bank (NAB) Business Confidence.pdf,2009-12-08
+nab_conf,2010-01-01,15.0,National Australia Bank (NAB) Business Confidence.pdf,2010-02-16
+nab_conf,2010-02-01,19.0,National Australia Bank (NAB) Business Confidence.pdf,2010-03-09
+nab_conf,2010-03-01,16.0,National Australia Bank (NAB) Business Confidence.pdf,2010-04-13
+nab_conf,2010-04-01,13.0,National Australia Bank (NAB) Business Confidence.pdf,2010-05-10
+nab_conf,2010-05-01,5.0,National Australia Bank (NAB) Business Confidence.pdf,2010-06-08
+nab_conf,2010-06-01,4.0,National Australia Bank (NAB) Business Confidence.pdf,2010-07-13
+nab_conf,2010-07-01,2.0,National Australia Bank (NAB) Business Confidence.pdf,2010-08-10
+nab_conf,2010-08-01,11.0,National Australia Bank (NAB) Business Confidence.pdf,2010-09-14
+nab_conf,2010-09-01,10.0,National Australia Bank (NAB) Business Confidence.pdf,2010-10-12
+nab_conf,2010-10-01,8.0,National Australia Bank (NAB) Business Confidence.pdf,2010-11-09
+nab_conf,2010-11-01,6.0,National Australia Bank (NAB) Business Confidence.pdf,2010-12-14
+nab_conf,2011-01-01,4.0,National Australia Bank (NAB) Business Confidence.pdf,2011-02-08
+nab_conf,2011-02-01,14.0,National Australia Bank (NAB) Business Confidence.pdf,2011-03-08
+nab_conf,2011-03-01,9.0,National Australia Bank (NAB) Business Confidence.pdf,2011-04-12
+nab_conf,2011-04-01,7.0,National Australia Bank (NAB) Business Confidence.pdf,2011-05-09
+nab_conf,2011-05-01,6.0,National Australia Bank (NAB) Business Confidence.pdf,2011-06-14
+nab_conf,2011-06-01,0.0,National Australia Bank (NAB) Business Confidence.pdf,2011-07-12
+nab_conf,2011-07-01,2.0,National Australia Bank (NAB) Business Confidence.pdf,2011-08-09
+nab_conf,2011-08-01,-8.0,National Australia Bank (NAB) Business Confidence.pdf,2011-09-13
+nab_conf,2011-09-01,-2.0,National Australia Bank (NAB) Business Confidence.pdf,2011-10-11
+nab_conf,2011-10-01,2.0,National Australia Bank (NAB) Business Confidence.pdf,2011-11-08
+nab_conf,2011-11-01,2.0,National Australia Bank (NAB) Business Confidence.pdf,2011-12-13
+nab_conf,2011-12-01,3.0,National Australia Bank (NAB) Business Confidence.pdf,2012-01-31
+nab_conf,2012-01-01,4.0,National Australia Bank (NAB) Business Confidence.pdf,2012-02-14
+nab_conf,2012-02-01,1.0,National Australia Bank (NAB) Business Confidence.pdf,2012-03-13
+nab_conf,2012-03-01,3.0,National Australia Bank (NAB) Business Confidence.pdf,2012-04-10
+nab_conf,2012-04-01,4.0,National Australia Bank (NAB) Business Confidence.pdf,2012-05-07
+nab_conf,2012-05-01,-2.0,National Australia Bank (NAB) Business Confidence.pdf,2012-06-12
+nab_conf,2012-06-01,-3.0,National Australia Bank (NAB) Business Confidence.pdf,2012-07-10
+nab_conf,2012-07-01,4.0,National Australia Bank (NAB) Business Confidence.pdf,2012-08-14
+nab_conf,2012-08-01,-2.0,National Australia Bank (NAB) Business Confidence.pdf,2012-09-11
+nab_conf,2012-09-01,0.0,National Australia Bank (NAB) Business Confidence.pdf,2012-10-09
+nab_conf,2012-10-01,-1.0,National Australia Bank (NAB) Business Confidence.pdf,2012-11-13
+nab_conf,2012-11-01,-9.0,National Australia Bank (NAB) Business Confidence.pdf,2012-12-11
+nab_conf,2012-12-01,3.0,National Australia Bank (NAB) Business Confidence.pdf,2013-01-29
+nab_conf,2013-01-01,3.0,National Australia Bank (NAB) Business Confidence.pdf,2013-02-12
+nab_conf,2013-02-01,1.0,National Australia Bank (NAB) Business Confidence.pdf,2013-03-12
+nab_conf,2013-03-01,2.0,National Australia Bank (NAB) Business Confidence.pdf,2013-04-09
+nab_conf,2013-04-01,-2.0,National Australia Bank (NAB) Business Confidence.pdf,2013-05-13
+nab_conf,2013-05-01,-1.0,National Australia Bank (NAB) Business Confidence.pdf,2013-06-11
+nab_conf,2013-06-01,0.0,National Australia Bank (NAB) Business Confidence.pdf,2013-07-09
+nab_conf,2013-07-01,-3.0,National Australia Bank (NAB) Business Confidence.pdf,2013-08-13
+nab_conf,2013-08-01,6.0,National Australia Bank (NAB) Business Confidence.pdf,2013-09-10
+nab_conf,2013-09-01,12.0,National Australia Bank (NAB) Business Confidence.pdf,2013-10-08
+nab_conf,2013-10-01,5.0,National Australia Bank (NAB) Business Confidence.pdf,2013-11-12
+nab_conf,2013-11-01,5.0,National Australia Bank (NAB) Business Confidence.pdf,2013-12-10
+nab_conf,2013-12-01,6.0,National Australia Bank (NAB) Business Confidence.pdf,2014-01-28
+nab_conf,2014-01-01,8.0,National Australia Bank (NAB) Business Confidence.pdf,2014-02-11
+nab_conf,2014-02-01,7.0,National Australia Bank (NAB) Business Confidence.pdf,2014-03-11
+nab_conf,2014-03-01,4.0,National Australia Bank (NAB) Business Confidence.pdf,2014-04-08
+nab_conf,2014-04-01,6.0,National Australia Bank (NAB) Business Confidence.pdf,2014-05-12
+nab_conf,2014-05-01,7.0,National Australia Bank (NAB) Business Confidence.pdf,2014-06-10
+nab_conf,2014-06-01,8.0,National Australia Bank (NAB) Business Confidence.pdf,2014-07-08
+nab_conf,2014-07-01,11.0,National Australia Bank (NAB) Business Confidence.pdf,2014-08-12
+nab_conf,2014-08-01,8.0,National Australia Bank (NAB) Business Confidence.pdf,2014-09-09
+nab_conf,2014-09-01,5.0,National Australia Bank (NAB) Business Confidence.pdf,2014-10-14
+nab_conf,2014-10-01,4.0,National Australia Bank (NAB) Business Confidence.pdf,2014-11-11
+nab_conf,2014-11-01,1.0,National Australia Bank (NAB) Business Confidence.pdf,2014-12-09
+nab_conf,2014-12-01,2.0,National Australia Bank (NAB) Business Confidence.pdf,2015-01-27
+nab_conf,2015-01-01,3.0,National Australia Bank (NAB) Business Confidence.pdf,2015-02-10
+nab_conf,2015-02-01,0.0,National Australia Bank (NAB) Business Confidence.pdf,2015-03-10
+nab_conf,2015-03-01,3.0,National Australia Bank (NAB) Business Confidence.pdf,2015-04-14
+nab_conf,2015-04-01,3.0,National Australia Bank (NAB) Business Confidence.pdf,2015-05-11
+nab_conf,2015-05-01,7.0,National Australia Bank (NAB) Business Confidence.pdf,2015-06-09
+nab_conf,2015-06-01,10.0,National Australia Bank (NAB) Business Confidence.pdf,2015-07-14
+nab_conf,2015-07-01,4.0,National Australia Bank (NAB) Business Confidence.pdf,2015-08-11
+nab_conf,2015-08-01,1.0,National Australia Bank (NAB) Business Confidence.pdf,2015-09-08
+nab_conf,2015-09-01,5.0,National Australia Bank (NAB) Business Confidence.pdf,2015-10-13
+nab_conf,2015-10-01,2.0,National Australia Bank (NAB) Business Confidence.pdf,2015-11-10
+nab_conf,2015-11-01,5.0,National Australia Bank (NAB) Business Confidence.pdf,2015-12-08
+nab_conf,2015-12-01,3.0,National Australia Bank (NAB) Business Confidence.pdf,2016-01-25
+nab_conf,2016-01-01,2.0,National Australia Bank (NAB) Business Confidence.pdf,2016-02-09
+nab_conf,2016-02-01,3.0,National Australia Bank (NAB) Business Confidence.pdf,2016-03-08
+nab_conf,2016-03-01,6.0,National Australia Bank (NAB) Business Confidence.pdf,2016-04-12
+nab_conf,2016-04-01,5.0,National Australia Bank (NAB) Business Confidence.pdf,2016-05-02
+nab_conf,2016-05-01,3.0,National Australia Bank (NAB) Business Confidence.pdf,2016-06-14
+nab_conf,2016-06-01,6.0,National Australia Bank (NAB) Business Confidence.pdf,2016-07-12
+nab_conf,2016-07-01,4.0,National Australia Bank (NAB) Business Confidence.pdf,2016-08-09
+nab_conf,2016-08-01,6.0,National Australia Bank (NAB) Business Confidence.pdf,2016-09-13
+nab_conf,2016-09-01,6.0,National Australia Bank (NAB) Business Confidence.pdf,2016-10-11
+nab_conf,2016-10-01,4.0,National Australia Bank (NAB) Business Confidence.pdf,2016-11-08
+nab_conf,2016-11-01,5.0,National Australia Bank (NAB) Business Confidence.pdf,2016-12-13
+nab_conf,2016-12-01,6.0,National Australia Bank (NAB) Business Confidence.pdf,2017-01-31
+nab_conf,2017-01-01,10.0,National Australia Bank (NAB) Business Confidence.pdf,2017-02-14
+nab_conf,2017-02-01,7.0,National Australia Bank (NAB) Business Confidence.pdf,2017-03-14
+nab_conf,2017-03-01,6.0,National Australia Bank (NAB) Business Confidence.pdf,2017-04-11
+nab_conf,2017-04-01,13.0,National Australia Bank (NAB) Business Confidence.pdf,2017-05-08
+nab_conf,2017-05-01,7.0,National Australia Bank (NAB) Business Confidence.pdf,2017-06-13
+nab_conf,2017-06-01,9.0,National Australia Bank (NAB) Business Confidence.pdf,2017-07-11
+nab_conf,2017-07-01,12.0,National Australia Bank (NAB) Business Confidence.pdf,2017-08-08
+nab_conf,2017-08-01,5.0,National Australia Bank (NAB) Business Confidence.pdf,2017-09-12
+nab_conf,2017-09-01,7.0,National Australia Bank (NAB) Business Confidence.pdf,2017-10-10
+nab_conf,2017-10-01,8.0,National Australia Bank (NAB) Business Confidence.pdf,2017-11-14
+nab_conf,2017-11-01,6.0,National Australia Bank (NAB) Business Confidence.pdf,2017-12-12
+nab_conf,2017-12-01,11.0,National Australia Bank (NAB) Business Confidence.pdf,2018-01-30
+nab_conf,2018-01-01,12.0,National Australia Bank (NAB) Business Confidence.pdf,2018-02-13
+nab_conf,2018-02-01,9.0,National Australia Bank (NAB) Business Confidence.pdf,2018-03-13
+nab_conf,2018-03-01,7.0,National Australia Bank (NAB) Business Confidence.pdf,2018-04-10
+nab_conf,2018-04-01,10.0,National Australia Bank (NAB) Business Confidence.pdf,2018-05-07
+nab_conf,2018-05-01,6.0,National Australia Bank (NAB) Business Confidence.pdf,2018-06-12
+nab_conf,2018-06-01,6.0,National Australia Bank (NAB) Business Confidence.pdf,2018-07-10
+nab_conf,2018-07-01,7.0,National Australia Bank (NAB) Business Confidence.pdf,2018-08-14
+nab_conf,2018-08-01,4.0,National Australia Bank (NAB) Business Confidence.pdf,2018-09-11
+nab_conf,2018-09-01,6.0,National Australia Bank (NAB) Business Confidence.pdf,2018-10-09
+nab_conf,2018-10-01,4.0,National Australia Bank (NAB) Business Confidence.pdf,2018-11-13
+nab_conf,2018-11-01,3.0,National Australia Bank (NAB) Business Confidence.pdf,2018-12-11
+nab_conf,2018-12-01,3.0,National Australia Bank (NAB) Business Confidence.pdf,2019-01-29
+nab_conf,2019-01-01,4.0,National Australia Bank (NAB) Business Confidence.pdf,2019-02-12
+nab_conf,2019-02-01,2.0,National Australia Bank (NAB) Business Confidence.pdf,2019-03-12
+nab_conf,2019-03-01,0.0,National Australia Bank (NAB) Business Confidence.pdf,2019-04-01
+nab_conf,2019-04-01,0.0,National Australia Bank (NAB) Business Confidence.pdf,2019-05-14
+nab_conf,2019-05-01,7.0,National Australia Bank (NAB) Business Confidence.pdf,2019-06-11
+nab_conf,2019-06-01,2.0,National Australia Bank (NAB) Business Confidence.pdf,2019-07-09
+nab_conf,2019-07-01,4.0,National Australia Bank (NAB) Business Confidence.pdf,2019-08-13
+nab_conf,2019-08-01,1.0,National Australia Bank (NAB) Business Confidence.pdf,2019-09-10
+nab_conf,2019-09-01,0.0,National Australia Bank (NAB) Business Confidence.pdf,2019-10-08
+nab_conf,2019-10-01,2.0,National Australia Bank (NAB) Business Confidence.pdf,2019-11-12
+nab_conf,2019-11-01,0.0,National Australia Bank (NAB) Business Confidence.pdf,2019-12-10
+nab_conf,2019-12-01,-2.0,National Australia Bank (NAB) Business Confidence.pdf,2020-01-28
+nab_conf,2020-01-01,-1.0,National Australia Bank (NAB) Business Confidence.pdf,2020-02-11
+nab_conf,2020-02-01,-4.0,National Australia Bank (NAB) Business Confidence.pdf,2020-03-10
+nab_conf,2020-03-01,-66.0,National Australia Bank (NAB) Business Confidence.pdf,2020-04-14
+nab_conf,2020-04-01,-46.0,National Australia Bank (NAB) Business Confidence.pdf,2020-05-12
+nab_conf,2020-05-01,-20.0,National Australia Bank (NAB) Business Confidence.pdf,2020-06-09
+nab_conf,2020-06-01,1.0,National Australia Bank (NAB) Business Confidence.pdf,2020-07-14
+nab_conf,2020-07-01,-14.0,National Australia Bank (NAB) Business Confidence.pdf,2020-08-11
+nab_conf,2020-08-01,-8.0,National Australia Bank (NAB) Business Confidence.pdf,2020-09-08
+nab_conf,2020-09-01,-4.0,National Australia Bank (NAB) Business Confidence.pdf,2020-10-05
+nab_conf,2020-10-01,5.0,National Australia Bank (NAB) Business Confidence.pdf,2020-11-10
+nab_conf,2020-11-01,12.0,National Australia Bank (NAB) Business Confidence.pdf,2020-12-08
+nab_conf,2020-12-01,4.0,National Australia Bank (NAB) Business Confidence.pdf,2021-01-27
+nab_conf,2021-01-01,10.0,National Australia Bank (NAB) Business Confidence.pdf,2021-02-09
+nab_conf,2021-02-01,16.0,National Australia Bank (NAB) Business Confidence.pdf,2021-03-09
+nab_conf,2021-03-01,15.0,National Australia Bank (NAB) Business Confidence.pdf,2021-04-13
+nab_conf,2021-04-01,26.0,National Australia Bank (NAB) Business Confidence.pdf,2021-05-10
+nab_conf,2021-05-01,20.0,National Australia Bank (NAB) Business Confidence.pdf,2021-06-08
+nab_conf,2021-06-01,11.0,National Australia Bank (NAB) Business Confidence.pdf,2021-07-13
+nab_conf,2021-07-01,-8.0,National Australia Bank (NAB) Business Confidence.pdf,2021-08-10
+nab_conf,2021-08-01,-5.0,National Australia Bank (NAB) Business Confidence.pdf,2021-09-14
+nab_conf,2021-09-01,13.0,National Australia Bank (NAB) Business Confidence.pdf,2021-10-12
+nab_conf,2021-10-01,21.0,National Australia Bank (NAB) Business Confidence.pdf,2021-11-09
+nab_conf,2021-11-01,12.0,National Australia Bank (NAB) Business Confidence.pdf,2021-12-14
+nab_conf,2021-12-01,-12.0,National Australia Bank (NAB) Business Confidence.pdf,2022-01-25
+nab_conf,2022-01-01,3.0,National Australia Bank (NAB) Business Confidence.pdf,2022-02-08
+nab_conf,2022-02-01,13.0,National Australia Bank (NAB) Business Confidence.pdf,2022-03-08
+nab_conf,2022-03-01,16.0,National Australia Bank (NAB) Business Confidence.pdf,2022-04-12
+nab_conf,2022-04-01,10.0,National Australia Bank (NAB) Business Confidence.pdf,2022-05-10
+nab_conf,2022-05-01,6.0,National Australia Bank (NAB) Business Confidence.pdf,2022-06-14
+nab_conf,2022-06-01,1.0,National Australia Bank (NAB) Business Confidence.pdf,2022-07-12
+nab_conf,2022-07-01,7.0,National Australia Bank (NAB) Business Confidence.pdf,2022-08-09
+nab_conf,2022-08-01,10.0,National Australia Bank (NAB) Business Confidence.pdf,2022-09-13
+nab_conf,2022-09-01,5.0,National Australia Bank (NAB) Business Confidence.pdf,2022-10-11
+nab_conf,2022-10-01,0.0,National Australia Bank (NAB) Business Confidence.pdf,2022-11-08
+nab_conf,2022-11-01,-4.0,National Australia Bank (NAB) Business Confidence.pdf,2022-12-13
+nab_conf,2022-12-01,-1.0,National Australia Bank (NAB) Business Confidence.pdf,2023-01-24
+nab_conf,2023-01-01,6.0,National Australia Bank (NAB) Business Confidence.pdf,2023-02-14
+nab_conf,2023-02-01,-4.0,National Australia Bank (NAB) Business Confidence.pdf,2023-03-14
+nab_conf,2023-03-01,-1.0,National Australia Bank (NAB) Business Confidence.pdf,2023-04-11
+nab_conf,2023-04-01,0.0,National Australia Bank (NAB) Business Confidence.pdf,2023-05-08
+nab_conf,2023-05-01,-4.0,National Australia Bank (NAB) Business Confidence.pdf,2023-06-13
+nab_conf,2023-06-01,0.0,National Australia Bank (NAB) Business Confidence.pdf,2023-07-11
+nab_conf,2023-07-01,2.0,National Australia Bank (NAB) Business Confidence.pdf,2023-08-08
+nab_conf,2023-08-01,2.0,National Australia Bank (NAB) Business Confidence.pdf,2023-09-12
+nab_conf,2023-09-01,1.0,National Australia Bank (NAB) Business Confidence.pdf,2023-10-10
+nab_conf,2023-10-01,-2.0,National Australia Bank (NAB) Business Confidence.pdf,2023-11-14
+nab_conf,2023-11-01,-9.0,National Australia Bank (NAB) Business Confidence.pdf,2023-12-12
+nab_conf,2023-12-01,-1.0,National Australia Bank (NAB) Business Confidence.pdf,2024-01-23
+nab_conf,2024-01-01,1.0,National Australia Bank (NAB) Business Confidence.pdf,2024-02-13
+nab_conf,2024-02-01,0.0,National Australia Bank (NAB) Business Confidence.pdf,2024-03-12
+nab_conf,2024-03-01,1.0,National Australia Bank (NAB) Business Confidence.pdf,2024-04-09
+nab_conf,2024-04-01,1.0,National Australia Bank (NAB) Business Confidence.pdf,2024-05-13
+nab_conf,2024-05-01,-3.0,National Australia Bank (NAB) Business Confidence.pdf,2024-06-11
+nab_conf,2024-06-01,4.0,National Australia Bank (NAB) Business Confidence.pdf,2024-07-09
+nab_conf,2024-07-01,1.0,National Australia Bank (NAB) Business Confidence.pdf,2024-08-13
+nab_conf,2024-08-01,-4.0,National Australia Bank (NAB) Business Confidence.pdf,2024-09-10
+nab_conf,2024-09-01,-2.0,National Australia Bank (NAB) Business Confidence.pdf,2024-10-08
+nab_conf,2024-10-01,5.0,National Australia Bank (NAB) Business Confidence.pdf,2024-11-12
+nab_conf,2024-11-01,-3.0,National Australia Bank (NAB) Business Confidence.pdf,2024-12-10
+nab_conf,2024-12-01,-2.0,National Australia Bank (NAB) Business Confidence.pdf,2025-01-28
+nab_conf,2025-01-01,4.0,National Australia Bank (NAB) Business Confidence.pdf,2025-02-11
+nab_conf,2025-02-01,-1.0,National Australia Bank (NAB) Business Confidence.pdf,2025-03-11
+nab_conf,2025-03-01,-3.0,National Australia Bank (NAB) Business Confidence.pdf,2025-04-08
+nab_conf,2025-04-01,-1.0,National Australia Bank (NAB) Business Confidence.pdf,2025-05-13
+nab_conf,2025-05-01,2.0,National Australia Bank (NAB) Business Confidence.pdf,2025-06-10
+nab_conf,2025-06-01,5.0,National Australia Bank (NAB) Business Confidence.pdf,2025-07-08
+nab_conf,2025-07-01,7.0,National Australia Bank (NAB) Business Confidence.pdf,2025-08-12
+nab_conf,2025-08-01,4.0,National Australia Bank (NAB) Business Confidence.pdf,2025-09-09
+nab_conf,2025-09-01,7.0,National Australia Bank (NAB) Business Confidence.pdf,2025-10-14
+nab_conf,2025-10-01,6.0,National Australia Bank (NAB) Business Confidence.pdf,2025-11-11
+nab_conf,2025-11-01,1.0,National Australia Bank (NAB) Business Confidence.pdf,2025-12-09
+nab_conf,2025-12-01,3.0,National Australia Bank (NAB) Business Confidence.pdf,2026-01-27
+nab_conf,2026-01-01,3.0,National Australia Bank (NAB) Business Confidence.pdf,2026-02-10
+nab_conf,2026-02-01,-1.0,National Australia Bank (NAB) Business Confidence.pdf,2026-03-10
+nab_conf,2026-03-01,-29.0,National Australia Bank (NAB) Business Confidence.pdf,2026-04-14
+nab_conf,2026-04-01,-24.0,National Australia Bank (NAB) Business Confidence.pdf,2026-05-12
+nab_conf,2026-05-01,-14.0,National Australia Bank (NAB) Business Confidence.pdf,2026-06-09
+wmi_sent,1988-05-01,104.1,Australia Westpac Consumer Sentiment.pdf,1988-06-01
+wmi_sent,1988-06-01,104.2,Australia Westpac Consumer Sentiment.pdf,1988-07-01
+wmi_sent,1988-07-01,107.5,Australia Westpac Consumer Sentiment.pdf,1988-08-01
+wmi_sent,1988-08-01,108.3,Australia Westpac Consumer Sentiment.pdf,1988-09-01
+wmi_sent,1988-09-01,112.2,Australia Westpac Consumer Sentiment.pdf,1988-10-01
+wmi_sent,1988-10-01,108.8,Australia Westpac Consumer Sentiment.pdf,1988-11-01
+wmi_sent,1988-11-01,104.1,Australia Westpac Consumer Sentiment.pdf,1988-12-01
+wmi_sent,1988-12-01,105.9,Australia Westpac Consumer Sentiment.pdf,1989-01-01
+wmi_sent,1989-01-01,101.8,Australia Westpac Consumer Sentiment.pdf,1989-02-01
+wmi_sent,1989-02-01,94.6,Australia Westpac Consumer Sentiment.pdf,1989-03-01
+wmi_sent,1989-03-01,88.2,Australia Westpac Consumer Sentiment.pdf,1989-04-01
+wmi_sent,1989-04-01,88.4,Australia Westpac Consumer Sentiment.pdf,1989-05-01
+wmi_sent,1989-05-01,87.1,Australia Westpac Consumer Sentiment.pdf,1989-06-01
+wmi_sent,1989-06-01,72.7,Australia Westpac Consumer Sentiment.pdf,1989-07-01
+wmi_sent,1989-07-01,72.8,Australia Westpac Consumer Sentiment.pdf,1989-08-01
+wmi_sent,1989-08-01,78.7,Australia Westpac Consumer Sentiment.pdf,1989-09-01
+wmi_sent,1989-09-01,81.9,Australia Westpac Consumer Sentiment.pdf,1989-10-01
+wmi_sent,1989-10-01,78.9,Australia Westpac Consumer Sentiment.pdf,1989-11-01
+wmi_sent,1989-11-01,80.6,Australia Westpac Consumer Sentiment.pdf,1989-12-01
+wmi_sent,1989-12-01,80.0,Australia Westpac Consumer Sentiment.pdf,1990-01-01
+wmi_sent,1990-01-01,80.6,Australia Westpac Consumer Sentiment.pdf,1990-02-01
+wmi_sent,1990-02-01,87.7,Australia Westpac Consumer Sentiment.pdf,1990-03-01
+wmi_sent,1990-03-01,86.8,Australia Westpac Consumer Sentiment.pdf,1990-04-01
+wmi_sent,1990-04-01,73.9,Australia Westpac Consumer Sentiment.pdf,1990-05-01
+wmi_sent,1990-05-01,69.7,Australia Westpac Consumer Sentiment.pdf,1990-06-01
+wmi_sent,1990-06-01,71.4,Australia Westpac Consumer Sentiment.pdf,1990-07-01
+wmi_sent,1990-07-01,74.4,Australia Westpac Consumer Sentiment.pdf,1990-08-01
+wmi_sent,1990-08-01,69.8,Australia Westpac Consumer Sentiment.pdf,1990-09-01
+wmi_sent,1990-09-01,67.3,Australia Westpac Consumer Sentiment.pdf,1990-10-01
+wmi_sent,1990-10-01,66.0,Australia Westpac Consumer Sentiment.pdf,1990-11-01
+wmi_sent,1990-11-01,64.6,Australia Westpac Consumer Sentiment.pdf,1990-12-01
+wmi_sent,1990-12-01,68.0,Australia Westpac Consumer Sentiment.pdf,1991-01-01
+wmi_sent,1991-01-01,72.6,Australia Westpac Consumer Sentiment.pdf,1991-02-01
+wmi_sent,1991-02-01,71.0,Australia Westpac Consumer Sentiment.pdf,1991-03-01
+wmi_sent,1991-03-01,79.8,Australia Westpac Consumer Sentiment.pdf,1991-04-01
+wmi_sent,1991-04-01,80.3,Australia Westpac Consumer Sentiment.pdf,1991-05-01
+wmi_sent,1991-05-01,79.3,Australia Westpac Consumer Sentiment.pdf,1991-06-01
+wmi_sent,1991-06-01,83.6,Australia Westpac Consumer Sentiment.pdf,1991-07-01
+wmi_sent,1991-07-01,85.4,Australia Westpac Consumer Sentiment.pdf,1991-08-01
+wmi_sent,1991-08-01,84.5,Australia Westpac Consumer Sentiment.pdf,1991-09-01
+wmi_sent,1991-09-01,85.8,Australia Westpac Consumer Sentiment.pdf,1991-10-01
+wmi_sent,1991-10-01,88.4,Australia Westpac Consumer Sentiment.pdf,1991-11-01
+wmi_sent,1991-11-01,82.5,Australia Westpac Consumer Sentiment.pdf,1991-12-01
+wmi_sent,1991-12-01,80.8,Australia Westpac Consumer Sentiment.pdf,1992-01-01
+wmi_sent,1992-01-01,78.1,Australia Westpac Consumer Sentiment.pdf,1992-02-01
+wmi_sent,1992-02-01,87.9,Australia Westpac Consumer Sentiment.pdf,1992-03-01
+wmi_sent,1992-03-01,92.8,Australia Westpac Consumer Sentiment.pdf,1992-04-01
+wmi_sent,1992-04-01,93.9,Australia Westpac Consumer Sentiment.pdf,1992-05-01
+wmi_sent,1992-05-01,91.4,Australia Westpac Consumer Sentiment.pdf,1992-06-01
+wmi_sent,1992-06-01,82.6,Australia Westpac Consumer Sentiment.pdf,1992-07-01
+wmi_sent,1992-07-01,79.8,Australia Westpac Consumer Sentiment.pdf,1992-08-01
+wmi_sent,1992-08-01,89.0,Australia Westpac Consumer Sentiment.pdf,1992-09-01
+wmi_sent,1992-09-01,85.8,Australia Westpac Consumer Sentiment.pdf,1992-10-01
+wmi_sent,1992-10-01,94.7,Australia Westpac Consumer Sentiment.pdf,1992-11-01
+wmi_sent,1992-11-01,84.1,Australia Westpac Consumer Sentiment.pdf,1992-12-01
+wmi_sent,1992-12-01,84.1,Australia Westpac Consumer Sentiment.pdf,1993-01-01
+wmi_sent,1993-01-01,92.9,Australia Westpac Consumer Sentiment.pdf,1993-02-01
+wmi_sent,1993-02-01,90.9,Australia Westpac Consumer Sentiment.pdf,1993-03-01
+wmi_sent,1993-03-01,98.7,Australia Westpac Consumer Sentiment.pdf,1993-04-01
+wmi_sent,1993-04-01,97.5,Australia Westpac Consumer Sentiment.pdf,1993-05-01
+wmi_sent,1993-05-01,97.1,Australia Westpac Consumer Sentiment.pdf,1993-06-01
+wmi_sent,1993-06-01,85.6,Australia Westpac Consumer Sentiment.pdf,1993-07-01
+wmi_sent,1993-07-01,90.3,Australia Westpac Consumer Sentiment.pdf,1993-08-01
+wmi_sent,1993-08-01,95.4,Australia Westpac Consumer Sentiment.pdf,1993-09-01
+wmi_sent,1993-09-01,88.2,Australia Westpac Consumer Sentiment.pdf,1993-10-01
+wmi_sent,1993-10-01,98.7,Australia Westpac Consumer Sentiment.pdf,1993-11-01
+wmi_sent,1993-11-01,104.3,Australia Westpac Consumer Sentiment.pdf,1993-12-01
+wmi_sent,1993-12-01,105.4,Australia Westpac Consumer Sentiment.pdf,1994-01-01
+wmi_sent,1994-01-01,111.4,Australia Westpac Consumer Sentiment.pdf,1994-02-01
+wmi_sent,1994-02-01,116.5,Australia Westpac Consumer Sentiment.pdf,1994-03-01
+wmi_sent,1994-03-01,123.0,Australia Westpac Consumer Sentiment.pdf,1994-04-01
+wmi_sent,1994-04-01,120.5,Australia Westpac Consumer Sentiment.pdf,1994-05-01
+wmi_sent,1994-05-01,121.4,Australia Westpac Consumer Sentiment.pdf,1994-06-01
+wmi_sent,1994-06-01,122.6,Australia Westpac Consumer Sentiment.pdf,1994-07-01
+wmi_sent,1994-07-01,119.5,Australia Westpac Consumer Sentiment.pdf,1994-08-01
+wmi_sent,1994-08-01,116.4,Australia Westpac Consumer Sentiment.pdf,1994-09-01
+wmi_sent,1994-09-01,113.4,Australia Westpac Consumer Sentiment.pdf,1994-10-01
+wmi_sent,1994-10-01,107.5,Australia Westpac Consumer Sentiment.pdf,1994-11-01
+wmi_sent,1994-11-01,107.6,Australia Westpac Consumer Sentiment.pdf,1994-12-01
+wmi_sent,1994-12-01,106.4,Australia Westpac Consumer Sentiment.pdf,1995-01-01
+wmi_sent,1995-01-01,96.7,Australia Westpac Consumer Sentiment.pdf,1995-02-01
+wmi_sent,1995-02-01,94.3,Australia Westpac Consumer Sentiment.pdf,1995-03-01
+wmi_sent,1995-03-01,102.9,Australia Westpac Consumer Sentiment.pdf,1995-04-01
+wmi_sent,1995-04-01,110.7,Australia Westpac Consumer Sentiment.pdf,1995-05-01
+wmi_sent,1995-05-01,103.0,Australia Westpac Consumer Sentiment.pdf,1995-06-01
+wmi_sent,1995-06-01,104.3,Australia Westpac Consumer Sentiment.pdf,1995-07-01
+wmi_sent,1995-07-01,101.7,Australia Westpac Consumer Sentiment.pdf,1995-08-01
+wmi_sent,1995-08-01,102.2,Australia Westpac Consumer Sentiment.pdf,1995-09-01
+wmi_sent,1995-09-01,101.3,Australia Westpac Consumer Sentiment.pdf,1995-10-01
+wmi_sent,1995-10-01,101.6,Australia Westpac Consumer Sentiment.pdf,1995-11-01
+wmi_sent,1995-11-01,103.5,Australia Westpac Consumer Sentiment.pdf,1995-12-01
+wmi_sent,1995-12-01,103.2,Australia Westpac Consumer Sentiment.pdf,1996-01-01
+wmi_sent,1996-01-01,105.2,Australia Westpac Consumer Sentiment.pdf,1996-02-01
+wmi_sent,1996-02-01,108.1,Australia Westpac Consumer Sentiment.pdf,1996-03-01
+wmi_sent,1996-03-01,115.1,Australia Westpac Consumer Sentiment.pdf,1996-04-01
+wmi_sent,1996-04-01,112.0,Australia Westpac Consumer Sentiment.pdf,1996-05-01
+wmi_sent,1996-05-01,111.9,Australia Westpac Consumer Sentiment.pdf,1996-06-01
+wmi_sent,1996-06-01,109.3,Australia Westpac Consumer Sentiment.pdf,1996-07-01
+wmi_sent,1996-07-01,103.2,Australia Westpac Consumer Sentiment.pdf,1996-08-01
+wmi_sent,1996-08-01,104.1,Australia Westpac Consumer Sentiment.pdf,1996-09-01
+wmi_sent,1996-09-01,103.9,Australia Westpac Consumer Sentiment.pdf,1996-10-01
+wmi_sent,1996-10-01,102.6,Australia Westpac Consumer Sentiment.pdf,1996-11-01
+wmi_sent,1996-11-01,107.6,Australia Westpac Consumer Sentiment.pdf,1996-12-01
+wmi_sent,1996-12-01,102.0,Australia Westpac Consumer Sentiment.pdf,1997-01-01
+wmi_sent,1997-01-01,105.6,Australia Westpac Consumer Sentiment.pdf,1997-02-01
+wmi_sent,1997-02-01,104.1,Australia Westpac Consumer Sentiment.pdf,1997-03-01
+wmi_sent,1997-03-01,107.4,Australia Westpac Consumer Sentiment.pdf,1997-04-01
+wmi_sent,1997-04-01,103.6,Australia Westpac Consumer Sentiment.pdf,1997-05-01
+wmi_sent,1997-05-01,101.0,Australia Westpac Consumer Sentiment.pdf,1997-06-01
+wmi_sent,1997-06-01,100.3,Australia Westpac Consumer Sentiment.pdf,1997-07-01
+wmi_sent,1997-07-01,98.9,Australia Westpac Consumer Sentiment.pdf,1997-08-01
+wmi_sent,1997-08-01,101.7,Australia Westpac Consumer Sentiment.pdf,1997-09-01
+wmi_sent,1997-09-01,102.8,Australia Westpac Consumer Sentiment.pdf,1997-10-01
+wmi_sent,1997-10-01,102.9,Australia Westpac Consumer Sentiment.pdf,1997-11-01
+wmi_sent,1997-11-01,106.2,Australia Westpac Consumer Sentiment.pdf,1997-12-01
+wmi_sent,1997-12-01,101.0,Australia Westpac Consumer Sentiment.pdf,1998-01-01
+wmi_sent,1998-01-01,101.9,Australia Westpac Consumer Sentiment.pdf,1998-02-01
+wmi_sent,1998-02-01,108.9,Australia Westpac Consumer Sentiment.pdf,1998-03-01
+wmi_sent,1998-03-01,102.1,Australia Westpac Consumer Sentiment.pdf,1998-04-01
+wmi_sent,1998-04-01,104.6,Australia Westpac Consumer Sentiment.pdf,1998-05-01
+wmi_sent,1998-05-01,103.8,Australia Westpac Consumer Sentiment.pdf,1998-06-01
+wmi_sent,1998-06-01,94.1,Australia Westpac Consumer Sentiment.pdf,1998-07-01
+wmi_sent,1998-07-01,100.2,Australia Westpac Consumer Sentiment.pdf,1998-08-01
+wmi_sent,1998-08-01,101.3,Australia Westpac Consumer Sentiment.pdf,1998-09-01
+wmi_sent,1998-09-01,100.4,Australia Westpac Consumer Sentiment.pdf,1998-10-01
+wmi_sent,1998-10-01,100.0,Australia Westpac Consumer Sentiment.pdf,1998-11-01
+wmi_sent,1998-11-01,103.9,Australia Westpac Consumer Sentiment.pdf,1998-12-01
+wmi_sent,1998-12-01,102.5,Australia Westpac Consumer Sentiment.pdf,1999-01-01
+wmi_sent,1999-01-01,111.8,Australia Westpac Consumer Sentiment.pdf,1999-02-01
+wmi_sent,1999-02-01,117.0,Australia Westpac Consumer Sentiment.pdf,1999-03-01
+wmi_sent,1999-03-01,113.7,Australia Westpac Consumer Sentiment.pdf,1999-04-01
+wmi_sent,1999-04-01,115.6,Australia Westpac Consumer Sentiment.pdf,1999-05-01
+wmi_sent,1999-05-01,115.9,Australia Westpac Consumer Sentiment.pdf,1999-06-01
+wmi_sent,1999-06-01,111.5,Australia Westpac Consumer Sentiment.pdf,1999-07-01
+wmi_sent,1999-07-01,112.4,Australia Westpac Consumer Sentiment.pdf,1999-08-01
+wmi_sent,1999-08-01,109.6,Australia Westpac Consumer Sentiment.pdf,1999-09-01
+wmi_sent,1999-09-01,112.0,Australia Westpac Consumer Sentiment.pdf,1999-10-01
+wmi_sent,1999-10-01,113.3,Australia Westpac Consumer Sentiment.pdf,1999-11-01
+wmi_sent,1999-11-01,113.3,Australia Westpac Consumer Sentiment.pdf,1999-12-01
+wmi_sent,1999-12-01,106.2,Australia Westpac Consumer Sentiment.pdf,2000-01-01
+wmi_sent,2000-01-01,110.0,Australia Westpac Consumer Sentiment.pdf,2000-02-01
+wmi_sent,2000-02-01,102.5,Australia Westpac Consumer Sentiment.pdf,2000-03-01
+wmi_sent,2000-03-01,103.3,Australia Westpac Consumer Sentiment.pdf,2000-04-01
+wmi_sent,2000-04-01,98.9,Australia Westpac Consumer Sentiment.pdf,2000-05-01
+wmi_sent,2000-05-01,95.3,Australia Westpac Consumer Sentiment.pdf,2000-06-01
+wmi_sent,2000-06-01,98.3,Australia Westpac Consumer Sentiment.pdf,2000-07-01
+wmi_sent,2000-07-01,109.4,Australia Westpac Consumer Sentiment.pdf,2000-08-01
+wmi_sent,2000-08-01,114.0,Australia Westpac Consumer Sentiment.pdf,2000-09-01
+wmi_sent,2000-09-01,102.8,Australia Westpac Consumer Sentiment.pdf,2000-10-01
+wmi_sent,2000-10-01,100.1,Australia Westpac Consumer Sentiment.pdf,2000-11-01
+wmi_sent,2000-11-01,96.6,Australia Westpac Consumer Sentiment.pdf,2000-12-01
+wmi_sent,2000-12-01,99.6,Australia Westpac Consumer Sentiment.pdf,2001-01-01
+wmi_sent,2001-01-01,100.2,Australia Westpac Consumer Sentiment.pdf,2001-02-01
+wmi_sent,2001-02-01,103.1,Australia Westpac Consumer Sentiment.pdf,2001-03-01
+wmi_sent,2001-03-01,89.5,Australia Westpac Consumer Sentiment.pdf,2001-04-01
+wmi_sent,2001-04-01,90.6,Australia Westpac Consumer Sentiment.pdf,2001-05-01
+wmi_sent,2001-05-01,95.4,Australia Westpac Consumer Sentiment.pdf,2001-06-01
+wmi_sent,2001-06-01,106.5,Australia Westpac Consumer Sentiment.pdf,2001-07-01
+wmi_sent,2001-07-01,108.7,Australia Westpac Consumer Sentiment.pdf,2001-08-01
+wmi_sent,2001-08-01,105.7,Australia Westpac Consumer Sentiment.pdf,2001-09-01
+wmi_sent,2001-09-01,108.1,Australia Westpac Consumer Sentiment.pdf,2001-10-01
+wmi_sent,2001-10-01,99.9,Australia Westpac Consumer Sentiment.pdf,2001-11-01
+wmi_sent,2001-11-01,102.4,Australia Westpac Consumer Sentiment.pdf,2001-12-01
+wmi_sent,2001-12-01,108.5,Australia Westpac Consumer Sentiment.pdf,2002-01-01
+wmi_sent,2002-01-01,111.9,Australia Westpac Consumer Sentiment.pdf,2002-02-01
+wmi_sent,2002-02-01,115.6,Australia Westpac Consumer Sentiment.pdf,2002-03-01
+wmi_sent,2002-03-01,119.7,Australia Westpac Consumer Sentiment.pdf,2002-04-01
+wmi_sent,2002-04-01,113.4,Australia Westpac Consumer Sentiment.pdf,2002-05-01
+wmi_sent,2002-05-01,112.1,Australia Westpac Consumer Sentiment.pdf,2002-06-01
+wmi_sent,2002-06-01,112.7,Australia Westpac Consumer Sentiment.pdf,2002-07-01
+wmi_sent,2002-07-01,109.9,Australia Westpac Consumer Sentiment.pdf,2002-08-01
+wmi_sent,2002-08-01,105.6,Australia Westpac Consumer Sentiment.pdf,2002-09-01
+wmi_sent,2002-09-01,108.5,Australia Westpac Consumer Sentiment.pdf,2002-10-01
+wmi_sent,2002-10-01,102.3,Australia Westpac Consumer Sentiment.pdf,2002-11-01
+wmi_sent,2002-11-01,107.2,Australia Westpac Consumer Sentiment.pdf,2002-12-01
+wmi_sent,2002-12-01,107.2,Australia Westpac Consumer Sentiment.pdf,2003-01-01
+wmi_sent,2003-01-01,108.1,Australia Westpac Consumer Sentiment.pdf,2003-02-01
+wmi_sent,2003-02-01,102.3,Australia Westpac Consumer Sentiment.pdf,2003-03-01
+wmi_sent,2003-03-01,101.5,Australia Westpac Consumer Sentiment.pdf,2003-04-01
+wmi_sent,2003-04-01,111.4,Australia Westpac Consumer Sentiment.pdf,2003-05-01
+wmi_sent,2003-05-01,112.1,Australia Westpac Consumer Sentiment.pdf,2003-06-01
+wmi_sent,2003-06-01,116.2,Australia Westpac Consumer Sentiment.pdf,2003-07-01
+wmi_sent,2003-07-01,117.9,Australia Westpac Consumer Sentiment.pdf,2003-08-01
+wmi_sent,2003-08-01,114.6,Australia Westpac Consumer Sentiment.pdf,2003-09-01
+wmi_sent,2003-09-01,116.4,Australia Westpac Consumer Sentiment.pdf,2003-10-01
+wmi_sent,2003-10-01,119.5,Australia Westpac Consumer Sentiment.pdf,2003-11-01
+wmi_sent,2003-11-01,115.4,Australia Westpac Consumer Sentiment.pdf,2003-12-01
+wmi_sent,2003-12-01,113.2,Australia Westpac Consumer Sentiment.pdf,2004-01-01
+wmi_sent,2004-01-01,116.2,Australia Westpac Consumer Sentiment.pdf,2004-02-01
+wmi_sent,2004-02-01,118.7,Australia Westpac Consumer Sentiment.pdf,2004-03-01
+wmi_sent,2004-03-01,115.6,Australia Westpac Consumer Sentiment.pdf,2004-04-01
+wmi_sent,2004-04-01,116.5,Australia Westpac Consumer Sentiment.pdf,2004-05-01
+wmi_sent,2004-05-01,115.6,Australia Westpac Consumer Sentiment.pdf,2004-06-01
+wmi_sent,2004-06-01,112.7,Australia Westpac Consumer Sentiment.pdf,2004-07-01
+wmi_sent,2004-07-01,119.1,Australia Westpac Consumer Sentiment.pdf,2004-08-01
+wmi_sent,2004-08-01,119.3,Australia Westpac Consumer Sentiment.pdf,2004-09-01
+wmi_sent,2004-09-01,119.6,Australia Westpac Consumer Sentiment.pdf,2004-10-01
+wmi_sent,2004-10-01,118.2,Australia Westpac Consumer Sentiment.pdf,2004-11-01
+wmi_sent,2004-11-01,119.4,Australia Westpac Consumer Sentiment.pdf,2004-12-01
+wmi_sent,2004-12-01,116.0,Australia Westpac Consumer Sentiment.pdf,2005-01-01
+wmi_sent,2005-01-01,121.8,Australia Westpac Consumer Sentiment.pdf,2005-02-01
+wmi_sent,2005-02-01,122.8,Australia Westpac Consumer Sentiment.pdf,2005-03-01
+wmi_sent,2005-03-01,103.8,Australia Westpac Consumer Sentiment.pdf,2005-04-01
+wmi_sent,2005-04-01,105.6,Australia Westpac Consumer Sentiment.pdf,2005-05-01
+wmi_sent,2005-05-01,114.2,Australia Westpac Consumer Sentiment.pdf,2005-06-01
+wmi_sent,2005-06-01,111.8,Australia Westpac Consumer Sentiment.pdf,2005-07-01
+wmi_sent,2005-07-01,107.3,Australia Westpac Consumer Sentiment.pdf,2005-08-01
+wmi_sent,2005-08-01,115.7,Australia Westpac Consumer Sentiment.pdf,2005-09-01
+wmi_sent,2005-09-01,98.8,Australia Westpac Consumer Sentiment.pdf,2005-10-01
+wmi_sent,2005-10-01,98.0,Australia Westpac Consumer Sentiment.pdf,2005-11-01
+wmi_sent,2005-11-01,105.7,Australia Westpac Consumer Sentiment.pdf,2005-12-01
+wmi_sent,2005-12-01,102.3,Australia Westpac Consumer Sentiment.pdf,2006-01-01
+wmi_sent,2006-01-01,106.1,Australia Westpac Consumer Sentiment.pdf,2006-02-01
+wmi_sent,2006-02-01,107.8,Australia Westpac Consumer Sentiment.pdf,2006-03-01
+wmi_sent,2006-03-01,111.4,Australia Westpac Consumer Sentiment.pdf,2006-04-01
+wmi_sent,2006-04-01,111.3,Australia Westpac Consumer Sentiment.pdf,2006-05-01
+wmi_sent,2006-05-01,104.2,Australia Westpac Consumer Sentiment.pdf,2006-06-01
+wmi_sent,2006-06-01,103.7,Australia Westpac Consumer Sentiment.pdf,2006-07-01
+wmi_sent,2006-07-01,107.3,Australia Westpac Consumer Sentiment.pdf,2006-08-01
+wmi_sent,2006-08-01,89.9,Australia Westpac Consumer Sentiment.pdf,2006-09-01
+wmi_sent,2006-09-01,101.1,Australia Westpac Consumer Sentiment.pdf,2006-10-01
+wmi_sent,2006-10-01,105.2,Australia Westpac Consumer Sentiment.pdf,2006-11-01
+wmi_sent,2006-11-01,95.0,Australia Westpac Consumer Sentiment.pdf,2006-12-01
+wmi_sent,2006-12-01,106.2,Australia Westpac Consumer Sentiment.pdf,2007-01-01
+wmi_sent,2007-01-01,109.6,Australia Westpac Consumer Sentiment.pdf,2007-02-01
+wmi_sent,2007-02-01,111.3,Australia Westpac Consumer Sentiment.pdf,2007-03-01
+wmi_sent,2007-03-01,115.5,Australia Westpac Consumer Sentiment.pdf,2007-04-01
+wmi_sent,2007-04-01,115.2,Australia Westpac Consumer Sentiment.pdf,2007-05-01
+wmi_sent,2007-05-01,123.9,Australia Westpac Consumer Sentiment.pdf,2007-06-01
+wmi_sent,2007-06-01,121.4,Australia Westpac Consumer Sentiment.pdf,2007-07-01
+wmi_sent,2007-07-01,120.7,Australia Westpac Consumer Sentiment.pdf,2007-08-01
+wmi_sent,2007-08-01,110.9,Australia Westpac Consumer Sentiment.pdf,2007-09-01
+wmi_sent,2007-09-01,115.6,Australia Westpac Consumer Sentiment.pdf,2007-10-01
+wmi_sent,2007-10-01,115.2,Australia Westpac Consumer Sentiment.pdf,2007-11-01
+wmi_sent,2007-11-01,110.4,Australia Westpac Consumer Sentiment.pdf,2007-12-01
+wmi_sent,2007-12-01,112.4,Australia Westpac Consumer Sentiment.pdf,2008-01-01
+wmi_sent,2008-02-01,94.1,Australia Westpac Consumer Sentiment.pdf,2008-02-12
+wmi_sent,2008-03-01,85.6,Australia Westpac Consumer Sentiment.pdf,2008-03-11
+wmi_sent,2008-04-01,84.4,Australia Westpac Consumer Sentiment.pdf,2008-04-09
+wmi_sent,2008-05-01,84.6,Australia Westpac Consumer Sentiment.pdf,2008-05-28
+wmi_sent,2008-06-01,79.9,Australia Westpac Consumer Sentiment.pdf,2008-06-11
+wmi_sent,2008-07-01,74.5,Australia Westpac Consumer Sentiment.pdf,2008-07-09
+wmi_sent,2008-08-01,81.3,Australia Westpac Consumer Sentiment.pdf,2008-08-13
+wmi_sent,2008-09-01,87.0,Australia Westpac Consumer Sentiment.pdf,2008-09-10
+wmi_sent,2008-10-01,77.4,Australia Westpac Consumer Sentiment.pdf,2008-10-08
+wmi_sent,2008-11-01,80.8,Australia Westpac Consumer Sentiment.pdf,2008-11-11
+wmi_sent,2008-12-01,86.8,Australia Westpac Consumer Sentiment.pdf,2008-12-09
+wmi_sent,2009-01-01,84.9,Australia Westpac Consumer Sentiment.pdf,2009-01-20
+wmi_sent,2009-02-01,81.0,Australia Westpac Consumer Sentiment.pdf,2009-02-10
+wmi_sent,2009-03-01,80.8,Australia Westpac Consumer Sentiment.pdf,2009-03-10
+wmi_sent,2009-04-01,87.5,Australia Westpac Consumer Sentiment.pdf,2009-04-08
+wmi_sent,2009-05-01,83.8,Australia Westpac Consumer Sentiment.pdf,2009-05-20
+wmi_sent,2009-06-01,94.4,Australia Westpac Consumer Sentiment.pdf,2009-06-10
+wmi_sent,2009-07-01,103.2,Australia Westpac Consumer Sentiment.pdf,2009-07-08
+wmi_sent,2009-08-01,107.0,Australia Westpac Consumer Sentiment.pdf,2009-08-12
+wmi_sent,2009-09-01,112.6,Australia Westpac Consumer Sentiment.pdf,2009-09-09
+wmi_sent,2009-10-01,114.5,Australia Westpac Consumer Sentiment.pdf,2009-10-14
+wmi_sent,2009-11-01,111.6,Australia Westpac Consumer Sentiment.pdf,2009-11-10
+wmi_sent,2009-12-01,107.4,Australia Westpac Consumer Sentiment.pdf,2009-12-08
+wmi_sent,2010-01-01,113.4,Australia Westpac Consumer Sentiment.pdf,2010-01-19
+wmi_sent,2010-02-01,110.5,Australia Westpac Consumer Sentiment.pdf,2010-02-09
+wmi_sent,2010-03-01,110.7,Australia Westpac Consumer Sentiment.pdf,2010-03-09
+wmi_sent,2010-04-01,109.6,Australia Westpac Consumer Sentiment.pdf,2010-04-14
+wmi_sent,2010-05-01,101.9,Australia Westpac Consumer Sentiment.pdf,2010-05-19
+wmi_sent,2010-06-01,96.1,Australia Westpac Consumer Sentiment.pdf,2010-06-09
+wmi_sent,2010-07-01,106.8,Australia Westpac Consumer Sentiment.pdf,2010-07-14
+wmi_sent,2010-08-01,112.5,Australia Westpac Consumer Sentiment.pdf,2010-08-11
+wmi_sent,2010-09-01,106.9,Australia Westpac Consumer Sentiment.pdf,2010-09-15
+wmi_sent,2010-10-01,110.4,Australia Westpac Consumer Sentiment.pdf,2010-10-13
+wmi_sent,2010-11-01,104.6,Australia Westpac Consumer Sentiment.pdf,2010-11-09
+wmi_sent,2010-12-01,104.8,Australia Westpac Consumer Sentiment.pdf,2010-12-14
+wmi_sent,2011-01-01,98.8,Australia Westpac Consumer Sentiment.pdf,2011-01-18
+wmi_sent,2011-02-01,100.7,Australia Westpac Consumer Sentiment.pdf,2011-02-08
+wmi_sent,2011-03-01,98.3,Australia Westpac Consumer Sentiment.pdf,2011-03-08
+wmi_sent,2011-04-01,99.4,Australia Westpac Consumer Sentiment.pdf,2011-04-13
+wmi_sent,2011-05-01,98.2,Australia Westpac Consumer Sentiment.pdf,2011-05-18
+wmi_sent,2011-06-01,95.6,Australia Westpac Consumer Sentiment.pdf,2011-06-15
+wmi_sent,2011-07-01,87.7,Australia Westpac Consumer Sentiment.pdf,2011-07-13
+wmi_sent,2011-08-01,84.6,Australia Westpac Consumer Sentiment.pdf,2011-08-10
+wmi_sent,2011-09-01,91.5,Australia Westpac Consumer Sentiment.pdf,2011-09-14
+wmi_sent,2011-10-01,91.8,Australia Westpac Consumer Sentiment.pdf,2011-10-12
+wmi_sent,2011-11-01,97.6,Australia Westpac Consumer Sentiment.pdf,2011-11-08
+wmi_sent,2011-12-01,89.5,Australia Westpac Consumer Sentiment.pdf,2011-12-13
+wmi_sent,2012-01-01,91.7,Australia Westpac Consumer Sentiment.pdf,2012-01-17
+wmi_sent,2012-02-01,95.5,Australia Westpac Consumer Sentiment.pdf,2012-02-14
+wmi_sent,2012-03-01,90.7,Australia Westpac Consumer Sentiment.pdf,2012-03-13
+wmi_sent,2012-04-01,89.3,Australia Westpac Consumer Sentiment.pdf,2012-04-11
+wmi_sent,2012-05-01,90.0,Australia Westpac Consumer Sentiment.pdf,2012-05-16
+wmi_sent,2012-06-01,90.3,Australia Westpac Consumer Sentiment.pdf,2012-06-13
+wmi_sent,2012-07-01,93.6,Australia Westpac Consumer Sentiment.pdf,2012-07-11
+wmi_sent,2012-08-01,91.3,Australia Westpac Consumer Sentiment.pdf,2012-08-15
+wmi_sent,2012-09-01,92.7,Australia Westpac Consumer Sentiment.pdf,2012-09-12
+wmi_sent,2012-10-01,93.6,Australia Westpac Consumer Sentiment.pdf,2012-10-10
+wmi_sent,2012-11-01,98.5,Australia Westpac Consumer Sentiment.pdf,2012-11-14
+wmi_sent,2012-12-01,94.5,Australia Westpac Consumer Sentiment.pdf,2012-12-11
+wmi_sent,2013-01-01,95.0,Australia Westpac Consumer Sentiment.pdf,2013-01-15
+wmi_sent,2013-02-01,102.4,Australia Westpac Consumer Sentiment.pdf,2013-02-12
+wmi_sent,2013-03-01,104.4,Australia Westpac Consumer Sentiment.pdf,2013-03-12
+wmi_sent,2013-04-01,99.1,Australia Westpac Consumer Sentiment.pdf,2013-04-10
+wmi_sent,2013-05-01,92.1,Australia Westpac Consumer Sentiment.pdf,2013-05-22
+wmi_sent,2013-06-01,96.5,Australia Westpac Consumer Sentiment.pdf,2013-06-12
+wmi_sent,2013-07-01,96.4,Australia Westpac Consumer Sentiment.pdf,2013-07-10
+wmi_sent,2013-08-01,99.8,Australia Westpac Consumer Sentiment.pdf,2013-08-14
+wmi_sent,2013-09-01,104.4,Australia Westpac Consumer Sentiment.pdf,2013-09-11
+wmi_sent,2013-10-01,102.2,Australia Westpac Consumer Sentiment.pdf,2013-10-09
+wmi_sent,2013-11-01,104.2,Australia Westpac Consumer Sentiment.pdf,2013-11-12
+wmi_sent,2013-12-01,99.2,Australia Westpac Consumer Sentiment.pdf,2013-12-10
+wmi_sent,2014-01-01,103.3,Australia Westpac Consumer Sentiment.pdf,2014-01-21
+wmi_sent,2014-02-01,100.2,Australia Westpac Consumer Sentiment.pdf,2014-02-11
+wmi_sent,2014-03-01,99.5,Australia Westpac Consumer Sentiment.pdf,2014-03-11
+wmi_sent,2014-04-01,99.8,Australia Westpac Consumer Sentiment.pdf,2014-04-09
+wmi_sent,2014-05-01,93.0,Australia Westpac Consumer Sentiment.pdf,2014-05-21
+wmi_sent,2014-06-01,93.2,Australia Westpac Consumer Sentiment.pdf,2014-06-11
+wmi_sent,2014-07-01,95.0,Australia Westpac Consumer Sentiment.pdf,2014-07-09
+wmi_sent,2014-08-01,98.6,Australia Westpac Consumer Sentiment.pdf,2014-08-13
+wmi_sent,2014-09-01,94.0,Australia Westpac Consumer Sentiment.pdf,2014-09-10
+wmi_sent,2014-10-01,94.9,Australia Westpac Consumer Sentiment.pdf,2014-10-15
+wmi_sent,2014-11-01,96.7,Australia Westpac Consumer Sentiment.pdf,2014-11-11
+wmi_sent,2014-12-01,91.2,Australia Westpac Consumer Sentiment.pdf,2014-12-10
+wmi_sent,2015-01-01,93.4,Australia Westpac Consumer Sentiment.pdf,2015-01-20
+wmi_sent,2015-02-01,100.8,Australia Westpac Consumer Sentiment.pdf,2015-02-10
+wmi_sent,2015-03-01,99.6,Australia Westpac Consumer Sentiment.pdf,2015-03-10
+wmi_sent,2015-04-01,96.4,Australia Westpac Consumer Sentiment.pdf,2015-04-15
+wmi_sent,2015-05-01,102.4,Australia Westpac Consumer Sentiment.pdf,2015-05-20
+wmi_sent,2015-06-01,95.3,Australia Westpac Consumer Sentiment.pdf,2015-06-10
+wmi_sent,2015-07-01,92.3,Australia Westpac Consumer Sentiment.pdf,2015-07-15
+wmi_sent,2015-08-01,99.4,Australia Westpac Consumer Sentiment.pdf,2015-08-12
+wmi_sent,2015-09-01,93.9,Australia Westpac Consumer Sentiment.pdf,2015-09-09
+wmi_sent,2015-10-01,97.8,Australia Westpac Consumer Sentiment.pdf,2015-10-14
+wmi_sent,2015-11-01,101.6,Australia Westpac Consumer Sentiment.pdf,2015-11-10
+wmi_sent,2015-12-01,100.8,Australia Westpac Consumer Sentiment.pdf,2015-12-08
+wmi_sent,2016-01-01,97.3,Australia Westpac Consumer Sentiment.pdf,2016-01-19
+wmi_sent,2016-02-01,101.4,Australia Westpac Consumer Sentiment.pdf,2016-02-09
+wmi_sent,2016-03-01,99.1,Australia Westpac Consumer Sentiment.pdf,2016-03-08
+wmi_sent,2016-04-01,95.1,Australia Westpac Consumer Sentiment.pdf,2016-04-13
+wmi_sent,2016-05-01,103.2,Australia Westpac Consumer Sentiment.pdf,2016-05-11
+wmi_sent,2016-06-01,102.2,Australia Westpac Consumer Sentiment.pdf,2016-06-15
+wmi_sent,2016-07-01,99.1,Australia Westpac Consumer Sentiment.pdf,2016-07-13
+wmi_sent,2016-08-01,101.1,Australia Westpac Consumer Sentiment.pdf,2016-08-10
+wmi_sent,2016-09-01,101.4,Australia Westpac Consumer Sentiment.pdf,2016-09-14
+wmi_sent,2016-10-01,102.5,Australia Westpac Consumer Sentiment.pdf,2016-10-12
+wmi_sent,2016-11-01,101.4,Australia Westpac Consumer Sentiment.pdf,2016-11-08
+wmi_sent,2016-12-01,97.4,Australia Westpac Consumer Sentiment.pdf,2016-12-13
+wmi_sent,2017-01-01,97.5,Australia Westpac Consumer Sentiment.pdf,2017-01-17
+wmi_sent,2017-02-01,99.6,Australia Westpac Consumer Sentiment.pdf,2017-02-14
+wmi_sent,2017-03-01,99.7,Australia Westpac Consumer Sentiment.pdf,2017-03-14
+wmi_sent,2017-04-01,99.0,Australia Westpac Consumer Sentiment.pdf,2017-04-12
+wmi_sent,2017-05-01,97.9,Australia Westpac Consumer Sentiment.pdf,2017-05-17
+wmi_sent,2017-06-01,96.1,Australia Westpac Consumer Sentiment.pdf,2017-06-14
+wmi_sent,2017-07-01,96.5,Australia Westpac Consumer Sentiment.pdf,2017-07-12
+wmi_sent,2017-08-01,95.4,Australia Westpac Consumer Sentiment.pdf,2017-08-09
+wmi_sent,2017-09-01,97.8,Australia Westpac Consumer Sentiment.pdf,2017-09-13
+wmi_sent,2017-10-01,101.3,Australia Westpac Consumer Sentiment.pdf,2017-10-11
+wmi_sent,2017-11-01,99.6,Australia Westpac Consumer Sentiment.pdf,2017-11-14
+wmi_sent,2017-12-01,103.1,Australia Westpac Consumer Sentiment.pdf,2017-12-12
+wmi_sent,2018-01-01,105.0,Australia Westpac Consumer Sentiment.pdf,2018-01-16
+wmi_sent,2018-02-01,102.6,Australia Westpac Consumer Sentiment.pdf,2018-02-13
+wmi_sent,2018-03-01,102.8,Australia Westpac Consumer Sentiment.pdf,2018-03-13
+wmi_sent,2018-04-01,102.2,Australia Westpac Consumer Sentiment.pdf,2018-04-11
+wmi_sent,2018-05-01,101.6,Australia Westpac Consumer Sentiment.pdf,2018-05-16
+wmi_sent,2018-06-01,101.9,Australia Westpac Consumer Sentiment.pdf,2018-06-13
+wmi_sent,2018-07-01,105.8,Australia Westpac Consumer Sentiment.pdf,2018-07-11
+wmi_sent,2018-08-01,103.4,Australia Westpac Consumer Sentiment.pdf,2018-08-15
+wmi_sent,2018-09-01,100.3,Australia Westpac Consumer Sentiment.pdf,2018-09-12
+wmi_sent,2018-10-01,101.3,Australia Westpac Consumer Sentiment.pdf,2018-10-10
+wmi_sent,2018-11-01,104.1,Australia Westpac Consumer Sentiment.pdf,2018-11-13
+wmi_sent,2018-12-01,104.2,Australia Westpac Consumer Sentiment.pdf,2018-12-11
+wmi_sent,2019-01-01,99.3,Australia Westpac Consumer Sentiment.pdf,2019-01-15
+wmi_sent,2019-02-01,103.6,Australia Westpac Consumer Sentiment.pdf,2019-02-12
+wmi_sent,2019-03-01,98.6,Australia Westpac Consumer Sentiment.pdf,2019-03-12
+wmi_sent,2019-04-01,100.5,Australia Westpac Consumer Sentiment.pdf,2019-04-10
+wmi_sent,2019-05-01,101.1,Australia Westpac Consumer Sentiment.pdf,2019-05-15
+wmi_sent,2019-06-01,100.5,Australia Westpac Consumer Sentiment.pdf,2019-06-12
+wmi_sent,2019-07-01,96.4,Australia Westpac Consumer Sentiment.pdf,2019-07-10
+wmi_sent,2019-08-01,99.9,Australia Westpac Consumer Sentiment.pdf,2019-08-14
+wmi_sent,2019-09-01,98.2,Australia Westpac Consumer Sentiment.pdf,2019-09-11
+wmi_sent,2019-10-01,92.8,Australia Westpac Consumer Sentiment.pdf,2019-10-09
+wmi_sent,2019-11-01,96.9,Australia Westpac Consumer Sentiment.pdf,2019-11-12
+wmi_sent,2019-12-01,95.1,Australia Westpac Consumer Sentiment.pdf,2019-12-10
+wmi_sent,2020-01-01,93.4,Australia Westpac Consumer Sentiment.pdf,2020-01-21
+wmi_sent,2020-02-01,95.5,Australia Westpac Consumer Sentiment.pdf,2020-02-11
+wmi_sent,2020-03-01,91.9,Australia Westpac Consumer Sentiment.pdf,2020-03-10
+wmi_sent,2020-04-01,75.6,Australia Westpac Consumer Sentiment.pdf,2020-04-15
+wmi_sent,2020-05-01,88.0,Australia Westpac Consumer Sentiment.pdf,2020-05-13
+wmi_sent,2020-06-01,93.7,Australia Westpac Consumer Sentiment.pdf,2020-06-10
+wmi_sent,2020-07-01,88.0,Australia Westpac Consumer Sentiment.pdf,2020-07-15
+wmi_sent,2020-08-01,79.5,Australia Westpac Consumer Sentiment.pdf,2020-08-12
+wmi_sent,2020-09-01,93.8,Australia Westpac Consumer Sentiment.pdf,2020-09-09
+wmi_sent,2020-10-01,105.0,Australia Westpac Consumer Sentiment.pdf,2020-10-14
+wmi_sent,2020-11-01,107.6,Australia Westpac Consumer Sentiment.pdf,2020-11-10
+wmi_sent,2020-12-01,112.0,Australia Westpac Consumer Sentiment.pdf,2020-12-08
+wmi_sent,2021-01-01,107.0,Australia Westpac Consumer Sentiment.pdf,2021-01-19
+wmi_sent,2021-02-01,109.0,Australia Westpac Consumer Sentiment.pdf,2021-02-09
+wmi_sent,2021-03-01,111.9,Australia Westpac Consumer Sentiment.pdf,2021-03-09
+wmi_sent,2021-04-01,118.8,Australia Westpac Consumer Sentiment.pdf,2021-04-14
+wmi_sent,2021-05-01,113.1,Australia Westpac Consumer Sentiment.pdf,2021-05-19
+wmi_sent,2021-06-01,107.2,Australia Westpac Consumer Sentiment.pdf,2021-06-09
+wmi_sent,2021-07-01,108.8,Australia Westpac Consumer Sentiment.pdf,2021-07-14
+wmi_sent,2021-08-01,104.0,Australia Westpac Consumer Sentiment.pdf,2021-08-11
+wmi_sent,2021-09-01,106.1,Australia Westpac Consumer Sentiment.pdf,2021-09-15
+wmi_sent,2021-10-01,104.5,Australia Westpac Consumer Sentiment.pdf,2021-10-13
+wmi_sent,2021-11-01,105.2,Australia Westpac Consumer Sentiment.pdf,2021-11-09
+wmi_sent,2021-12-01,104.1,Australia Westpac Consumer Sentiment.pdf,2021-12-14
+wmi_sent,2022-01-01,93.4,Australia Westpac Consumer Sentiment.pdf,2022-01-18
+wmi_sent,2022-02-01,92.2,Australia Westpac Consumer Sentiment.pdf,2022-02-08
+wmi_sent,2022-03-01,88.3,Australia Westpac Consumer Sentiment.pdf,2022-03-08
+wmi_sent,2022-04-01,87.5,Australia Westpac Consumer Sentiment.pdf,2022-04-13
+wmi_sent,2022-05-01,82.6,Australia Westpac Consumer Sentiment.pdf,2022-05-11
+wmi_sent,2022-06-01,78.9,Australia Westpac Consumer Sentiment.pdf,2022-06-15
+wmi_sent,2022-07-01,76.5,Australia Westpac Consumer Sentiment.pdf,2022-07-12
+wmi_sent,2022-08-01,74.2,Australia Westpac Consumer Sentiment.pdf,2022-08-09
+wmi_sent,2022-09-01,77.1,Australia Westpac Consumer Sentiment.pdf,2022-09-13
+wmi_sent,2022-10-01,76.4,Australia Westpac Consumer Sentiment.pdf,2022-10-11
+wmi_sent,2022-11-01,71.2,Australia Westpac Consumer Sentiment.pdf,2022-11-07
+wmi_sent,2022-12-01,73.3,Australia Westpac Consumer Sentiment.pdf,2022-12-12
+wmi_sent,2023-01-01,77.0,Australia Westpac Consumer Sentiment.pdf,2023-01-16
+wmi_sent,2023-02-01,71.7,Australia Westpac Consumer Sentiment.pdf,2023-02-13
+wmi_sent,2023-03-01,71.7,Australia Westpac Consumer Sentiment.pdf,2023-03-13
+wmi_sent,2023-04-01,78.4,Australia Westpac Consumer Sentiment.pdf,2023-04-11
+wmi_sent,2023-05-01,72.2,Australia Westpac Consumer Sentiment.pdf,2023-05-16
+wmi_sent,2023-06-01,72.3,Australia Westpac Consumer Sentiment.pdf,2023-06-13
+wmi_sent,2023-07-01,74.3,Australia Westpac Consumer Sentiment.pdf,2023-07-11
+wmi_sent,2023-08-01,74.0,Australia Westpac Consumer Sentiment.pdf,2023-08-08
+wmi_sent,2023-09-01,72.9,Australia Westpac Consumer Sentiment.pdf,2023-09-12
+wmi_sent,2023-10-01,75.0,Australia Westpac Consumer Sentiment.pdf,2023-10-10
+wmi_sent,2023-11-01,73.1,Australia Westpac Consumer Sentiment.pdf,2023-11-13
+wmi_sent,2023-12-01,75.0,Australia Westpac Consumer Sentiment.pdf,2023-12-11
+wmi_sent,2024-01-01,74.0,Australia Westpac Consumer Sentiment.pdf,2024-01-15
+wmi_sent,2024-02-01,78.6,Australia Westpac Consumer Sentiment.pdf,2024-02-12
+wmi_sent,2024-03-01,77.2,Australia Westpac Consumer Sentiment.pdf,2024-03-25
+wmi_sent,2024-04-01,75.4,Australia Westpac Consumer Sentiment.pdf,2024-04-09
+wmi_sent,2024-05-01,75.1,Australia Westpac Consumer Sentiment.pdf,2024-05-21
+wmi_sent,2024-06-01,83.6,Australia Westpac Consumer Sentiment.pdf,2024-06-25
+wmi_sent,2024-07-01,82.7,Australia Westpac Consumer Sentiment.pdf,2024-07-09
+wmi_sent,2024-08-01,85.0,Australia Westpac Consumer Sentiment.pdf,2024-08-13
+wmi_sent,2024-09-01,84.6,Australia Westpac Consumer Sentiment.pdf,2024-09-10
+wmi_sent,2024-10-01,89.8,Australia Westpac Consumer Sentiment.pdf,2024-10-08
+wmi_sent,2024-11-01,94.6,Australia Westpac Consumer Sentiment.pdf,2024-11-11
+wmi_sent,2024-12-01,92.7,Australia Westpac Consumer Sentiment.pdf,2024-12-16
+wmi_sent,2025-01-01,92.0,Australia Westpac Consumer Sentiment.pdf,2025-01-13
+wmi_sent,2025-02-01,92.1,Australia Westpac Consumer Sentiment.pdf,2025-02-10
+wmi_sent,2025-03-01,95.8,Australia Westpac Consumer Sentiment.pdf,2025-03-10
+wmi_sent,2025-04-01,90.1,Australia Westpac Consumer Sentiment.pdf,2025-04-08
+wmi_sent,2025-05-01,92.0,Australia Westpac Consumer Sentiment.pdf,2025-05-13
+wmi_sent,2025-06-01,92.6,Australia Westpac Consumer Sentiment.pdf,2025-06-10
+wmi_sent,2025-07-01,93.2,Australia Westpac Consumer Sentiment.pdf,2025-07-15
+wmi_sent,2025-08-01,98.5,Australia Westpac Consumer Sentiment.pdf,2025-08-19
+wmi_sent,2025-09-01,95.4,Australia Westpac Consumer Sentiment.pdf,2025-09-09
+wmi_sent,2025-10-01,92.1,Australia Westpac Consumer Sentiment.pdf,2025-10-07
+wmi_sent,2025-11-01,103.9,Australia Westpac Consumer Sentiment.pdf,2025-11-10
+wmi_sent,2025-12-01,94.5,Australia Westpac Consumer Sentiment.pdf,2025-12-15
+wmi_sent,2026-01-01,92.9,Australia Westpac Consumer Sentiment.pdf,2026-01-12
+wmi_sent,2026-02-01,90.5,Australia Westpac Consumer Sentiment.pdf,2026-02-09
+wmi_sent,2026-03-01,91.6,Australia Westpac Consumer Sentiment.pdf,2026-03-09
+wmi_sent,2026-04-01,80.1,Australia Westpac Consumer Sentiment.pdf,2026-04-14
+wmi_sent,2026-05-01,83.0,Australia Westpac Consumer Sentiment.pdf,2026-05-19
+wmi_sent,2026-06-01,80.6,Australia Westpac Consumer Sentiment.pdf,2026-06-09

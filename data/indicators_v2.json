@@ -816,7 +816,7 @@
       "id": "ud",
       "name": "Underemployment",
       "group": "Jobs & labour",
-      "unit": "%",
+      "unit": "000s persons",
       "source": "ABS",
       "series": [
         {

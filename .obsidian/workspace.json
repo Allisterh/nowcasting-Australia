@@ -1,0 +1,230 @@
+{
+  "main": {
+    "id": "3465092a98756e6f",
+    "type": "split",
+    "children": [
+      {
+        "id": "cbb72ff4ee35ecd9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "51a8bb1911ef5034",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/cowork-weekly-refresh.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "cowork-weekly-refresh"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "e2da4fa294d46919",
+    "type": "split",
+    "children": [
+      {
+        "id": "6398d84a1cb367ba",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3cc0e4dd90a82295",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "479ecc400f6dafde",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "c2b36b078c46e9f6",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "59e9ee516305f194",
+    "type": "split",
+    "children": [
+      {
+        "id": "30abc7273a186d0c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "20dcba3d2014257c",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Feedback 16 april.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Feedback 16 april"
+            }
+          },
+          {
+            "id": "327f7852575d8be8",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Feedback 16 april.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Feedback 16 april"
+            }
+          },
+          {
+            "id": "1a1cb659040e06ff",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "0fc435feae1a1d3e",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "d233975b95ba9011",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Feedback 16 april.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Feedback 16 april"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "51a8bb1911ef5034",
+  "lastOpenFiles": [
+    "nowcasting_v2/scrapers/refresh_local.ps1.tmp.13660.9974fc75b068",
+    "nowcasting_v2/gen_performance_v2.py.tmp.13660.58fda82ff2dc",
+    "nowcasting_v2/scrapers/nab_monthly.py.tmp.13660.06b8cbfb2173",
+    "nowcasting_v2/scrapers/nab_monthly.py.tmp.13660.030f603af0cb",
+    "nowcasting_v2/R/fetch/fetch_abs_panel.R.tmp.13660.abfaf5f8f3d8",
+    "nowcasting_v2/R/fetch/fetch_rba_panel.R.tmp.13660.fc38fa03848e",
+    "src/components/IndicatorGrid.tsx.tmp.13660.ea98247dde99",
+    "src/components/IndicatorsTable.tsx.tmp.13660.29f383250f7f",
+    "src/lib/format.ts.tmp.13660.2bc13f63dd30",
+    "docs/rba-panel-coverage.md",
+    "docs/rba-panel-coverage.md.tmp.13660.55313291795c",
+    "pipeline/seed/ci_params_v2_umidas.json",
+    "nowcasting_v2/v2_vs_v1_backtest_postcovid.png",
+    "nowcasting_v2/v2_vs_v1_backtest.png",
+    "nowcasting_v2/nab_t1.png",
+    "feedback 11 june.md",
+    "nowcasting_v2/NIGHT-LOG.md",
+    "docs/v2-data-and-ci-maintenance.md",
+    "docs/superpowers/specs/2026-06-09-survey-data-integration-design.md",
+    "docs/superpowers/specs/2026-06-04-nowcast-v2-rba-mai-midas-design.md",
+    "docs/superpowers/plans/2026-06-04-nowcast-v2-rba-mai-midas.md",
+    "docs/nowcast-v2-evaluation-2026-06-05.md",
+    "docs/cowork-weekly-refresh.md",
+    "docs/cowork-survey-data-hunt-brief.md",
+    "docs/OVERNIGHT-REPORT-2026-06-11.md",
+    "nowcasting_v2/_nab_2026_03_t1.png",
+    "nowcasting_v2/_nab_2026_03.png",
+    "nowcasting_v2/_nab_table1.png",
+    "pipeline/renv/staging/1/pracma/NEWS.md",
+    "pipeline/renv/staging/1/colorspace/hclwizard/www/images/pal_ylorrd.png",
+    "pipeline/renv/staging/1/colorspace/hclwizard/www/images/pal_ylgnbu.png",
+    "pipeline/renv/staging/1/colorspace/hclwizard/www/images/pal_warm.png",
+    "pipeline/renv/staging/1/colorspace/hclwizard/www/images/pal_viridis.png",
+    "pipeline/renv/staging/1/colorspace/NEWS.md",
+    "docs/backtest-recommendation-2026-06-04.md",
+    "docs/backtest-recommendation-2026-04-17.md",
+    "Feedback 17 april.md",
+    "docs/todo.md",
+    "docs/superpowers/plans/2026-04-17-indicators-table.md",
+    "docs/superpowers/specs/2026-04-17-indicators-table-design.md",
+    "Feedback 16 april.md"
+  ]
+}

@@ -148,6 +148,14 @@ def parse_table1(pdf_path: str) -> dict:
             vals = [_num(x) for x in cells]
             if all(v is None for v in vals):
                 continue  # non-data row (e.g. "Net balance" subheader)
+            # Capacity utilisation is detected by its own label, independent of the
+            # "% change" delimiter — so a bled/missing delimiter can't drop nab_cu.
+            if "ation rate" in low or "utilis" in low:
+                for d, v in zip(cdates, vals):
+                    if v is not None and CU_RANGE[0] <= v <= CU_RANGE[1]:
+                        data["nab_cu"][d] = v
+                in_netbal = False
+                continue
             if in_netbal:
                 if netbal_idx < len(NETBAL_ORDER):
                     sid = NETBAL_ORDER[netbal_idx]
@@ -156,12 +164,6 @@ def parse_table1(pdf_path: str) -> dict:
                             if v is not None and NETBAL_RANGE[0] <= v <= NETBAL_RANGE[1]:
                                 data[sid][d] = int(v) if v == int(v) else v
                     netbal_idx += 1
-            else:
-                # capacity utilisation: the labelled "...ation rate" Per-cent row
-                if "ation rate" in low or "utilis" in low:
-                    for d, v in zip(cdates, vals):
-                        if v is not None and CU_RANGE[0] <= v <= CU_RANGE[1]:
-                            data["nab_cu"][d] = v
 
         # capacity utilisation fallback / cross-source from prose
         prose = pg.extract_text() or ""
@@ -293,10 +295,18 @@ def verify(values: dict, data_raw: str, write: bool = False) -> dict:
     overlap month(s) already in the CSV so the same self-check can confirm the
     read is aligned before any new month is appended. Same guardrail as Tier 1.
     """
-    data = {sid: {d: float(v) for d, v in months.items()}
-            for sid, months in values.items() if sid in SERIES_RANGE}
     report = {"columns": "vision", "appended": {}, "skipped": {},
               "selfcheck": {}, "blocked": [], "tier": "vision"}
+    # Coerce defensively: a single unparseable value (e.g. "81.5%") must not crash
+    # the whole verify run — route the offending series to BLOCKED instead.
+    data = {}
+    for sid, months in values.items():
+        if sid not in SERIES_RANGE:
+            continue
+        try:
+            data[sid] = {d: float(v) for d, v in months.items()}
+        except (TypeError, ValueError):
+            report["blocked"].append(f"{sid}: non-numeric value in vision read {months} -- skipped")
     # require an overlap month so the read can be validated, not blindly trusted
     for sid in list(data):
         existing = _read_csv(os.path.join(data_raw, f"{sid}.csv"))

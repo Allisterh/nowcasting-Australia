@@ -230,5 +230,11 @@ fetch_rba_panel <- function() {
 }
 
 if (sys.nframe() == 0L && !interactive()) {
-  fetch_rba_panel()
+  res <- fetch_rba_panel()
+  failed <- names(res)[vapply(res, is.null, logical(1))]
+  if (length(failed)) {
+    message(sprintf("FETCH FAILED for %d RBA series: %s -- exiting non-zero so the run is not silently stale.",
+                    length(failed), paste(failed, collapse = ", ")))
+    quit(status = 1L)
+  }
 }

@@ -1,0 +1,20 @@
+- The project is out-of-sync -- use `renv::status()` for details.
+Warning message:
+package 'purrr' was built under R version 4.5.3 
+
+================= PANEL LADDER =================
+    panel r n_forecasts rmse_qoq_full hit_full n_postcovid rmse_qoq_postcovid
+ baseline 2          25         1.880   84.000          17              0.351
+ baseline 3          25         1.871   83.333          16              0.340
+ hit_postcovid q1_2026_qoq q1_2026_level
+        94.118       0.721      699043.9
+        93.750       0.797      699574.4
+
+========= Q1-2026 HELD-OUT (realised +0.274% / 695,945) =========
+    panel r qoq_pred level_pred qoq_err level_err
+ baseline 2    0.721   699043.9   0.447  3098.898
+ baseline 3    0.797   699574.4   0.523  3629.423
+
+================= GATE READOUT =================
+
+Wrote panel_ladder.csv + q1_2026_holdout.csv

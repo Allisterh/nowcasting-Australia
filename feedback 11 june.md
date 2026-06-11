@@ -1,0 +1,11 @@
+i'm going to go get a coffee, few things i'd like you to do while i'm gone:
+- we previously had a problem in an early iteration of this work that none of the data variables were transformed to be stationary - can you please confirm that this is not a problem with v2. 
+- i want the nowcast evolution chart to have a hline at 0% and for the y axis to have more sensible label points (currently it goes from -0.41% to 0.39%)
+- can the "Likely range: −0.36% to +0.35% (about a 2-in-3 chance)" in the top box styling please match that used for "growth this quarter" text.
+- please remove the emdashes from the methodology box, and do a QA on that text to make sure it doesn't sound too AI.
+- please include a link to the RBA paper in the methodology box.
+- in the indicators table, what has happened to the "update" and "next update" columns? these were properly populated in the live version but have reverted to 1 may, 1 june, 1 april, 1 march etc in this version.
+- can you please confirm that the rba model includes all of those financial and credit indicators? i'm surprised we're including so many bond yields and spreads. don't change anything in this yet just let me know.
+- the total credit, housing credit and business credit and credit card spending charts look boring as $bn and $m as its just a straight line, maybe these should be changed to monthly change in $?
+- i think the confidence intervals in the nowcast evolution chart would look better as a shaded area rather than as lines.
+- Can you include in the nowcast evolution chart a q2 nowcast as at 1 june and 8 june to keep our monday cycle consistent? you'll need to work out when each of the data series are released for this. this will also help for the issue in the indicator table i mentioned above. i imagine this would require updating the box at the top of the page as well?

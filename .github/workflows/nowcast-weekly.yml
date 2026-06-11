@@ -114,10 +114,11 @@ jobs:
       # v2 model itself, so both belong here in the R cron, NOT on the laptop. The
       # WAF-blocked surveys (NAB/ANZ/Westpac) are refreshed separately by the local
       # Cowork task; this step just reads whatever data_raw CSVs are present.
-      # continue-on-error so a transient v2 issue can't block the v1 commit/deploy;
-      # if v2 emit fails the prior data/latest_v2.json is still served (stale, not
-      # broken). NB: v2 failures are currently silent here -- a follow-up could add
-      # v2-specific alerting.
+      # continue-on-error so a transient v2 issue can't block the v1 commit/deploy
+      # (if v2 fails the prior data/latest_v2.json is still served — stale, not
+      # broken). The fetchers now exit non-zero on any failed series (fail-loud),
+      # so a data outage aborts this step before emit instead of nowcasting on
+      # stale data — and the dedicated "Alert on v2 failure" step below fires.
       - name: Refresh v2 panel + nowcast (RBA/ABS data + emit)
         id: v2
         if: success()
@@ -130,11 +131,43 @@ jobs:
         run: |
           Rscript R/fetch/fetch_rba_panel.R
           Rscript R/fetch/fetch_abs_panel.R
+          # GDP regressand + target-quarter driver for the v2 model (ABS, no WAF) —
+          # must refresh or v2 keeps targeting a superseded quarter.
+          Rscript R/fetch_rt_gdp.R
           Rscript R/emit_v2_json.R
           # Refresh the indicator-grid display (data/indicators_v2.json) from the
           # freshly-fetched data_raw. Python stdlib only; reads data_raw, so it
           # picks up both the RBA/ABS fetch above and the survey commits on main.
           python gen_indicators_v2.py
+
+      # The v2 step is continue-on-error so it can't stale the live v1 site; surface
+      # its failure loudly here instead (the job-level "Alert on failure" never
+      # fires for a continue-on-error step).
+      - name: Alert on v2 failure
+        if: steps.v2.outcome == 'failure'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const runUrl = `https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const today = new Date().toISOString().slice(0, 10);
+            const existing = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo,
+              state: "open", labels: "v2-failure",
+            });
+            if (existing.data.length > 0) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: existing.data[0].number,
+                body: `v2 refresh failed again ${today}. The live site is serving the prior latest_v2.json (stale, not broken). Logs: ${runUrl}`,
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner, repo: context.repo.repo,
+                title: `v2 nowcast refresh failed ${today}`,
+                body: `The v2 step (fetch/emit/indicators) failed; v1 still shipped. Site serves the prior latest_v2.json (stale). Logs: ${runUrl}`,
+                labels: ["v2-failure"], assignees: [context.repo.owner],
+              });
+            }
 
       - name: Commit updated JSON and vintage index
         id: commit

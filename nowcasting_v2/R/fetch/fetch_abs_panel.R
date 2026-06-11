@@ -156,7 +156,7 @@ fetch_mhsi_real <- function(write = TRUE) {
   invisible(real)
 }
 
-fetch_abs_panel <- function(ids = setdiff(names(ABS_PANEL_IDS), character(0))) {
+fetch_abs_panel <- function(ids = names(ABS_PANEL_IDS)) {
   res <- list()
   for (id in ids) {
     res[[id]] <- tryCatch(
@@ -174,5 +174,11 @@ fetch_abs_panel <- function(ids = setdiff(names(ABS_PANEL_IDS), character(0))) {
 }
 
 if (sys.nframe() == 0L && !interactive()) {
-  fetch_abs_panel()
+  res <- fetch_abs_panel()
+  failed <- names(res)[vapply(res, is.null, logical(1))]
+  if (length(failed)) {
+    message(sprintf("FETCH FAILED for %d ABS series: %s -- exiting non-zero so the run is not silently stale.",
+                    length(failed), paste(failed, collapse = ", ")))
+    quit(status = 1L)
+  }
 }

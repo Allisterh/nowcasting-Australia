@@ -1,0 +1,480 @@
+- The project is out-of-sync -- use `renv::status()` for details.
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ forcats   1.0.1     ✔ readr     2.1.5
+✔ ggplot2   4.0.0     ✔ stringr   1.5.2
+✔ lubridate 1.9.4     ✔ tibble    3.3.0
+✔ purrr     1.2.2     ✔ tidyr     1.3.1
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+ABS Release Schedule:
+# A tibble: 13 × 4
+   indicator_id       release_day_of_month release_lag_days release_frequency
+   <chr>                             <dbl>            <dbl> <chr>            
+ 1 employment                           15               15 monthly          
+ 2 unemp_rate                           15               15 monthly          
+ 3 participation                        15               15 monthly          
+ 4 hours_worked                         15               15 monthly          
+ 5 household_spending                   30               30 monthly          
+ 6 exports_goods                         7               45 monthly          
+ 7 imports_goods                         7               45 monthly          
+ 8 exports_servs                         7               62 quarterly        
+ 9 imports_servs                         7               62 quarterly        
+10 building_app                         30               30 monthly          
+11 cons_conf                             5                5 monthly          
+12 bus_conf                             11               11 monthly          
+13 gdp_quarterly                         5               64 quarterly        
+
+Release schedule saved to: .cache/processed/release_schedule.rds
+
+=== Release Calendar Script Ready ===
+
+Key functions:
+  - get_available_data() - Filter to data available as of specific date
+  - summarize_data_availability() - Check what's available now
+  - generate_backtest_dates() - Create dates for historical evaluation
+  - create_backtest_snapshot() - Get historical data snapshot
+  - track_recent_releases() - See what updated recently
+
+This enables:
+  1. Real-time nowcasting with ragged edge data
+  2. Backtesting with historically available data only
+  3. Tracking impact of new data releases
+
+Attaching package: 'Matrix'
+
+The following objects are masked from 'package:tidyr':
+
+    expand, pack, unpack
+
+
+=== Model Estimation Script Ready ===
+
+Key functions:
+  - prepare_data_for_dfm() - Format data for nowcasting package
+  - configure_dfm() - Set model parameters
+  - estimate_dfm() - Run EM algorithm to estimate model
+  - check_model_diagnostics() - Validate model quality
+  - save_model() / load_model() - Persist models
+  - run_model_estimation() - Complete workflow
+
+Example usage:
+  master_data <- readRDS(".cache/processed/master_dataset_wide.rds")
+  result <- run_model_estimation(master_data, n_factors = 5)
+  model <- result$model
+
+Note: The nowcasting package API may vary by version.
+You may need to adjust function calls based on installed version.
+Check: help(package = 'nowcasting') for available functions
+ABS Release Schedule:
+# A tibble: 13 × 4
+   indicator_id       release_day_of_month release_lag_days release_frequency
+   <chr>                             <dbl>            <dbl> <chr>            
+ 1 employment                           15               15 monthly          
+ 2 unemp_rate                           15               15 monthly          
+ 3 participation                        15               15 monthly          
+ 4 hours_worked                         15               15 monthly          
+ 5 household_spending                   30               30 monthly          
+ 6 exports_goods                         7               45 monthly          
+ 7 imports_goods                         7               45 monthly          
+ 8 exports_servs                         7               62 quarterly        
+ 9 imports_servs                         7               62 quarterly        
+10 building_app                         30               30 monthly          
+11 cons_conf                             5                5 monthly          
+12 bus_conf                             11               11 monthly          
+13 gdp_quarterly                         5               64 quarterly        
+
+Release schedule saved to: .cache/processed/release_schedule.rds
+
+=== Release Calendar Script Ready ===
+
+Key functions:
+  - get_available_data() - Filter to data available as of specific date
+  - summarize_data_availability() - Check what's available now
+  - generate_backtest_dates() - Create dates for historical evaluation
+  - create_backtest_snapshot() - Get historical data snapshot
+  - track_recent_releases() - See what updated recently
+
+This enables:
+  1. Real-time nowcasting with ragged edge data
+  2. Backtesting with historically available data only
+  3. Tracking impact of new data releases
+
+=== Model Estimation Script Ready ===
+
+Key functions:
+  - prepare_data_for_dfm() - Format data for nowcasting package
+  - configure_dfm() - Set model parameters
+  - estimate_dfm() - Run EM algorithm to estimate model
+  - check_model_diagnostics() - Validate model quality
+  - save_model() / load_model() - Persist models
+  - run_model_estimation() - Complete workflow
+
+Example usage:
+  master_data <- readRDS(".cache/processed/master_dataset_wide.rds")
+  result <- run_model_estimation(master_data, n_factors = 5)
+  model <- result$model
+
+Note: The nowcasting package API may vary by version.
+You may need to adjust function calls based on installed version.
+Check: help(package = 'nowcasting') for available functions
+
+=== Nowcast Generation Script Ready ===
+
+Key functions:
+  - generate_nowcast() - Core nowcast generation with Kalman filter
+  - calculate_confidence_intervals() - Uncertainty quantification
+  - calculate_component_contributions() - GDP component breakdown
+  - track_nowcast_evolution() - Track changes over quarter
+  - calculate_data_release_impact() - Measure 'news' effect
+  - run_complete_nowcast() - Complete workflow
+  - save_nowcast_results() - Persist results
+
+Outputs:
+  - Point estimate of GDP growth
+  - 68% and 95% confidence intervals
+  - Component contributions (requires full component model)
+  - Nowcast evolution time series
+  - Data release impact attribution
+
+=== Backtest harness ready ===
+Functions: run_backtest(), calculate_accuracy_metrics(), plot_nowcast_vs_actual(), plot_forecast_errors(), generate_backtest_report(), save_backtest_results()
+
+Warning message:
+package 'purrr' was built under R version 4.5.3 
+
+=== DFM Configuration ===
+Number of factors: 2
+VAR order: 1
+EM max iterations: 100
+EM tolerance: 1e-04
+Filtering data available as of: 2025-06-30
+  → 4094 observations available across all indicators
+
+=== Component-Based DFM Estimation ===
+
+Note: Using simplified aggregate approach
+(Full component-based approach to be implemented)
+
+=== Preparing Data for DFM ===
+
+Indicator matrix: 305 periods × 16 indicators
+GDP observations: 101/305 (quarterly, ~67% NAs expected)
+
+Indicator frequencies:
+# A tibble: 16 × 3
+   indicator_id       frequency freq_numeric
+   <chr>              <chr>            <dbl>
+ 1 household_spending monthly             12
+ 2 cons_conf          monthly             12
+ 3 building_app       monthly             12
+ 4 bus_conf           monthly             12
+ 5 exports_goods      monthly             12
+ 6 exports_servs      quarterly            4
+ 7 imports_goods      monthly             12
+ 8 imports_servs      quarterly            4
+ 9 employment         monthly             12
+10 unemp_rate         monthly             12
+11 participation      monthly             12
+12 hours_worked       monthly             12
+13 commodity_prices   monthly             12
+14 aud_usd            monthly             12
+15 inventories        quarterly            4
+16 arrivals           monthly             12
+
+=== Estimating Dynamic Factor Model ===
+
+Estimating with 2 factors...
+Time series created: 305 periods, 17 variables
+Variables: gdp, building_app, bus_conf, cons_conf, employment, exports_goods, hours_worked, imports_goods, participation, unemp_rate, exports_servs, imports_servs, household_spending, commodity_prices, aud_usd, inventories, arrivals
+Formula: gdp ~ .
+
+Frequency vector (4=quarterly, 12=monthly):
+gdp = 4, building_app = 12, bus_conf = 12, cons_conf = 12, employment = 12, exports_goods = 12, hours_worked = 12, imports_goods = 12, participation = 12, unemp_rate = 12, exports_servs = 4, imports_servs = 4, household_spending = 12, commodity_prices = 12, aud_usd = 12, inventories = 4, arrivals = 12
+
+Preprocessing with Bpanel()...
+  NA.replace = FALSE (keep structural NAs)
+  na.prop = 1 (don't discard any series)
+  aggregate = FALSE (don't apply MA filter that creates more NAs!)
+
+Per-series trans codes:
+gdp = 7, building_app = 1, bus_conf = 2, cons_conf = 2, employment = 1, exports_goods = 1, hours_worked = 1, imports_goods = 1, participation = 2, unemp_rate = 2, exports_servs = 7, imports_servs = 7, household_spending = 1, commodity_prices = 1, aud_usd = 2, inventories = 7, arrivals = 1
+NULL
+COVID mask applied: 5 months × 17 series set to NA
+Balanced panel: 317x17
+Variables: gdp, building_app, bus_conf, cons_conf, employment, exports_goods, hours_worked, imports_goods, participation, unemp_rate, exports_servs, imports_servs, household_spending, commodity_prices, aud_usd, inventories, arrivals
+Blocks structure: 17 variables × 2 factors (unrestricted)
+5th iteration: 
+The loglikelihood went from -1379.6109 to -1367.9849
+10th iteration: 
+The loglikelihood went from -1326.2311 to -1317.6313
+15th iteration: 
+The loglikelihood went from -1294.8685 to -1291.779
+20th iteration: 
+The loglikelihood went from -1285.0045 to -1284.0725
+25th iteration: 
+The loglikelihood went from -1281.5222 to -1281.0579
+30th iteration: 
+The loglikelihood went from -1279.57 to -1279.2647
+35th iteration: 
+The loglikelihood went from -1278.2189 to -1277.9919
+40th iteration: 
+The loglikelihood went from -1277.1827 to -1277.0007
+45th iteration: 
+The loglikelihood went from -1276.3332 to -1276.1791
+50th iteration: 
+The loglikelihood went from -1275.6024 to -1275.4668
+✓ Model estimation complete
+
+=== Generating GDP Nowcast ===
+
+Target quarter: 2025 Q2
+Nowcast for 2025 Q2: QoQ=+0.64%  implied level=$683,188M  YoY=+1.65%  [out (nowcast)]
+Filtering data available as of: 2025-09-30
+  → 4137 observations available across all indicators
+
+=== Component-Based DFM Estimation ===
+
+Note: Using simplified aggregate approach
+(Full component-based approach to be implemented)
+
+=== Preparing Data for DFM ===
+
+Indicator matrix: 308 periods × 16 indicators
+GDP observations: 102/308 (quarterly, ~67% NAs expected)
+
+Indicator frequencies:
+# A tibble: 16 × 3
+   indicator_id       frequency freq_numeric
+   <chr>              <chr>            <dbl>
+ 1 household_spending monthly             12
+ 2 cons_conf          monthly             12
+ 3 building_app       monthly             12
+ 4 bus_conf           monthly             12
+ 5 exports_goods      monthly             12
+ 6 exports_servs      quarterly            4
+ 7 imports_goods      monthly             12
+ 8 imports_servs      quarterly            4
+ 9 employment         monthly             12
+10 unemp_rate         monthly             12
+11 participation      monthly             12
+12 hours_worked       monthly             12
+13 commodity_prices   monthly             12
+14 aud_usd            monthly             12
+15 inventories        quarterly            4
+16 arrivals           monthly             12
+
+=== Estimating Dynamic Factor Model ===
+
+Estimating with 2 factors...
+Time series created: 308 periods, 17 variables
+Variables: gdp, building_app, bus_conf, cons_conf, employment, exports_goods, hours_worked, imports_goods, participation, unemp_rate, exports_servs, imports_servs, household_spending, commodity_prices, aud_usd, inventories, arrivals
+Formula: gdp ~ .
+
+Frequency vector (4=quarterly, 12=monthly):
+gdp = 4, building_app = 12, bus_conf = 12, cons_conf = 12, employment = 12, exports_goods = 12, hours_worked = 12, imports_goods = 12, participation = 12, unemp_rate = 12, exports_servs = 4, imports_servs = 4, household_spending = 12, commodity_prices = 12, aud_usd = 12, inventories = 4, arrivals = 12
+
+Preprocessing with Bpanel()...
+  NA.replace = FALSE (keep structural NAs)
+  na.prop = 1 (don't discard any series)
+  aggregate = FALSE (don't apply MA filter that creates more NAs!)
+
+Per-series trans codes:
+gdp = 7, building_app = 1, bus_conf = 2, cons_conf = 2, employment = 1, exports_goods = 1, hours_worked = 1, imports_goods = 1, participation = 2, unemp_rate = 2, exports_servs = 7, imports_servs = 7, household_spending = 1, commodity_prices = 1, aud_usd = 2, inventories = 7, arrivals = 1
+NULL
+COVID mask applied: 5 months × 17 series set to NA
+Balanced panel: 320x17
+Variables: gdp, building_app, bus_conf, cons_conf, employment, exports_goods, hours_worked, imports_goods, participation, unemp_rate, exports_servs, imports_servs, household_spending, commodity_prices, aud_usd, inventories, arrivals
+Blocks structure: 17 variables × 2 factors (unrestricted)
+5th iteration: 
+The loglikelihood went from -1400.1502 to -1388.679
+10th iteration: 
+The loglikelihood went from -1346.9088 to -1338.0817
+15th iteration: 
+The loglikelihood went from -1314.1288 to -1310.8097
+20th iteration: 
+The loglikelihood went from -1303.5608 to -1302.5822
+25th iteration: 
+The loglikelihood went from -1299.9463 to -1299.4719
+30th iteration: 
+The loglikelihood went from -1297.9592 to -1297.6499
+35th iteration: 
+The loglikelihood went from -1296.5929 to -1296.3638
+40th iteration: 
+The loglikelihood went from -1295.5487 to -1295.3655
+45th iteration: 
+The loglikelihood went from -1294.6944 to -1294.5396
+50th iteration: 
+The loglikelihood went from -1293.9606 to -1293.8245
+✓ Model estimation complete
+
+=== Generating GDP Nowcast ===
+
+Target quarter: 2025 Q3
+Nowcast for 2025 Q3: QoQ=+0.72%  implied level=$690,330M  YoY=+2.40%  [out (nowcast)]
+Filtering data available as of: 2025-12-31
+  → 4180 observations available across all indicators
+
+=== Component-Based DFM Estimation ===
+
+Note: Using simplified aggregate approach
+(Full component-based approach to be implemented)
+
+=== Preparing Data for DFM ===
+
+Indicator matrix: 311 periods × 16 indicators
+GDP observations: 103/311 (quarterly, ~67% NAs expected)
+
+Indicator frequencies:
+# A tibble: 16 × 3
+   indicator_id       frequency freq_numeric
+   <chr>              <chr>            <dbl>
+ 1 household_spending monthly             12
+ 2 cons_conf          monthly             12
+ 3 building_app       monthly             12
+ 4 bus_conf           monthly             12
+ 5 exports_goods      monthly             12
+ 6 exports_servs      quarterly            4
+ 7 imports_goods      monthly             12
+ 8 imports_servs      quarterly            4
+ 9 employment         monthly             12
+10 unemp_rate         monthly             12
+11 participation      monthly             12
+12 hours_worked       monthly             12
+13 commodity_prices   monthly             12
+14 aud_usd            monthly             12
+15 inventories        quarterly            4
+16 arrivals           monthly             12
+
+=== Estimating Dynamic Factor Model ===
+
+Estimating with 2 factors...
+Time series created: 311 periods, 17 variables
+Variables: gdp, building_app, bus_conf, cons_conf, employment, exports_goods, hours_worked, imports_goods, participation, unemp_rate, exports_servs, imports_servs, household_spending, commodity_prices, aud_usd, inventories, arrivals
+Formula: gdp ~ .
+
+Frequency vector (4=quarterly, 12=monthly):
+gdp = 4, building_app = 12, bus_conf = 12, cons_conf = 12, employment = 12, exports_goods = 12, hours_worked = 12, imports_goods = 12, participation = 12, unemp_rate = 12, exports_servs = 4, imports_servs = 4, household_spending = 12, commodity_prices = 12, aud_usd = 12, inventories = 4, arrivals = 12
+
+Preprocessing with Bpanel()...
+  NA.replace = FALSE (keep structural NAs)
+  na.prop = 1 (don't discard any series)
+  aggregate = FALSE (don't apply MA filter that creates more NAs!)
+
+Per-series trans codes:
+gdp = 7, building_app = 1, bus_conf = 2, cons_conf = 2, employment = 1, exports_goods = 1, hours_worked = 1, imports_goods = 1, participation = 2, unemp_rate = 2, exports_servs = 7, imports_servs = 7, household_spending = 1, commodity_prices = 1, aud_usd = 2, inventories = 7, arrivals = 1
+NULL
+COVID mask applied: 5 months × 17 series set to NA
+Balanced panel: 323x17
+Variables: gdp, building_app, bus_conf, cons_conf, employment, exports_goods, hours_worked, imports_goods, participation, unemp_rate, exports_servs, imports_servs, household_spending, commodity_prices, aud_usd, inventories, arrivals
+Blocks structure: 17 variables × 2 factors (unrestricted)
+5th iteration: 
+The loglikelihood went from -1414.862 to -1402.6639
+10th iteration: 
+The loglikelihood went from -1358.4097 to -1349.2557
+15th iteration: 
+The loglikelihood went from -1325.2373 to -1322.0425
+20th iteration: 
+The loglikelihood went from -1315.1605 to -1314.2272
+25th iteration: 
+The loglikelihood went from -1311.6764 to -1311.2113
+30th iteration: 
+The loglikelihood went from -1309.7197 to -1309.4137
+35th iteration: 
+The loglikelihood went from -1308.3674 to -1308.1408
+40th iteration: 
+The loglikelihood went from -1307.3352 to -1307.1543
+45th iteration: 
+The loglikelihood went from -1306.4931 to -1306.3408
+50th iteration: 
+The loglikelihood went from -1305.772 to -1305.6384
+✓ Model estimation complete
+
+=== Generating GDP Nowcast ===
+
+Target quarter: 2025 Q4
+Nowcast for 2025 Q4: QoQ=+0.55%  implied level=$691,830M  YoY=+2.18%  [out (nowcast)]
+Filtering data available as of: 2026-03-31
+  → 4223 observations available across all indicators
+
+=== Component-Based DFM Estimation ===
+
+Note: Using simplified aggregate approach
+(Full component-based approach to be implemented)
+
+=== Preparing Data for DFM ===
+
+Indicator matrix: 314 periods × 16 indicators
+GDP observations: 104/314 (quarterly, ~67% NAs expected)
+
+Indicator frequencies:
+# A tibble: 16 × 3
+   indicator_id       frequency freq_numeric
+   <chr>              <chr>            <dbl>
+ 1 household_spending monthly             12
+ 2 cons_conf          monthly             12
+ 3 building_app       monthly             12
+ 4 bus_conf           monthly             12
+ 5 exports_goods      monthly             12
+ 6 exports_servs      quarterly            4
+ 7 imports_goods      monthly             12
+ 8 imports_servs      quarterly            4
+ 9 employment         monthly             12
+10 unemp_rate         monthly             12
+11 participation      monthly             12
+12 hours_worked       monthly             12
+13 commodity_prices   monthly             12
+14 aud_usd            monthly             12
+15 inventories        quarterly            4
+16 arrivals           monthly             12
+
+=== Estimating Dynamic Factor Model ===
+
+Estimating with 2 factors...
+Time series created: 314 periods, 17 variables
+Variables: gdp, building_app, bus_conf, cons_conf, employment, exports_goods, hours_worked, imports_goods, participation, unemp_rate, exports_servs, imports_servs, household_spending, commodity_prices, aud_usd, inventories, arrivals
+Formula: gdp ~ .
+
+Frequency vector (4=quarterly, 12=monthly):
+gdp = 4, building_app = 12, bus_conf = 12, cons_conf = 12, employment = 12, exports_goods = 12, hours_worked = 12, imports_goods = 12, participation = 12, unemp_rate = 12, exports_servs = 4, imports_servs = 4, household_spending = 12, commodity_prices = 12, aud_usd = 12, inventories = 4, arrivals = 12
+
+Preprocessing with Bpanel()...
+  NA.replace = FALSE (keep structural NAs)
+  na.prop = 1 (don't discard any series)
+  aggregate = FALSE (don't apply MA filter that creates more NAs!)
+
+Per-series trans codes:
+gdp = 7, building_app = 1, bus_conf = 2, cons_conf = 2, employment = 1, exports_goods = 1, hours_worked = 1, imports_goods = 1, participation = 2, unemp_rate = 2, exports_servs = 7, imports_servs = 7, household_spending = 1, commodity_prices = 1, aud_usd = 2, inventories = 7, arrivals = 1
+NULL
+COVID mask applied: 5 months × 17 series set to NA
+Balanced panel: 326x17
+Variables: gdp, building_app, bus_conf, cons_conf, employment, exports_goods, hours_worked, imports_goods, participation, unemp_rate, exports_servs, imports_servs, household_spending, commodity_prices, aud_usd, inventories, arrivals
+Blocks structure: 17 variables × 2 factors (unrestricted)
+5th iteration: 
+The loglikelihood went from -1406.5484 to -1390.7308
+10th iteration: 
+The loglikelihood went from -1337.7953 to -1328.8327
+15th iteration: 
+The loglikelihood went from -1309.9738 to -1307.9161
+20th iteration: 
+The loglikelihood went from -1303.284 to -1302.5528
+25th iteration: 
+The loglikelihood went from -1300.3393 to -1299.9078
+30th iteration: 
+The loglikelihood went from -1298.4979 to -1298.2075
+35th iteration: 
+The loglikelihood went from -1297.2241 to -1297.0143
+40th iteration: 
+The loglikelihood went from -1296.2821 to -1296.121
+45th iteration: 
+The loglikelihood went from -1295.5425 to -1295.4115
+✓ Model estimation complete
+
+=== Generating GDP Nowcast ===
+
+Target quarter: 2026 Q1
+Nowcast for 2026 Q1: QoQ=+0.77%  implied level=$699,407M  YoY=+3.03%  [out (nowcast)]
+MARKER schedule_rows_added: 4 -> commodity_prices,aud_usd,inventories,arrivals 
+MARKER n_ind_available: 10,10,10,10 
+MARKER q1_qoq: 0.773 actual: 0.274 
