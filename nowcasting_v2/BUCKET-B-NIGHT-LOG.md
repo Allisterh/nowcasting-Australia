@@ -48,8 +48,18 @@ NO production edits — research only, awaits James's review.
 - [x] Combined panel built (44 series)
 - [x] Backtest sweep @ α=0.05 (baseline + 9 marginal + full) — ALL IDENTICAL to baseline
 - [x] Root-caused the null result (Wald selection; see below)
-- [~] Follow-up α=0.10/0.20 sweep on the two near-miss series (RUNNING)
-- [ ] Report + charts + recommendation
+- [x] Follow-up α=0.10/0.20 sweep on the two near-miss series
+- [x] Report + charts + recommendation -> BUCKET-B-RESULTS.md
+
+## FINAL VERDICT: NO-GO
+None of the 9 Bucket-B series improves the v2 nowcast at the production config.
+- α=0.05 (production): no Bucket-B series is Wald-selected -> zero effect (all variants identical).
+- α=0.10/0.20: only credit_personal & non_res_ba enter; their marginal effect is within-noise
+  (|ΔRMSE|≤0.005 on pc/oos8), and the looser-α model is far worse than production anyway
+  (full 0.69-0.75 vs 0.45; OOS8 0.38 vs 0.24). non_res_ba helps full-sample most but does
+  nothing for pc/oos8. Strict α=0.05 dominates.
+- Confirms v1's "more series ≠ better" now holds for the v2 MAI framework too (was untested).
+Keep the 29-series panel as-is. Full writeup + tables + charts in BUCKET-B-RESULTS.md.
 
 ## KEY RESULT (α=0.05 headline) — null, and WHY
 All 11 variants (incl. full_bucketb with all 9 added) returned byte-identical RMSE
