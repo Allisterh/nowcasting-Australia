@@ -42,9 +42,27 @@ NO production edits — research only, awaits James's review.
 ## Progress
 - [x] Harness understood (backtest_v2 exclude_ids mechanism; production config from emit_v2_json.R)
 - [x] Series IDs discovered + confirmed (9 keep, 3 drop)
-- [ ] Fetchers written + data pulled + validated
-- [ ] panel_info rows added
-- [ ] Stationarity QA gate
-- [ ] Combined panel built
-- [ ] Backtest sweep (baseline + 9 marginal + full)
+- [x] Fetchers written + data pulled + validated (import sign-bug caught + fixed)
+- [x] panel_info rows added
+- [x] Stationarity QA gate — 8/9 stationary, alt_add borderline-KPSS (kept, ADF-strong)
+- [x] Combined panel built (44 series)
+- [x] Backtest sweep @ α=0.05 (baseline + 9 marginal + full) — ALL IDENTICAL to baseline
+- [x] Root-caused the null result (Wald selection; see below)
+- [~] Follow-up α=0.10/0.20 sweep on the two near-miss series (RUNNING)
 - [ ] Report + charts + recommendation
+
+## KEY RESULT (α=0.05 headline) — null, and WHY
+All 11 variants (incl. full_bucketb with all 9 added) returned byte-identical RMSE
+(full 0.4535 / postCOVID 0.3422 / OOS8 0.2409). NOT a bug: the candidate pool grows
+correctly (31→32→40) but v2's **univariate Wald targeted-predictor selection** never
+admits any Bucket-B series at α=0.05 (threshold χ²(3)=7.815). So none enter the MAI,
+hence zero effect. Full Wald table: `cache/bucketb/wald.csv`.
+
+Bucket-B Wald stats (pass @.05=7.815 / .10=6.251 / .20=4.642):
+  credit_personal 7.64 (p=.054)  — NEAR MISS, passes @.10 & @.20
+  non_res_ba      6.95           — passes @.10 & @.20
+  import 3.77 · nh_ba 2.30 · icp 1.84 · alt_add 1.76 · debit_card 1.37 · hs_ba 0.17
+                                 — fail even @.20 (genuinely unpredictive of QoQ GDP)
+  twi             NA             — too few obs (2023+) to evaluate on full sample
+=> Only credit_personal & non_res_ba ever get selected (at looser α). Follow-up sweep
+   tests their ACTUAL accuracy impact @ α=0.10 and α=0.20 (where the stress model lives).
