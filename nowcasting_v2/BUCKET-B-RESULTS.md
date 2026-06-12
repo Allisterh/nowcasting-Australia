@@ -66,6 +66,34 @@ The production set's 11 selected series all clear α=0.05; no Bucket-B series do
 
 ---
 
+## RBA cross-check — their own selection rejects all 9
+
+This isn't just our adaptation of the method. The RBA published the list of series their MAI actually keeps (`rba_paper/content/Data/mai_tp_list.csv`) — **30 of the 53 panel series**, selected by the identical Wald gate at the RBA's α=0.10. **None of the 9 Bucket-B candidates is in it:**
+
+> wmi_sent, nab_forward, scrigbag3, emp, aig_pmi, nab_conf, anz_sent, doe_ads, ud, credit_housing, wmi_finance, ft_emp, ue, credit, asx200, fcmygbag10, hours, fcmygbag5, house_prices, nab_trade, anz_ads, aig_pci, export, credit_card, pt_emp, credit_business, nab_stocks, nab_profit, nab_emp, rt
+
+So the RBA — running the same test on their own 1978+ sample at an even *looser* α than ours (0.10 vs 0.05) — also excludes debit_card, credit_personal, import, the approvals disaggregates, twi and icp. Our NO-GO independently reproduces the RBA's own decision; we're not rejecting these by a config quirk.
+
+(Nuance: on *our* shorter sample two were near-misses at α=0.10 — credit_personal 7.64, non_res_ba 6.95 — but the RBA's own selection didn't pick them either.)
+
+## What the RBA's selected model has that v2 doesn't
+
+Flipping the question: of the RBA's 30 selected series, v2 uses 23 and is missing 7.
+
+**No data source in v2 (4):**
+
+- `asx200` — S&P/ASX 200 equity prices. No free CSV (RBA stopped publishing; Yahoo/Stooq need keys / are unstable).
+- `house_prices` — ABS RPPI discontinued 2021; CoreLogic paywalled.
+- `wmi_finance` — Westpac-MI family-finances sub-index. We scrape `wmi_sent` (headline) but not this sub-index — *realistically gettable with extra parsing of the same release.*
+- `doe_ads` — Dept of Employment / JSA Internet Vacancy Index (host firewalled). We use `anz_ads` as the functional job-ads stand-in (itself also in the RBA list).
+
+**In v2's data but deliberately excluded from the model (3):**
+
+- `aig_pmi`, `aig_pci` — AiG PMI/PCI. The RBA selected them, but v2 excludes the AiG block (AiG discontinued the surveys; PSI dead, PMI/PCI have a 2023 methodology break).
+- `rt` — old ABS retail. The RBA selected it; v2 swaps in real MHSI (`household_spending`), a deliberate upgrade.
+
+So the genuinely-absent, RBA-uses-it series are **asx200, house_prices, and wmi_finance** (plus doe_ads, ~covered by anz_ads). asx200/house_prices are the catalogued "hard bucket" (no free source); **wmi_finance is the one cleanly worth chasing** — a sub-index of a release we already scrape.
+
 ## Dropped during sourcing (with reason)
 
 - **res_ba** — = total dwellings (A422070J) = existing `building_app`; collinear.
