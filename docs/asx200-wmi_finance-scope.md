@@ -55,6 +55,31 @@ is unchanged. **NO-GO on the 2010+ data we have.**
 
 ---
 
+## allords — long-history equity test (1982+) → still NO-GO, but informative
+
+To test the "asx200 needs crash history" nuance, James supplied `allords_monthly.xlsx`
+(All Ordinaries, monthly EOM, 1982-02..2026-06, 533 obs — the RBA spliced asx200 from
+All Ords pre-2000, so this is the long equity series). Cleaned to `data_raw/allords.csv`.
+
+- **Stationary** (ADF −17.1, KPSS 0.07).
+- **Wald = 3.046** vs asx200's 0.617 — the 1987/GFC history ~5x'd it, confirming the
+  signal lives in crashes — but STILL below every threshold (α.20 = 4.64). Not selected.
+- **Not the GDP vintage.** Re-ran the Wald against the RBA's OWN real-time GDP series
+  (`rba_paper/.../rt_dgdp_qtr.csv`, which differs from ours): allords 3.046 → **2.845**
+  (basically unchanged; still fails). So the real-time-vs-revised GDP hypothesis is
+  REFUTED. The RBA's asx200 ranked 15/30 in their (Wald-sorted) tp_list — comfortably
+  selected — and we cannot reproduce that from any free equity series + GDP we can access.
+  The gap is most likely their exact (withheld) asx200 series + balanced-panel transform.
+- **Force-include test** (`backtest_v2(force_full_selection=)`, bypassing the gate):
+  production-11 vs +allords —
+  full 0.4535→0.4562 (+0.003), postCOVID 0.3422→0.3683 (+0.026), **OOS8 0.2409→0.1820
+  (−0.059)**. So forced in, equities HURT full/postCOVID but HELP the last 8 quarters
+  markedly — a recency-vs-robustness tradeoff the univariate gate can't see. Likely the
+  2022 rate-driven (not GDP-driven) equity selloff poisons 2022-23. Caveat: OOS8 is 8
+  points; the robust windows say worse. Verdict: still don't include, but not noise.
+
+---
+
 ## wmi_finance — SCOPED, NOT BUILT (history blocker + collinearity)
 
 **Source.** The Westpac-MI **Consumer Sentiment bulletin PDF** tabulates all five
@@ -94,3 +119,29 @@ This closes the "what's in the RBA's model that we're missing" thread: of the 7 
 series, the genuinely-absent ones (asx200, house_prices, wmi_finance) are either
 no-better-on-our-data (asx200), unobtainable free (house_prices), or thin+collinear
 (wmi_finance). The 29-series panel stands.
+
+---
+
+## Appendix: v2 vs the RBA final model — full spec comparison
+
+Engine is identical (v2 reuses the RBA `methods/*.R` verbatim; replication validated
+22/22). All differences are config/product choices, not math:
+
+**Identical:** DFM/EM estimation, q=1 dynamic factor, univariate-Wald selection (3 monthly
+lags k=0:2), COVID IIS (2020Q1-2021Q4 @ α=0.01), U-MIDAS (k=3:5, jt-adjusted) and QA
+(k=0:1) nowcast models.
+
+| # | Dimension | RBA | v2 |
+|---|---|---|---|
+| 1 | **Selection α** | 0.10 | **0.05** headline / 0.20 stress (neither is 0.10) |
+| 2 | **Headline nowcast model** | U-MIDAS (k=3:5) primary | QA (flat-weight, k=0:1) headline; U-MIDAS = stress |
+| 3 | GDP target | real-time first-prints (→2022) | reconstructed/revised vintage (→2026) |
+| 4 | Sample window | 1978–2022 | panel 1965–2026; backtest 2012+ |
+| 5 | Transform application | balanced-panel block | per-series on observed span (ragged real-time panel) |
+| 6 | Backtest selection | recursive exercise | full-sample selection fixed (pseudo-real-time); emit re-selects live |
+| 7 | Data curation | uses AiG, rt, licensed series | excludes AiG (dead) + rt (→ real CPI-deflated MHSI); adds empirical CI bands |
+
+**Most consequential: #1 (α=0.05 vs 0.10).** That single parameter is why v2's panel is
+tighter than the RBA's and why several RBA-selected series — and all of Bucket-B's
+near-misses (credit_personal/non_res_ba, Wald ~7) — don't make v2's cut. Everything else
+is identical math, a deliberate precision-vs-robustness call (#2), or a data constraint.
