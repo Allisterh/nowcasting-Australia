@@ -142,6 +142,7 @@ backtest_v2 <- function(panel_rds      = "cache/panel_vintage_latest.rds",
                         dfm_q          = 1L,             # sweep: number of dynamic factors in the MAI
                         qa_lag         = 0L:1L,          # sweep: QA quarterly lag in nowcast_midas
                         lag_fn         = .lag_for_id,    # publication lags; pass .lag_acc for CI calibration
+                        force_full_selection = NULL,     # if set, USE this exact fixed selection (bypass the Wald gate) -- e.g. to force-include a series the gate rejects
                         verbose        = TRUE) {
   model <- match.arg(model)
 
@@ -163,6 +164,10 @@ backtest_v2 <- function(panel_rds      = "cache/panel_vintage_latest.rds",
                             exclude_ids = exclude_ids, sel_alpha = sel_alpha,
                             dfm_q = dfm_q, verbose_dfm = FALSE)
   fixed_selection <- full_sel_res$diagnostics$selected
+  if (!is.null(force_full_selection)) {
+    fixed_selection <- force_full_selection
+    cat(sprintf("[force_full_selection] overriding Wald gate with %d series\n", length(fixed_selection)))
+  }
   cat(sprintf("Fixed selection (%d series): %s\n",
               length(fixed_selection), paste(fixed_selection, collapse = ", ")))
 
