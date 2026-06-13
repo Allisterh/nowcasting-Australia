@@ -140,6 +140,7 @@ backtest_v2 <- function(panel_rds      = "cache/panel_vintage_latest.rds",
                         exclude_ids    = character(0),   # sweep: drop these from the candidate set
                         sel_alpha      = 0.10,           # sweep: targeted-predictor selection threshold
                         dfm_q          = 1L,             # sweep: number of dynamic factors in the MAI
+                        covid_dummies  = TRUE,           # spec lever: COVID dummies in selection (FALSE = drop)
                         qa_lag         = 0L:1L,          # sweep: QA quarterly lag in nowcast_midas
                         lag_fn         = .lag_for_id,    # publication lags; pass .lag_acc for CI calibration
                         force_full_selection = NULL,     # if set, USE this exact fixed selection (bypass the Wald gate) -- e.g. to force-include a series the gate rejects
@@ -162,7 +163,8 @@ backtest_v2 <- function(panel_rds      = "cache/panel_vintage_latest.rds",
   full_sel_res <- build_mai(tfs = tfs_full, panel_info_csv = panel_info_csv,
                             gdp_csv = gdp_csv, out_csv = NULL, out_rds = NULL,
                             exclude_ids = exclude_ids, sel_alpha = sel_alpha,
-                            dfm_q = dfm_q, verbose_dfm = FALSE)
+                            dfm_q = dfm_q, covid_dummies = covid_dummies,
+                            verbose_dfm = FALSE)
   fixed_selection <- full_sel_res$diagnostics$selected
   if (!is.null(force_full_selection)) {
     fixed_selection <- force_full_selection
@@ -226,7 +228,7 @@ backtest_v2 <- function(panel_rds      = "cache/panel_vintage_latest.rds",
                            gdp_csv = gdp_csv, out_csv = NULL, out_rds = NULL,
                            force_selected = sel_t, exclude_ids = exclude_ids,
                            sel_alpha = sel_alpha, dfm_q = dfm_q,
-                           verbose_dfm = FALSE)
+                           covid_dummies = covid_dummies, verbose_dfm = FALSE)
       mai <- mai_res$mai
 
       # 4. nowcast the target quarter as-of this date

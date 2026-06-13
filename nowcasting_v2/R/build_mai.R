@@ -52,6 +52,10 @@ build_mai <- function(tfs           = NULL,
                       force_selected = NULL,    # if non-NULL, skip Wald selection and
                                                 # use these ids (intersected w/ available)
                       dfm_q          = 1L,      # number of dynamic factors (sweep knob; 1 = RBA default)
+                      covid_dummies  = TRUE,    # spec lever: include 2020-21 COVID dummies in the
+                                                # targeted-predictor SELECTION (IIS). FALSE = drop them
+                                                # (deliberate deviation from RBA spec). No effect on the
+                                                # DFM or MIDAS nowcast — selection-only.
                       verbose_dfm    = FALSE) {
 
   if (is.null(tfs)) {
@@ -118,8 +122,9 @@ build_mai <- function(tfs           = NULL,
   nyt <- length(q_label)
   if (nyt != nxt / mt) stop("build_mai(): contract violation nxt != 3*nyt.\n")
 
-  # COVID dummies aligned to q_label
-  Dcov <- .covid_dummies(q_label)
+  # COVID dummies aligned to q_label (spec lever: covid_dummies=FALSE drops them)
+  Dcov <- if (covid_dummies) .covid_dummies(q_label) else
+    matrix(numeric(0), nrow = length(q_label), ncol = 0L)
 
   # ---- (a) Targeted-predictor selection ----
   k1 <- 0L; k2 <- 2L
