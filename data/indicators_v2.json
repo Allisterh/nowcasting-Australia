@@ -200,8 +200,8 @@
           "value": 14737.362
         }
       ],
-      "last_release_date": "2026-05-15",
-      "next_release_estimate": "2026-06-15"
+      "last_release_date": "2026-05-21",
+      "next_release_estimate": "2026-06-25"
     },
     {
       "id": "ft_emp",
@@ -403,8 +403,8 @@
           "value": 10160.868
         }
       ],
-      "last_release_date": "2026-05-15",
-      "next_release_estimate": "2026-06-15"
+      "last_release_date": "2026-05-21",
+      "next_release_estimate": "2026-06-25"
     },
     {
       "id": "pt_emp",
@@ -606,8 +606,8 @@
           "value": 4576.494
         }
       ],
-      "last_release_date": "2026-05-15",
-      "next_release_estimate": "2026-06-15"
+      "last_release_date": "2026-05-21",
+      "next_release_estimate": "2026-06-25"
     },
     {
       "id": "ue",
@@ -809,8 +809,8 @@
           "value": 4.488
         }
       ],
-      "last_release_date": "2026-05-15",
-      "next_release_estimate": "2026-06-15"
+      "last_release_date": "2026-05-21",
+      "next_release_estimate": "2026-06-25"
     },
     {
       "id": "ud",
@@ -1012,8 +1012,8 @@
           "value": 892.265
         }
       ],
-      "last_release_date": "2026-05-15",
-      "next_release_estimate": "2026-06-15"
+      "last_release_date": "2026-05-21",
+      "next_release_estimate": "2026-06-25"
     },
     {
       "id": "hours",
@@ -1215,8 +1215,8 @@
           "value": 2035690.333
         }
       ],
-      "last_release_date": "2026-05-15",
-      "next_release_estimate": "2026-06-15"
+      "last_release_date": "2026-05-21",
+      "next_release_estimate": "2026-06-25"
     },
     {
       "id": "household_spending",
@@ -1419,7 +1419,7 @@
         }
       ],
       "last_release_date": "2026-05-28",
-      "next_release_estimate": "2026-06-28"
+      "next_release_estimate": "2026-06-25"
     },
     {
       "id": "export",
@@ -1622,7 +1622,7 @@
         }
       ],
       "last_release_date": "2026-06-04",
-      "next_release_estimate": "2026-07-05"
+      "next_release_estimate": "2026-07-02"
     },
     {
       "id": "building_app",
@@ -1824,8 +1824,8 @@
           "value": 16710.0
         }
       ],
-      "last_release_date": "2026-06-02",
-      "next_release_estimate": "2026-07-03"
+      "last_release_date": "2026-06-10",
+      "next_release_estimate": "2026-07-01"
     },
     {
       "id": "credit",

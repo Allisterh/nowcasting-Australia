@@ -24,7 +24,22 @@ import json, csv, os, calendar
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 IND = os.path.join(ROOT, "data", "indicators_v2.json")
+V1_IND = os.path.join(ROOT, "data", "indicators.json")
 RAW = os.path.join(ROOT, "nowcasting_v2", "data_raw")
+
+# ABS-sourced v2 indicators -> v1 indicators.json ids. The v1 emit
+# (04_emit_json.R) scrapes each ABS publication's real "Next Release" date every
+# run, so reuse those authoritative dates instead of the fixed-day month-shift
+# below, which drifts off the real ABS schedule (ABS moves dates around public
+# holidays — e.g. the May-2026 Labour Force release is 25 Jun, not the heuristic
+# 15 Jun). v1 runs before this generator in the weekly cron. RBA/survey series
+# have no v1 ABS entry and keep the month-shift heuristic.
+ABS_DATE_MAP = {
+    "emp": "employment", "ft_emp": "employment", "pt_emp": "employment",
+    "ue": "unemp_rate", "ud": "unemp_rate", "hours": "hours_worked",
+    "household_spending": "household_spending",
+    "building_app": "building_approvals", "export": "goods_exp",
+}
 
 
 def ndec(v):
@@ -51,9 +66,24 @@ def read_raw(series_id):
         return [(r["date"][:7], r["value"]) for r in csv.DictReader(f)]
 
 
+def load_v1_abs_dates():
+    """Real ABS release dates scraped by the v1 emit, keyed by v1 indicator id."""
+    if not os.path.exists(V1_IND):
+        print("  WARN: data/indicators.json (v1) not found; ABS dates stay on heuristic")
+        return {}
+    try:
+        v1 = json.load(open(V1_IND))
+        return {i["id"]: i for i in v1["indicators"]}
+    except Exception as e:
+        print(f"  WARN: could not read v1 indicators.json ({e}); ABS dates stay on heuristic")
+        return {}
+
+
 def main():
     doc = json.load(open(IND))
+    v1_dates = load_v1_abs_dates()
     advanced = []
+    abs_synced = []
     for ind in doc["indicators"]:
         sid = ind["id"]
         old = ind["series"]
@@ -75,6 +105,16 @@ def main():
                 if ind.get(k):
                     ind[k] = shift_iso_months(ind[k], adv)
             advanced.append(f"{sid} {old_latest}->{new_latest}")
+        # ABS series: override the month-shift heuristic with v1's scraped,
+        # authoritative ABS release dates (falls back to the heuristic above
+        # when v1 is missing or a field is null).
+        src = ABS_DATE_MAP.get(sid)
+        if src and src in v1_dates:
+            for k in ("last_release_date", "next_release_estimate"):
+                v = v1_dates[src].get(k)
+                if v:
+                    ind[k] = v
+            abs_synced.append(sid)
         ind["series"] = new
 
     json.dump(doc, open(IND, "w"), indent=2)
@@ -83,6 +123,8 @@ def main():
         print("Advanced:", ", ".join(advanced))
     else:
         print("All indicators already current.")
+    if abs_synced:
+        print(f"ABS dates synced from v1 ({len(abs_synced)}):", ", ".join(abs_synced))
 
 
 if __name__ == "__main__":
