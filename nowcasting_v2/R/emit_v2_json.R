@@ -133,33 +133,43 @@ emit_v2_json <- function(repo_root = "..", mondays = NULL) {
          ci_basis = ci$basis, ci_n = ci$n, ci_sd_pp = ci$qoq_sd_pp, ci_bias_pp = ci$qoq_bias_pp)
   }
 
+  # Append-only vintage log. The evolution chart must show what was ACTUALLY
+  # published each Monday, so we NEVER recompute past Mondays — a from-scratch
+  # reconstruction lets data revisions or panel changes silently rewrite history
+  # (the 2026-06-15 non_res_ba leak extended the DFM window to 1965 and moved
+  # every past point). We compute ONLY the latest Monday and upsert it into the
+  # git-tracked log at data/vintages_v2.json; earlier Mondays are read verbatim.
   latest_m <- tail(mondays, 1)
-  vintages <- list(); headline <- NULL; stress <- NULL; data_through <- NA
+  as_of  <- as.Date(latest_m)
+  wide_m <- .truncate_acc(wide_full, as_of)
+  gdp_m  <- .truncate_gdp(gdp_full, as_of, gdp_lag = GDP_LAG)
+  tfs_m  <- transform_panel(wide_m, "seed/panel_info.csv")
+  ids    <- setdiff(names(wide_m), "date")
+  has_any <- rowSums(!is.na(as.matrix(wide_m[, ids]))) > 0
+  dt_m   <- format(max(wide_m$date[has_any]), "%Y-%m")
+  cat(sprintf("[as_of %s] data through %s\n", latest_m, dt_m))
 
-  for (m in mondays) {
-    as_of  <- as.Date(m)
-    wide_m <- .truncate_acc(wide_full, as_of)
-    gdp_m  <- .truncate_gdp(gdp_full, as_of, gdp_lag = GDP_LAG)
-    tfs_m  <- transform_panel(wide_m, "seed/panel_info.csv")
-    ids    <- setdiff(names(wide_m), "date")
-    has_any <- rowSums(!is.na(as.matrix(wide_m[, ids]))) > 0
-    dt_m   <- format(max(wide_m$date[has_any]), "%Y-%m")
-    cat(sprintf("[as_of %s] data through %s\n", m, dt_m))
+  qa       <- mk(tfs_m, gdp_m, "v2_qa_a05", "MAI to QA U-MIDAS (precision)", 0.05, "qa", CI_QA)
+  headline <- qa
+  stress   <- mk(tfs_m, gdp_m, "v2_umidas_a20", "MAI to full U-MIDAS (stress / big-events)", 0.20, "umidas", CI_UMIDAS)
+  data_through <- dt_m
 
-    qa <- mk(tfs_m, gdp_m, "v2_qa_a05", "MAI to QA U-MIDAS (precision)", 0.05, "qa", CI_QA)
-    vintages[[length(vintages) + 1L]] <- list(
-      run_date = m, target_quarter = qa$target_quarter,
-      point = qa$gdp_chain_volume_millions, qoq_growth_pct = qa$qoq_growth_pct,
-      days_until_release = if (is.na(release_date)) NA_integer_ else as.integer(as_of - release_date),
-      ci_68_low = qa$ci_68_low, ci_68_high = qa$ci_68_high,
-      ci_95_low = qa$ci_95_low, ci_95_high = qa$ci_95_high, data_through = dt_m)
+  this_vintage <- list(
+    run_date = latest_m, target_quarter = qa$target_quarter,
+    point = qa$gdp_chain_volume_millions, qoq_growth_pct = qa$qoq_growth_pct,
+    days_until_release = if (is.na(release_date)) NA_integer_ else as.integer(as_of - release_date),
+    ci_68_low = qa$ci_68_low, ci_68_high = qa$ci_68_high,
+    ci_95_low = qa$ci_95_low, ci_95_high = qa$ci_95_high, data_through = dt_m)
 
-    if (identical(m, latest_m)) {
-      headline <- qa
-      stress   <- mk(tfs_m, gdp_m, "v2_umidas_a20", "MAI to full U-MIDAS (stress / big-events)", 0.20, "umidas", CI_UMIDAS)
-      data_through <- dt_m
-    }
-  }
+  vintage_path <- file.path(repo_root, "data", "vintages_v2.json")
+  vlog <- if (file.exists(vintage_path))
+    jsonlite::fromJSON(vintage_path, simplifyVector = FALSE) else list()
+  # upsert by run_date (idempotent same-day re-runs); never touch prior Mondays
+  vlog <- Filter(function(r) !identical(as.character(r$run_date), latest_m), vlog)
+  vlog[[length(vlog) + 1L]] <- this_vintage
+  vlog <- vlog[order(vapply(vlog, function(r) as.character(r$run_date), character(1)))]
+  jsonlite::write_json(vlog, vintage_path, pretty = TRUE, auto_unbox = TRUE, na = "null")
+  vintages <- vlog
 
   v1 <- if (!is.null(jlatest)) list(
     model_name = "v1 (13-series DFM)", target_quarter = jlatest$target_quarter,

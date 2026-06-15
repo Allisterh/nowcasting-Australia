@@ -1,0 +1,38 @@
+[
+  {
+    "run_date": "2026-06-01",
+    "target_quarter": "2026 Q2",
+    "point": 698564,
+    "qoq_growth_pct": 0.38,
+    "days_until_release": -93,
+    "ci_68_low": 694713,
+    "ci_68_high": 699623,
+    "ci_95_low": 692355,
+    "ci_95_high": 701980,
+    "data_through": "2026-05"
+  },
+  {
+    "run_date": "2026-06-08",
+    "target_quarter": "2026 Q2",
+    "point": 699990,
+    "qoq_growth_pct": 0.58,
+    "days_until_release": -86,
+    "ci_68_low": 696138,
+    "ci_68_high": 701049,
+    "ci_95_low": 693781,
+    "ci_95_high": 703406,
+    "data_through": "2026-05"
+  },
+  {
+    "run_date": "2026-06-15",
+    "target_quarter": "2026 Q2",
+    "point": 697476,
+    "qoq_growth_pct": 0.22,
+    "days_until_release": -79,
+    "ci_68_low": 693625,
+    "ci_68_high": 698536,
+    "ci_95_low": 691268,
+    "ci_95_high": 700893,
+    "data_through": "2026-06"
+  }
+]
