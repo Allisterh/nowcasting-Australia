@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-06-15T02:00:00Z",
+  "generated_at": "2026-06-22T02:00:00Z",
   "schema": "v2-staged-2",
-  "as_of": "2026-06-15",
+  "as_of": "2026-06-22",
   "target_quarter": "2026 Q2",
   "data_through": "2026-06",
   "prev_level": {
@@ -81,14 +81,26 @@
       "ci_95_low": 691268,
       "ci_95_high": 700893,
       "data_through": "2026-06"
+    },
+    {
+      "run_date": "2026-06-22",
+      "target_quarter": "2026 Q2",
+      "point": 697476,
+      "qoq_growth_pct": 0.22,
+      "days_until_release": -72,
+      "ci_68_low": 693625,
+      "ci_68_high": 698536,
+      "ci_95_low": 691268,
+      "ci_95_high": 700893,
+      "data_through": "2026-06"
     }
   ],
   "v1_comparison": {
     "model_name": "v1 (13-series DFM)",
     "target_quarter": "2026 Q2",
-    "qoq_growth_pct": 0.61,
-    "yoy_growth_pct": 2.16,
-    "gdp_chain_volume_millions": 700222,
+    "qoq_growth_pct": 0.73,
+    "yoy_growth_pct": 2.28,
+    "gdp_chain_volume_millions": 701031,
     "source": "data/latest.json"
   },
   "note": "STAGED v2 emit (parallel to live latest.json). Monday cadence; headline = latest Monday. Pending James approval."

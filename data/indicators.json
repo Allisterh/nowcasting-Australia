@@ -7045,9 +7045,13 @@
         {
           "date": "2026-04",
           "value": -20
+        },
+        {
+          "date": "2026-05",
+          "value": -17
         }
       ],
-      "last_release_date": "2026-05-05",
+      "last_release_date": "2026-06-05",
       "next_release_estimate": "2026-07-05"
     },
     {
