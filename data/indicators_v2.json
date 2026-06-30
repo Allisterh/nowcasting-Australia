@@ -2052,11 +2052,15 @@
         },
         {
           "date": "2026-04",
-          "value": 4248.4
+          "value": 4225.4
+        },
+        {
+          "date": "2026-05",
+          "value": 4254.0
         }
       ],
-      "last_release_date": "2026-05-30",
-      "next_release_estimate": "2026-06-30"
+      "last_release_date": "2026-06-30",
+      "next_release_estimate": "2026-07-30"
     },
     {
       "id": "credit_housing",
@@ -2195,7 +2199,7 @@
         },
         {
           "date": "2025-01",
-          "value": 2381.9
+          "value": 2381.8
         },
         {
           "date": "2025-02",
@@ -2211,11 +2215,11 @@
         },
         {
           "date": "2025-05",
-          "value": 2426.2
+          "value": 2426.1
         },
         {
           "date": "2025-06",
-          "value": 2441.0
+          "value": 2440.9
         },
         {
           "date": "2025-07",
@@ -2255,11 +2259,15 @@
         },
         {
           "date": "2026-04",
-          "value": 2610.6
+          "value": 2588.9
+        },
+        {
+          "date": "2026-05",
+          "value": 2604.2
         }
       ],
-      "last_release_date": "2026-05-30",
-      "next_release_estimate": "2026-06-30"
+      "last_release_date": "2026-06-30",
+      "next_release_estimate": "2026-07-30"
     },
     {
       "id": "credit_business",
@@ -2394,7 +2402,7 @@
         },
         {
           "date": "2024-12",
-          "value": 1305.4
+          "value": 1305.5
         },
         {
           "date": "2025-01",
@@ -2414,11 +2422,11 @@
         },
         {
           "date": "2025-05",
-          "value": 1350.3
+          "value": 1350.4
         },
         {
           "date": "2025-06",
-          "value": 1359.9
+          "value": 1360.0
         },
         {
           "date": "2025-07",
@@ -2442,7 +2450,7 @@
         },
         {
           "date": "2025-12",
-          "value": 1433.4
+          "value": 1433.5
         },
         {
           "date": "2026-01",
@@ -2459,10 +2467,14 @@
         {
           "date": "2026-04",
           "value": 1474.1
+        },
+        {
+          "date": "2026-05",
+          "value": 1487.4
         }
       ],
-      "last_release_date": "2026-05-30",
-      "next_release_estimate": "2026-06-30"
+      "last_release_date": "2026-06-30",
+      "next_release_estimate": "2026-07-30"
     },
     {
       "id": "fcmygbag3",
