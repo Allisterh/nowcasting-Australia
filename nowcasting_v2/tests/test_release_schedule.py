@@ -37,9 +37,27 @@ last, nxt = sched["wmi_sent"](2026, 7, TODAY)
 check("Westpac Jul -> last_release", last, datetime.date(2026, 7, 14))
 check("Westpac Jul -> next_release", nxt, datetime.date(2026, 8, 11))
 
-# ANZ-Indeed Job Ads: ~1st Tuesday of the following month.
-last, nxt = sched["anz_ads"](2026, 6, TODAY)
-check("ANZ Job Ads Jun -> last_release", last, datetime.date(2026, 7, 7))
+# ANZ-Indeed Job Ads: full published schedule (1st Monday of the following month,
+# holiday-adjusted; December -> 2nd Monday of January). Validated against ANZ's own
+# release-dates table for the 2026 cycle.
+ANZ_JOBADS_TABLE = {
+    (2025, 12): datetime.date(2026, 1, 12),   # 2nd Monday of Jan (holiday season)
+    (2026, 1):  datetime.date(2026, 2, 2),
+    (2026, 2):  datetime.date(2026, 3, 2),
+    (2026, 3):  datetime.date(2026, 4, 7),     # Easter Monday bump
+    (2026, 4):  datetime.date(2026, 5, 4),
+    (2026, 5):  datetime.date(2026, 6, 1),
+    (2026, 6):  datetime.date(2026, 7, 6),
+    (2026, 7):  datetime.date(2026, 8, 4),     # NSW Bank Holiday bump
+    (2026, 8):  datetime.date(2026, 9, 7),
+    (2026, 9):  datetime.date(2026, 10, 6),    # NSW Labour Day bump
+    (2026, 10): datetime.date(2026, 11, 2),
+    (2026, 11): datetime.date(2026, 12, 7),
+}
+for (yy, mm), want in ANZ_JOBADS_TABLE.items():
+    check(f"ANZ Job Ads {yy}-{mm:02d} release", gen._anz_jobads_release(yy, mm), want)
+# next_release for June data should be the July-data release (4 Aug).
+_, nxt = sched["anz_ads"](2026, 6, TODAY)
 check("ANZ Job Ads Jun -> next_release", nxt, datetime.date(2026, 8, 4))
 
 # ANZ-Roy Morgan Consumer Confidence: WEEKLY (every Tuesday). Stored monthly, but

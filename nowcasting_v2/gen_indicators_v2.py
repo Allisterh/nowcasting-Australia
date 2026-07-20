@@ -87,6 +87,45 @@ def _weekly_tuesday(y, m, today):
     return last, nxt
 
 
+MON = 0
+
+
+def _easter_monday(year):
+    """Easter Monday (Anonymous Gregorian computus). Easter 2026 = 5 Apr -> Mon 6 Apr."""
+    a, b, c = year % 19, year // 100, year % 100
+    d, e = b // 4, b % 4
+    f = (b + 8) // 25
+    g = (b - f + 1) // 3
+    h = (19 * a + b - d - g + 15) % 30
+    i, k = c // 4, c % 4
+    l = (32 + 2 * e + 2 * i - h - k) % 7
+    n = (a + 11 * h + 22 * l) // 451
+    month = (h + l - 7 * n + 114) // 31
+    day = (h + l - 7 * n + 114) % 31 + 1
+    return datetime.date(year, month, day) + datetime.timedelta(days=1)
+
+
+def _anz_jobads_release(y, m):
+    """ANZ-Indeed Job Ads release date for data month (y, m). Published the 1st Monday
+    of the following month, bumped to Tuesday when that Monday is a public holiday
+    (NSW Bank Holiday = 1st Mon Aug, NSW Labour Day = 1st Mon Oct, or Easter Monday).
+    December data is released the 2nd Monday of January (holiday season)."""
+    ry, rm = _add_months(y, m, 1)
+    if m == 12:
+        return _nth_weekday(ry, rm, MON, 2)
+    d = _nth_weekday(ry, rm, MON, 1)   # 1st Monday of the release month
+    # rm 8 -> NSW Bank Holiday, rm 10 -> NSW Labour Day (both always the 1st Monday).
+    if rm in (8, 10) or d == _easter_monday(ry):
+        d += datetime.timedelta(days=1)
+    return d
+
+
+def _anz_jobads(y, m, today):
+    last = min(_anz_jobads_release(y, m), today)
+    ny, nm = _add_months(y, m, 1)
+    return last, _anz_jobads_release(ny, nm)
+
+
 # id -> schedule function(data_year, data_month, today) -> (last_release, next_release)
 SURVEY_SCHEDULE = {
     # NAB Monthly Business Survey: 2nd Tuesday of the month AFTER the reference month.
@@ -94,7 +133,7 @@ SURVEY_SCHEDULE = {
         "nab_conf", "nab_cond", "nab_trade", "nab_profit",
         "nab_emp", "nab_forward", "nab_stocks", "nab_cu")},
     "wmi_sent": _monthly_tuesday(0, 2),   # Westpac-MI: 2nd Tuesday of the same month.
-    "anz_ads":  _monthly_tuesday(1, 1),   # ANZ-Indeed Job Ads: ~1st Tuesday of the following month.
+    "anz_ads":  _anz_jobads,              # ANZ-Indeed Job Ads: 1st Monday of the following month (holiday-adjusted).
     "anz_sent": _weekly_tuesday,          # ANZ-Roy Morgan Consumer Confidence: weekly (every Tuesday).
 }
 
