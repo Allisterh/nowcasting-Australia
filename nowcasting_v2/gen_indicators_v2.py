@@ -17,10 +17,11 @@ Design:
     same start month (preserves the curated chart window) and matching the
     existing value precision. data_raw is the source of truth, so revisions to
     historical months flow through too.
-  * Advances last_release_date / next_release_estimate by however many months the
-    data extended (preserves each source's day-of-month release pattern).
+  * Sets last_release_date / next_release_estimate from each source's real release
+    cadence: ABS series reuse v1's scraped dates; survey series (NAB/ANZ/Westpac)
+    use SURVEY_SCHEDULE (computed release dates); other series keep the month-shift.
 """
-import json, csv, os, calendar
+import json, csv, os, calendar, datetime
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 IND = os.path.join(ROOT, "data", "indicators_v2.json")
@@ -39,6 +40,62 @@ ABS_DATE_MAP = {
     "ue": "unemp_rate", "ud": "unemp_rate", "hours": "hours_worked",
     "household_spending": "household_spending",
     "building_app": "building_approvals", "export": "goods_exp",
+}
+
+# Survey series (NAB / ANZ / Westpac) have no v1 ABS entry, so the old code left
+# them on the drifting month-shift heuristic — which produced dates that were wrong
+# (NAB's real release is the 2nd Tuesday, not a fixed day) and, for the weekly
+# ANZ-Roy Morgan series, dates in the FUTURE. Instead, compute each survey's real
+# release date from its published cadence. TUE = Tuesday (Mon=0 .. Sun=6).
+TUE = 1
+
+
+def _nth_weekday(year, month, weekday, n):
+    """Date of the n-th `weekday` of year-month (n starts at 1)."""
+    first = datetime.date(year, month, 1)
+    offset = (weekday - first.weekday()) % 7
+    return first + datetime.timedelta(days=offset + 7 * (n - 1))
+
+
+def _add_months(year, month, k):
+    idx = year * 12 + (month - 1) + k
+    return idx // 12, idx % 12 + 1
+
+
+def _monthly_tuesday(offset_months, nth):
+    """Schedule for a MONTHLY survey released on the nth Tuesday of
+    (data month + offset_months). Returns (last_release, next_release), where next
+    is the same rule applied to the following data month. last is clamped to <= today
+    so a point that lands before its modelled release date never shows a future date.
+    """
+    def f(y, m, today):
+        ry, rm = _add_months(y, m, offset_months)
+        last = min(_nth_weekday(ry, rm, TUE, nth), today)
+        ny, nm = _add_months(y, m, 1)
+        nry, nrm = _add_months(ny, nm, offset_months)
+        nxt = _nth_weekday(nry, nrm, TUE, nth)
+        return last, nxt
+    return f
+
+
+def _weekly_tuesday(y, m, today):
+    """Schedule for a WEEKLY survey (ANZ-Roy Morgan, published every Tuesday). The
+    stored series is monthly, but it is refreshed weekly, so "last updated" is the
+    most recent Tuesday on/before today and "next" is the following Tuesday."""
+    last = today - datetime.timedelta(days=(today.weekday() - TUE) % 7)
+    nxt = today + datetime.timedelta(days=((TUE - today.weekday()) % 7) or 7)
+    return last, nxt
+
+
+# id -> schedule function(data_year, data_month, today) -> (last_release, next_release)
+SURVEY_SCHEDULE = {
+    # NAB Monthly Business Survey: 2nd Tuesday of the month AFTER the reference month.
+    **{sid: _monthly_tuesday(1, 2) for sid in (
+        "nab_conf", "nab_cond", "nab_trade", "nab_profit",
+        "nab_emp", "nab_forward", "nab_stocks", "nab_cu")},
+    "wmi_sent": _monthly_tuesday(0, 2),   # Westpac-MI: 2nd Tuesday of the same month.
+    "anz_ads":  _monthly_tuesday(1, 1),   # ANZ-Indeed Job Ads: ~1st Tuesday of the following month.
+    "anz_sent": _weekly_tuesday,          # ANZ-Roy Morgan Consumer Confidence: weekly (every Tuesday).
 }
 
 
@@ -82,6 +139,7 @@ def load_v1_abs_dates():
 def main():
     doc = json.load(open(IND))
     v1_dates = load_v1_abs_dates()
+    today = datetime.date.today()
     advanced = []
     abs_synced = []
     for ind in doc["indicators"]:
@@ -100,21 +158,31 @@ def main():
             continue
         new_latest = new[-1]["date"]
         adv = month_idx(new_latest) - month_idx(old_latest)
-        if adv > 0:
-            for k in ("last_release_date", "next_release_estimate"):
-                if ind.get(k):
-                    ind[k] = shift_iso_months(ind[k], adv)
-            advanced.append(f"{sid} {old_latest}->{new_latest}")
-        # ABS series: override the month-shift heuristic with v1's scraped,
-        # authoritative ABS release dates (falls back to the heuristic above
-        # when v1 is missing or a field is null).
-        src = ABS_DATE_MAP.get(sid)
-        if src and src in v1_dates:
-            for k in ("last_release_date", "next_release_estimate"):
-                v = v1_dates[src].get(k)
-                if v:
-                    ind[k] = v
-            abs_synced.append(sid)
+        if sid in SURVEY_SCHEDULE:
+            # Survey series: compute the real release date from each survey's
+            # published cadence, replacing the drifting month-shift heuristic.
+            sy, sm = int(new_latest[:4]), int(new_latest[5:7])
+            last_d, next_d = SURVEY_SCHEDULE[sid](sy, sm, today)
+            ind["last_release_date"] = last_d.isoformat()
+            ind["next_release_estimate"] = next_d.isoformat()
+            if adv > 0:
+                advanced.append(f"{sid} {old_latest}->{new_latest}")
+        else:
+            if adv > 0:
+                for k in ("last_release_date", "next_release_estimate"):
+                    if ind.get(k):
+                        ind[k] = shift_iso_months(ind[k], adv)
+                advanced.append(f"{sid} {old_latest}->{new_latest}")
+            # ABS series: override the month-shift heuristic with v1's scraped,
+            # authoritative ABS release dates (falls back to the heuristic above
+            # when v1 is missing or a field is null).
+            src = ABS_DATE_MAP.get(sid)
+            if src and src in v1_dates:
+                for k in ("last_release_date", "next_release_estimate"):
+                    v = v1_dates[src].get(k)
+                    if v:
+                        ind[k] = v
+                abs_synced.append(sid)
         ind["series"] = new
 
     json.dump(doc, open(IND, "w"), indent=2)

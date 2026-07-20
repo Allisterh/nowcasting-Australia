@@ -4376,8 +4376,8 @@
           "value": -5.0
         }
       ],
-      "last_release_date": "2026-07-10",
-      "next_release_estimate": "2026-08-10"
+      "last_release_date": "2026-07-14",
+      "next_release_estimate": "2026-08-11"
     },
     {
       "id": "nab_cond",
@@ -4587,8 +4587,8 @@
           "value": 3.0
         }
       ],
-      "last_release_date": "2026-07-10",
-      "next_release_estimate": "2026-08-10"
+      "last_release_date": "2026-07-14",
+      "next_release_estimate": "2026-08-11"
     },
     {
       "id": "nab_trade",
@@ -4762,8 +4762,8 @@
           "value": 7.0
         }
       ],
-      "last_release_date": "2026-07-10",
-      "next_release_estimate": "2026-08-10"
+      "last_release_date": "2026-07-14",
+      "next_release_estimate": "2026-08-11"
     },
     {
       "id": "nab_profit",
@@ -4937,8 +4937,8 @@
           "value": 0.0
         }
       ],
-      "last_release_date": "2026-07-10",
-      "next_release_estimate": "2026-08-10"
+      "last_release_date": "2026-07-14",
+      "next_release_estimate": "2026-08-11"
     },
     {
       "id": "nab_emp",
@@ -5112,8 +5112,8 @@
           "value": 1.0
         }
       ],
-      "last_release_date": "2026-07-10",
-      "next_release_estimate": "2026-08-10"
+      "last_release_date": "2026-07-14",
+      "next_release_estimate": "2026-08-11"
     },
     {
       "id": "nab_forward",
@@ -5287,8 +5287,8 @@
           "value": 0.0
         }
       ],
-      "last_release_date": "2026-07-10",
-      "next_release_estimate": "2026-08-10"
+      "last_release_date": "2026-07-14",
+      "next_release_estimate": "2026-08-11"
     },
     {
       "id": "nab_stocks",
@@ -5446,8 +5446,8 @@
           "value": 3.0
         }
       ],
-      "last_release_date": "2026-06-10",
-      "next_release_estimate": "2026-07-10"
+      "last_release_date": "2026-06-09",
+      "next_release_estimate": "2026-07-14"
     },
     {
       "id": "nab_cu",
@@ -5617,8 +5617,8 @@
           "value": 82.0
         }
       ],
-      "last_release_date": "2026-07-10",
-      "next_release_estimate": "2026-08-10"
+      "last_release_date": "2026-07-14",
+      "next_release_estimate": "2026-08-11"
     },
     {
       "id": "anz_ads",
@@ -5832,8 +5832,8 @@
           "value": 115.8
         }
       ],
-      "last_release_date": "2026-07-10",
-      "next_release_estimate": "2026-08-10"
+      "last_release_date": "2026-07-07",
+      "next_release_estimate": "2026-08-04"
     },
     {
       "id": "anz_sent",
@@ -6047,8 +6047,8 @@
           "value": 75.0
         }
       ],
-      "last_release_date": "2026-08-10",
-      "next_release_estimate": "2026-09-10"
+      "last_release_date": "2026-07-14",
+      "next_release_estimate": "2026-07-21"
     },
     {
       "id": "wmi_sent",
@@ -6258,8 +6258,8 @@
           "value": 83.9
         }
       ],
-      "last_release_date": "2026-07-16",
-      "next_release_estimate": "2026-08-15"
+      "last_release_date": "2026-07-14",
+      "next_release_estimate": "2026-08-11"
     }
   ]
 }
