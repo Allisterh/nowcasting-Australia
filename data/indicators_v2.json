@@ -4370,10 +4370,14 @@
         {
           "date": "2026-05",
           "value": -14.0
+        },
+        {
+          "date": "2026-06",
+          "value": -5.0
         }
       ],
-      "last_release_date": "2026-06-10",
-      "next_release_estimate": "2026-07-10"
+      "last_release_date": "2026-07-10",
+      "next_release_estimate": "2026-08-10"
     },
     {
       "id": "nab_cond",
@@ -4577,10 +4581,14 @@
         {
           "date": "2026-05",
           "value": 3.0
+        },
+        {
+          "date": "2026-06",
+          "value": 3.0
         }
       ],
-      "last_release_date": "2026-06-10",
-      "next_release_estimate": "2026-07-10"
+      "last_release_date": "2026-07-10",
+      "next_release_estimate": "2026-08-10"
     },
     {
       "id": "nab_trade",
@@ -4748,10 +4756,14 @@
         {
           "date": "2026-05",
           "value": 8.0
+        },
+        {
+          "date": "2026-06",
+          "value": 7.0
         }
       ],
-      "last_release_date": "2026-06-10",
-      "next_release_estimate": "2026-07-10"
+      "last_release_date": "2026-07-10",
+      "next_release_estimate": "2026-08-10"
     },
     {
       "id": "nab_profit",
@@ -4919,10 +4931,14 @@
         {
           "date": "2026-05",
           "value": -1.0
+        },
+        {
+          "date": "2026-06",
+          "value": 0.0
         }
       ],
-      "last_release_date": "2026-06-10",
-      "next_release_estimate": "2026-07-10"
+      "last_release_date": "2026-07-10",
+      "next_release_estimate": "2026-08-10"
     },
     {
       "id": "nab_emp",
@@ -5090,10 +5106,14 @@
         {
           "date": "2026-05",
           "value": 2.0
+        },
+        {
+          "date": "2026-06",
+          "value": 1.0
         }
       ],
-      "last_release_date": "2026-06-10",
-      "next_release_estimate": "2026-07-10"
+      "last_release_date": "2026-07-10",
+      "next_release_estimate": "2026-08-10"
     },
     {
       "id": "nab_forward",
@@ -5261,10 +5281,14 @@
         {
           "date": "2026-05",
           "value": 0.0
+        },
+        {
+          "date": "2026-06",
+          "value": 0.0
         }
       ],
-      "last_release_date": "2026-06-10",
-      "next_release_estimate": "2026-07-10"
+      "last_release_date": "2026-07-10",
+      "next_release_estimate": "2026-08-10"
     },
     {
       "id": "nab_stocks",
@@ -5587,10 +5611,14 @@
         {
           "date": "2026-05",
           "value": 81.9
+        },
+        {
+          "date": "2026-06",
+          "value": 82.0
         }
       ],
-      "last_release_date": "2026-06-10",
-      "next_release_estimate": "2026-07-10"
+      "last_release_date": "2026-07-10",
+      "next_release_estimate": "2026-08-10"
     },
     {
       "id": "anz_ads",
@@ -5798,10 +5826,14 @@
         {
           "date": "2026-05",
           "value": 116.0
+        },
+        {
+          "date": "2026-06",
+          "value": 115.8
         }
       ],
-      "last_release_date": "2026-06-10",
-      "next_release_estimate": "2026-07-10"
+      "last_release_date": "2026-07-10",
+      "next_release_estimate": "2026-08-10"
     },
     {
       "id": "anz_sent",
@@ -6009,10 +6041,14 @@
         {
           "date": "2026-06",
           "value": 70.8
+        },
+        {
+          "date": "2026-07",
+          "value": 75.0
         }
       ],
-      "last_release_date": "2026-07-10",
-      "next_release_estimate": "2026-08-10"
+      "last_release_date": "2026-08-10",
+      "next_release_estimate": "2026-09-10"
     },
     {
       "id": "wmi_sent",
@@ -6216,10 +6252,14 @@
         {
           "date": "2026-06",
           "value": 80.6
+        },
+        {
+          "date": "2026-07",
+          "value": 83.9
         }
       ],
-      "last_release_date": "2026-06-16",
-      "next_release_estimate": "2026-07-15"
+      "last_release_date": "2026-07-16",
+      "next_release_estimate": "2026-08-15"
     }
   ]
 }
