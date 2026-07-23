@@ -473,7 +473,7 @@ emit_json <- function(target_dir, nowcast, master, vintage_info) {
     release_dates  <- compute_release_dates(json_id, last_ref_month, abs_calendar)
 
     upd <- updated_series[[json_id]]
-    list(
+    entry <- list(
       id                    = json_id,
       name                  = meta$name,
       group                 = group,
@@ -482,10 +482,15 @@ emit_json <- function(target_dir, nowcast, master, vintage_info) {
       series                = series_df,
       last_release_date     = release_dates$last,
       next_release_estimate = release_dates$next_,
-      updated_this_run      = !is.null(upd),
-      prev_period           = if (!is.null(upd)) upd$prev_period else NULL,
-      latest_period         = if (!is.null(upd)) upd$latest_period else NULL
+      updated_this_run      = !is.null(upd)
     )
+    # Only present when flagged — a named NULL would serialise as {} in jsonlite,
+    # violating the frontend's `prev_period?: string` contract.
+    if (!is.null(upd)) {
+      entry$prev_period   <- upd$prev_period
+      entry$latest_period <- upd$latest_period
+    }
+    entry
   })
   write(
     toJSON(list(indicators = indicators_list), auto_unbox = TRUE, pretty = TRUE, na = "null"),

@@ -1,9 +1,20 @@
 # Data-visibility feature — handoff notes
 
 **Branch:** `claude/nowcast-model-data-visibility-ienvde`
-**Status:** implemented + committed; the R half is **unrun** (the remote env had no R).
-**What to do here (CLI):** verify the v1 R emit locally, then decide whether to
-make the highlight go live now or let the Monday cron do it. Steps below.
+**Status:** DONE — verified end-to-end locally (CLI, 23 Jul 2026) and merged.
+
+Local verification results (23 Jul):
+- Full v1 pipeline ran clean; `data_updates` flagged exactly the 4 labour series
+  that advanced May→Jun (Jun LFS, released 23 Jul), delta −0.01pp (0.66→0.65).
+- Fixed one real bug found in the process: unflagged indicators emitted
+  `"prev_period": {}` (jsonlite serialises a named `NULL` as `{}`), violating the
+  frontend's `prev_period?: string` contract. Fields are now omitted entirely
+  when a series didn't advance; `test_emit_json.R` asserts this.
+- `test_emit_json.R` passes (fixtures regenerable from any run live in the
+  gitignored `pipeline/tests/fixtures/`); Python suites + vitest + build green.
+- Go-live: waited for the Monday cron — pushing mid-week couldn't light the main
+  page anyway ("/" reads `indicators_v2.json`, and `data_raw/` only refreshes with
+  the Sunday cloud routine, so a local v2 regen finds zero advances).
 
 ---
 

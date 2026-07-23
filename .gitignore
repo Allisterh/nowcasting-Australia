@@ -58,3 +58,5 @@ __pycache__/
 /pipeline/experimental/
 # scratch render from the NAB parser
 /nowcasting_v2/nab_t1.png
+# local RDS snapshots for pipeline/tests/test_emit_json.R (regenerable from a run)
+/pipeline/tests/fixtures/

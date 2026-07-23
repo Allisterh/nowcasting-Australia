@@ -111,6 +111,10 @@ stopifnot(is.list(latest_j$data_updates$series))
 stopifnot(length(latest_j$data_updates$series) == 0)
 stopifnot(all(sapply(ind_j$indicators, function(x) is.logical(x$updated_this_run))))
 stopifnot(all(sapply(ind_j$indicators, function(x) isFALSE(x$updated_this_run))))
+# Unflagged indicators must OMIT prev/latest_period entirely (a named NULL would
+# serialise as {} and violate the frontend's `prev_period?: string` contract).
+stopifnot(all(sapply(ind_j$indicators, function(x) is.null(x$prev_period))))
+stopifnot(all(sapply(ind_j$indicators, function(x) is.null(x$latest_period))))
 cat("✓ data_updates audit trail present; no advances on empty baseline\n")
 
 cat("\n✅ emit_json smoke test PASSED\n")
