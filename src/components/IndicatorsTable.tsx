@@ -1,7 +1,7 @@
 "use client";
 
 import type { Indicator } from "@/lib/types";
-import { formatDayMonth, formatRawChange } from "@/lib/format";
+import { formatDayMonth, formatMonth, formatRawChange } from "@/lib/format";
 
 interface Props {
   indicators: Indicator[];
@@ -101,7 +101,23 @@ export default function IndicatorsTable({ indicators, selectedId, onSelect }: Pr
                     : `${pct > 0 ? "+" : pct < 0 ? "−" : ""}${Math.abs(pct).toFixed(2)}%`}
                 </td>
                 <td className="py-2 pr-3">
-                  {ind.last_release_date ? formatDayMonth(ind.last_release_date) : "—"}
+                  {ind.updated_this_run ? (
+                    <span
+                      className="inline-flex items-center gap-1 text-teal"
+                      title={
+                        ind.prev_period && ind.latest_period
+                          ? `New this week: ${formatMonth(ind.prev_period)} → ${formatMonth(ind.latest_period)}`
+                          : "New this week"
+                      }
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-teal" aria-hidden />
+                      {ind.last_release_date ? formatDayMonth(ind.last_release_date) : "New"}
+                    </span>
+                  ) : ind.last_release_date ? (
+                    formatDayMonth(ind.last_release_date)
+                  ) : (
+                    "—"
+                  )}
                 </td>
                 <td className="py-2 pr-3">
                   {ind.next_release_estimate ? formatDayMonth(ind.next_release_estimate) : "—"}

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { IndicatorData, Indicator, IndicatorGroup } from "@/lib/types";
+import { formatMonth } from "@/lib/format";
 import IndicatorSparkline, { type SparklineMode } from "./IndicatorSparkline";
 import IndicatorDetailCard from "./IndicatorDetailCard";
 import IndicatorsTable from "./IndicatorsTable";
@@ -43,11 +44,21 @@ export default function IndicatorGrid({ indicators }: Props) {
     items: indicators.indicators.filter((i) => i.group === group),
   })).filter((g) => g.items.length > 0);
 
+  const anyUpdated = indicators.indicators.some((i) => i.updated_this_run);
+
   return (
     <section className="mb-10">
-      <p className="font-headline text-3xl text-black mb-2">
-        Indicators
-      </p>
+      <div className="flex items-baseline justify-between gap-3 mb-2">
+        <p className="font-headline text-3xl text-black">
+          Indicators
+        </p>
+        {anyUpdated && (
+          <span className="flex items-center gap-1.5 text-[10px] text-label">
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-teal" aria-hidden />
+            updated this week
+          </span>
+        )}
+      </div>
       {byGroup.map((g) => (
         <div key={g.group} className="mb-4">
           <p className="text-xs text-label mb-2 border-b border-border pb-1">{g.group}</p>
@@ -56,11 +67,22 @@ export default function IndicatorGrid({ indicators }: Props) {
               <button
                 key={ind.id}
                 onClick={() => setSelected(ind)}
-                className={`text-left border p-2 hover:border-border-heavy ${
+                className={`relative text-left border p-2 hover:border-border-heavy ${
                   selected?.id === ind.id ? "border-border-heavy bg-panel" : "border-border"
                 }`}
               >
-                <p className="text-xs text-border-heavy">{ind.name}</p>
+                {ind.updated_this_run && (
+                  <span
+                    className="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-teal"
+                    title={
+                      ind.prev_period && ind.latest_period
+                        ? `Updated this week: ${formatMonth(ind.prev_period)} → ${formatMonth(ind.latest_period)}`
+                        : "Updated this week"
+                    }
+                    aria-label="Updated this week"
+                  />
+                )}
+                <p className="text-xs text-border-heavy pr-3">{ind.name}</p>
                 <p className="text-[10px] text-label-light mb-1">{ind.unit}</p>
                 <IndicatorSparkline
                   series={ind.series}

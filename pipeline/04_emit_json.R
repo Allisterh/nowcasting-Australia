@@ -305,6 +305,62 @@ emit_json <- function(target_dir, nowcast, master, vintage_info) {
   b68 <- ci_level_band(qoq_growth_pct, prev_level_now, ci$qoq_bias_pp, ci$qoq_sd_pp, ci$z_68)
   b95 <- ci_level_band(qoq_growth_pct, prev_level_now, ci$qoq_bias_pp, ci$qoq_sd_pp, ci$z_95)
 
+  # --- Data-update audit trail ------------------------------------------------
+  # Which indicators fed THIS run (gained a newer reference month than they
+  # carried in the previously-committed JSON) and how far the nowcast moved. This
+  # is deliberately cache-independent: the per-vintage RDS snapshots are gitignored
+  # and absent on a fresh CI checkout, so the committed indicators.json/latest.json
+  # are the only reliable "last run" baseline. Powers the site's "updated this
+  # week" highlight and a durable data_updates record on latest.json.
+  prev_ind_path <- file.path(target_dir, "indicators.json")
+  prev_ind_dates <- list()
+  if (file.exists(prev_ind_path)) {
+    prev_ind <- tryCatch(jsonlite::fromJSON(prev_ind_path, simplifyVector = FALSE),
+                         error = function(e) NULL)
+    if (!is.null(prev_ind$indicators)) {
+      for (it in prev_ind$indicators) {
+        s <- it$series
+        if (length(s) > 0) prev_ind_dates[[it$id]] <- s[[length(s)]]$date
+      }
+    }
+  }
+
+  # Latest reference month per indicator from the fresh master data.
+  updated_series <- list()
+  for (r_id in names(INDICATOR_ID_MAP)) {
+    json_id <- unname(INDICATOR_ID_MAP[[r_id]])
+    d <- master$long |>
+      filter(indicator_id == r_id, !is.na(value)) |>
+      arrange(date) |>
+      tail(1)
+    if (nrow(d) == 0) next
+    curr_d <- format(d$date, "%Y-%m")
+    prev_d <- prev_ind_dates[[json_id]]
+    if (!is.null(prev_d) && !is.null(curr_d) && curr_d > prev_d) {
+      updated_series[[json_id]] <- list(
+        id = json_id, name = INDICATOR_META[[json_id]]$name,
+        prev_period = prev_d, latest_period = curr_d
+      )
+    }
+  }
+
+  # Nowcast move vs the previous run — only meaningful for the same target quarter.
+  prev_latest_path <- file.path(target_dir, "latest.json")
+  nowcast_delta_pp <- NA_real_
+  if (file.exists(prev_latest_path)) {
+    pl <- tryCatch(jsonlite::fromJSON(prev_latest_path), error = function(e) NULL)
+    if (!is.null(pl$nowcast$qoq_growth_pct) &&
+        identical(pl$target_quarter, target_quarter)) {
+      nowcast_delta_pp <- round(qoq_growth_pct - as.numeric(pl$nowcast$qoq_growth_pct), 2)
+    }
+  }
+
+  data_updates <- list(
+    run_date         = format(Sys.Date(), "%Y-%m-%d"),
+    nowcast_delta_pp = nowcast_delta_pp,
+    series           = unname(updated_series)
+  )
+
   # --- 1. latest.json ---
   latest_obj <- list(
     generated_at          = format(Sys.time(), "%Y-%m-%dT%H:%M:%SZ", tz = "UTC"),
@@ -325,7 +381,8 @@ emit_json <- function(target_dir, nowcast, master, vintage_info) {
       gdp_chain_volume_millions = latest_actual_value,
       qoq_growth_pct            = round(latest_actual_qoq, 2),
       released_days_before_next = released_days_before_next
-    )
+    ),
+    data_updates = data_updates
   )
   write(
     toJSON(latest_obj, auto_unbox = TRUE, pretty = TRUE, digits = NA, na = "null"),
@@ -415,6 +472,7 @@ emit_json <- function(target_dir, nowcast, master, vintage_info) {
     last_ref_month <- if (nrow(series_df) > 0) tail(series_df$date, 1) else NA_character_
     release_dates  <- compute_release_dates(json_id, last_ref_month, abs_calendar)
 
+    upd <- updated_series[[json_id]]
     list(
       id                    = json_id,
       name                  = meta$name,
@@ -423,7 +481,10 @@ emit_json <- function(target_dir, nowcast, master, vintage_info) {
       source                = meta$source,
       series                = series_df,
       last_release_date     = release_dates$last,
-      next_release_estimate = release_dates$next_
+      next_release_estimate = release_dates$next_,
+      updated_this_run      = !is.null(upd),
+      prev_period           = if (!is.null(upd)) upd$prev_period else NULL,
+      latest_period         = if (!is.null(upd)) upd$latest_period else NULL
     )
   })
   write(
