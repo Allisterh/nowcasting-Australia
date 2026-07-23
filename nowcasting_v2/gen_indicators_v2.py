@@ -181,6 +181,7 @@ def main():
     today = datetime.date.today()
     advanced = []
     abs_synced = []
+    updated_record = []               # durable "what fed this run" list for latest_v2.json
     for ind in doc["indicators"]:
         sid = ind["id"]
         old = ind["series"]
@@ -197,6 +198,16 @@ def main():
             continue
         new_latest = new[-1]["date"]
         adv = month_idx(new_latest) - month_idx(old_latest)
+
+        # "Updated this run" = this series carries a newer reference month than it
+        # did in the previously-committed JSON — i.e. it is one of the inputs that
+        # fed THIS week's nowcast. Drives the site's "updated this week" highlight.
+        ind["updated_this_run"] = adv > 0
+        ind["prev_period"] = old_latest
+        ind["latest_period"] = new_latest
+        if adv > 0:
+            updated_record.append({"id": sid, "name": ind["name"],
+                                   "prev_period": old_latest, "latest_period": new_latest})
         if sid in SURVEY_SCHEDULE:
             # Survey series: compute the real release date from each survey's
             # published cadence, replacing the drifting month-shift heuristic.
@@ -232,6 +243,29 @@ def main():
         print("All indicators already current.")
     if abs_synced:
         print(f"ABS dates synced from v1 ({len(abs_synced)}):", ", ".join(abs_synced))
+
+    # Patch latest_v2.json with the durable data_updates record: which series fed
+    # THIS run and how far the headline moved. Mirrors the v1 latest.json block.
+    # emit_v2_json.R runs before this generator, so latest_v2.json already exists;
+    # we only add the field (non-destructive). Delta = qoq move vs the prior Monday
+    # in the append-only vintage log, guarded to the same target quarter.
+    lv2_path = os.path.join(ROOT, "data", "latest_v2.json")
+    if os.path.exists(lv2_path):
+        try:
+            lv2 = json.load(open(lv2_path))
+            vints = lv2.get("vintages", [])
+            delta = None
+            if len(vints) >= 2 and vints[-1].get("target_quarter") == vints[-2].get("target_quarter"):
+                delta = round(vints[-1]["qoq_growth_pct"] - vints[-2]["qoq_growth_pct"], 2)
+            lv2["data_updates"] = {
+                "run_date": lv2.get("as_of") or today.isoformat(),
+                "nowcast_delta_pp": delta,
+                "series": updated_record,
+            }
+            json.dump(lv2, open(lv2_path, "w"), indent=2)
+            print(f"latest_v2.json data_updates: {len(updated_record)} series advanced, delta {delta} pp")
+        except Exception as e:
+            print(f"  WARN: could not patch latest_v2.json data_updates ({e})")
 
 
 if __name__ == "__main__":

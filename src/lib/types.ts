@@ -8,6 +8,23 @@ export interface NowcastEstimate {
   ci_95_high: number;
 }
 
+// The durable per-run record of *what data fed this week's run and how the
+// number moved* — the causal audit trail the pipeline previously discarded.
+// Lives quietly on latest.json / latest_v2.json (no visible panel); also powers
+// the "updated this week" highlight in the indicator grid.
+export interface DataUpdateSeries {
+  id: string;
+  name: string;
+  prev_period: string;   // "YYYY-MM" the series carried last run
+  latest_period: string; // "YYYY-MM" it advanced to this run
+}
+
+export interface DataUpdates {
+  run_date: string;                  // "YYYY-MM-DD" of this run
+  nowcast_delta_pp: number | null;   // qoq move vs the previous run (pp)
+  series: DataUpdateSeries[];         // series that gained a fresh observation
+}
+
 export interface LatestNowcast {
   generated_at: string; // ISO 8601
   target_quarter: string; // e.g. "2026 Q1"
@@ -20,6 +37,7 @@ export interface LatestNowcast {
     qoq_growth_pct: number;
     released_days_before_next: number; // e.g. -92
   };
+  data_updates?: DataUpdates;
 }
 
 export interface GdpQuarter {
@@ -68,6 +86,12 @@ export interface Indicator {
   series: IndicatorPoint[];
   last_release_date?: string;       // ISO "YYYY-MM-DD" — when the latest point was released
   next_release_estimate?: string;   // ISO "YYYY-MM-DD" — when the next point is expected
+  // Set by the weekly emit when this series gained a newer observation than it
+  // carried in the previous run — i.e. it is one of the inputs that fed *this*
+  // week's nowcast. prev_period/latest_period are "YYYY-MM" (e.g. "May → Jun").
+  updated_this_run?: boolean;
+  prev_period?: string;
+  latest_period?: string;
 }
 
 export interface IndicatorData {
@@ -137,6 +161,7 @@ export interface LatestV2 {
     gdp_chain_volume_millions: number;
     source: string;
   } | null;
+  data_updates?: DataUpdates;
   note: string;
 }
 

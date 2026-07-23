@@ -100,5 +100,22 @@ stopifnot(all(sapply(ind_j$indicators, function(x) x$id) %in%
   c("employment","unemp_rate","part_rate","hours_worked","household_spending","cons_conf",
     "building_approvals","bus_conf","goods_exp","services_exp","goods_imp","services_imp")))
 
+# Data-update audit trail (data-visibility feature). Every indicator carries the
+# updated_this_run flag, and latest.json carries a data_updates record. This first
+# emit runs into an EMPTY temp dir, so there is no previously-committed JSON to
+# diff against -> nothing is flagged and the series list is empty. (The advance-
+# detection path is covered by nowcasting_v2/tests/test_data_updates.py.)
+stopifnot(!is.null(latest_j$data_updates))
+stopifnot(!is.null(latest_j$data_updates$run_date))
+stopifnot(is.list(latest_j$data_updates$series))
+stopifnot(length(latest_j$data_updates$series) == 0)
+stopifnot(all(sapply(ind_j$indicators, function(x) is.logical(x$updated_this_run))))
+stopifnot(all(sapply(ind_j$indicators, function(x) isFALSE(x$updated_this_run))))
+# Unflagged indicators must OMIT prev/latest_period entirely (a named NULL would
+# serialise as {} and violate the frontend's `prev_period?: string` contract).
+stopifnot(all(sapply(ind_j$indicators, function(x) is.null(x$prev_period))))
+stopifnot(all(sapply(ind_j$indicators, function(x) is.null(x$latest_period))))
+cat("✓ data_updates audit trail present; no advances on empty baseline\n")
+
 cat("\n✅ emit_json smoke test PASSED\n")
 cat(sprintf("   Output in: %s\n", out_dir))
