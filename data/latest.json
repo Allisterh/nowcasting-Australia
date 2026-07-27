@@ -1,21 +1,51 @@
 {
-  "generated_at": "2026-07-20T10:31:34Z",
+  "generated_at": "2026-07-27T05:47:48Z",
   "target_quarter": "2026 Q2",
   "data_through": "2026-07",
   "next_gdp_release_date": "2026-09-02",
   "nowcast": {
-    "gdp_chain_volume_millions": 700509,
-    "qoq_growth_pct": 0.66,
+    "gdp_chain_volume_millions": 700462,
+    "qoq_growth_pct": 0.65,
     "yoy_growth_pct": 2.2,
-    "ci_68_low": 697114,
-    "ci_68_high": 700879,
-    "ci_95_low": 695306,
-    "ci_95_high": 702686
+    "ci_68_low": 697067,
+    "ci_68_high": 700832,
+    "ci_95_low": 695259,
+    "ci_95_high": 702639
   },
   "latest_actual": {
     "quarter": "2026 Q1",
     "gdp_chain_volume_millions": 695945,
     "qoq_growth_pct": 0.27,
     "released_days_before_next": -91
+  },
+  "data_updates": {
+    "run_date": "2026-07-27",
+    "nowcast_delta_pp": -0.01,
+    "series": [
+      {
+        "id": "employment",
+        "name": "Employment",
+        "prev_period": "2026-05",
+        "latest_period": "2026-06"
+      },
+      {
+        "id": "unemp_rate",
+        "name": "Unemployment Rate",
+        "prev_period": "2026-05",
+        "latest_period": "2026-06"
+      },
+      {
+        "id": "part_rate",
+        "name": "Participation Rate",
+        "prev_period": "2026-05",
+        "latest_period": "2026-06"
+      },
+      {
+        "id": "hours_worked",
+        "name": "Hours Worked",
+        "prev_period": "2026-05",
+        "latest_period": "2026-06"
+      }
+    ]
   }
 }

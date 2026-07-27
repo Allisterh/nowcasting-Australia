@@ -9,203 +9,210 @@
       "series": [
         {
           "date": "2022-05",
-          "value": 13486.971
+          "value": 13488.819
         },
         {
           "date": "2022-06",
-          "value": 13586.004
+          "value": 13583.102
         },
         {
           "date": "2022-07",
-          "value": 13593.974
+          "value": 13593.415
         },
         {
           "date": "2022-08",
-          "value": 13666.017
+          "value": 13665.348
         },
         {
           "date": "2022-09",
-          "value": 13674.142
+          "value": 13673.399
         },
         {
           "date": "2022-10",
-          "value": 13713.193
+          "value": 13712.426
         },
         {
           "date": "2022-11",
-          "value": 13781.451
+          "value": 13780.924
         },
         {
           "date": "2022-12",
-          "value": 13778.304
+          "value": 13778.136
         },
         {
           "date": "2023-01",
-          "value": 13800.053
+          "value": 13801.029
         },
         {
           "date": "2023-02",
-          "value": 13838.905
+          "value": 13839.724
         },
         {
           "date": "2023-03",
-          "value": 13928.662
+          "value": 13929.9
         },
         {
           "date": "2023-04",
-          "value": 13927.118
+          "value": 13929.59
         },
         {
           "date": "2023-05",
-          "value": 14015.345
+          "value": 14018.766
         },
         {
           "date": "2023-06",
-          "value": 14033.857
+          "value": 14028.653
         },
         {
           "date": "2023-07",
-          "value": 14028.79
+          "value": 14027.961
         },
         {
           "date": "2023-08",
-          "value": 14101.518
+          "value": 14100.68
         },
         {
           "date": "2023-09",
-          "value": 14095.589
+          "value": 14094.783
         },
         {
           "date": "2023-10",
-          "value": 14151.853
+          "value": 14150.915
         },
         {
           "date": "2023-11",
-          "value": 14200.52
+          "value": 14199.931
         },
         {
           "date": "2023-12",
-          "value": 14147.144
+          "value": 14146.962
         },
         {
           "date": "2024-01",
-          "value": 14144.388
+          "value": 14145.566
         },
         {
           "date": "2024-02",
-          "value": 14251.399
+          "value": 14252.478
         },
         {
           "date": "2024-03",
-          "value": 14229.432
+          "value": 14231.104
         },
         {
           "date": "2024-04",
-          "value": 14264.096
+          "value": 14267.28
         },
         {
           "date": "2024-05",
-          "value": 14293.871
+          "value": 14298.592
         },
         {
           "date": "2024-06",
-          "value": 14328.198
+          "value": 14320.766
         },
         {
           "date": "2024-07",
-          "value": 14376.865
+          "value": 14375.767
         },
         {
           "date": "2024-08",
-          "value": 14409.708
+          "value": 14408.658
         },
         {
           "date": "2024-09",
-          "value": 14446.689
+          "value": 14445.748
         },
         {
           "date": "2024-10",
-          "value": 14444.936
+          "value": 14443.853
         },
         {
           "date": "2024-11",
-          "value": 14463.893
+          "value": 14463.263
         },
         {
           "date": "2024-12",
-          "value": 14511.083
+          "value": 14510.856
         },
         {
           "date": "2025-01",
-          "value": 14542.678
+          "value": 14544.04
         },
         {
           "date": "2025-02",
-          "value": 14467.961
+          "value": 14469.215
         },
         {
           "date": "2025-03",
-          "value": 14498.245
+          "value": 14500.272
         },
         {
           "date": "2025-04",
-          "value": 14600.401
+          "value": 14604.317
         },
         {
           "date": "2025-05",
-          "value": 14591.384
+          "value": 14598.037
         },
         {
           "date": "2025-06",
-          "value": 14580.908
+          "value": 14571.25
         },
         {
           "date": "2025-07",
-          "value": 14613.171
+          "value": 14611.795
         },
         {
           "date": "2025-08",
-          "value": 14600.002
+          "value": 14598.743
         },
         {
           "date": "2025-09",
-          "value": 14609.772
+          "value": 14608.689
         },
         {
           "date": "2025-10",
-          "value": 14643.607
+          "value": 14642.335
         },
         {
           "date": "2025-11",
-          "value": 14604.918
+          "value": 14604.199
         },
         {
           "date": "2025-12",
-          "value": 14662.143
+          "value": 14661.912
         },
         {
           "date": "2026-01",
-          "value": 14696.848
+          "value": 14698.346
         },
         {
           "date": "2026-02",
-          "value": 14719.746
+          "value": 14721.205
         },
         {
           "date": "2026-03",
-          "value": 14739.148
+          "value": 14741.552
         },
         {
           "date": "2026-04",
-          "value": 14698.496
+          "value": 14702.953
         },
         {
           "date": "2026-05",
-          "value": 14738.839
+          "value": 14746.947
+        },
+        {
+          "date": "2026-06",
+          "value": 14823.289
         }
       ],
-      "last_release_date": "2026-06-25",
-      "next_release_estimate": "2026-07-23"
+      "last_release_date": "2026-07-23",
+      "next_release_estimate": "2026-08-20",
+      "updated_this_run": true,
+      "prev_period": "2026-05",
+      "latest_period": "2026-06"
     },
     {
       "id": "ft_emp",
@@ -216,203 +223,210 @@
       "series": [
         {
           "date": "2022-05",
-          "value": 9388.143
+          "value": 9389.456
         },
         {
           "date": "2022-06",
-          "value": 9436.076
+          "value": 9434.876
         },
         {
           "date": "2022-07",
-          "value": 9387.677
+          "value": 9387.085
         },
         {
           "date": "2022-08",
-          "value": 9498.975
+          "value": 9498.605
         },
         {
           "date": "2022-09",
-          "value": 9526.866
+          "value": 9526.569
         },
         {
           "date": "2022-10",
-          "value": 9572.351
+          "value": 9571.939
         },
         {
           "date": "2022-11",
-          "value": 9592.189
+          "value": 9591.965
         },
         {
           "date": "2022-12",
-          "value": 9647.202
+          "value": 9647.196
         },
         {
           "date": "2023-01",
-          "value": 9633.811
+          "value": 9634.335
         },
         {
           "date": "2023-02",
-          "value": 9692.015
+          "value": 9692.317
         },
         {
           "date": "2023-03",
-          "value": 9779.122
+          "value": 9779.408
         },
         {
           "date": "2023-04",
-          "value": 9754.024
+          "value": 9755.071
         },
         {
           "date": "2023-05",
-          "value": 9815.975
+          "value": 9818.074
         },
         {
           "date": "2023-06",
-          "value": 9837.631
+          "value": 9835.642
         },
         {
           "date": "2023-07",
-          "value": 9805.882
+          "value": 9805.074
         },
         {
           "date": "2023-08",
-          "value": 9829.359
+          "value": 9828.885
         },
         {
           "date": "2023-09",
-          "value": 9783.908
+          "value": 9783.584
         },
         {
           "date": "2023-10",
-          "value": 9797.67
+          "value": 9797.153
         },
         {
           "date": "2023-11",
-          "value": 9840.261
+          "value": 9840.043
         },
         {
           "date": "2023-12",
-          "value": 9749.576
+          "value": 9749.637
         },
         {
           "date": "2024-01",
-          "value": 9752.206
+          "value": 9752.859
         },
         {
           "date": "2024-02",
-          "value": 9828.019
+          "value": 9828.398
         },
         {
           "date": "2024-03",
-          "value": 9846.518
+          "value": 9846.802
         },
         {
           "date": "2024-04",
-          "value": 9825.437
+          "value": 9826.595
         },
         {
           "date": "2024-05",
-          "value": 9856.57
+          "value": 9858.929
         },
         {
           "date": "2024-06",
-          "value": 9894.355
+          "value": 9892.065
         },
         {
           "date": "2024-07",
-          "value": 9941.056
+          "value": 9940.021
         },
         {
           "date": "2024-08",
-          "value": 9946.37
+          "value": 9945.789
         },
         {
           "date": "2024-09",
-          "value": 9978.574
+          "value": 9978.176
         },
         {
           "date": "2024-10",
-          "value": 9966.292
+          "value": 9965.697
         },
         {
           "date": "2024-11",
-          "value": 10019.157
+          "value": 10018.944
         },
         {
           "date": "2024-12",
-          "value": 9995.726
+          "value": 9995.858
         },
         {
           "date": "2025-01",
-          "value": 10019.536
+          "value": 10020.295
         },
         {
           "date": "2025-02",
-          "value": 9981.951
+          "value": 9982.345
         },
         {
           "date": "2025-03",
-          "value": 9978.077
+          "value": 9978.279
         },
         {
           "date": "2025-04",
-          "value": 10041.817
+          "value": 10043.115
         },
         {
           "date": "2025-05",
-          "value": 10086.542
+          "value": 10089.619
         },
         {
           "date": "2025-06",
-          "value": 10036.654
+          "value": 10034.307
         },
         {
           "date": "2025-07",
-          "value": 10104.841
+          "value": 10103.531
         },
         {
           "date": "2025-08",
-          "value": 10057.199
+          "value": 10056.472
         },
         {
           "date": "2025-09",
-          "value": 10060.826
+          "value": 10060.322
         },
         {
           "date": "2025-10",
-          "value": 10108.622
+          "value": 10107.872
         },
         {
           "date": "2025-11",
-          "value": 10036.479
+          "value": 10036.213
         },
         {
           "date": "2025-12",
-          "value": 10085.013
+          "value": 10085.183
         },
         {
           "date": "2026-01",
-          "value": 10150.194
+          "value": 10151.087
         },
         {
           "date": "2026-02",
-          "value": 10096.99
+          "value": 10097.466
         },
         {
           "date": "2026-03",
-          "value": 10157.289
+          "value": 10157.535
         },
         {
           "date": "2026-04",
-          "value": 10135.643
+          "value": 10137.031
         },
         {
           "date": "2026-05",
-          "value": 10140.803
+          "value": 10144.201
+        },
+        {
+          "date": "2026-06",
+          "value": 10173.499
         }
       ],
-      "last_release_date": "2026-06-25",
-      "next_release_estimate": "2026-07-23"
+      "last_release_date": "2026-07-23",
+      "next_release_estimate": "2026-08-20",
+      "updated_this_run": true,
+      "prev_period": "2026-05",
+      "latest_period": "2026-06"
     },
     {
       "id": "pt_emp",
@@ -423,203 +437,210 @@
       "series": [
         {
           "date": "2022-05",
-          "value": 4098.828
+          "value": 4099.362
         },
         {
           "date": "2022-06",
-          "value": 4149.928
+          "value": 4148.226
         },
         {
           "date": "2022-07",
-          "value": 4206.297
+          "value": 4206.33
         },
         {
           "date": "2022-08",
-          "value": 4167.042
+          "value": 4166.743
         },
         {
           "date": "2022-09",
-          "value": 4147.277
+          "value": 4146.83
         },
         {
           "date": "2022-10",
-          "value": 4140.842
+          "value": 4140.488
         },
         {
           "date": "2022-11",
-          "value": 4189.262
+          "value": 4188.959
         },
         {
           "date": "2022-12",
-          "value": 4131.101
+          "value": 4130.94
         },
         {
           "date": "2023-01",
-          "value": 4166.242
+          "value": 4166.693
         },
         {
           "date": "2023-02",
-          "value": 4146.89
+          "value": 4147.407
         },
         {
           "date": "2023-03",
-          "value": 4149.54
+          "value": 4150.493
         },
         {
           "date": "2023-04",
-          "value": 4173.094
+          "value": 4174.519
         },
         {
           "date": "2023-05",
-          "value": 4199.37
+          "value": 4200.692
         },
         {
           "date": "2023-06",
-          "value": 4196.226
+          "value": 4193.011
         },
         {
           "date": "2023-07",
-          "value": 4222.908
+          "value": 4222.888
         },
         {
           "date": "2023-08",
-          "value": 4272.159
+          "value": 4271.795
         },
         {
           "date": "2023-09",
-          "value": 4311.681
+          "value": 4311.199
         },
         {
           "date": "2023-10",
-          "value": 4354.183
+          "value": 4353.762
         },
         {
           "date": "2023-11",
-          "value": 4360.258
+          "value": 4359.888
         },
         {
           "date": "2023-12",
-          "value": 4397.568
+          "value": 4397.325
         },
         {
           "date": "2024-01",
-          "value": 4392.182
+          "value": 4392.707
         },
         {
           "date": "2024-02",
-          "value": 4423.38
+          "value": 4424.081
         },
         {
           "date": "2024-03",
-          "value": 4382.915
+          "value": 4384.302
         },
         {
           "date": "2024-04",
-          "value": 4438.659
+          "value": 4440.686
         },
         {
           "date": "2024-05",
-          "value": 4437.301
+          "value": 4439.663
         },
         {
           "date": "2024-06",
-          "value": 4433.842
+          "value": 4428.7
         },
         {
           "date": "2024-07",
-          "value": 4435.81
+          "value": 4435.746
         },
         {
           "date": "2024-08",
-          "value": 4463.338
+          "value": 4462.869
         },
         {
           "date": "2024-09",
-          "value": 4468.115
+          "value": 4467.571
         },
         {
           "date": "2024-10",
-          "value": 4478.644
+          "value": 4478.156
         },
         {
           "date": "2024-11",
-          "value": 4444.736
+          "value": 4444.319
         },
         {
           "date": "2024-12",
-          "value": 4515.358
+          "value": 4514.999
         },
         {
           "date": "2025-01",
-          "value": 4523.143
+          "value": 4523.745
         },
         {
           "date": "2025-02",
-          "value": 4486.01
+          "value": 4486.87
         },
         {
           "date": "2025-03",
-          "value": 4520.167
+          "value": 4521.994
         },
         {
           "date": "2025-04",
-          "value": 4558.584
+          "value": 4561.202
         },
         {
           "date": "2025-05",
-          "value": 4504.843
+          "value": 4508.418
         },
         {
           "date": "2025-06",
-          "value": 4544.254
+          "value": 4536.943
         },
         {
           "date": "2025-07",
-          "value": 4508.331
+          "value": 4508.263
         },
         {
           "date": "2025-08",
-          "value": 4542.803
+          "value": 4542.271
         },
         {
           "date": "2025-09",
-          "value": 4548.947
+          "value": 4548.367
         },
         {
           "date": "2025-10",
-          "value": 4534.985
+          "value": 4534.463
         },
         {
           "date": "2025-11",
-          "value": 4568.44
+          "value": 4567.986
         },
         {
           "date": "2025-12",
-          "value": 4577.129
+          "value": 4576.729
         },
         {
           "date": "2026-01",
-          "value": 4546.654
+          "value": 4547.258
         },
         {
           "date": "2026-02",
-          "value": 4622.756
+          "value": 4623.739
         },
         {
           "date": "2026-03",
-          "value": 4581.858
+          "value": 4584.016
         },
         {
           "date": "2026-04",
-          "value": 4562.853
+          "value": 4565.922
         },
         {
           "date": "2026-05",
-          "value": 4598.036
+          "value": 4602.746
+        },
+        {
+          "date": "2026-06",
+          "value": 4649.79
         }
       ],
-      "last_release_date": "2026-06-25",
-      "next_release_estimate": "2026-07-23"
+      "last_release_date": "2026-07-23",
+      "next_release_estimate": "2026-08-20",
+      "updated_this_run": true,
+      "prev_period": "2026-05",
+      "latest_period": "2026-06"
     },
     {
       "id": "ue",
@@ -630,27 +651,27 @@
       "series": [
         {
           "date": "2022-05",
-          "value": 3.93
+          "value": 3.94
         },
         {
           "date": "2022-06",
-          "value": 3.61
+          "value": 3.602
         },
         {
           "date": "2022-07",
-          "value": 3.451
+          "value": 3.448
         },
         {
           "date": "2022-08",
-          "value": 3.529
+          "value": 3.528
         },
         {
           "date": "2022-09",
-          "value": 3.604
+          "value": 3.603
         },
         {
           "date": "2022-10",
-          "value": 3.438
+          "value": 3.437
         },
         {
           "date": "2022-11",
@@ -658,47 +679,47 @@
         },
         {
           "date": "2022-12",
-          "value": 3.527
+          "value": 3.526
         },
         {
           "date": "2023-01",
-          "value": 3.662
+          "value": 3.661
         },
         {
           "date": "2023-02",
-          "value": 3.609
+          "value": 3.61
         },
         {
           "date": "2023-03",
-          "value": 3.593
+          "value": 3.594
         },
         {
           "date": "2023-04",
-          "value": 3.697
+          "value": 3.703
         },
         {
           "date": "2023-05",
-          "value": 3.576
+          "value": 3.587
         },
         {
           "date": "2023-06",
-          "value": 3.523
+          "value": 3.515
         },
         {
           "date": "2023-07",
-          "value": 3.719
+          "value": 3.715
         },
         {
           "date": "2023-08",
-          "value": 3.682
+          "value": 3.68
         },
         {
           "date": "2023-09",
-          "value": 3.565
+          "value": 3.564
         },
         {
           "date": "2023-10",
-          "value": 3.781
+          "value": 3.78
         },
         {
           "date": "2023-11",
@@ -706,11 +727,11 @@
         },
         {
           "date": "2023-12",
-          "value": 3.987
+          "value": 3.986
         },
         {
           "date": "2024-01",
-          "value": 4.093
+          "value": 4.091
         },
         {
           "date": "2024-02",
@@ -722,31 +743,31 @@
         },
         {
           "date": "2024-04",
-          "value": 4.073
+          "value": 4.08
         },
         {
           "date": "2024-05",
-          "value": 3.987
+          "value": 4.0
         },
         {
           "date": "2024-06",
-          "value": 4.037
+          "value": 4.03
         },
         {
           "date": "2024-07",
-          "value": 4.202
+          "value": 4.199
         },
         {
           "date": "2024-08",
-          "value": 4.13
+          "value": 4.128
         },
         {
           "date": "2024-09",
-          "value": 4.024
+          "value": 4.023
         },
         {
           "date": "2024-10",
-          "value": 4.094
+          "value": 4.093
         },
         {
           "date": "2024-11",
@@ -754,15 +775,15 @@
         },
         {
           "date": "2024-12",
-          "value": 3.999
+          "value": 3.997
         },
         {
           "date": "2025-01",
-          "value": 4.128
+          "value": 4.125
         },
         {
           "date": "2025-02",
-          "value": 4.071
+          "value": 4.072
         },
         {
           "date": "2025-03",
@@ -770,23 +791,23 @@
         },
         {
           "date": "2025-04",
-          "value": 4.047
+          "value": 4.054
         },
         {
           "date": "2025-05",
-          "value": 4.082
+          "value": 4.094
         },
         {
           "date": "2025-06",
-          "value": 4.32
+          "value": 4.312
         },
         {
           "date": "2025-07",
-          "value": 4.25
+          "value": 4.246
         },
         {
           "date": "2025-08",
-          "value": 4.25
+          "value": 4.248
         },
         {
           "date": "2025-09",
@@ -794,7 +815,7 @@
         },
         {
           "date": "2025-10",
-          "value": 4.334
+          "value": 4.333
         },
         {
           "date": "2025-11",
@@ -802,11 +823,11 @@
         },
         {
           "date": "2025-12",
-          "value": 4.118
+          "value": 4.116
         },
         {
           "date": "2026-01",
-          "value": 4.083
+          "value": 4.08
         },
         {
           "date": "2026-02",
@@ -818,15 +839,22 @@
         },
         {
           "date": "2026-04",
-          "value": 4.481
+          "value": 4.49
         },
         {
           "date": "2026-05",
-          "value": 4.356
+          "value": 4.371
+        },
+        {
+          "date": "2026-06",
+          "value": 4.428
         }
       ],
-      "last_release_date": "2026-06-25",
-      "next_release_estimate": "2026-07-23"
+      "last_release_date": "2026-07-23",
+      "next_release_estimate": "2026-08-20",
+      "updated_this_run": true,
+      "prev_period": "2026-05",
+      "latest_period": "2026-06"
     },
     {
       "id": "ud",
@@ -837,203 +865,210 @@
       "series": [
         {
           "date": "2022-05",
-          "value": 837.155
+          "value": 840.122
         },
         {
           "date": "2022-06",
-          "value": 864.189
+          "value": 860.834
         },
         {
           "date": "2022-07",
-          "value": 860.241
+          "value": 859.22
         },
         {
           "date": "2022-08",
-          "value": 848.308
+          "value": 847.872
         },
         {
           "date": "2022-09",
-          "value": 850.4
+          "value": 849.505
         },
         {
           "date": "2022-10",
-          "value": 854.23
+          "value": 854.001
         },
         {
           "date": "2022-11",
-          "value": 843.332
+          "value": 843.445
         },
         {
           "date": "2022-12",
-          "value": 884.643
+          "value": 885.315
         },
         {
           "date": "2023-01",
-          "value": 883.786
+          "value": 884.9
         },
         {
           "date": "2023-02",
-          "value": 851.034
+          "value": 852.28
         },
         {
           "date": "2023-03",
-          "value": 902.12
+          "value": 904.304
         },
         {
           "date": "2023-04",
-          "value": 890.004
+          "value": 889.047
         },
         {
           "date": "2023-05",
-          "value": 932.318
+          "value": 936.508
         },
         {
           "date": "2023-06",
-          "value": 941.543
+          "value": 935.626
         },
         {
           "date": "2023-07",
-          "value": 940.146
+          "value": 938.44
         },
         {
           "date": "2023-08",
-          "value": 967.249
+          "value": 966.424
         },
         {
           "date": "2023-09",
-          "value": 931.091
+          "value": 929.981
         },
         {
           "date": "2023-10",
-          "value": 946.336
+          "value": 946.121
         },
         {
           "date": "2023-11",
-          "value": 974.165
+          "value": 974.5
         },
         {
           "date": "2023-12",
-          "value": 970.29
+          "value": 971.33
         },
         {
           "date": "2024-01",
-          "value": 986.59
+          "value": 988.211
         },
         {
           "date": "2024-02",
-          "value": 981.947
+          "value": 983.905
         },
         {
           "date": "2024-03",
-          "value": 955.713
+          "value": 958.665
         },
         {
           "date": "2024-04",
-          "value": 978.25
+          "value": 977.707
         },
         {
           "date": "2024-05",
-          "value": 991.215
+          "value": 995.857
         },
         {
           "date": "2024-06",
-          "value": 947.367
+          "value": 940.0
         },
         {
           "date": "2024-07",
-          "value": 944.375
+          "value": 942.218
         },
         {
           "date": "2024-08",
-          "value": 978.934
+          "value": 977.821
         },
         {
           "date": "2024-09",
-          "value": 942.361
+          "value": 941.089
         },
         {
           "date": "2024-10",
-          "value": 937.829
+          "value": 937.639
         },
         {
           "date": "2024-11",
-          "value": 907.394
+          "value": 907.841
         },
         {
           "date": "2024-12",
-          "value": 904.161
+          "value": 905.331
         },
         {
           "date": "2025-01",
-          "value": 905.83
+          "value": 907.557
         },
         {
           "date": "2025-02",
-          "value": 895.213
+          "value": 897.448
         },
         {
           "date": "2025-03",
-          "value": 888.35
+          "value": 891.626
         },
         {
           "date": "2025-04",
-          "value": 921.547
+          "value": 921.225
         },
         {
           "date": "2025-05",
-          "value": 883.046
+          "value": 887.646
         },
         {
           "date": "2025-06",
-          "value": 904.648
+          "value": 896.182
         },
         {
           "date": "2025-07",
-          "value": 891.572
+          "value": 889.052
         },
         {
           "date": "2025-08",
-          "value": 870.409
+          "value": 869.168
         },
         {
           "date": "2025-09",
-          "value": 906.397
+          "value": 905.105
         },
         {
           "date": "2025-10",
-          "value": 874.349
+          "value": 874.173
         },
         {
           "date": "2025-11",
-          "value": 942.707
+          "value": 943.315
         },
         {
           "date": "2025-12",
-          "value": 875.674
+          "value": 877.03
         },
         {
           "date": "2026-01",
-          "value": 905.991
+          "value": 907.999
         },
         {
           "date": "2026-02",
-          "value": 905.756
+          "value": 908.46
         },
         {
           "date": "2026-03",
-          "value": 918.201
+          "value": 922.012
         },
         {
           "date": "2026-04",
-          "value": 913.182
+          "value": 913.205
         },
         {
           "date": "2026-05",
-          "value": 968.596
+          "value": 973.802
+        },
+        {
+          "date": "2026-06",
+          "value": 1009.601
         }
       ],
-      "last_release_date": "2026-06-25",
-      "next_release_estimate": "2026-07-23"
+      "last_release_date": "2026-07-23",
+      "next_release_estimate": "2026-08-20",
+      "updated_this_run": true,
+      "prev_period": "2026-05",
+      "latest_period": "2026-06"
     },
     {
       "id": "hours",
@@ -1044,203 +1079,210 @@
       "series": [
         {
           "date": "2022-05",
-          "value": 1846889.518
+          "value": 1846872.271
         },
         {
           "date": "2022-06",
-          "value": 1853959.466
+          "value": 1854003.833
         },
         {
           "date": "2022-07",
-          "value": 1850477.047
+          "value": 1850550.136
         },
         {
           "date": "2022-08",
-          "value": 1872543.772
+          "value": 1872624.991
         },
         {
           "date": "2022-09",
-          "value": 1875967.313
+          "value": 1876062.514
         },
         {
           "date": "2022-10",
-          "value": 1909074.375
+          "value": 1909067.023
         },
         {
           "date": "2022-11",
-          "value": 1904197.288
+          "value": 1904231.704
         },
         {
           "date": "2022-12",
-          "value": 1903249.128
+          "value": 1903253.526
         },
         {
           "date": "2023-01",
-          "value": 1919965.895
+          "value": 1919938.642
         },
         {
           "date": "2023-02",
-          "value": 1922837.75
+          "value": 1922790.42
         },
         {
           "date": "2023-03",
-          "value": 1935389.606
+          "value": 1935298.329
         },
         {
           "date": "2023-04",
-          "value": 1952920.864
+          "value": 1952719.735
         },
         {
           "date": "2023-05",
-          "value": 1940305.523
+          "value": 1940160.658
         },
         {
           "date": "2023-06",
-          "value": 1943228.032
+          "value": 1943458.913
         },
         {
           "date": "2023-07",
-          "value": 1943488.952
+          "value": 1943618.143
         },
         {
           "date": "2023-08",
-          "value": 1931302.395
+          "value": 1931451.919
         },
         {
           "date": "2023-09",
-          "value": 1923035.997
+          "value": 1923150.34
         },
         {
           "date": "2023-10",
-          "value": 1925969.418
+          "value": 1925933.302
         },
         {
           "date": "2023-11",
-          "value": 1920664.124
+          "value": 1920673.309
         },
         {
           "date": "2023-12",
-          "value": 1913398.498
+          "value": 1913359.513
         },
         {
           "date": "2024-01",
-          "value": 1914967.732
+          "value": 1914883.242
         },
         {
           "date": "2024-02",
-          "value": 1927217.779
+          "value": 1927104.767
         },
         {
           "date": "2024-03",
-          "value": 1952604.295
+          "value": 1952426.46
         },
         {
           "date": "2024-04",
-          "value": 1944407.119
+          "value": 1944164.102
         },
         {
           "date": "2024-05",
-          "value": 1938749.056
+          "value": 1938345.644
         },
         {
           "date": "2024-06",
-          "value": 1941594.856
+          "value": 1942289.482
         },
         {
           "date": "2024-07",
-          "value": 1947445.614
+          "value": 1947617.258
         },
         {
           "date": "2024-08",
-          "value": 1959622.888
+          "value": 1959835.171
         },
         {
           "date": "2024-09",
-          "value": 1961963.063
+          "value": 1962076.113
         },
         {
           "date": "2024-10",
-          "value": 1957042.168
+          "value": 1956978.204
         },
         {
           "date": "2024-11",
-          "value": 1972731.729
+          "value": 1972686.098
         },
         {
           "date": "2024-12",
-          "value": 1980928.843
+          "value": 1980823.377
         },
         {
           "date": "2025-01",
-          "value": 1979626.864
+          "value": 1979476.915
         },
         {
           "date": "2025-02",
-          "value": 1975554.052
+          "value": 1975372.957
         },
         {
           "date": "2025-03",
-          "value": 1967561.709
+          "value": 1967280.1
         },
         {
           "date": "2025-04",
-          "value": 1968165.908
+          "value": 1967898.603
         },
         {
           "date": "2025-05",
-          "value": 2000322.295
+          "value": 1999618.764
         },
         {
           "date": "2025-06",
-          "value": 1977227.847
+          "value": 1978529.419
         },
         {
           "date": "2025-07",
-          "value": 1984880.855
+          "value": 1985088.339
         },
         {
           "date": "2025-08",
-          "value": 1977093.255
+          "value": 1977364.302
         },
         {
           "date": "2025-09",
-          "value": 1986832.853
+          "value": 1986939.323
         },
         {
           "date": "2025-10",
-          "value": 1993194.094
+          "value": 1993099.949
         },
         {
           "date": "2025-11",
-          "value": 1991500.744
+          "value": 1991401.808
         },
         {
           "date": "2025-12",
-          "value": 1998596.751
+          "value": 1998443.452
         },
         {
           "date": "2026-01",
-          "value": 2009461.899
+          "value": 2009282.25
         },
         {
           "date": "2026-02",
-          "value": 2005289.922
+          "value": 2005077.605
         },
         {
           "date": "2026-03",
-          "value": 2013641.452
+          "value": 2013301.477
         },
         {
           "date": "2026-04",
-          "value": 2031907.213
+          "value": 2031375.879
         },
         {
           "date": "2026-05",
-          "value": 2010382.406
+          "value": 2009439.438
+        },
+        {
+          "date": "2026-06",
+          "value": 2014341.984
         }
       ],
-      "last_release_date": "2026-06-25",
-      "next_release_estimate": "2026-07-23"
+      "last_release_date": "2026-07-23",
+      "next_release_estimate": "2026-08-20",
+      "updated_this_run": true,
+      "prev_period": "2026-05",
+      "latest_period": "2026-06"
     },
     {
       "id": "household_spending",
@@ -1447,7 +1489,10 @@
         }
       ],
       "last_release_date": "2026-06-25",
-      "next_release_estimate": "2026-08-04"
+      "next_release_estimate": "2026-08-04",
+      "updated_this_run": false,
+      "prev_period": "2026-05",
+      "latest_period": "2026-05"
     },
     {
       "id": "export",
@@ -1654,7 +1699,10 @@
         }
       ],
       "last_release_date": "2026-07-02",
-      "next_release_estimate": "2026-08-06"
+      "next_release_estimate": "2026-08-06",
+      "updated_this_run": false,
+      "prev_period": "2026-05",
+      "latest_period": "2026-05"
     },
     {
       "id": "building_app",
@@ -1861,7 +1909,10 @@
         }
       ],
       "last_release_date": "2026-07-08",
-      "next_release_estimate": "2026-07-30"
+      "next_release_estimate": "2026-07-30",
+      "updated_this_run": false,
+      "prev_period": "2026-05",
+      "latest_period": "2026-05"
     },
     {
       "id": "credit",
@@ -2068,7 +2119,10 @@
         }
       ],
       "last_release_date": "2026-06-30",
-      "next_release_estimate": "2026-07-30"
+      "next_release_estimate": "2026-07-30",
+      "updated_this_run": false,
+      "prev_period": "2026-05",
+      "latest_period": "2026-05"
     },
     {
       "id": "credit_housing",
@@ -2275,7 +2329,10 @@
         }
       ],
       "last_release_date": "2026-06-30",
-      "next_release_estimate": "2026-07-30"
+      "next_release_estimate": "2026-07-30",
+      "updated_this_run": false,
+      "prev_period": "2026-05",
+      "latest_period": "2026-05"
     },
     {
       "id": "credit_business",
@@ -2482,7 +2539,10 @@
         }
       ],
       "last_release_date": "2026-06-30",
-      "next_release_estimate": "2026-07-30"
+      "next_release_estimate": "2026-07-30",
+      "updated_this_run": false,
+      "prev_period": "2026-05",
+      "latest_period": "2026-05"
     },
     {
       "id": "fcmygbag3",
@@ -2693,7 +2753,10 @@
         }
       ],
       "last_release_date": "2026-07-02",
-      "next_release_estimate": "2026-08-02"
+      "next_release_estimate": "2026-08-02",
+      "updated_this_run": false,
+      "prev_period": "2026-06",
+      "latest_period": "2026-06"
     },
     {
       "id": "fcmygbag5",
@@ -2904,7 +2967,10 @@
         }
       ],
       "last_release_date": "2026-07-02",
-      "next_release_estimate": "2026-08-02"
+      "next_release_estimate": "2026-08-02",
+      "updated_this_run": false,
+      "prev_period": "2026-06",
+      "latest_period": "2026-06"
     },
     {
       "id": "fcmygbag10",
@@ -3115,7 +3181,10 @@
         }
       ],
       "last_release_date": "2026-07-02",
-      "next_release_estimate": "2026-08-02"
+      "next_release_estimate": "2026-08-02",
+      "updated_this_run": false,
+      "prev_period": "2026-06",
+      "latest_period": "2026-06"
     },
     {
       "id": "scrigbag3",
@@ -3326,7 +3395,10 @@
         }
       ],
       "last_release_date": "2026-07-02",
-      "next_release_estimate": "2026-08-02"
+      "next_release_estimate": "2026-08-02",
+      "updated_this_run": false,
+      "prev_period": "2026-06",
+      "latest_period": "2026-06"
     },
     {
       "id": "scrigbag5",
@@ -3537,7 +3609,10 @@
         }
       ],
       "last_release_date": "2026-07-02",
-      "next_release_estimate": "2026-08-02"
+      "next_release_estimate": "2026-08-02",
+      "updated_this_run": false,
+      "prev_period": "2026-06",
+      "latest_period": "2026-06"
     },
     {
       "id": "scrigbag10",
@@ -3748,7 +3823,10 @@
         }
       ],
       "last_release_date": "2026-07-02",
-      "next_release_estimate": "2026-08-02"
+      "next_release_estimate": "2026-08-02",
+      "updated_this_run": false,
+      "prev_period": "2026-06",
+      "latest_period": "2026-06"
     },
     {
       "id": "firmmbab90",
@@ -3955,7 +4033,10 @@
         }
       ],
       "last_release_date": "2026-07-02",
-      "next_release_estimate": "2026-08-02"
+      "next_release_estimate": "2026-08-02",
+      "updated_this_run": false,
+      "prev_period": "2026-06",
+      "latest_period": "2026-06"
     },
     {
       "id": "credit_card",
@@ -4166,7 +4247,10 @@
         }
       ],
       "last_release_date": "2026-06-30",
-      "next_release_estimate": "2026-07-30"
+      "next_release_estimate": "2026-07-30",
+      "updated_this_run": false,
+      "prev_period": "2026-05",
+      "latest_period": "2026-05"
     },
     {
       "id": "nab_conf",
@@ -4377,7 +4461,10 @@
         }
       ],
       "last_release_date": "2026-07-14",
-      "next_release_estimate": "2026-08-11"
+      "next_release_estimate": "2026-08-11",
+      "updated_this_run": false,
+      "prev_period": "2026-06",
+      "latest_period": "2026-06"
     },
     {
       "id": "nab_cond",
@@ -4588,7 +4675,10 @@
         }
       ],
       "last_release_date": "2026-07-14",
-      "next_release_estimate": "2026-08-11"
+      "next_release_estimate": "2026-08-11",
+      "updated_this_run": false,
+      "prev_period": "2026-06",
+      "latest_period": "2026-06"
     },
     {
       "id": "nab_trade",
@@ -4763,7 +4853,10 @@
         }
       ],
       "last_release_date": "2026-07-14",
-      "next_release_estimate": "2026-08-11"
+      "next_release_estimate": "2026-08-11",
+      "updated_this_run": false,
+      "prev_period": "2026-06",
+      "latest_period": "2026-06"
     },
     {
       "id": "nab_profit",
@@ -4938,7 +5031,10 @@
         }
       ],
       "last_release_date": "2026-07-14",
-      "next_release_estimate": "2026-08-11"
+      "next_release_estimate": "2026-08-11",
+      "updated_this_run": false,
+      "prev_period": "2026-06",
+      "latest_period": "2026-06"
     },
     {
       "id": "nab_emp",
@@ -5113,7 +5209,10 @@
         }
       ],
       "last_release_date": "2026-07-14",
-      "next_release_estimate": "2026-08-11"
+      "next_release_estimate": "2026-08-11",
+      "updated_this_run": false,
+      "prev_period": "2026-06",
+      "latest_period": "2026-06"
     },
     {
       "id": "nab_forward",
@@ -5288,7 +5387,10 @@
         }
       ],
       "last_release_date": "2026-07-14",
-      "next_release_estimate": "2026-08-11"
+      "next_release_estimate": "2026-08-11",
+      "updated_this_run": false,
+      "prev_period": "2026-06",
+      "latest_period": "2026-06"
     },
     {
       "id": "nab_stocks",
@@ -5447,7 +5549,10 @@
         }
       ],
       "last_release_date": "2026-06-09",
-      "next_release_estimate": "2026-07-14"
+      "next_release_estimate": "2026-07-14",
+      "updated_this_run": false,
+      "prev_period": "2026-05",
+      "latest_period": "2026-05"
     },
     {
       "id": "nab_cu",
@@ -5618,7 +5723,10 @@
         }
       ],
       "last_release_date": "2026-07-14",
-      "next_release_estimate": "2026-08-11"
+      "next_release_estimate": "2026-08-11",
+      "updated_this_run": false,
+      "prev_period": "2026-06",
+      "latest_period": "2026-06"
     },
     {
       "id": "anz_ads",
@@ -5833,7 +5941,10 @@
         }
       ],
       "last_release_date": "2026-07-06",
-      "next_release_estimate": "2026-08-04"
+      "next_release_estimate": "2026-08-04",
+      "updated_this_run": false,
+      "prev_period": "2026-06",
+      "latest_period": "2026-06"
     },
     {
       "id": "anz_sent",
@@ -6047,8 +6158,11 @@
           "value": 75.0
         }
       ],
-      "last_release_date": "2026-07-14",
-      "next_release_estimate": "2026-07-21"
+      "last_release_date": "2026-07-21",
+      "next_release_estimate": "2026-07-28",
+      "updated_this_run": false,
+      "prev_period": "2026-07",
+      "latest_period": "2026-07"
     },
     {
       "id": "wmi_sent",
@@ -6259,7 +6373,10 @@
         }
       ],
       "last_release_date": "2026-07-14",
-      "next_release_estimate": "2026-08-11"
+      "next_release_estimate": "2026-08-11",
+      "updated_this_run": false,
+      "prev_period": "2026-07",
+      "latest_period": "2026-07"
     }
   ]
 }
