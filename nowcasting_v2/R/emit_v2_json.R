@@ -117,20 +117,34 @@ emit_v2_json <- function(repo_root = "..", mondays = NULL) {
   mk <- function(tfs, gdpt, id, name, sel_alpha, model, ci_path) {
     # Exclude AiG (dead) and rt (old Retail Trade, superseded by MHSI =
     # household_spending, which the model already uses; rt was never selected).
-    mai <- build_mai(tfs = tfs, sel_alpha = sel_alpha, dfm_q = 1L, exclude_ids = c(AIG, "rt"),
+    # gdp = gdpt: the Wald selection must see only GDP released by this as_of.
+    # Without it build_mai reads the full rt_dgdp_qtr.csv and the selection is
+    # supervised on quarters that had not yet been published.
+    mai <- build_mai(tfs = tfs, gdp = gdpt,
+                     sel_alpha = sel_alpha, dfm_q = 1L, exclude_ids = c(AIG, "rt"),
                      out_csv = file.path("cache", paste0("mai_", id, ".csv")),
                      out_rds = file.path("cache", paste0("mai_", id, ".rds")))$mai
     nc  <- nowcast_midas(mai, gdpt, prev_level = prev_level, model = model, qa_lag = 0L:1L)
     ci  <- load_ci_params(ci_path)
     qoq <- as.numeric(nc$qoq_growth)
-    b68 <- ci_level_band(qoq, prev_level, ci$qoq_bias_pp, ci$qoq_sd_pp, ci$z_68)
-    b95 <- ci_level_band(qoq, prev_level, ci$qoq_bias_pp, ci$qoq_sd_pp, ci$z_95)
+    # Interval params depend on the within-quarter information stage. A nowcast
+    # built with 0 months of target-quarter data is a different estimator from one
+    # built with 3 and does not get the same band. ci_params_for_stage() falls back
+    # to pooled when a stage was too thin to calibrate, and is a no-op for the flat
+    # legacy params v1 still uses.
+    cp  <- ci_params_for_stage(ci, nc$n_months_in_quarter)
+    b68 <- ci_level_band(qoq, prev_level, cp$bias_pp, cp$sd_pp, cp$z_68)
+    b95 <- ci_level_band(qoq, prev_level, cp$bias_pp, cp$sd_pp, cp$z_95)
     list(model_id = id, model_name = name, target_quarter = nc$target_quarter,
          gdp_chain_volume_millions = round(as.numeric(nc$nowcast_level)),
          qoq_growth_pct = round(qoq, 2), yoy_growth_pct = round(.compute_yoy(gdpt, qoq), 2),
          ci_68_low = b68$low, ci_68_high = b68$high, ci_95_low = b95$low, ci_95_high = b95$high,
          n_months_in_quarter = nc$n_months_in_quarter,
-         ci_basis = ci$basis, ci_n = ci$n, ci_sd_pp = ci$qoq_sd_pp, ci_bias_pp = ci$qoq_bias_pp)
+         ci_basis = ci$basis, ci_n = cp$n, ci_sd_pp = cp$sd_pp, ci_bias_pp = cp$bias_pp,
+         # which information stage's params were used ("pooled" if this stage was
+         # too thin to calibrate; "flat" for legacy params). Surfaced so the site
+         # can say what the band is conditioned on.
+         ci_stage = cp$stage)
   }
 
   # Append-only vintage log. The evolution chart must show what was ACTUALLY

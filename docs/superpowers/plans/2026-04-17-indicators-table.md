@@ -1,5 +1,13 @@
 # Indicators Table Implementation Plan
 
+<!-- POINT-IN-TIME -->
+> **Point-in-time record — 2026-04-17. Not current state.**
+> This document describes what was true when it was written. The model, panel and
+> calibration have changed since; several numbers here are known to be superseded.
+> For current state see `README.md`, and for the 2026-08 fidelity review and its
+> corrections log see `docs/reviews/2026-08-01-v2-intention-and-bug-review.md`.
+
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Add a compact, sortable table below the cards in the Indicators section showing latest value, m/m raw change, m/m % change, last release date, and expected next release date for each of the 12 indicators.

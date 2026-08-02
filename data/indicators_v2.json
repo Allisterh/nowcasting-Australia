@@ -1074,7 +1074,7 @@
       "id": "hours",
       "name": "Hours worked",
       "group": "Jobs & labour",
-      "unit": "mn hours",
+      "unit": "hours (thousands)",
       "source": "ABS",
       "series": [
         {

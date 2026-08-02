@@ -1,5 +1,13 @@
 # RBA RDP 2024-04 panel vs our v2 coverage
 
+<!-- POINT-IN-TIME -->
+> **Point-in-time record — 2026-06-11. Not current state.**
+> This document describes what was true when it was written. The model, panel and
+> calibration have changed since; several numbers here are known to be superseded.
+> For current state see `README.md`, and for the 2026-08 fidelity review and its
+> corrections log see `docs/reviews/2026-08-01-v2-intention-and-bug-review.md`.
+
+
 The RBA's Monthly Activity Indicator uses **53 monthly predictors**
 (`nowcasting_v2/rba_paper/content/Data/mai_info.csv`). v2 uses a **33-series
 subset present in `data_raw/`** (of which **29 feed the model** — AiG ×3 and old

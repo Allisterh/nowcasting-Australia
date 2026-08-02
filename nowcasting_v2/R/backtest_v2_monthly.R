@@ -97,11 +97,14 @@ suppressMessages({
 
     tfs_t <- transform_panel(wide_t, panel_info_csv)
 
-    sel_t <- fixed_selection[
+    # NULL under recursive selection -> build_mai runs its own Wald gate on the
+    # truncated panel (force_selected = NULL), exactly as production does.
+    sel_t <- if (is.null(fixed_selection)) NULL else fixed_selection[
       vapply(fixed_selection, function(id)
         id %in% names(tfs_t) && sum(!is.na(tfs_t[[id]])) >= 24L, logical(1))]
+    # gdp = gdp_t (as-of truncated) -- see backtest_v2.R for why.
     mai_res <- build_mai(tfs = tfs_t, panel_info_csv = panel_info_csv,
-                         gdp_csv = gdp_csv, out_csv = NULL, out_rds = NULL,
+                         gdp = gdp_t, out_csv = NULL, out_rds = NULL,
                          force_selected = sel_t, verbose_dfm = FALSE)
     mai <- mai_res$mai
 
@@ -129,6 +132,12 @@ backtest_v2_monthly <- function(panel_rds      = "cache/panel_vintage_latest.rds
                                 include_jt0    = TRUE,               # add forced jt=0 per quarter
                                 gdp_lag        = 60L,
                                 model          = c("qa", "umidas"),
+                                recursive_selection = TRUE,          # see backtest_v2.R: FALSE fixes the
+                                                                     # targeted-predictor selection once on the
+                                                                     # FULL sample and forces it at every
+                                                                     # historical as-of, which lets the Wald
+                                                                     # gate see the GDP outcomes of the very
+                                                                     # quarters it then nowcasts.
                                 verbose        = TRUE) {
   model <- match.arg(model)
   t0 <- Sys.time()
@@ -138,12 +147,17 @@ backtest_v2_monthly <- function(panel_rds      = "cache/panel_vintage_latest.rds
   gdp_full$date <- as.Date(gdp_full$date)
   gdp_full <- gdp_full[order(gdp_full$date), ]
 
-  if (verbose) cat("Fixing full-sample targeted-predictor selection...\n")
-  full_sel_res <- build_mai(panel_info_csv = panel_info_csv, gdp_csv = gdp_csv,
-                            out_csv = NULL, out_rds = NULL, verbose_dfm = FALSE)
-  fixed_selection <- full_sel_res$diagnostics$selected
-  cat(sprintf("Fixed selection (%d series): %s\n",
-              length(fixed_selection), paste(fixed_selection, collapse = ", ")))
+  fixed_selection <- NULL
+  if (recursive_selection) {
+    cat("Targeted-predictor selection: RECURSIVE (re-run at every as-of, matches production)\n")
+  } else {
+    if (verbose) cat("Fixing full-sample targeted-predictor selection...\n")
+    full_sel_res <- build_mai(panel_info_csv = panel_info_csv, gdp_csv = gdp_csv,
+                              out_csv = NULL, out_rds = NULL, verbose_dfm = FALSE)
+    fixed_selection <- full_sel_res$diagnostics$selected
+    cat(sprintf("Fixed selection (%d series, LOOK-AHEAD: full-sample): %s\n",
+                length(fixed_selection), paste(fixed_selection, collapse = ", ")))
+  }
 
   # Target quarters: quarter-START first-of-month dates (Jan/Apr/Jul/Oct-01) from
   # start_year, up to one quarter past the last monthly obs.

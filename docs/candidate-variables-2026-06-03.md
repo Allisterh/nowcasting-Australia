@@ -1,5 +1,13 @@
 # Candidate new indicators — panel expansion after the Q1 2026 miss
 
+<!-- POINT-IN-TIME -->
+> **Point-in-time record — 2026-06-03. Not current state.**
+> This document describes what was true when it was written. The model, panel and
+> calibration have changed since; several numbers here are known to be superseded.
+> For current state see `README.md`, and for the 2026-08 fidelity review and its
+> corrections log see `docs/reviews/2026-08-01-v2-intention-and-bug-review.md`.
+
+
 **Date:** 2026-06-03
 **Status:** For review — *please add comments under each series and cross-cutting item.*
 **Author note:** This is a pre-spec worksheet. Once you've annotated it, I'll turn the agreed set into a proper design spec + implementation plan.

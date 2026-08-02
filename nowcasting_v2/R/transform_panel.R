@@ -98,8 +98,15 @@ transform_panel <- function(wide, panel_info,
       cen <- as.numeric(rolling_scale(x = tx, roll_len = rl, center = TRUE, scale = FALSE))
     }
 
-    # Full-sample unit variance
-    s <- stats::sd(cen, na.rm = TRUE)
+    # Full-sample unit variance, RBA-style. Transform_MAI_Data.R:84,87 does
+    #   rolling_scale(center = TRUE,  scale = FALSE)   # rolling demean
+    #   scale(        center = FALSE, scale = TRUE)    # then divide by RMS
+    # With center = FALSE, R's scale() divides by the ROOT-MEAN-SQUARE
+    # sqrt(sum(x^2)/(n-1)), not by sd() -- sd() would re-subtract the residual
+    # mean left over from rolling (not full-sample) centring. They differ
+    # whenever that residual mean is non-zero, which for rolling centring it is.
+    nz <- sum(!is.na(cen))
+    s  <- sqrt(sum(cen^2, na.rm = TRUE) / (nz - 1L))
     if (is.na(s) || s == 0) stop(sprintf("transform_panel(): %s zero variance\n", id))
     z <- cen / s
 

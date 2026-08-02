@@ -1,5 +1,13 @@
 # Overnight report — 2026-06-10 → 06-11
 
+<!-- POINT-IN-TIME -->
+> **Point-in-time record — 2026-06-11. Not current state.**
+> This document describes what was true when it was written. The model, panel and
+> calibration have changed since; several numbers here are known to be superseded.
+> For current state see `README.md`, and for the 2026-08 fidelity review and its
+> corrections log see `docs/reviews/2026-08-01-v2-intention-and-bug-review.md`.
+
+
 Morning, James. Summary of the night's work. Two things went **live** (you authorised them); the **v2 cutover is built, tested, and staged for your approval** — it is *not* live and is *not* yet mergeable (the visual UI is specified but intentionally not hand-built; see §4).
 
 ---

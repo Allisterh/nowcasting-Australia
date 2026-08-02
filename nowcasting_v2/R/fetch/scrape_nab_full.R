@@ -311,10 +311,61 @@ fetch_nab_full <- function(dest_dir = "data_raw",
   dir.create(dest_dir, recursive = TRUE, showWarnings = FALSE)
   for (id in names(res$series)) {
     df <- res$series[[id]]
-    if (!is.null(df) && nrow(df) > 0)
-      write_csv(df, file.path(dest_dir, paste0(id, ".csv")))
+    if (is.null(df) || nrow(df) == 0L) next
+    .merge_write_series(df, file.path(dest_dir, paste0(id, ".csv")), id)
   }
   invisible(res)
+}
+
+#' Merge freshly-parsed rows into an existing series CSV and write it back.
+#'
+#' This function exists because the previous behaviour was a bare write_csv() of
+#' whatever this run happened to parse. `assemble_nab_full()` builds its series
+#' ONLY from the PDFs available to this run -- typically the ~40 months of
+#' fixtures -- while the committed CSVs carry the full history (nab_conf starts
+#' 1997-03, 348 months). So a single run silently truncated 25 years of survey
+#' history, and CI's `git add nowcasting_v2/data_raw/` committed the loss. Only
+#' nab_conf had a downstream tripwire (emit_v2_json.R's nab_n < 120 check), and
+#' that fires *after* the other seven series are already destroyed.
+#'
+#' Behaviour: union on date, freshly-parsed values win on collision, and the
+#' result can never be shorter than what was already on disk.
+.merge_write_series <- function(new_df, path, id) {
+  new_df <- new_df[!is.na(new_df$date), , drop = FALSE]
+  new_df$date <- as.Date(new_df$date)
+
+  if (!file.exists(path)) {
+    write_csv(new_df[order(new_df$date), ], path)
+    cat(sprintf("  %-12s wrote %d rows (new file)\n", id, nrow(new_df)))
+    return(invisible(NULL))
+  }
+
+  old <- tryCatch(readr::read_csv(path, show_col_types = FALSE),
+                  error = function(e) NULL)
+  if (is.null(old) || !all(c("date", "value") %in% names(old))) {
+    stop(sprintf(paste("fetch_nab_full(): existing %s is unreadable or malformed.",
+                       "Refusing to overwrite it -- inspect it by hand.\n"), path),
+         call. = FALSE)
+  }
+  old$date <- as.Date(old$date)
+  old <- old[!is.na(old$date), , drop = FALSE]
+
+  keep   <- old[!(old$date %in% new_df$date), c("date", "value"), drop = FALSE]
+  merged <- rbind(keep, new_df[, c("date", "value"), drop = FALSE])
+  merged <- merged[order(merged$date), , drop = FALSE]
+
+  # A merge is a union, so it cannot shrink. If it has, something upstream is
+  # wrong (duplicate collapsing, a date-parse failure) and we must not persist it.
+  if (nrow(merged) < nrow(old)) {
+    stop(sprintf(paste("fetch_nab_full(): merging %s would shrink it from %d to %d rows.",
+                       "Refusing to write. This should be impossible -- check date parsing.\n"),
+                 id, nrow(old), nrow(merged)), call. = FALSE)
+  }
+
+  write_csv(merged, path)
+  cat(sprintf("  %-12s %d rows on disk + %d parsed -> %d (%+d)\n",
+              id, nrow(old), nrow(new_df), nrow(merged), nrow(merged) - nrow(old)))
+  invisible(NULL)
 }
 
 if (sys.nframe() == 0 && !interactive()) {

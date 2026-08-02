@@ -1,15 +1,48 @@
 {
-  "basis": "post-COVID (target quarter >= 2022-01-01)",
-  "factor_count": 1,
-  "n": 17,
-  "qoq_bias_pp": 0.2006,
-  "qoq_sd_pp": 0.3528,
-  "qoq_rmse_pp": 0.3967,
-  "z_68": 1,
-  "z_95": 1.96,
-  "method": "bias-aware: interval centred on (forecast - bias), half-width z*sd",
-  "source": "../nowcasting_v2/cache/ci_recalib/qa_a05_acc.csv",
-  "computed_at": "2026-06-11T18:10:44Z",
+  "schema": "v2-ci-by-stage-1",
+  "basis": "empirical pseudo-out-of-sample error dispersion, by within-quarter information stage (jt = n_months_in_quarter); post-COVID target quarters only (>= 2022-01-01). Pre-2020 errors are significantly tighter (F=2.97, p<0.0001) so pooling them would understate current uncertainty.",
+  "calibrated_from": "2022-01-01",
+  "method": "interval = point - bias_applied +/- t(df) * sd, where bias_applied is 0 unless the stage's bias is significant at the 5% level. Stages with fewer than MIN_N observations fall back to `pooled`.",
+  "min_n": 12,
+  "bias_alpha": 0.05,
+  "pooled": {
+    "n": 38,
+    "qoq_bias_pp": 0.2291,
+    "bias_t": 2.425,
+    "bias_significant": true,
+    "qoq_bias_applied_pp": 0.2291,
+    "qoq_sd_pp": 0.5824,
+    "qoq_rmse_pp": 0.6187,
+    "t_68": 1.0137,
+    "t_95": 2.0262
+  },
+  "by_jt": {
+    "2": {
+      "n": 17,
+      "qoq_bias_pp": 0.1807,
+      "bias_t": 1.386,
+      "bias_significant": false,
+      "qoq_bias_applied_pp": 0,
+      "qoq_sd_pp": 0.5377,
+      "qoq_rmse_pp": 0.5521,
+      "t_68": 1.0322,
+      "t_95": 2.1199,
+      "stage": 2
+    },
+    "3": {
+      "n": 17,
+      "qoq_bias_pp": 0.162,
+      "bias_t": 1.238,
+      "bias_significant": false,
+      "qoq_bias_applied_pp": 0,
+      "qoq_sd_pp": 0.5398,
+      "qoq_rmse_pp": 0.5482,
+      "t_68": 1.0322,
+      "t_95": 2.1199,
+      "stage": 3
+    }
+  },
   "model": "qa_a05 (dfm_q=1)",
-  "dfm_q": 1
+  "source": "cache/ci_recalib/qa_a05_acc.csv",
+  "computed_at": "2026-08-02T05:47:51Z"
 }

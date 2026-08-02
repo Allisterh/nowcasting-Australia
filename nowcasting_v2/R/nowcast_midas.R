@@ -95,12 +95,30 @@ nowcast_midas <- function(mai, gdp_growth, as_of = NULL, prev_level = NULL,
   # Quarter-end label of the latest MAI month:
   last_mai_q <- .quarter_label(max(m$date))
 
-  if (last_mai_q <= last_gdp_q) {
-    # MAI doesn't yet reach beyond released GDP. Target the quarter AFTER last GDP
-    # and rely on whatever (possibly zero) MAI months exist for it; if none, fail loud.
-    target_q <- seq(last_gdp_q, by = "3 months", length.out = 2L)[2L]
-  } else {
-    target_q <- last_mai_q
+  # The target is ALWAYS the quarter after the last released GDP -- that is what
+  # "first quarter with MAI data but no released GDP" means, and it does not depend
+  # on how far the MAI happens to reach.
+  #
+  # The previous implementation took `last_mai_q` whenever the MAI edge ran past
+  # released GDP. That silently skipped a whole quarter: the MAI crosses into a new
+  # quarter as soon as ONE selected series publishes a single month (the yield block
+  # has a 2-day lag), which happens roughly four weeks BEFORE the previous quarter's
+  # GDP is released. The model would abandon the complete-but-unreleased quarter,
+  # publish a 1-month nowcast of the quarter after it, and never nowcast the skipped
+  # quarter again -- so it also never got a final vintage for the track record.
+  #
+  # MAI months beyond the target quarter are simply not used: `target_months` below
+  # filters to the target quarter, so a longer MAI raises nothing but jt's ceiling.
+  target_q <- seq(last_gdp_q, by = "3 months", length.out = 2L)[2L]
+
+  # If the MAI runs more than one quarter past the target, the GDP series is almost
+  # certainly stale rather than the MAI being early -- e.g. fetch_rt_gdp.R did not
+  # run, so we are nowcasting a quarter whose GDP was released some time ago.
+  if (last_mai_q > seq(target_q, by = "3 months", length.out = 2L)[2L]) {
+    warning(sprintf(paste("nowcast_midas(): MAI reaches %s but target quarter is %s --",
+                          "released GDP ends %s. Is data_raw/rt_dgdp_qtr.csv stale?"),
+                    as.character(last_mai_q), as.character(target_q),
+                    as.character(last_gdp_q)), call. = FALSE)
   }
 
   # MAI months belonging to the target quarter (the "x_new" partial months).

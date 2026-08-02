@@ -22,9 +22,13 @@ function formatLatestValue(value: number, unit: string): string {
     case "persons":
     case "000s persons":
       return `${value.toLocaleString("en-AU", { maximumFractionDigits: 1 })}k`;
-    case "hours (thousands)":
+    // Thousands of hours — see the note in lib/format.ts. Scale for display so
+    // the number carries a unit a reader can parse.
+    case "hours (thousands)": {
+      if (value >= 1_000_000) return `${(value / 1_000_000).toFixed(2)}bn hrs`;
+      if (value >= 1000) return `${(value / 1000).toFixed(1)}m hrs`;
       return `${Math.round(value).toLocaleString("en-AU")}k hrs`;
-    case "mn hours":
+    }
     case "dwellings":
     case "count":
       return Math.round(value).toLocaleString("en-AU");

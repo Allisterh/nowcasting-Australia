@@ -76,6 +76,32 @@ build_panel <- function(panel_info_csv = "seed/panel_info.csv",
                  paste(ids[allna], collapse = ", ")), call. = FALSE)
   }
 
+  # Length-regression guard. The all-NA check above catches a series that
+  # vanished entirely, but not one that got TRUNCATED -- e.g. a scraper rewriting
+  # a CSV from only the months it could parse this run, which is exactly how
+  # fetch_nab_full() used to destroy 25 years of NAB history. Compare each series'
+  # observation count against the previous panel vintage and refuse to persist a
+  # material shrink. Set NOWCAST_ALLOW_PANEL_SHRINK=1 to override deliberately
+  # (e.g. when a series is legitimately being retired).
+  if (file.exists(out_rds) && !nzchar(Sys.getenv("NOWCAST_ALLOW_PANEL_SHRINK"))) {
+    prev <- tryCatch(readRDS(out_rds), error = function(e) NULL)
+    if (!is.null(prev)) {
+      shared <- intersect(ids, setdiff(names(prev), "date"))
+      n_now  <- vapply(wide[, shared, drop = FALSE], function(x) sum(!is.na(x)), integer(1))
+      n_was  <- vapply(prev[, shared, drop = FALSE], function(x) sum(!is.na(x)), integer(1))
+      # Tolerate small dips (a revision withdrawing a month); flag real losses.
+      lost <- shared[n_now < n_was - 2L]
+      if (length(lost) > 0L) {
+        stop(sprintf(paste("build_panel(): %d series lost observations vs the previous vintage:\n  %s\n",
+                           "This usually means a fetcher rewrote a CSV from a partial parse.",
+                           "Inspect data_raw/ before proceeding; set NOWCAST_ALLOW_PANEL_SHRINK=1 to force.\n"),
+                     length(lost),
+                     paste(sprintf("%s %d -> %d", lost, n_was[lost], n_now[lost]), collapse = "\n  ")),
+             call. = FALSE)
+      }
+    }
+  }
+
   dir.create(dirname(out_rds), showWarnings = FALSE, recursive = TRUE)
   saveRDS(wide, out_rds)
 

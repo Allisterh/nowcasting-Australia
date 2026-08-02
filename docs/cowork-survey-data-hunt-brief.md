@@ -1,5 +1,13 @@
 # Claude Cowork brief — hunt long-history AU survey data (media releases / PDFs)
 
+<!-- POINT-IN-TIME -->
+> **Point-in-time record — 2026-06-11. Not current state.**
+> This document describes what was true when it was written. The model, panel and
+> calibration have changed since; several numbers here are known to be superseded.
+> For current state see `README.md`, and for the 2026-08 fidelity review and its
+> corrections log see `docs/reviews/2026-08-01-v2-intention-and-bug-review.md`.
+
+
 **Hand this to a Claude Cowork session (browser + file tools).** Goal: build the longest, cleanest possible **monthly history** for Australia's business- and consumer-survey indicators by locating and extracting their **media-release PDFs/web pages** — because these series are not published as free downloadable CSVs, but their headline numbers appear in public monthly/quarterly releases (and archives).
 
 ## Why this matters

@@ -1,5 +1,13 @@
 # Nowcast v2 (RBA MAI+MIDAS) — build log
 
+<!-- POINT-IN-TIME -->
+> **Point-in-time record — 2026-06-11. Not current state.**
+> This document describes what was true when it was written. The model, panel and
+> calibration have changed since; several numbers here are known to be superseded.
+> For current state see `README.md`, and for the 2026-08 fidelity review and its
+> corrections log see `docs/reviews/2026-08-01-v2-intention-and-bug-review.md`.
+
+
 **Branch:** nowcast-v2 (NOT pushed). **Plan:** docs/superpowers/plans/2026-06-04-nowcast-v2-rba-mai-midas.md
 **Rule:** sandbox under nowcasting_v2/ only; NO production touch; NO autonomous Phase-6 cutover.
 

@@ -14,11 +14,13 @@ dir.create("cache/ci_recalib", recursive = TRUE, showWarnings = FALSE)
 cat("\n==== QA (qa_a05) backtest under ACCURATE historical lags (MHSI=35) ====\n")
 backtest_v2(out_csv = "cache/ci_recalib/qa_a05_acc.csv",
             model = "qa", sel_alpha = 0.05, dfm_q = 1L, qa_lag = 0L:1L,
-            exclude_ids = c(AIG, "rt"), lag_fn = .lag_acc, verbose = FALSE)
+            exclude_ids = c(AIG, "rt"), lag_fn = .lag_acc, verbose = FALSE,
+            as_of_freq = "weekly")
 
 cat("\n==== UMIDAS (umidas_a20) backtest under ACCURATE historical lags (MHSI=35) ====\n")
 backtest_v2(out_csv = "cache/ci_recalib/umidas_a20_acc.csv",
             model = "umidas", sel_alpha = 0.20, dfm_q = 1L, qa_lag = 0L:1L,
-            exclude_ids = c(AIG, "rt"), lag_fn = .lag_acc, verbose = FALSE)
+            exclude_ids = c(AIG, "rt"), lag_fn = .lag_acc, verbose = FALSE,
+            as_of_freq = "weekly")
 
 cat("\n==== done. CSVs in cache/ci_recalib/ ====\n")
