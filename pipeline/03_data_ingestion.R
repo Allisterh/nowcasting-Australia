@@ -230,6 +230,25 @@ fetch_all_abs_indicators <- function(use_cache = TRUE,
     }
   }
 
+  # Halt if any expected indicator is missing, rather than nowcasting on a
+  # smaller panel. fetch_abs_indicator() swallows every fetch error into a
+  # warning and returns NULL, and the loop above simply skips a NULL — so an ABS
+  # URL change silently drops (say) employment, build_master_dataset produces a
+  # 12-column panel, estimate_dfm sizes its blocks off ncol() and estimates
+  # happily, and a plausible-looking but wrong number reaches the site. Nothing
+  # downstream compares the count to what was expected. 03b_fetch_fred_data.R
+  # already guards this way; the ABS path did not.
+  expected_ids <- indicators$indicator_id[!is.na(indicators$abs_series_id)]
+  missing_ids  <- setdiff(expected_ids, names(indicator_data))
+  if (length(missing_ids) > 0L) {
+    stop(glue(
+      "ABS fetch incomplete: got {length(indicator_data)} of {length(expected_ids)} indicators. ",
+      "Missing: {paste(missing_ids, collapse = ', ')}. ",
+      "Refusing to build a master dataset with fewer series than configured — ",
+      "the model would estimate on the smaller panel without complaint."
+    ))
+  }
+
   message(glue("\n✓ Fetched {length(indicator_data)} indicators"))
 
   return(indicator_data)
