@@ -126,12 +126,14 @@ nowcast_midas <- function(mai, gdp_growth, as_of = NULL, prev_level = NULL,
   jt <- nrow(target_months)
   if (jt > mt) stop("nowcast_midas(): more than 3 MAI months in target quarter (bad alignment).\n",
                     call. = FALSE)
-  # jt == 0 is the brief post-GDP-release / pre-new-monthly-data window (MAI and
-  # released GDP end on the same quarter). We still nowcast the NEXT quarter as a
-  # pure 1-step-ahead forecast: with no within-quarter MAI yet, the QA model's
-  # contemporaneous quarter-average is set to the LAST OBSERVED quarter-average
-  # (random-walk-in-level extrapolation of the MAI). This is the only adaptation
-  # of the RBA QA path; logged below and surfaced via n_months_in_quarter = 0.
+  # jt == 0 is the brief post-GDP-release / pre-new-monthly-data window. It is
+  # handled by the paper's FC model (U-MIDAS with no within-quarter input), which
+  # per-stage dispatch now routes to -- the previous random-walk substitution into
+  # the QA regression was an unbacktested adaptation and has been removed.
+  # In production jt is only ever 2 or 3: ABS releases GDP ~60 days after
+  # quarter-end, i.e. two months into the next quarter, so a target quarter always
+  # has >= 2 months of MAI by the time it becomes the target. Verified across 678
+  # backtest nowcasts, zero at jt = 0.
 
   # ---- Build the estimation sample honouring the data contract ----
   # Estimation must use only COMPLETE quarters that also have released GDP. Drop the
@@ -185,7 +187,27 @@ nowcast_midas <- function(mai, gdp_growth, as_of = NULL, prev_level = NULL,
   if (length(x_est) != mt * length(y_est))
     stop("nowcast_midas(): length(x_est) != 3*length(y_est) after windowing.\n", call. = FALSE)
 
-  if (identical(model, "qa")) {
+  # PER-STAGE DISPATCH (RBA Recursive_Nowcast_GDP_UMIDAS_TP.R:206-233).
+  #
+  # The paper builds FIVE models, one per within-quarter information stage: FC/M1/
+  # M2/M3 are unrestricted U-MIDAS at k = (k1 - jt):k2, and QA is a flat-weighted
+  # quarter average. Its QA block runs AFTER the jt loop, so x_new is the jt=3
+  # vector -- QA is only ever evaluated on a COMPLETE quarter, and the paper calls
+  # it "similar to M3".
+  #
+  # v2 used QA at every stage, feeding a 1-2 month mean into coefficients fitted
+  # exclusively on 3-month means (xm_est below). Measured at jt=2 (post-COVID,
+  # n=17): QA RMSE 0.6009 / bias +0.4509 against U-MIDAS 0.5025 / +0.3821 -- 16%
+  # and 15% better. Paired test p=0.10, so suggestive rather than conclusive on
+  # this n, but consistent in direction, and at jt=3 the two are near-identical
+  # (0.4464 vs 0.4309) exactly as the paper implies. Fidelity and accuracy agree,
+  # so `model = "qa"` now means "the paper's QA when the quarter is complete,
+  # its per-stage U-MIDAS otherwise".
+  #
+  # `model = "umidas"` still forces U-MIDAS at every stage, for sweeps.
+  use_qa <- identical(model, "qa") && jt >= mt
+
+  if (use_qa) {
     # ---- QA U-MIDAS: fit + nowcast (RBA Recursive_Nowcast lines 226-233) ----
     # In-sample quarter-averages of the MAI, with one lag (k=0:1) to mirror a
     # U-MIDAS with flat coefficients over the within-quarter months.
@@ -193,32 +215,10 @@ nowcast_midas <- function(mai, gdp_growth, as_of = NULL, prev_level = NULL,
     qa_md <- midas_r(formula = y_est ~ mls(x = xm_est, k = qa_lag, m = 1L),
                      data = list(y_est = y_est, xm_est = xm_est), start = NULL)
 
-    # Partial-quarter average for the target quarter (the live edge). When jt == 0
-    # there is no within-quarter MAI yet, so extrapolate with the last observed
-    # quarter-average (random-walk-in-level); see note above.
-    if (jt >= 1L) {
-      nxm <- mean(target_months$value, na.rm = TRUE)
-    } else {
-      # jt == 0 is NOT the paper's method. RDP 2024-04 has no such estimator: for
-      # a quarter with no monthly data it uses the FC (pure forecast) U-MIDAS
-      # model, not a random-walk substitution into the QA regression. This branch
-      # has never been backtested and its output carries no calibrated interval.
-      #
-      # It should also be unreachable in production: ABS releases GDP ~60 days
-      # after quarter-end, i.e. two months into the next quarter, so a target
-      # quarter always has at least two months of MAI by the time it becomes the
-      # target. Verified across the full 2012-2026 weekly backtest -- 678 nowcasts,
-      # zero at jt=0. It stays reachable only because backtest_v2_monthly.R forces
-      # it via include_jt0=TRUE.
-      #
-      # warning() not cat(), so it surfaces in CI logs rather than scrolling past.
-      nxm <- as.numeric(tail(xm_est, 1L))
-      warning(sprintf(paste("nowcast_midas(): jt=0 for %s -- no MAI months in the target quarter.",
-                            "Falling back to the last observed quarter-average (%.4f) as a",
-                            "random-walk substitute. This is NOT the RBA method, is unbacktested,",
-                            "and should not occur in production."),
-                      .quarter_name(target_q), nxm), call. = FALSE)
-    }
+    # jt == mt here by construction (see the dispatch note above), so this is the
+    # complete-quarter average the paper's QA expects -- never a partial mean.
+    nxm <- mean(target_months$value, na.rm = TRUE)
+
     qa_fc <- forecast(object = qa_md, newdata = list(xm_est = c(nxm)),
                       se = FALSE, method = "static", add_ts_info = FALSE)
     qoq_growth <- as.numeric(qa_fc$mean)
@@ -236,8 +236,9 @@ nowcast_midas <- function(mai, gdp_growth, as_of = NULL, prev_level = NULL,
     if (jtf >= 1L) {
       x_new <- as.numeric(target_months$value)
     } else {
-      # jt==0: no within-quarter data; pure 1-step-ahead. RW-extrapolate the
-      # contemporaneous month from the last observed monthly MAI value.
+      # jt==0: no within-quarter data. This is the paper's FC model -- k = k1:k2
+      # uses only PRIOR-quarter MAI months, so the three contemporaneous slots are
+      # all NA and nothing is extrapolated into them.
       x_new <- numeric(0)
       cat(sprintf("nowcast_midas(): jt=0 (no MAI months yet for %s); U-MIDAS uses k=(k1):k2 with no within-quarter input (1-step-ahead).\n",
                   .quarter_name(target_q)))

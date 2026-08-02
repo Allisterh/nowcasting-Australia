@@ -43,9 +43,12 @@ export default function MethodologyPanel() {
             arrive, and the selection is re-run with them.
           </p>
           <p>
-            The estimate uses the paper&rsquo;s own targeted-predictor selection threshold and a
-            quarter-average U-MIDAS regression, so it is tuned for a complete quarter of monthly
-            data rather than for fast reaction to a single release.
+            The estimate uses the paper&rsquo;s own targeted-predictor selection threshold, and
+            follows it in fitting a separate regression for each stage of the quarter. Once all
+            three months of a quarter are in hand it uses the paper&rsquo;s quarter-average model;
+            earlier in the quarter, when only one or two months exist, it uses the paper&rsquo;s
+            corresponding partial-quarter model instead. Either way the model is tuned for the
+            accumulated run of monthly data rather than for fast reaction to a single release.
           </p>
           <p>
             The likely ranges are derived from the model&rsquo;s out-of-sample backtest errors: we

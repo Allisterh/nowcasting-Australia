@@ -139,10 +139,17 @@ export interface V2Model {
   ci_95_low: number;
   ci_95_high: number;
   n_months_in_quarter: number;
+  // Which of the paper's per-stage models produced this figure: "QA-UMIDAS" on a
+  // complete quarter, "UMIDAS-full" below it. Optional — vintages emitted before
+  // per-stage dispatch (840e636) predate the field.
+  estimator?: string;
   ci_basis: string;
   ci_n: number;
   ci_sd_pp: number;
   ci_bias_pp: number;
+  // Which information stage's CI params were used ("pooled" if this stage was too
+  // thin to calibrate). Optional for the same reason.
+  ci_stage?: number | string;
 }
 
 export interface LatestV2 {

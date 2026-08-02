@@ -189,6 +189,10 @@ emit_v2_json <- function(repo_root = "..", mondays = NULL, rebuild_vintages = FA
          yoy_growth_pct = round(.compute_yoy(gdpt, qoq_adj), 2),
          ci_68_low = b68$low, ci_68_high = b68$high, ci_95_low = b95$low, ci_95_high = b95$high,
          n_months_in_quarter = nc$n_months_in_quarter,
+         # which of the paper's per-stage models actually produced this figure:
+         # "QA-UMIDAS" on a complete quarter, "UMIDAS-full" below it. The name
+         # above is the family; this is the specific estimator on the day.
+         estimator = nc$model,
          ci_basis = ci$basis, ci_n = cp$n, ci_sd_pp = cp$sd_pp, ci_bias_pp = cp$bias_pp,
          # which information stage's params were used ("pooled" if this stage was
          # too thin to calibrate; "flat" for legacy params). Surfaced so the site
@@ -212,7 +216,7 @@ emit_v2_json <- function(repo_root = "..", mondays = NULL, rebuild_vintages = FA
   dt_m   <- format(max(wide_m$date[has_any]), "%Y-%m")
   cat(sprintf("[as_of %s] data through %s\n", latest_m, dt_m))
 
-  qa       <- mk(tfs_m, gdp_m, "v2_qa_a10", "MAI to QA U-MIDAS (precision)", 0.10, "qa", CI_QA)
+  qa       <- mk(tfs_m, gdp_m, "v2_qa_a10", "MAI to per-stage U-MIDAS", 0.10, "qa", CI_QA)
   headline <- qa
   data_through <- dt_m
 
@@ -241,7 +245,7 @@ emit_v2_json <- function(repo_root = "..", mondays = NULL, rebuild_vintages = FA
       tfs_i    <- transform_panel(wide_i, "seed/panel_info.csv")
       ids_i    <- setdiff(names(wide_i), "date")
       has_i    <- rowSums(!is.na(as.matrix(wide_i[, ids_i]))) > 0
-      qa_i     <- mk(tfs_i, gdp_i, "v2_qa_a10", "MAI to QA U-MIDAS (precision)", 0.10, "qa", CI_QA)
+      qa_i     <- mk(tfs_i, gdp_i, "v2_qa_a10", "MAI to per-stage U-MIDAS", 0.10, "qa", CI_QA)
       cat(sprintf("  [as_of %s] %s QoQ %+.2f%%\n", m_i, qa_i$target_quarter, qa_i$qoq_growth_pct))
       vlog[[length(vlog) + 1L]] <- list(
         run_date = m_i, target_quarter = qa_i$target_quarter,

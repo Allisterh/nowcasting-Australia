@@ -56,6 +56,21 @@ Two-track review of the Australian GDP nowcast repo.
 | DFM2 anchors on column order, not highest Wald | **fixed** | `3b0ba8e` |
 | Standardisation divides by sd, paper uses RMS | **fixed** | `3b0ba8e` |
 | GDP look-ahead in `build_mai`'s Wald selection | **fixed** | `3b0ba8e` |
+| Selection threshold α=0.05, paper uses 0.10 | **fixed** (re-tested; claimed edge was 87% artefact) | `185ee3e` |
+| Bias correction applied at all (paper applies none) | **fixed** (measured and reported, never applied) | `185ee3e` |
+| Volatility/stress model, front and back | **removed** (not in the paper) | `961acba` |
+| Headline QA fed partial-quarter means | **fixed** (per-stage dispatch; QA only at jt=3) | `840e636` |
+
+Two deviations from the paper are accepted and documented rather than fixed:
+
+- **Latest-vintage GDP in backtests.** The paper backtests against real-time GDP
+  vintages. We use the latest vintage because real-time vintages for the relevant
+  quarters are not obtainable. This flatters backtest accuracy by an unknown but
+  probably small amount, and is disclosed on the site.
+- **q = 1, s = 2, p = 1 carried from the paper.** Re-derived on our own panel via
+  `R/determine_spec_v2.R`; the paper's spec-determination script needs ~30 targeted
+  predictors and our selection is ~5-9, so its factor-number criteria are unreliable
+  here. See that script's header for the forced adaptations.
 
 Everything else in this document is still open.
 
@@ -438,6 +453,15 @@ which is v2's own construct rather than a claim about the paper.
 
 
 #### 🟠 high · Headline QA nowcast feeds PARTIAL-quarter MAI means; paper's QA model is full-quarter only
+
+> **FIXED 2026-08-02 in `840e636`.** `nowcast_midas()` now routes by information
+> stage: the paper's QA at `jt = 3`, its per-stage U-MIDAS below. The finding below
+> stands as written and the reasoning was confirmed against the paper's source.
+> Adoption was not on fidelity alone — measured post-COVID at `jt = 2` (n=17), the
+> paper's M2 beat partial-QA on RMSE 0.5025 vs 0.6009 and on bias +0.3821 vs
+> +0.4509, while at `jt = 3` the two are near-identical, exactly as the paper
+> implies. CI bands were recalibrated afterwards, since the shipped `jt = 2` band
+> had been measured on partial-QA errors.
 
 `nowcasting_v2/R/nowcast_midas.R:181` · fidelity · finder confidence: high
 
