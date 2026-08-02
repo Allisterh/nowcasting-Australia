@@ -48,9 +48,16 @@ export function formatRawChange(delta: number, unit: string): string {
       if (abs >= 1000) return `${sign}${(abs / 1000).toFixed(1)}m`;
       return `${sign}${abs.toFixed(1)}k`;
     }
-    case "hours (thousands)":
+    // ABS 6202.0 hours worked is reported in THOUSANDS of hours (~2,014,000 =
+    // ~2.01bn hours a month nationally). indicators_v2.json used to label it
+    // "mn hours" and fall through to the bare-number case below, so the page
+    // rendered "2,014,342" against a millions-of-hours label — out by 1000x.
+    // The unit string is now "hours (thousands)" everywhere; scale it for display.
+    case "hours (thousands)": {
+      if (abs >= 1_000_000) return `${sign}${(abs / 1_000_000).toFixed(2)}bn hrs`;
+      if (abs >= 1000) return `${sign}${(abs / 1000).toFixed(1)}m hrs`;
       return `${sign}${abs.toFixed(0)}k hrs`;
-    case "mn hours":
+    }
     case "dwellings":
     case "count":
       return `${sign}${Math.round(abs).toLocaleString("en-AU")}`;

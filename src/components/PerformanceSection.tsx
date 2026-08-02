@@ -21,8 +21,16 @@ export default function PerformanceSection({ performance, isBacktest = false }: 
   return (
     <section className="mb-10">
       <p className="font-headline text-3xl text-black mb-2">
-        Track record
+        {isBacktest ? "Track record (simulated)" : "Track record"}
       </p>
+      {isBacktest && (
+        <p className="text-xs text-label mb-3">
+          <strong>These are backtested estimates, not live nowcasts.</strong> The model was re-run
+          over past quarters using only the data that had been published at the time, to give it a
+          track record before it had accumulated one. No figure below was actually produced on the
+          day. See <code>data/backcasts.json</code> for the underlying runs.
+        </p>
+      )}
       <div className="grid grid-cols-3 gap-3 mb-4">
         <Tile label="MAE" value={`${performance.mae_pct.toFixed(2)}% of GDP`} sub={formatMillions(performance.mae_millions)} />
         <Tile
@@ -54,7 +62,7 @@ export default function PerformanceSection({ performance, isBacktest = false }: 
         <thead>
           <tr className="border-b border-border-heavy text-left text-[10px] uppercase text-label">
             <th className="py-2">Quarter</th>
-            <th className="py-2">Final nowcast</th>
+            <th className="py-2">{isBacktest ? "Simulated nowcast" : "Final nowcast"}</th>
             <th className="py-2">Actual</th>
             <th className="py-2">Error ($M)</th>
             <th className="py-2">Error (%)</th>
