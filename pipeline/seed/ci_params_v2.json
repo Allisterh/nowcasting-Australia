@@ -7,24 +7,24 @@
   "bias_alpha": 0.05,
   "pooled": {
     "n": 36,
-    "qoq_bias_pp": 0.3992,
-    "bias_t": 6.048,
+    "qoq_bias_pp": 0.3596,
+    "bias_t": 6.978,
     "bias_significant": true,
     "qoq_bias_applied_pp": 0,
-    "qoq_sd_pp": 0.396,
-    "qoq_rmse_pp": 0.5584,
+    "qoq_sd_pp": 0.3092,
+    "qoq_rmse_pp": 0.4714,
     "t_68": 1.0145,
     "t_95": 2.0301
   },
   "by_jt": {
     "2": {
       "n": 17,
-      "qoq_bias_pp": 0.4509,
-      "bias_t": 4.541,
+      "qoq_bias_pp": 0.3821,
+      "bias_t": 4.683,
       "bias_significant": true,
       "qoq_bias_applied_pp": 0,
-      "qoq_sd_pp": 0.4094,
-      "qoq_rmse_pp": 0.6009,
+      "qoq_sd_pp": 0.3364,
+      "qoq_rmse_pp": 0.5025,
       "t_68": 1.0322,
       "t_95": 2.1199,
       "stage": 2
@@ -44,5 +44,5 @@
   },
   "model": "qa_a10 (dfm_q=1)",
   "source": "cache/ci_recalib/qa_a10_acc.csv",
-  "computed_at": "2026-08-02T11:49:13Z"
+  "computed_at": "2026-08-02T13:12:52Z"
 }

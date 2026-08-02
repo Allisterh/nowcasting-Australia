@@ -12,7 +12,7 @@
   "models": {
     "headline": {
       "model_id": "v2_qa_a10",
-      "model_name": "MAI to QA U-MIDAS (precision)",
+      "model_name": "MAI to per-stage U-MIDAS",
       "target_quarter": "2026 Q2",
       "gdp_chain_volume_millions": 699217,
       "qoq_growth_pct": 0.47,
@@ -23,6 +23,7 @@
       "ci_95_low": 694809,
       "ci_95_high": 703625,
       "n_months_in_quarter": 3,
+      "estimator": "QA-UMIDAS",
       "ci_basis": "empirical pseudo-out-of-sample error dispersion, by within-quarter information stage (jt = n_months_in_quarter); post-COVID target quarters only (>= 2022-01-01). Pre-2020 errors are significantly tighter (F=2.97, p<0.0001) so pooling them would understate current uncertainty.",
       "ci_n": 17,
       "ci_sd_pp": 0.2988,
@@ -34,25 +35,25 @@
     {
       "run_date": "2026-06-01",
       "target_quarter": "2026 Q2",
-      "point": 696605,
-      "qoq_growth_pct": 0.09,
+      "point": 698408,
+      "qoq_growth_pct": 0.35,
       "days_until_release": -93,
-      "ci_68_low": 693664,
-      "ci_68_high": 699546,
-      "ci_95_low": 690565,
-      "ci_95_high": 702645,
+      "ci_68_low": 695992,
+      "ci_68_high": 700825,
+      "ci_95_low": 693445,
+      "ci_95_high": 703371,
       "data_through": "2026-05"
     },
     {
       "run_date": "2026-06-08",
       "target_quarter": "2026 Q2",
-      "point": 696618,
-      "qoq_growth_pct": 0.1,
+      "point": 698416,
+      "qoq_growth_pct": 0.36,
       "days_until_release": -86,
-      "ci_68_low": 693677,
-      "ci_68_high": 699559,
-      "ci_95_low": 690578,
-      "ci_95_high": 702658,
+      "ci_68_low": 696000,
+      "ci_68_high": 700833,
+      "ci_95_low": 693453,
+      "ci_95_high": 703379,
       "data_through": "2026-05"
     },
     {
@@ -148,5 +149,10 @@
     "gdp_chain_volume_millions": 700066,
     "source": "data/latest.json"
   },
-  "note": "STAGED v2 emit (parallel to live latest.json). Monday cadence; headline = latest Monday. Pending James approval."
+  "note": "STAGED v2 emit (parallel to live latest.json). Monday cadence; headline = latest Monday. Pending James approval.",
+  "data_updates": {
+    "run_date": "2026-07-27",
+    "nowcast_delta_pp": 0.0,
+    "series": []
+  }
 }
