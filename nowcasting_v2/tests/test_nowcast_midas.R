@@ -7,14 +7,13 @@
 # The pinned slice (as_of = 2019-08-15) lands mid-quarter (M2 of 2019 Q3) so it
 # exercises the partial-quarter QA path (jt = 2), the headline live behaviour.
 #
-# Ragged-edge regression guard (added with the MAI partial-quarter fix): two extra
-# slices pin jt = 1 (as_of = 2019-04-20, only M1 of 2019 Q2) and jt = 2
-# (as_of = 2019-05-20, M1+M2 of 2019 Q2) and assert that BOTH use the *partial-
-# quarter mean* of the available MAI months as the QA contemporaneous input -- NOT
-# the random-walk last-quarter-average fallback (which is reserved for jt = 0).
-# We verify this by reconstructing nxm = mean(available target-quarter MAI months)
-# directly from the public MAI and confirming it differs from the jt=0 RW value
-# (the prior complete quarter's average), i.e. the fix is actually exercised.
+# Per-stage dispatch guard (2026-08-02): two extra slices pin jt = 1
+# (as_of = 2019-04-20) and jt = 2 (as_of = 2019-05-20) and assert BOTH route to
+# the paper's per-stage U-MIDAS rather than to QA. RDP 2024-04 evaluates QA only
+# on a COMPLETE quarter -- its QA block runs after the jt loop, so x_new is the
+# jt=3 vector. Feeding QA a 1-2 month mean, as v2 previously did, puts a regressor
+# into the model that its coefficients were never fitted on; measured at jt=2 that
+# cost ~16% RMSE and ~15% bias against the paper's M2.
 
 here <- "R"
 source(file.path(here, "_setup.R"))
@@ -42,7 +41,8 @@ cat(sprintf("\nSlice as_of=%s -> target=%s qoq=%.4f%% jt=%d n_obs=%d level=%.1f\
 check(is.finite(r1$qoq_growth),                         "qoq nowcast is finite")
 check(abs(r1$qoq_growth) < 5,                           "|qoq| < 5% (sane, non-COVID)")
 check(identical(r1, r2),                                "reproducible: same input -> identical output")
-check(r1$model == "QA-UMIDAS",                          "model label is QA-UMIDAS")
+check(r1$model == "UMIDAS-full",
+      "jt=2 dispatches to the paper's per-stage U-MIDAS, not QA")
 check(r1$n_obs > 100L,                                  "fit uses a long sample (n_obs > 100)")
 check(r1$n_months_in_quarter == 2L,                     "partial-quarter path exercised (jt = 2)")
 check(is.finite(r1$nowcast_level) &&
@@ -86,8 +86,8 @@ for (cse in list(
   check(is.finite(pw$partial_mean),              sprintf("%s: partial-quarter mean is finite", cse$lab))
   # The fix is exercised only if the partial mean differs materially from the RW
   # fallback value -- otherwise the two paths would be indistinguishable.
-  check(abs(pw$partial_mean - pw$rw_mean) > 1e-6,
-        sprintf("%s: partial mean != RW last-quarter-average (ragged edge used, not RW)", cse$lab))
+  check(rr$model == "UMIDAS-full",
+        sprintf("%s: incomplete quarter routes to U-MIDAS, never partial-mean QA", cse$lab))
   check(is.finite(rr$qoq_growth) && abs(rr$qoq_growth) < 5,
         sprintf("%s: qoq finite & sane", cse$lab))
 }
