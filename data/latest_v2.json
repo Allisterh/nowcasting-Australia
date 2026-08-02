@@ -33,14 +33,14 @@
       "model_id": "v2_umidas_a20",
       "model_name": "MAI to full U-MIDAS (stress / big-events)",
       "target_quarter": "2026 Q2",
-      "gdp_chain_volume_millions": 695447,
+      "gdp_chain_volume_millions": 695446,
       "qoq_growth_pct": -0.07,
       "qoq_growth_raw_pct": 0.27,
       "yoy_growth_pct": 1.46,
-      "ci_68_low": 693489,
-      "ci_68_high": 697404,
-      "ci_95_low": 691426,
-      "ci_95_high": 699467,
+      "ci_68_low": 693488,
+      "ci_68_high": 697403,
+      "ci_95_low": 691425,
+      "ci_95_high": 699466,
       "n_months_in_quarter": 3,
       "ci_basis": "empirical pseudo-out-of-sample error dispersion, by within-quarter information stage (jt = n_months_in_quarter); post-COVID target quarters only (>= 2022-01-01). Pre-2020 errors are significantly tighter (F=2.97, p<0.0001) so pooling them would understate current uncertainty.",
       "ci_n": 17,
@@ -162,10 +162,40 @@
   "v1_comparison": {
     "model_name": "v1 (13-series DFM)",
     "target_quarter": "2026 Q2",
-    "qoq_growth_pct": 0.65,
-    "yoy_growth_pct": 2.2,
-    "gdp_chain_volume_millions": 700462,
+    "qoq_growth_pct": 0.59,
+    "yoy_growth_pct": 2.14,
+    "gdp_chain_volume_millions": 700066,
     "source": "data/latest.json"
   },
-  "note": "STAGED v2 emit (parallel to live latest.json). Monday cadence; headline = latest Monday. Pending James approval."
+  "note": "STAGED v2 emit (parallel to live latest.json). Monday cadence; headline = latest Monday. Pending James approval.",
+  "data_updates": {
+    "run_date": "2026-07-27",
+    "nowcast_delta_pp": 0.0,
+    "series": [
+      {
+        "id": "building_app",
+        "name": "Building approvals",
+        "prev_period": "2026-05",
+        "latest_period": "2026-06"
+      },
+      {
+        "id": "credit",
+        "name": "Total credit",
+        "prev_period": "2026-05",
+        "latest_period": "2026-06"
+      },
+      {
+        "id": "credit_housing",
+        "name": "Housing credit",
+        "prev_period": "2026-05",
+        "latest_period": "2026-06"
+      },
+      {
+        "id": "credit_business",
+        "name": "Business credit",
+        "prev_period": "2026-05",
+        "latest_period": "2026-06"
+      }
+    ]
+  }
 }
