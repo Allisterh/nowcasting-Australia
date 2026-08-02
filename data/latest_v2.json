@@ -148,5 +148,10 @@
     "gdp_chain_volume_millions": 700066,
     "source": "data/latest.json"
   },
-  "note": "STAGED v2 emit (parallel to live latest.json). Monday cadence; headline = latest Monday. Pending James approval."
+  "note": "STAGED v2 emit (parallel to live latest.json). Monday cadence; headline = latest Monday. Pending James approval.",
+  "data_updates": {
+    "run_date": "2026-07-27",
+    "nowcast_delta_pp": 0.0,
+    "series": []
+  }
 }
