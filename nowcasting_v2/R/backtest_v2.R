@@ -224,8 +224,10 @@ backtest_v2 <- function(panel_rds      = "cache/panel_vintage_latest.rds",
       sel_t <- fixed_selection[
         vapply(fixed_selection, function(id)
           id %in% names(tfs_t) && sum(!is.na(tfs_t[[id]])) >= 24L, logical(1))]
+      # gdp = gdp_t (as-of truncated), not the full gdp_csv: the Wald ranking now
+      # also fixes the DFM2 anchor order, so it must not see unreleased quarters.
       mai_res <- build_mai(tfs = tfs_t, panel_info_csv = panel_info_csv,
-                           gdp_csv = gdp_csv, out_csv = NULL, out_rds = NULL,
+                           gdp = gdp_t, out_csv = NULL, out_rds = NULL,
                            force_selected = sel_t, exclude_ids = exclude_ids,
                            sel_alpha = sel_alpha, dfm_q = dfm_q,
                            covid_dummies = covid_dummies, verbose_dfm = FALSE)

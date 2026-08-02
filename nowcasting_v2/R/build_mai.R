@@ -44,10 +44,21 @@ suppressMessages({
 build_mai <- function(tfs           = NULL,
                       panel_info_csv = "seed/panel_info.csv",
                       gdp_csv        = "data_raw/rt_dgdp_qtr.csv",
+                      gdp            = NULL,    # as-of-truncated GDP data.frame; overrides
+                                                # gdp_csv. Pass this from any real-time caller.
                       out_csv        = "data_raw/mai.csv",
                       out_rds        = "cache/mai.rds",
                       sel_alpha      = 0.10,    # selection threshold (RBA)
                       iis_alpha      = 0.01,    # COVID dummy significance (RBA)
+                      sample_start   = "1978-04-01",  # RBA fixed sample start.
+                                                # Targeted_Predictor_MAI_Dataset.R:94 hard-codes
+                                                # m_begin_str = "1978-04-01" (q_begin 1978-06-01);
+                                                # paper p.4 / fn.17: the panel starts 1978:M2
+                                                # because the ABS Labour Force Survey does.
+                                                # Without this the spine starts 1969-07 (firmmbab90),
+                                                # so ~34 quarters enter selection and the MIDAS fit
+                                                # with essentially one observed series.
+                                                # NULL = no floor (pre-fix behaviour).
                       exclude_ids    = character(0),
                       force_selected = NULL,    # if non-NULL, skip Wald selection and
                                                 # use these ids (intersected w/ available)
@@ -68,7 +79,16 @@ build_mai <- function(tfs           = NULL,
   if (length(exclude_ids)) ids <- setdiff(ids, exclude_ids)
 
   # ---- GDP target (quarterly growth) ----
-  gdp <- readr::read_csv(gdp_csv, show_col_types = FALSE)
+  # `gdp` (a data.frame) takes precedence over `gdp_csv`. Callers that already hold
+  # an as-of-truncated GDP series MUST pass it: the Wald selection below regresses
+  # GDP on each candidate, so reading the full file would let the selection see
+  # quarters that had not been released at the as-of date -- a look-ahead leak
+  # straight into which series enter the MAI. The paper's selection is recursive
+  # and only ever sees released GDP.
+  if (is.null(gdp)) {
+    gdp <- readr::read_csv(gdp_csv, show_col_types = FALSE)
+  }
+  gdp <- as.data.frame(gdp)
   gdp$date <- as.Date(gdp$date)
   gdp <- gdp[order(gdp$date), ]
 
@@ -81,6 +101,17 @@ build_mai <- function(tfs           = NULL,
   # First month that is a quarter start AND >= first spine date
   qmonths <- c(1, 4, 7, 10)
   ms <- spine[ as.integer(format(spine, "%m")) %in% qmonths ]
+  # Floor the sample at the RBA's fixed start (see `sample_start` above). Keep the
+  # quarter-start alignment: take the first eligible quarter-start month at or after
+  # the floor, so the 3-months-per-quarter contract downstream is unaffected.
+  if (!is.null(sample_start)) {
+    ms_ok <- ms[ms >= as.Date(sample_start)]
+    if (length(ms_ok) == 0L) {
+      stop(sprintf("build_mai(): sample_start %s is after the last quarter-start month %s.\n",
+                   sample_start, max(ms)), call. = FALSE)
+    }
+    ms <- ms_ok
+  }
   m_start <- min(ms)
   # GDP quarter end: align quarter labels. ABS quarterly GDP dates are first-of-quarter
   # months (Mar/Jun/Sep/Dec -> labelled 03/06/09/12-01). Map to quarter index.
@@ -171,9 +202,17 @@ build_mai <- function(tfs           = NULL,
 
   threshold <- qchisq(p = sel_alpha, df = jn, lower.tail = FALSE)
   keep <- !is.na(results[, "Stat"]) & results[, "Stat"] >= threshold
-  selected <- rownames(results)[keep]
   ranked <- results[order(results[, "Stat"], decreasing = TRUE), , drop = FALSE]
-  ranked_sel <- ranked[rownames(ranked) %in% selected, , drop = FALSE]
+  ranked_sel <- ranked[rownames(ranked) %in% rownames(results)[keep], , drop = FALSE]
+
+  # Order the selected set by Wald statistic, DESCENDING -- not panel_info column
+  # order. This is load-bearing, not cosmetic: qmle_dfm runs id_opt = "DFM2", whose
+  # q x q block C_0 is the identity, so the FIRST column's loading is pinned to 1
+  # and the factor is expressed in that series' units. The paper anchors on the
+  # highest-Wald series: Targeted_Predictor_MAI_Dataset.R:233-236 writes the tp_list
+  # "sorted by Wald statistic" (rownames(ranked_ws)[seq_len(ntp)]), and
+  # Estimate_and_Analyse_TP_MAI.R:55 subsets the panel in that order.
+  selected <- rownames(ranked_sel)
 
   # ---- Pseudo-real-time override: fix the targeted-predictor selection ----
   # When force_selected is supplied (backtest harness), bypass the recursive
@@ -187,7 +226,9 @@ build_mai <- function(tfs           = NULL,
       stop(sprintf("build_mai(): force_selected leaves only %d available series.\n",
                    length(forced)), call. = FALSE)
     }
-    selected <- forced
+    # Preserve the Wald-descending order (DFM2 anchor, see above) for the forced
+    # set too, so the backtest and production anchor on the same series.
+    selected <- rownames(ranked)[rownames(ranked) %in% forced]
   }
 
   if (length(selected) < 2L) {
