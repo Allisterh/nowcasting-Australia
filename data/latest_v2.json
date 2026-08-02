@@ -14,37 +14,35 @@
       "model_id": "v2_qa_a05",
       "model_name": "MAI to QA U-MIDAS (precision)",
       "target_quarter": "2026 Q2",
-      "gdp_chain_volume_millions": 700256,
+      "gdp_chain_volume_millions": 700225,
       "qoq_growth_pct": 0.62,
-      "yoy_growth_pct": 2.17,
-      "ci_68_low": 696379,
-      "ci_68_high": 704134,
-      "ci_95_low": 692292,
-      "ci_95_high": 708220,
+      "yoy_growth_pct": 2.16,
+      "ci_68_low": 696374,
+      "ci_68_high": 701284,
+      "ci_95_low": 694017,
+      "ci_95_high": 703641,
       "n_months_in_quarter": 3,
-      "ci_basis": "empirical pseudo-out-of-sample error dispersion, by within-quarter information stage (jt = n_months_in_quarter); post-COVID target quarters only (>= 2022-01-01). Pre-2020 errors are significantly tighter (F=2.97, p<0.0001) so pooling them would understate current uncertainty.",
+      "ci_basis": "post-COVID (target quarter >= 2022-01-01)",
       "ci_n": 17,
-      "ci_sd_pp": 0.5398,
-      "ci_bias_pp": 0,
-      "ci_stage": "3"
+      "ci_sd_pp": 0.3528,
+      "ci_bias_pp": 0.2006
     },
     "stress": {
       "model_id": "v2_umidas_a20",
       "model_name": "MAI to full U-MIDAS (stress / big-events)",
-      "target_quarter": "2026 Q2",
-      "gdp_chain_volume_millions": 697068,
-      "qoq_growth_pct": 0.16,
-      "yoy_growth_pct": 1.7,
-      "ci_68_low": 693582,
-      "ci_68_high": 697504,
-      "ci_95_low": 691515,
-      "ci_95_high": 699571,
-      "n_months_in_quarter": 3,
-      "ci_basis": "empirical pseudo-out-of-sample error dispersion, by within-quarter information stage (jt = n_months_in_quarter); post-COVID target quarters only (>= 2022-01-01). Pre-2020 errors are significantly tighter (F=2.97, p<0.0001) so pooling them would understate current uncertainty.",
+      "target_quarter": "2026 Q3",
+      "gdp_chain_volume_millions": 698386,
+      "qoq_growth_pct": 0.35,
+      "yoy_growth_pct": 1.89,
+      "ci_68_low": 695441,
+      "ci_68_high": 699799,
+      "ci_95_low": 693349,
+      "ci_95_high": 701891,
+      "n_months_in_quarter": 1,
+      "ci_basis": "post-COVID (target quarter >= 2022-01-01)",
       "ci_n": 17,
-      "ci_sd_pp": 0.273,
-      "ci_bias_pp": 0.2192,
-      "ci_stage": "3"
+      "ci_sd_pp": 0.3131,
+      "ci_bias_pp": 0.1101
     }
   },
   "vintages": [
@@ -147,13 +145,13 @@
     {
       "run_date": "2026-07-27",
       "target_quarter": "2026 Q2",
-      "point": 700256,
+      "point": 700225,
       "qoq_growth_pct": 0.62,
       "days_until_release": -37,
-      "ci_68_low": 696379,
-      "ci_68_high": 704134,
-      "ci_95_low": 692292,
-      "ci_95_high": 708220,
+      "ci_68_low": 696374,
+      "ci_68_high": 701284,
+      "ci_95_low": 694017,
+      "ci_95_high": 703641,
       "data_through": "2026-07"
     }
   ],
@@ -165,5 +163,47 @@
     "gdp_chain_volume_millions": 700462,
     "source": "data/latest.json"
   },
-  "note": "STAGED v2 emit (parallel to live latest.json). Monday cadence; headline = latest Monday. Pending James approval."
+  "note": "STAGED v2 emit (parallel to live latest.json). Monday cadence; headline = latest Monday. Pending James approval.",
+  "data_updates": {
+    "run_date": "2026-07-27",
+    "nowcast_delta_pp": 0.65,
+    "series": [
+      {
+        "id": "emp",
+        "name": "Employment",
+        "prev_period": "2026-05",
+        "latest_period": "2026-06"
+      },
+      {
+        "id": "ft_emp",
+        "name": "Full-time employment",
+        "prev_period": "2026-05",
+        "latest_period": "2026-06"
+      },
+      {
+        "id": "pt_emp",
+        "name": "Part-time employment",
+        "prev_period": "2026-05",
+        "latest_period": "2026-06"
+      },
+      {
+        "id": "ue",
+        "name": "Unemployment",
+        "prev_period": "2026-05",
+        "latest_period": "2026-06"
+      },
+      {
+        "id": "ud",
+        "name": "Underemployment",
+        "prev_period": "2026-05",
+        "latest_period": "2026-06"
+      },
+      {
+        "id": "hours",
+        "name": "Hours worked",
+        "prev_period": "2026-05",
+        "latest_period": "2026-06"
+      }
+    ]
+  }
 }
