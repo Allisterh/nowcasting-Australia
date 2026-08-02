@@ -157,6 +157,7 @@ Ranked. Nothing here proposes a rewrite.
 ### Done (2026-08-02)
 | # | Action | Outcome |
 |---|---|---|
+| 9 | Re-derived `q`, `s`, `p` on our panel | **Confirms the ported (1, 2, 1).** See the section below — the criterion is ambiguous at our panel width, but the backtest is decisive |
 | 1 | Target-quarter rule corrected to its documented contract | `ce14abb`; regression test added. Was already live on the stress model since 2026-07-20 |
 | 11 | CI calibration re-run without full-sample-fixed selection | `ce14abb`. Bands were ~53% too narrow like-for-like (sd 0.3528 → 0.5398) |
 | 12 | Sample-start control at the paper's 1978 | `3b0ba8e`. Moves the level 0.64pp; does **not** affect sensitivity |
@@ -178,7 +179,6 @@ Ranked. Nothing here proposes a rewrite.
 | # | Action | Why |
 |---|---|---|
 | 8 | Switch the MAI to `real_time_factor()` | Genuine fidelity divergence (paper fn.33). **Do not expect it to damp sensitivity** — tested, +0.652 vs +0.649pp, no effect. Fix it because the paper prescribes it, not for stability |
-| 9 | **Re-derive `q`, `s`, `p` on our panel** via the paper's own spec-determination stage | The highest-value open fidelity item. Tests whether one factor suits a 31-series panel, or whether a second would give the soft block somewhere to live |
 | 10 | Move the selection/MIDAS target to first-release GDP | Paper-specified (Koenig–Dolmas–Piger). May be blocked on ABS vintage availability 2022–2026 — the paper's own file stops at 2022 |
 | 13 | Re-run the α sweep on the current panel | `SPEC-SWEEP-RESULTS.md` records 29→9; production is now 31→10 under the fixed spec |
 | 14 | Isolate which of anchor-order / RMS / GDP-truncation damped the sensitivity | Currently unattributed; matters for knowing what to preserve |
@@ -191,6 +191,63 @@ Ranked. Nothing here proposes a rewrite.
 - **Per-stage CI calibration is built but does not currently change the band.** `jt=2` vs `jt=3`: sd 0.5377 vs 0.5398, F=0.89, p=0.697. And `jt=0` cannot occur — GDP releases ~60 days after quarter-end, so a target quarter always has ≥2 months of data. The `jt=0` random-walk fallback is dead code in production.
 - **The post-COVID calibration window is justified**, tested rather than inherited: pre-2020 sd 0.3382 (n=85) vs post-2021 sd 0.5824 (n=38), F=2.97, p<0.0001.
 
+
+## Addendum 2026-08-02: q, s, p re-derived
+
+Item #9 is closed. `R/determine_spec_v2.R` adapts the paper's
+`Determine_TP_MAI_Estimation_Options.R` — one of the three scripts the RBA's own
+driver comments out as "fails due to censored dataset", and therefore never run
+against v2's data. `q = 1, s = 2, p = 1` had been ported as constants.
+
+**Two of the paper's settings had to be adapted, and that is itself a finding.**
+Its `nbck = 10` sub-samples by dropping 10 series, which assumes ~30 targeted
+predictors; on our 9-series selection that makes the sub-panel size negative and
+the procedure dies in `sample.int()`. Its `q_max = 8` then overruns the
+eigenvalue matrix of the smallest sub-panel. Both were scaled to panel width
+(`nbck = floor(nvar/4) = 2`, `q_max = 6`); everything else is the paper's.
+
+**q = 1 — confirmed, but not by the criterion.** The Hallin–Liška stability plot
+does not show the clean monotone pattern the method assumes; the estimate
+wanders *up* (3 → 4 → 5 → 6) before falling to 1 and collapsing to 0:
+
+| q̂ | c range | width |
+|---|---|---|
+| 3 | 0.00–0.06 | 62 |
+| 4 | 0.06–0.14 | 81 |
+| 5 | 0.14–0.21 | 67 |
+| 6 | 0.21–0.44 | 230 |
+| **1** | **0.44–0.63** | **192** |
+| 0 | 0.63–3.00 | 2368 |
+
+The textbook reading — the stable run immediately before the collapse — gives
+q = 1, but it is a judgement call on a shape the method did not intend. So it was
+tested empirically instead, and there the answer is unambiguous:
+
+| | full RMSE | post-COVID RMSE | post-COVID MAE |
+|---|---:|---:|---:|
+| **q = 1** | **0.3837** | **0.5159** | **0.4034** |
+| q = 2 | 0.6487 | 1.0327 | 0.7658 |
+
+A second dynamic factor roughly doubles the error on every window. Reproduce
+with `backtest_v2(dfm_q = ...)` at `as_of_freq = "quarter_end"`.
+
+**r = 3, hence s = 2 — confirmed, with the criterion discarded.** `mod_bnic`
+returns `PCp = ICp = 8`, i.e. it saturated at `kmax` on a 9-series panel. That is
+the criterion failing rather than an answer: 8 static factors out of 9 series
+means it is not separating common from idiosyncratic at all. The variance
+decomposition is the usable evidence — the first *dynamic* eigenvalue explains
+68.8%, and three *static* factors reach 85.4%, supporting r = 3. Note `s` is
+never estimated directly: the paper derives it as `(r − q)/q`, so its `s = 2` is
+just `r = 3` with `q = 1`.
+
+**p = 1 — confirmed cleanly.** AIC and SIC agree at 1, and the PACF of factor 1
+is 0.159 then nothing (0.021, 0.040, 0.056).
+
+**Conclusion.** The ported constants were right, and are now derived rather than
+assumed. The honest caveat is that our panel is too narrow to run the paper's
+procedure as written — one criterion saturated, another needed reshaping, and the
+decisive evidence came from the backtest rather than the information criteria. If
+the selection ever widens materially, this is worth re-running.
 
 ## Track 1 — fidelity to RBA RDP 2024-04
 
