@@ -98,13 +98,13 @@
   {
     "run_date": "2026-07-27",
     "target_quarter": "2026 Q2",
-    "point": 700225,
+    "point": 700256,
     "qoq_growth_pct": 0.62,
     "days_until_release": -37,
-    "ci_68_low": 696374,
-    "ci_68_high": 701284,
-    "ci_95_low": 694017,
-    "ci_95_high": 703641,
+    "ci_68_low": 696379,
+    "ci_68_high": 704134,
+    "ci_95_low": 692292,
+    "ci_95_high": 708220,
     "data_through": "2026-07"
   }
 ]

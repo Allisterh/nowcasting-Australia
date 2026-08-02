@@ -92,5 +92,45 @@ for (cse in list(
         sprintf("%s: qoq finite & sane", cse$lab))
 }
 
+# ---------------------------------------------------------------------------
+# Regression: the target quarter must NOT follow the MAI edge.
+#
+# The contract is "first quarter with MAI data but no released GDP", i.e. always
+# the quarter after the last released GDP. A previous implementation instead took
+# the LAST MAI quarter whenever the MAI ran past released GDP. Because the yield
+# block publishes with a 2-day lag, the MAI crosses into a new quarter about four
+# weeks BEFORE the previous quarter's GDP is released -- so the model skipped the
+# complete-but-unreleased quarter entirely, published a 1-month nowcast of the
+# quarter after it, and never revisited the skipped one.
+#
+# Hold GDP fixed and push the MAI edge out a quarter at a time: the target quarter
+# and jt must not move.
+cat("\n-- target-quarter stability under a lengthening MAI --\n")
+gdp_tq <- read.csv(file.path("data_raw", "rt_dgdp_qtr.csv"))
+gdp_tq$date <- as.Date(gdp_tq$date)
+last_gdp <- max(gdp_tq$date)
+expect_q <- seq(last_gdp, by = "3 months", length.out = 2L)[2L]
+
+mk_flat_mai <- function(end_month) {
+  d <- seq(as.Date("1978-04-01"), as.Date(end_month), by = "month")
+  data.frame(date = d, value = as.numeric(scale(sin(seq_along(d) / 7))))
+}
+
+# One month past the last released GDP quarter-end, then +1, +2, +3 quarters.
+edges <- seq(seq(last_gdp, by = "3 months", length.out = 2L)[2L],
+             by = "3 months", length.out = 4L)
+tq_seen <- character(0)
+for (e in edges) {
+  e <- as.Date(e, origin = "1970-01-01")
+  nc <- nowcast_midas(mk_flat_mai(e), gdp_tq, prev_level = 695945,
+                      model = "qa", qa_lag = 0L:1L)
+  tq_seen <- c(tq_seen, nc$target_quarter)
+  check(nc$n_months_in_quarter <= 3L,
+        sprintf("MAI to %s: jt=%d within [0,3]", e, nc$n_months_in_quarter))
+}
+check(length(unique(tq_seen)) == 1L,
+      sprintf("target quarter stable as MAI lengthens (saw: %s)",
+              paste(unique(tq_seen), collapse = ", ")))
+
 cat(sprintf("\n==> test_nowcast_midas: %s\n", if (pass) "PASS" else "FAIL"))
 if (!pass) quit(status = 1L)

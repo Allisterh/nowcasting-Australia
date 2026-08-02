@@ -54,3 +54,24 @@ Pending work the user has flagged for later.
 - The simulated vintages must be clearly distinguishable from real weekly runs — suggest either a prefix (`vintage_sim_…`) or a boolean `simulated` column added to the CSV.
 - Running this once and committing vintages as real-weekly artifacts could be misleading; label clearly in the commit message and consider a flag the frontend could use to denote "reconstructed" vs "live" vintages.
 - Respect the ragged edge: `get_available_data()` already handles it — don't shortcut.
+
+---
+
+## Evolution chart: add a dimmed next-quarter line
+
+**Motivation (user, 2026-08-02).** While we're still inside the current quarter waiting for its GDP to be released, the *next* quarter's nowcast has already begun to evolve. Show it on the Nowcast Evolution chart as a second, less bright line — visible, but not competing with the current-quarter series for attention.
+
+**Context worth knowing before starting.** We already saw an accidental version of this. Before the 2026-08-02 target-quarter fix, `nowcast_midas()` took the *last* MAI quarter rather than the first unreleased one, so the stress model drifted onto 2026 Q3 while the headline sat on Q2 — and `latest_v2.json` presented the two side by side under a single top-level `target_quarter`, inviting readers to compare them as if they described the same quarter. That was a bug and is fixed. This TODO is the *deliberate* version of the same idea, and it needs to be built so a reader can never confuse the two lines.
+
+**Approach.**
+
+1. Emit a second nowcast per run targeting `target_q + 1`. `nowcast_midas()` now always targets the first quarter without released GDP, so this needs an explicit second call (or a `target_offset` argument) rather than falling out of the ragged edge by accident.
+2. `data/vintages_v2.json` already carries `target_quarter` on every row, so the data model needs no schema change — append the next-quarter vintages alongside the current-quarter ones and let the frontend group by `target_quarter`.
+3. Frontend: render the current-quarter series at full weight and the next-quarter series dimmed (lower opacity, and consider dashed). Legend must name both quarters explicitly — not "current"/"next", which goes stale the moment GDP releases.
+4. Handle the promotion. When the current quarter's GDP is released, the next-quarter line becomes the current-quarter line. `vintages_v2.json` is deliberately append-only (see `emit_v2_json.R` — a from-scratch reconstruction lets revisions silently rewrite history), so the promotion must be purely a rendering decision driven by `target_quarter` vs released GDP, never a rewrite of past rows.
+
+**Watch-outs.**
+
+- The next-quarter nowcast will sit at `jt = 0` or `1` for most of its visible life — i.e. little or no target-quarter data, and at `jt = 0` the QA model falls back to a random-walk quarter-average that the RBA paper never uses and that has never been backtested. The dimmer line is therefore statistically honest as well as visually sensible, but consider whether it should carry a tooltip saying so.
+- It must draw its confidence band from its own information stage, not the current quarter's. The per-stage CI work (`compute_ci_params_v2.R`, `ci_params_for_stage()`) already supports this — pass the next-quarter nowcast's own `n_months_in_quarter`.
+- Don't let the two lines share a `prev_level`. That was exactly the `emit_v2_json.R:123` bug: the stress model's level and YoY were computed off the quarter before the *headline's* target, understating its level by a whole quarter of growth. A next-quarter nowcast needs the current quarter's (still unreleased, hence nowcast) level as its anchor — which means its level is a compounding of two estimates and should be presented with that uncertainty, or presented as growth only.

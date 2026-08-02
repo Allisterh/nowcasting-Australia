@@ -135,6 +135,8 @@ backtest_v2 <- function(panel_rds      = "cache/panel_vintage_latest.rds",
                         gdp_csv        = "data_raw/rt_dgdp_qtr.csv",
                         out_csv        = "cache/backtest_v2/backtest_results.csv",
                         start_year     = 2012L,
+                        as_of_freq     = c("quarter_end", "weekly"),  # "weekly" = Monday cadence,
+                                                         # required for per-stage CI calibration
                         gdp_lag        = 60L,
                         model          = c("qa", "umidas"),
                         exclude_ids    = character(0),   # sweep: drop these from the candidate set
@@ -144,8 +146,21 @@ backtest_v2 <- function(panel_rds      = "cache/panel_vintage_latest.rds",
                         qa_lag         = 0L:1L,          # sweep: QA quarterly lag in nowcast_midas
                         lag_fn         = .lag_for_id,    # publication lags; pass .lag_acc for CI calibration
                         force_full_selection = NULL,     # if set, USE this exact fixed selection (bypass the Wald gate) -- e.g. to force-include a series the gate rejects
+                        recursive_selection = TRUE,      # TRUE = re-run the Wald gate at EVERY as-of on the
+                                                         # truncated panel, exactly as production does.
+                                                         # FALSE = the old behaviour: fix the selection once on
+                                                         # the FULL sample and force it at every historical
+                                                         # as-of. That is a look-ahead leak -- the gate sees the
+                                                         # GDP outcomes of the quarters it is about to
+                                                         # "nowcast", so a series that only cleared the
+                                                         # threshold because of (say) 2020Q2 is present in the
+                                                         # MAI for 2015. Errors come out smaller than any
+                                                         # real-time analyst could have achieved, and those
+                                                         # errors are what calibrate the published CI bands.
+                                                         # Forced to FALSE when force_full_selection is set.
                         verbose        = TRUE) {
-  model <- match.arg(model)
+  model      <- match.arg(model)
+  as_of_freq <- match.arg(as_of_freq)
 
   t0 <- Sys.time()
   wide_full <- readRDS(panel_rds)
@@ -158,20 +173,27 @@ backtest_v2 <- function(panel_rds      = "cache/panel_vintage_latest.rds",
   # cache/panel_vintage_latest.rds default inside build_mai) so the sweep can vary
   # the panel. exclude_ids/sel_alpha/dfm_q are honoured here so each variant's
   # fixed selection is computed on that variant's candidate set.
-  if (verbose) cat("Fixing full-sample targeted-predictor selection...\n")
-  tfs_full <- transform_panel(wide_full, panel_info_csv)
-  full_sel_res <- build_mai(tfs = tfs_full, panel_info_csv = panel_info_csv,
-                            gdp_csv = gdp_csv, out_csv = NULL, out_rds = NULL,
-                            exclude_ids = exclude_ids, sel_alpha = sel_alpha,
-                            dfm_q = dfm_q, covid_dummies = covid_dummies,
-                            verbose_dfm = FALSE)
-  fixed_selection <- full_sel_res$diagnostics$selected
-  if (!is.null(force_full_selection)) {
-    fixed_selection <- force_full_selection
-    cat(sprintf("[force_full_selection] overriding Wald gate with %d series\n", length(fixed_selection)))
+  if (!is.null(force_full_selection)) recursive_selection <- FALSE
+
+  fixed_selection <- NULL
+  if (recursive_selection) {
+    cat("Targeted-predictor selection: RECURSIVE (re-run at every as-of, matches production)\n")
+  } else {
+    if (verbose) cat("Fixing full-sample targeted-predictor selection...\n")
+    tfs_full <- transform_panel(wide_full, panel_info_csv)
+    full_sel_res <- build_mai(tfs = tfs_full, panel_info_csv = panel_info_csv,
+                              gdp_csv = gdp_csv, out_csv = NULL, out_rds = NULL,
+                              exclude_ids = exclude_ids, sel_alpha = sel_alpha,
+                              dfm_q = dfm_q, covid_dummies = covid_dummies,
+                              verbose_dfm = FALSE)
+    fixed_selection <- full_sel_res$diagnostics$selected
+    if (!is.null(force_full_selection)) {
+      fixed_selection <- force_full_selection
+      cat(sprintf("[force_full_selection] overriding Wald gate with %d series\n", length(fixed_selection)))
+    }
+    cat(sprintf("Fixed selection (%d series, LOOK-AHEAD: full-sample): %s\n",
+                length(fixed_selection), paste(fixed_selection, collapse = ", ")))
   }
-  cat(sprintf("Fixed selection (%d series): %s\n",
-              length(fixed_selection), paste(fixed_selection, collapse = ", ")))
 
   # ---- As-of dates: quarter-ends from start_year to latest ----
   # Build from quarter-START first-of-month dates (Jan/Apr/Jul/Oct-01, which are
@@ -183,13 +205,24 @@ backtest_v2 <- function(panel_rds      = "cache/panel_vintage_latest.rds",
                   lubridate::floor_date(last_data, "quarter") +
                     months(3),   # allow one quarter past last monthly obs
                   by = "3 months")
-  as_of_dates <- lubridate::ceiling_date(q_starts, "quarter") - lubridate::days(1)
+  as_of_dates <- if (as_of_freq == "quarter_end") {
+    lubridate::ceiling_date(q_starts, "quarter") - lubridate::days(1)
+  } else {
+    # Weekly (Monday) grid -- the cadence production actually publishes on.
+    # Quarter-end as-ofs all land at the SAME within-quarter information stage
+    # (jt = 2 for every one of them), so a band calibrated on them is calibrated
+    # at one stage and then applied at jt = 0..3. Walking Mondays covers every
+    # stage the site actually publishes, and multiplies n by ~13.
+    first_mon <- as.Date(sprintf("%d-01-01", start_year))
+    while (as.integer(format(first_mon, "%u")) != 1L) first_mon <- first_mon + 1
+    seq(first_mon, Sys.Date(), by = "week")
+  }
   as_of_dates <- as_of_dates[as_of_dates <= Sys.Date()]
   as_of_dates <- sort(unique(as_of_dates))
 
-  cat(sprintf("Backtest window: %s .. %s  (%d as-of quarter-ends)\n",
+  cat(sprintf("Backtest window: %s .. %s  (%d as-of dates, freq = %s)\n",
               as.character(min(as_of_dates)), as.character(max(as_of_dates)),
-              length(as_of_dates)))
+              length(as_of_dates), as_of_freq))
 
   rows <- list()
   skipped <- list()
@@ -221,7 +254,10 @@ backtest_v2 <- function(panel_rds      = "cache/panel_vintage_latest.rds",
       # be estimated stably (the DFM goes non-conformable on <~24 monthly obs,
       # e.g. the yield/spread series in 2013-14). This keeps the date in the
       # backtest on a slightly smaller selection rather than skipping it.
-      sel_t <- fixed_selection[
+      # Recursive: let build_mai run its own Wald gate on the truncated panel
+      # (sel_t = NULL -> force_selected = NULL). Non-recursive: intersect the
+      # fixed set with series long enough to estimate stably at this as-of.
+      sel_t <- if (is.null(fixed_selection)) NULL else fixed_selection[
         vapply(fixed_selection, function(id)
           id %in% names(tfs_t) && sum(!is.na(tfs_t[[id]])) >= 24L, logical(1))]
       # gdp = gdp_t (as-of truncated), not the full gdp_csv: the Wald ranking now
