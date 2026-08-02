@@ -1,6 +1,12 @@
-# Nowcast pipeline
+# Nowcast pipeline (v1)
 
-R pipeline that produces the JSON artifacts consumed by the website at [nowcast.wlsn.me](https://nowcast.wlsn.me).
+R pipeline that produces the **v1** JSON artifacts consumed by the website at
+[nowcast.wlsn.me](https://nowcast.wlsn.me).
+
+> **This is one of two models.** The second, `nowcasting_v2/`, implements RBA RDP 2024-04
+> (Monthly Activity Indicator → U-MIDAS) and emits `data/latest_v2.json` and friends. Both run in
+> the same weekly workflow and both appear on the site. See the root `README.md` for the
+> comparison. `ci_bands.R` and `seed/ci_params*.json` in this directory are **shared with v2**.
 
 ## Run locally
 
@@ -47,8 +53,19 @@ Raw ABS/FRED data is cached under `.cache/` (gitignored). Safe to delete — wil
 - `05_estimate_model.R` — DFM estimation via the `nowcasting` package
 - `06_generate_nowcast.R` — Kalman filter → nowcast
 - `08_vintage_tracking.R` — vintage snapshot persistence + accuracy log
+- `04_emit_json.R` — writes `../data/latest.json`, `nowcasts.json`, `indicators.json`, `performance.json`
+- `04a_fetch_somp.R` — RBA Statement on Monetary Policy forecasts (the "Accuracy gap vs RBA" tile)
+- `04b_release_calendar_fetch.R` — scrapes real ABS release dates (v2's indicator grid reuses these)
+- `09_backtest_model.R`, `run_backtest_sweep.R` — pseudo-out-of-sample evaluation
+- `ci_bands.R` — interval construction. **Shared with v2**; understands both the flat v1 params
+  and v2's per-information-stage schema (`ci_params_for_stage()`).
+- `compute_ci_params.R` — flat interval params for v1. v2 uses
+  `nowcasting_v2/R/compute_ci_params_v2.R` instead, which calibrates per stage.
 - `seed/component_metadata.rds` — indicator/component definitions (checked into the repo)
+- `seed/ci_params.json` — v1 interval params; `seed/ci_params_v2*.json` — v2's (per stage)
 - `nab_business_confidence_raw.csv` — monthly NAB index values, updated by James's external Claude scheduled task
+- `deploy_nowcast.R`, `reconstruct_q1_2026.R`, `recover_reconstruct.R`, `update_trans_codes.R` —
+  one-off / operational scripts, not part of the weekly run
 
 ## Legacy code removed during migration
 

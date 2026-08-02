@@ -1,5 +1,33 @@
 # Spec-lever sweep — α=0.10 and COVID-dummies-OFF (2026-06-13)
 
+<!-- POINT-IN-TIME -->
+> **Point-in-time record — 2026-06-13. The numbers below are SUPERSEDED. Read this before
+> citing it.**
+>
+> This sweep is still referenced as the justification for running α=0.05 instead of the
+> paper's α=0.10. That conclusion may well survive, but **it has not been re-tested since
+> the 2026-08-02 fidelity fixes**, and every input to it has moved:
+>
+> | | this document | current |
+> |---|---|---|
+> | candidate panel | 29 series | 31 |
+> | selected at α=0.05 | 9 | ~10 |
+> | selected at α=0.10 | 14 | not re-measured |
+> | MAI sample start | 1969 | 1978 (the paper's fixed start) |
+> | factor published | RTS-smoothed | filtered (`real_time_factor`) |
+> | DFM anchor series | panel_info column order | highest Wald statistic |
+> | standardisation | divide by sd | divide by RMS (the paper's) |
+> | selection in the backtest | fixed once on the FULL sample (look-ahead) | recursive at each as-of |
+>
+> The RMSE figures in the tables below were produced under the full-sample fixed selection,
+> which let the Wald gate see GDP outcomes it was about to "nowcast". Removing that raised
+> post-COVID RMSE on the headline from 0.3967 to 0.5488 — so the *absolute* numbers here are
+> optimistic, and the *relative* comparison between α levels needs re-running before it is
+> relied on again.
+>
+> Re-run: `Rscript R/spec_sweep.R`. Tracked as item #13 in
+> `docs/reviews/2026-08-01-v2-intention-and-bug-review.md`.
+
 Two experiments James queued (2026-06-12). Both probe where **v2's spec deviates from the
 RBA's published method** — not the data (the Bucket-B data expansion was already NO-GO at
 production spec). Each config runs the production headline (29-set) + 9 Bucket-B marginals +

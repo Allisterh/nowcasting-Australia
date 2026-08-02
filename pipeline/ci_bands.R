@@ -3,12 +3,22 @@
 # with intervals derived from the model's actual POOS backtest error.
 #
 # Backtest error is defined as `forecast - actual`, so a positive mean error =>
-# the model OVER-predicts. We therefore center the interval for the *actual* on
-# the bias-corrected forecast (qoq - bias) and span it by z * sd, where sd is the
-# dispersion of errors about their mean (sd = sqrt(rmse^2 - bias^2), so the bias
-# is not double-counted). The displayed POINT stays the raw model forecast, so
-# the band is asymmetric about the point — it extends further DOWN, honestly
-# reflecting the model's tendency to run hot.
+# the model OVER-predicts. The interval for the *actual* is centred on
+# (qoq - bias) and spanned by z * sd, where sd is the dispersion of errors about
+# their mean.
+#
+# NOTE on sd: this comment used to say sd = sqrt(rmse^2 - bias^2). That is the
+# population identity; the generators actually use the sample sd() (n-1 divisor),
+# which is what you want when sd is estimated from a modest number of quarters.
+# The two differ by the n/(n-1) factor. Do not "fix" the code to match the old
+# comment.
+#
+# NOTE on the bias term: for v2 this is now applied ONLY where the bias is
+# statistically distinguishable from zero at that information stage — see
+# nowcasting_v2/R/compute_ci_params_v2.R. So `bias_pp` is frequently 0 and the
+# band is then centred on the published point. It is non-zero (and the band
+# deliberately offset) only where the model demonstrably runs hot or cold.
+# v1's flat seed/ci_params.json still applies its bias unconditionally.
 #
 # Params (qoq_bias_pp, qoq_sd_pp, z_68, z_95) come from seed/ci_params.json,
 # regenerated from a backtest by compute_ci_params.R. Functions are vectorised

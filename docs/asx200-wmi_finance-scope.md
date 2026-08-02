@@ -1,5 +1,13 @@
 # Scope: asx200 & wmi_finance — the RBA-selected series v2 is missing
 
+<!-- POINT-IN-TIME -->
+> **Point-in-time record — 2026-06-12. Not current state.**
+> This document describes what was true when it was written. The model, panel and
+> calibration have changed since; several numbers here are known to be superseded.
+> For current state see `README.md`, and for the 2026-08 fidelity review and its
+> corrections log see `docs/reviews/2026-08-01-v2-intention-and-bug-review.md`.
+
+
 Follow-up to the Bucket-B NO-GO (`nowcasting_v2/BUCKET-B-RESULTS.md`). Both are in the
 RBA's own published targeted-predictor list (`mai_tp_list.csv`) but **absent from the
 RBA's redistributable data** (`mai_panel.csv` carries them as empty columns — licensed).

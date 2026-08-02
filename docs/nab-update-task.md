@@ -55,7 +55,12 @@ If the investing.com page is blocked, the table is missing the expected row, or 
 
 ## Notes
 
-- The repo itself does not scrape NAB — the pipeline reads from `pipeline/nab_business_confidence_raw.csv` as the single source of truth.
+- The repo itself does not scrape NAB — **v1** reads `pipeline/nab_business_confidence_raw.csv`.
+- **There are TWO NAB inputs, not one.** This task maintains v1's CSV. **v2** reads
+  `nowcasting_v2/data_raw/nab_conf.csv` (plus seven sub-indices: `nab_cond`, `nab_trade`,
+  `nab_profit`, `nab_emp`, `nab_forward`, `nab_stocks`, `nab_cu`), which are refreshed by the
+  local Cowork survey routine — see `docs/cowork-weekly-refresh.md`. Updating one does **not**
+  update the other. If the v2 headline stalls on a freshness guard, this task is not the fix.
 - If this task ever fails silently, the weekly nowcast pipeline falls back to the last-known value and the site's headline won't break. James will notice a month-old NAB value on the dashboard.
 - The alternative aggregators (`tradingeconomics.com`, NAB direct) can be swapped into Step 1 without any other changes — the contract is the CSV, not the source.
 - To revise this task, edit this file and re-paste the prompt into Claude Desktop's scheduled-task UI.

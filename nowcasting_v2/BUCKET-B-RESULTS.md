@@ -1,5 +1,13 @@
 # Bucket-B panel-expansion experiment — RESULTS
 
+<!-- POINT-IN-TIME -->
+> **Point-in-time record — 2026-06-12. Not current state.**
+> This document describes what was true when it was written. The model, panel and
+> calibration have changed since; several numbers here are known to be superseded.
+> For current state see `README.md`, and for the 2026-08 fidelity review and its
+> corrections log see `docs/reviews/2026-08-01-v2-intention-and-bug-review.md`.
+
+
 - **Branch:** `bucket-b-panel-research` (off `main`). Run overnight 2026-06-11/12.
 - **Question:** do any of the easily-accessible RBA-panel predictors v2 doesn't yet use earn a permanent slot in the v2 MAI + U-MIDAS panel?
 - **Answer: NO-GO.** None of the 9 candidates improves the nowcast at the production config. Nothing was cut over / merged / pushed — research only.

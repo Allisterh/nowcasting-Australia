@@ -1,5 +1,13 @@
 # Nowcast v2 — RBA MAI + MIDAS methodology — Design Spec
 
+<!-- POINT-IN-TIME -->
+> **Point-in-time record — 2026-06-11. Not current state.**
+> This document describes what was true when it was written. The model, panel and
+> calibration have changed since; several numbers here are known to be superseded.
+> For current state see `README.md`, and for the 2026-08 fidelity review and its
+> corrections log see `docs/reviews/2026-08-01-v2-intention-and-bug-review.md`.
+
+
 **Date:** 2026-06-04
 **Status:** Design approved (brainstorming) — pending user review before plan.
 **Goal:** Replace the v1 nowcast engine (13-series flat DFM straight to GDP) with the RBA's **Monthly Activity Indicator (MAI) + MIDAS** methodology (Hartigan & Rosewall, RDP 2024-04), as a full v2, while keeping the existing website working and adding the MAI as a new product.

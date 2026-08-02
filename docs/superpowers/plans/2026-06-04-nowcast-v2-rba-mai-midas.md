@@ -1,5 +1,13 @@
 # Nowcast v2 — RBA MAI + MIDAS — Implementation Plan
 
+<!-- POINT-IN-TIME -->
+> **Point-in-time record — 2026-06-11. Not current state.**
+> This document describes what was true when it was written. The model, panel and
+> calibration have changed since; several numbers here are known to be superseded.
+> For current state see `README.md`, and for the 2026-08 fidelity review and its
+> corrections log see `docs/reviews/2026-08-01-v2-intention-and-bug-review.md`.
+
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Replace the v1 nowcast engine with the RBA's Monthly Activity Indicator (MAI) + U-MIDAS methodology (RDP 2024-04), built parallel in `nowcasting_v2/`, validated against v1, and cut over only once it clears a "competitive-enough" bar — keeping the existing website working and adding the MAI as a new product.

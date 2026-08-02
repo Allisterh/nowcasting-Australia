@@ -1,5 +1,13 @@
 # Panel Expansion — Research & Validation Implementation Plan
 
+<!-- POINT-IN-TIME -->
+> **Point-in-time record — 2026-06-03. Not current state.**
+> This document describes what was true when it was written. The model, panel and
+> calibration have changed since; several numbers here are known to be superseded.
+> For current state see `README.md`, and for the 2026-08 fidelity review and its
+> corrections log see `docs/reviews/2026-08-01-v2-intention-and-bug-review.md`.
+
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Acquire candidate new indicators, assemble an expanded panel, and backtest it offline to decide — with evidence — which new variables (if any) and which factor count improve the AU GDP nowcast, **without touching any production code until the evidence is in.**
