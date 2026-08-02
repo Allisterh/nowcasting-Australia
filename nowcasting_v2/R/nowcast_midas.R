@@ -199,9 +199,25 @@ nowcast_midas <- function(mai, gdp_growth, as_of = NULL, prev_level = NULL,
     if (jt >= 1L) {
       nxm <- mean(target_months$value, na.rm = TRUE)
     } else {
+      # jt == 0 is NOT the paper's method. RDP 2024-04 has no such estimator: for
+      # a quarter with no monthly data it uses the FC (pure forecast) U-MIDAS
+      # model, not a random-walk substitution into the QA regression. This branch
+      # has never been backtested and its output carries no calibrated interval.
+      #
+      # It should also be unreachable in production: ABS releases GDP ~60 days
+      # after quarter-end, i.e. two months into the next quarter, so a target
+      # quarter always has at least two months of MAI by the time it becomes the
+      # target. Verified across the full 2012-2026 weekly backtest -- 678 nowcasts,
+      # zero at jt=0. It stays reachable only because backtest_v2_monthly.R forces
+      # it via include_jt0=TRUE.
+      #
+      # warning() not cat(), so it surfaces in CI logs rather than scrolling past.
       nxm <- as.numeric(tail(xm_est, 1L))
-      cat(sprintf("nowcast_midas(): jt=0 (no MAI months yet for %s); using last observed quarter-average %.4f as contemporaneous input (random-walk extrapolation).\n",
-                  .quarter_name(target_q), nxm))
+      warning(sprintf(paste("nowcast_midas(): jt=0 for %s -- no MAI months in the target quarter.",
+                            "Falling back to the last observed quarter-average (%.4f) as a",
+                            "random-walk substitute. This is NOT the RBA method, is unbacktested,",
+                            "and should not occur in production."),
+                      .quarter_name(target_q), nxm), call. = FALSE)
     }
     qa_fc <- forecast(object = qa_md, newdata = list(xm_est = c(nxm)),
                       se = FALSE, method = "static", add_ts_info = FALSE)

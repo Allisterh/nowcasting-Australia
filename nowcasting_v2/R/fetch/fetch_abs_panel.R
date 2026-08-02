@@ -142,10 +142,23 @@ fetch_mhsi_real <- function(write = TRUE) {
   message("Fetching MHSI (real, CPI-deflated) ...")
   nom <- fetch_abs_id("household_spending_nominal", MHSI_NOMINAL_ID, write = write)
   cpi_q <- fetch_abs_id("cpi_quarterly_tmp", CPI_ID, write = FALSE)
-  # quarterly CPI -> monthly spine, linear interpolation; rule=2 = flat extrapolate
+  # Quarterly CPI -> monthly spine by LAST-PUBLISHED-VALUE (step), not linear.
+  #
+  # Linear interpolation of an interior month uses the FOLLOWING quarter's CPI,
+  # which did not exist when that month's spending was published: April 2026 MHSI
+  # comes out ~28 May, while the June-quarter CPI it was being interpolated
+  # against lands in late July. The deflated series is then frozen into
+  # household_spending.csv, and .truncate_acc only trims it -- it never re-derives
+  # the deflator -- so every historical as-of in the backtest inherits a deflator
+  # built from CPI prints from the future. Those errors calibrate the CI bands.
+  #
+  # method="constant", f=0 carries the last published quarterly CPI forward, which
+  # is exactly the information set available in real time. rule=2 still
+  # flat-extrapolates past the final CPI quarter (that edge was never a leak).
+  # Cost: a small step at each quarter boundary instead of a smooth ramp.
   spine <- seq(min(cpi_q$date), max(nom$date), by = "month")
   cpi_v <- approx(as.numeric(cpi_q$date), cpi_q$value, xout = as.numeric(spine),
-                  rule = 2)$y
+                  method = "constant", f = 0, rule = 2)$y
   cpi_monthly <- data.frame(date = spine, value = round(cpi_v, 4))
   if (write) .write_series(cpi_monthly, "cpi_monthly")
   idx <- cpi_monthly$value[match(nom$date, cpi_monthly$date)]

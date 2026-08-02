@@ -274,7 +274,25 @@ build_mai <- function(tfs           = NULL,
                   sign_opt = FALSE, max_iter = 500L, threshold = 1E-4,
                   check_increased = TRUE, verbose = verbose_dfm)
 
-  fac <- dfm$factors[, 1L]
+  # The FILTERED (real-time) factor, not the RTS-smoothed one.
+  #
+  # qmle_dfm's `factors` field is the smoothed state (qmle_dfm_methods.R:1103,
+  # `t(fs$xs[...])` from run_fs_recursions). RDP 2024-04 fn.33 (p.9) is explicit
+  # that the smoothed estimate is for within-sample estimation and the FILTERED
+  # estimate is what is "appropriate for conditional forecasting", and the paper's
+  # own nowcast drivers read the real_time_factor() output:
+  # Estimate_and_Analyse_TP_MAI.R:150 writes rt_mai_q_1_s_2_p_1_rdp.csv, which
+  # Modelling_GDP_MIDAS_TP.R:58 and Recursive_Nowcast_GDP_UMIDAS_TP.R:58 consume.
+  # Before this change real_time_factor() was never called anywhere in v2.
+  #
+  # A smoothed factor is two-sided, so each new observation revises the whole MAI
+  # history rather than just its edge. NOTE for anyone tempted to expect a
+  # stability win from this: there isn't one. Measured on the 2026-07-27
+  # labour-only update, filtered moved the nowcast +0.652pp vs smoothed +0.649pp.
+  # This is a fidelity fix, not a sensitivity fix.
+  rtf <- real_time_factor(x = Ysel, q = dfm_q, s = 2L, p = 1L,
+                          params = dfm$parameters, scale_opt = FALSE)
+  fac <- rtf$factors[, 1L]
   # Orient the factor so it co-moves positively with mean of selected panel
   ref <- rowMeans(Xm_full[, selected, drop = FALSE], na.rm = TRUE)
   if (suppressWarnings(cor(fac, ref, use = "complete.obs")) < 0) fac <- -fac
