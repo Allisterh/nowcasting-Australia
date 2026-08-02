@@ -135,9 +135,31 @@ emit_v2_json <- function(repo_root = "..", mondays = NULL) {
     cp  <- ci_params_for_stage(ci, nc$n_months_in_quarter)
     b68 <- ci_level_band(qoq, prev_level, cp$bias_pp, cp$sd_pp, cp$z_68)
     b95 <- ci_level_band(qoq, prev_level, cp$bias_pp, cp$sd_pp, cp$z_95)
+
+    # PUBLISH THE BIAS-CORRECTED POINT.
+    #
+    # ci_level_band centres the interval on (qoq - bias). Publishing the RAW qoq
+    # alongside that interval meant the headline figure was not the centre of its
+    # own range, and for the stress model it became incoherent: its bias is
+    # +0.34pp (t=4.9) while the 68% half-width is 0.28pp, so the offset EXCEEDS
+    # the half-width and the published point necessarily fell OUTSIDE its own
+    # 68% interval, whatever the number happened to be.
+    #
+    # If the model demonstrably runs hot by a statistically significant margin,
+    # the bias-corrected value is the better estimate — so that is what we
+    # publish, and the interval is then centred on it by construction. The raw
+    # model output is retained as qoq_growth_raw_pct for auditability.
+    #
+    # Where the bias is NOT significant, cp$bias_pp is 0 and this is a no-op:
+    # the headline model currently publishes its raw output unchanged.
+    qoq_adj <- qoq - cp$bias_pp
+    level_adj <- if (is.na(prev_level)) NA_real_ else prev_level * (1 + qoq_adj / 100)
+
     list(model_id = id, model_name = name, target_quarter = nc$target_quarter,
-         gdp_chain_volume_millions = round(as.numeric(nc$nowcast_level)),
-         qoq_growth_pct = round(qoq, 2), yoy_growth_pct = round(.compute_yoy(gdpt, qoq), 2),
+         gdp_chain_volume_millions = round(as.numeric(level_adj)),
+         qoq_growth_pct = round(qoq_adj, 2),
+         qoq_growth_raw_pct = round(qoq, 2),
+         yoy_growth_pct = round(.compute_yoy(gdpt, qoq_adj), 2),
          ci_68_low = b68$low, ci_68_high = b68$high, ci_95_low = b95$low, ci_95_high = b95$high,
          n_months_in_quarter = nc$n_months_in_quarter,
          ci_basis = ci$basis, ci_n = cp$n, ci_sd_pp = cp$sd_pp, ci_bias_pp = cp$bias_pp,

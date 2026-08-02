@@ -54,11 +54,18 @@ export default function MethodologyPanel() {
           <p>
             The likely ranges are derived from the model&rsquo;s out-of-sample backtest errors: we
             take the distribution of past nowcast errors against final GDP and size the interval from
-            that spread. A correction for systematic over- or under-prediction is applied only where
-            that bias is statistically distinguishable from zero, so for some estimates the range sits
-            centred on the published figure and for others it is deliberately offset. The
-            calibration re-runs the model at every past Monday rather than only at quarter-ends, so
-            the range reflects the amount of data actually available at each point in the quarter.
+            that spread. The calibration re-runs the model at every past Monday rather than only at
+            quarter-ends, so the range reflects the amount of data actually available at each point
+            in the quarter, and the published figure always sits at the centre of its own range.
+          </p>
+          <p>
+            Where a model has a <em>statistically significant</em> tendency to run high or low
+            against past outcomes, the published figure is corrected for it — so what you see is the
+            model&rsquo;s estimate adjusted for its own measured bias, not its raw output. At
+            present that applies to the Volatility model, which runs about 0.34 percentage points
+            high, and not to the Main estimate, whose bias is too small to distinguish from zero.
+            Both models&rsquo; unadjusted outputs are kept in the published data
+            (<code>qoq_growth_raw_pct</code>) for anyone who wants them.
           </p>
           <p>
             These ranges widened in August 2026. That was a correction, not a deterioration: the

@@ -90,10 +90,27 @@ transform_panel <- function(wide, panel_info,
     # overkill; the RBA panel has no interior gaps. For series with interior NAs
     # we fall back to a simple full-sample centre (mean) over observed values,
     # which is the limiting case of rolling centring. Detect interior NAs:
-    has_interior_na <- any(is.na(tx[which(!is.na(tx))[1]:tail(which(!is.na(tx)),1)]))
+    obs <- which(!is.na(tx))
+    has_interior_na <- length(obs) > 0L && any(is.na(tx[obs[1]:tail(obs, 1L)]))
 
     if (has_interior_na) {
-      cen <- tx - mean(tx, na.rm = TRUE)
+      # Interior gaps used to fall back to a single FULL-SAMPLE mean, which is a
+      # different transformation, not a limiting case of rolling centring: a
+      # rolling mean tracks a drifting level, a full-sample mean does not. It hit
+      # 8 of 35 series, including nab_conf (in the production selection) and
+      # anz_sent (63 gaps), and it happened silently.
+      #
+      # Instead: linearly interpolate the interior gaps, run the paper's rolling
+      # centring on the gap-free series, then restore the original NA pattern so
+      # the DFM still sees the true missingness. Interpolation feeds the CENTRING
+      # ONLY -- no synthetic observations reach the model. It is also not a
+      # look-ahead: an interpolated point at time s uses observations either side
+      # of s, all of which lie inside the same window that already contains s.
+      filled <- tx
+      filled[obs[1]:tail(obs, 1L)] <- stats::approx(
+        x = obs, y = tx[obs], xout = obs[1]:tail(obs, 1L), method = "linear")$y
+      cen <- as.numeric(rolling_scale(x = filled, roll_len = rl, center = TRUE, scale = FALSE))
+      cen[is.na(tx)] <- NA_real_
     } else {
       cen <- as.numeric(rolling_scale(x = tx, roll_len = rl, center = TRUE, scale = FALSE))
     }

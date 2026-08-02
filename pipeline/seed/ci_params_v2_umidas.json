@@ -7,36 +7,36 @@
   "bias_alpha": 0.05,
   "pooled": {
     "n": 36,
-    "qoq_bias_pp": 0.2531,
-    "bias_t": 5.128,
+    "qoq_bias_pp": 0.3495,
+    "bias_t": 7.301,
     "bias_significant": true,
-    "qoq_bias_applied_pp": 0.2531,
-    "qoq_sd_pp": 0.2961,
-    "qoq_rmse_pp": 0.3864,
+    "qoq_bias_applied_pp": 0.3495,
+    "qoq_sd_pp": 0.2872,
+    "qoq_rmse_pp": 0.4498,
     "t_68": 1.0145,
     "t_95": 2.0301
   },
   "by_jt": {
     "2": {
       "n": 17,
-      "qoq_bias_pp": 0.2813,
-      "bias_t": 3.531,
+      "qoq_bias_pp": 0.3625,
+      "bias_t": 4.87,
       "bias_significant": true,
-      "qoq_bias_applied_pp": 0.2813,
-      "qoq_sd_pp": 0.3285,
-      "qoq_rmse_pp": 0.4251,
+      "qoq_bias_applied_pp": 0.3625,
+      "qoq_sd_pp": 0.3069,
+      "qoq_rmse_pp": 0.4691,
       "t_68": 1.0322,
       "t_95": 2.1199,
       "stage": 2
     },
     "3": {
       "n": 17,
-      "qoq_bias_pp": 0.2192,
-      "bias_t": 3.311,
+      "qoq_bias_pp": 0.3372,
+      "bias_t": 4.912,
       "bias_significant": true,
-      "qoq_bias_applied_pp": 0.2192,
-      "qoq_sd_pp": 0.273,
-      "qoq_rmse_pp": 0.3438,
+      "qoq_bias_applied_pp": 0.3372,
+      "qoq_sd_pp": 0.283,
+      "qoq_rmse_pp": 0.4349,
       "t_68": 1.0322,
       "t_95": 2.1199,
       "stage": 3
@@ -44,5 +44,5 @@
   },
   "model": "umidas_a20 (dfm_q=1)",
   "source": "cache/ci_recalib/umidas_a20_acc.csv",
-  "computed_at": "2026-08-02T05:47:51Z"
+  "computed_at": "2026-08-02T07:15:02Z"
 }
