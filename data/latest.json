@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-02T09:15:57Z",
+  "generated_at": "2026-08-02T12:09:37Z",
   "target_quarter": "2026 Q2",
   "data_through": "2026-08",
   "next_gdp_release_date": "2026-09-02",
@@ -20,14 +20,7 @@
   },
   "data_updates": {
     "run_date": "2026-08-02",
-    "nowcast_delta_pp": -0.06,
-    "series": [
-      {
-        "id": "building_approvals",
-        "name": "Building Approvals",
-        "prev_period": "2026-05",
-        "latest_period": "2026-06"
-      }
-    ]
+    "nowcast_delta_pp": 0,
+    "series": []
   }
 }

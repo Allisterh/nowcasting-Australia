@@ -8382,9 +8382,7 @@
       ],
       "last_release_date": "2026-07-30",
       "next_release_estimate": "2026-08-06",
-      "updated_this_run": true,
-      "prev_period": "2026-05",
-      "latest_period": "2026-06"
+      "updated_this_run": false
     },
     {
       "id": "bus_conf",
