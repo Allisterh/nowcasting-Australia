@@ -126,7 +126,7 @@ export interface Performance {
 }
 
 // ---- v2 cutover (staged; gated on approval) ----------------------------------
-// A single v2 model estimate (headline = qa_a05 precision, stress = umidas_a20).
+// A single v2 model estimate (headline = qa_a10, the paper's selection threshold).
 export interface V2Model {
   model_id: string;
   model_name: string;
@@ -151,7 +151,7 @@ export interface LatestV2 {
   target_quarter: string;
   data_through: string;
   prev_level: { value: number; date: string | null; source: string };
-  models: { headline: V2Model; stress: V2Model };
+  models: { headline: V2Model };
   vintages: Vintage[]; // qa nowcast at each Monday — drives the evolution chart
   v1_comparison: {
     model_name: string;

@@ -1,12 +1,35 @@
 # Spec-lever sweep — α=0.10 and COVID-dummies-OFF (2026-06-13)
 
 <!-- POINT-IN-TIME -->
-> **Point-in-time record — 2026-06-13. The numbers below are SUPERSEDED. Read this before
-> citing it.**
+> ## ⚠️ THE CONCLUSION OF THIS DOCUMENT WAS WRONG. α is now 0.10, the paper's value.
 >
-> This sweep is still referenced as the justification for running α=0.05 instead of the
-> paper's α=0.10. That conclusion may well survive, but **it has not been re-tested since
-> the 2026-08-02 fidelity fixes**, and every input to it has moved:
+> **Re-run 2026-08-02 without the look-ahead. The result reverses.**
+>
+> This sweep concluded that α=0.05 was *"empirically justified, not a stylistic deviation
+> to apologise for"*, and that matching the RBA's 0.10 *"would make the live nowcast
+> materially worse."* Neither claim survives honest measurement.
+>
+> The RMSEs below were produced with the targeted-predictor selection fixed ONCE on the
+> FULL sample and forced at every historical as-of — so the Wald gate saw the GDP outcomes
+> of the very quarters it was about to "nowcast". That advantage scales with how many
+> series are admitted, which is precisely why the looser threshold looked so much worse.
+>
+> | full-sample RMSE gap, α=0.05 vs 0.10 | |
+> |---|---:|
+> | claimed below (with look-ahead) | **+0.2340** |
+> | re-measured (look-ahead removed) | **+0.0297** |
+>
+> 87% of the claimed advantage was the artefact. What remains is not statistically
+> distinguishable — paired test on squared error, full sample n=49: **p = 0.43**;
+> post-COVID n=17: **p = 0.63**. α=0.20 is likewise indistinguishable from 0.05.
+>
+> With no measurable cost, the tie breaks toward the paper. **Production moved to
+> α = 0.10 on 2026-08-02** (`emit_v2_json.R`, model id `v2_qa_a10`).
+>
+> Everything below is retained as the record of what was believed in June, and of how a
+> look-ahead in a backtest can invert a spec decision. Do not cite its numbers.
+>
+> The inputs had also all moved since June:
 >
 > | | this document | current |
 > |---|---|---|
@@ -19,13 +42,8 @@
 > | standardisation | divide by sd | divide by RMS (the paper's) |
 > | selection in the backtest | fixed once on the FULL sample (look-ahead) | recursive at each as-of |
 >
-> The RMSE figures in the tables below were produced under the full-sample fixed selection,
-> which let the Wald gate see GDP outcomes it was about to "nowcast". Removing that raised
-> post-COVID RMSE on the headline from 0.3967 to 0.5488 — so the *absolute* numbers here are
-> optimistic, and the *relative* comparison between α levels needs re-running before it is
-> relied on again.
->
-> Re-run: `Rscript R/spec_sweep.R`. Tracked as item #13 in
+> Re-run with `backtest_v2(sel_alpha = ...)` at `as_of_freq = "quarter_end"`. Full results
+> in the 2026-08-02 addendum of
 > `docs/reviews/2026-08-01-v2-intention-and-bug-review.md`.
 
 Two experiments James queued (2026-06-12). Both probe where **v2's spec deviates from the

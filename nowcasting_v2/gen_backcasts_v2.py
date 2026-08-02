@@ -32,7 +32,7 @@ import csv, json, os, sys, statistics as st
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 def p(*a): return os.path.join(ROOT, *a)
 
-SRC   = sys.argv[1] if len(sys.argv) > 1 else p("nowcasting_v2", "cache", "ci_recalib", "qa_a05_acc.csv")
+SRC   = sys.argv[1] if len(sys.argv) > 1 else p("nowcasting_v2", "cache", "ci_recalib", "qa_a10_acc.csv")
 FIRST = sys.argv[2] if len(sys.argv) > 2 else "2023 Q2"
 
 def qkey(q):
@@ -68,7 +68,7 @@ for q in quarters:
 
 errs = [b["error_pp"] for b in backcasts]
 out = {
-    "model": "v2 headline (MAI -> QA U-MIDAS, qa_a05)",
+    "model": f"v2 headline (MAI -> QA U-MIDAS, {os.path.basename(SRC).replace('_acc.csv','')})",
     "basis": "pseudo-out-of-sample backtest (hypothetical; not produced in real time)",
     "note":  ("These are BACKTESTED estimates, shown to give the model a track record. "
               "They are not live nowcasts. Each is the last as-of before that quarter's GDP "

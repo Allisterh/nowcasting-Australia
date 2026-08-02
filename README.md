@@ -15,7 +15,7 @@ weekly and both appear on the site.
 | Location | `pipeline/` | `nowcasting_v2/` |
 | Method | Component-based Dynamic Factor Model (3 factors, VAR(1), EM via Kalman filter) | RBA Monthly Activity Indicator → U-MIDAS |
 | Lineage | NY Fed Staff Nowcast; Treasury WP *Nowcasting Australia's GDP* | **RBA RDP 2024-04**, Hartigan & Rosewall |
-| Panel | 12 monthly indicators | ~31 candidates, cut to ~10 by targeted-predictor selection |
+| Panel | 12 monthly indicators | ~31 candidates, cut to ~10 by targeted-predictor selection (Wald test vs GDP, α = 0.10 as per the paper) |
 | Outputs | `data/latest.json`, `nowcasts.json`, `indicators.json`, `performance.json` | `data/latest_v2.json`, `vintages_v2.json`, `indicators_v2.json`, `performance_v2.json`, `backcasts.json` |
 
 **v2's estimation code is vendored verbatim from the RBA's own replication files.** Everything in

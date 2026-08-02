@@ -43,13 +43,9 @@ export default function MethodologyPanel() {
             arrive, and the selection is re-run with them.
           </p>
           <p>
-            Two specifications are shown. The <strong>Main</strong> estimate uses a stricter
-            selection threshold and a quarter-average regression, tuned for precision in normal
-            quarters. The <strong>Volatility model</strong> uses a looser threshold — so it draws on
-            a wider set of series — and an unrestricted regression that weights individual months
-            within the quarter, trading precision for faster response around shocks. They are
-            therefore <em>not</em> the same model with different weights: they are fit on different
-            selections of series and use different regressions, which is why they can disagree.
+            The estimate uses the paper&rsquo;s own targeted-predictor selection threshold and a
+            quarter-average U-MIDAS regression, so it is tuned for a complete quarter of monthly
+            data rather than for fast reaction to a single release.
           </p>
           <p>
             The likely ranges are derived from the model&rsquo;s out-of-sample backtest errors: we
@@ -59,13 +55,16 @@ export default function MethodologyPanel() {
             in the quarter, and the published figure always sits at the centre of its own range.
           </p>
           <p>
-            Where a model has a <em>statistically significant</em> tendency to run high or low
-            against past outcomes, the published figure is corrected for it — so what you see is the
-            model&rsquo;s estimate adjusted for its own measured bias, not its raw output. At
-            present that applies to the Volatility model, which runs about 0.34 percentage points
-            high, and not to the Main estimate, whose bias is too small to distinguish from zero.
-            Both models&rsquo; unadjusted outputs are kept in the published data
-            (<code>qoq_growth_raw_pct</code>) for anyone who wants them.
+            The figure shown is the model&rsquo;s own output. It is not adjusted after the fact,
+            because the paper does not adjust its own — the MIDAS regression already fits an
+            intercept, and the paper evaluates on root mean squared error, which penalises a
+            systematic tendency and random error together. Correcting again afterwards would
+            publish a number that none of the accuracy figures above describe.
+          </p>
+          <p>
+            Measured against the past four years, the estimate has run about 0.34 percentage
+            points high on average. That is a real tendency rather than noise, and it is disclosed
+            here rather than silently subtracted, so you can read the headline with it in mind.
           </p>
           <p>
             These ranges widened in August 2026. That was a correction, not a deterioration: the

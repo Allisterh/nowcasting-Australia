@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { BarChart, Bar, Cell, ResponsiveContainer } from "recharts";
 import type { V2Model, GdpSeries } from "@/lib/types";
 import { formatPct } from "@/lib/format";
@@ -8,7 +7,6 @@ import { chartColors } from "@/lib/chartTheme";
 
 interface Props {
   headline: V2Model;
-  stress: V2Model;
   prevLevel: number;
   gdp: GdpSeries;
 }
@@ -22,9 +20,8 @@ function growthRange(m: V2Model, prev: number) {
   };
 }
 
-export default function NowcastHeadline({ headline, stress, prevLevel, gdp }: Props) {
-  const [mode, setMode] = useState<"main" | "volatile">("main");
-  const model = mode === "main" ? headline : stress;
+export default function NowcastHeadline({ headline, prevLevel, gdp }: Props) {
+  const model = headline;
   const range = growthRange(model, prevLevel);
 
   const bars = [
@@ -38,21 +35,6 @@ export default function NowcastHeadline({ headline, stress, prevLevel, gdp }: Pr
         <p className="text-[10px] uppercase tracking-wider text-label">
           {model.target_quarter} — our GDP estimate
         </p>
-        {/* Estimate toggle */}
-        <div className="flex border border-border-heavy text-[10px] uppercase tracking-wider">
-          <button
-            onClick={() => setMode("main")}
-            className={`px-3 py-1 ${mode === "main" ? "bg-border-heavy text-white" : "text-label hover:bg-panel"}`}
-          >
-            Main
-          </button>
-          <button
-            onClick={() => setMode("volatile")}
-            className={`px-3 py-1 border-l border-border-heavy ${mode === "volatile" ? "bg-border-heavy text-white" : "text-label hover:bg-panel"}`}
-          >
-            Volatility model
-          </button>
-        </div>
       </div>
 
       {/* Big number */}
