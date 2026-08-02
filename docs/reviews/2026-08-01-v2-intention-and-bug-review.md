@@ -157,6 +157,7 @@ Ranked. Nothing here proposes a rewrite.
 ### Done (2026-08-02)
 | # | Action | Outcome |
 |---|---|---|
+| 13 | Re-ran the α sweep without look-ahead | **Reversed the June conclusion — production moved to the paper's α = 0.10.** See the addendum below |
 | 9 | Re-derived `q`, `s`, `p` on our panel | **Confirms the ported (1, 2, 1).** See the section below — the criterion is ambiguous at our panel width, but the backtest is decisive |
 | 1 | Target-quarter rule corrected to its documented contract | `ce14abb`; regression test added. Was already live on the stress model since 2026-07-20 |
 | 11 | CI calibration re-run without full-sample-fixed selection | `ce14abb`. Bands were ~53% too narrow like-for-like (sd 0.3528 → 0.5398) |
@@ -180,12 +181,11 @@ Ranked. Nothing here proposes a rewrite.
 |---|---|---|
 | 8 | Switch the MAI to `real_time_factor()` | Genuine fidelity divergence (paper fn.33). **Do not expect it to damp sensitivity** — tested, +0.652 vs +0.649pp, no effect. Fix it because the paper prescribes it, not for stability |
 | 10 | Move the selection/MIDAS target to first-release GDP | Paper-specified (Koenig–Dolmas–Piger). May be blocked on ABS vintage availability 2022–2026 — the paper's own file stops at 2022 |
-| 13 | Re-run the α sweep on the current panel | `SPEC-SWEEP-RESULTS.md` records 29→9; production is now 31→10 under the fixed spec |
 | 14 | Isolate which of anchor-order / RMS / GDP-truncation damped the sensitivity | Currently unattributed; matters for knowing what to preserve |
 | 15 | Explain the `ft_emp` presence-vs-value anomaly | Removing its June observation moves the nowcast 0.79pp; shocking it 1 SD moves it 0.002pp |
 
 ### Accept and document
-- α=0.05 over the paper's 0.10 — evidence-backed, though the sweep needs re-running (#13).
+- ~~α=0.05 over the paper's 0.10~~ — **resolved 2026-08-02: moved to the paper's 0.10.** The June justification was 87% look-ahead artefact; what remained was not statistically distinguishable (p=0.43). No longer a deviation.
 - Panel substitutions (`ivi` for `doe_ads`, `household_spending` for `rt`) — sensible adaptations to the censored panel.
 - **The point/band centring split is resolved.** Bias is now t-tested per information stage and applied only where significant. The headline's is not (t=1.24) so its band is centred on the published point; the stress model's is (t=3.31) so its band is deliberately offset. Note the earlier draft's "the bias is fitting noise, drop it" was an artefact of n=17 — on the weekly grid it is real for one of the two models.
 - **Per-stage CI calibration is built but does not currently change the band.** `jt=2` vs `jt=3`: sd 0.5377 vs 0.5398, F=0.89, p=0.697. And `jt=0` cannot occur — GDP releases ~60 days after quarter-end, so a target quarter always has ≥2 months of data. The `jt=0` random-walk fallback is dead code in production.
@@ -248,6 +248,42 @@ assumed. The honest caveat is that our panel is too narrow to run the paper's
 procedure as written — one criterion saturated, another needed reshaping, and the
 decisive evidence came from the backtest rather than the information criteria. If
 the selection ever widens materially, this is worth re-running.
+
+## Addendum 2026-08-02: the α deviation is closed
+
+Item #13. `SPEC-SWEEP-RESULTS.md` (June) concluded that α=0.05 was *"empirically
+justified"* and that the paper's 0.10 *"would make the live nowcast materially
+worse"*. Re-run on the current code — recursive selection, 1978 start, filtered
+factor, Wald anchor, RMS scaling, real-time CPI — that reverses.
+
+| α | avg series | RMSE full | RMSE post-COVID | MAE post-COVID | RMSE last-8 |
+|---|---:|---:|---:|---:|---:|
+| 0.05 (was production) | 8.0 | 0.3837 | 0.5159 | 0.4034 | 0.3768 |
+| **0.10 (paper, now production)** | **9.6** | 0.4134 | 0.5526 | 0.4739 | 0.3822 |
+| 0.20 (stress model) | 11.0 | 0.4332 | 0.5161 | 0.4396 | 0.3102 |
+
+α=0.05 is still *nominally* ahead on three of four windows, but the margin is
+not statistically distinguishable — paired tests on squared error give **p = 0.43**
+(full, n=49) and **p = 0.63** (post-COVID, n=17). α=0.20 is likewise
+indistinguishable from 0.05.
+
+The June gap was almost entirely artefact:
+
+| full-sample RMSE gap, 0.05 vs 0.10 | |
+|---|---:|
+| June (selection fixed on the full sample) | +0.2340 |
+| now (recursive selection) | **+0.0297** |
+
+**87% of the claimed advantage was look-ahead.** The mechanism is worth
+remembering: a selection chosen with knowledge of the outcomes it will be scored
+against gains more the *more* series it admits, so the artefact systematically
+punished the looser threshold. A backtest flaw did not merely add noise — it
+inverted a specification decision, and that decision then sat in production for
+seven weeks with a document asserting it was evidence-backed.
+
+With no measurable cost, the tie breaks toward the paper. **Production is now
+α = 0.10** (`emit_v2_json.R`, model id `v2_qa_a10`). The stress model keeps 0.20,
+which is v2's own construct rather than a claim about the paper.
 
 ## Track 1 — fidelity to RBA RDP 2024-04
 

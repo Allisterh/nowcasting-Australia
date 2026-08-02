@@ -8,7 +8,20 @@
 # nowcast. The HEADLINE/STRESS boxes show the LATEST Monday; the evolution chart
 # shows the qa nowcast at every Monday (the vintages array).
 #
-# Two models (James 2026-06-10): headline = qa_a05 (precision), stress = umidas_a20
+# ONE model: headline = qa_a10. A second "stress / volatility" spec (umidas_a20)
+# was emitted alongside it until 2026-08-02 and shown behind a toggle on the site.
+# Removed: it was v2's own construct rather than anything in RDP 2024-04, it was
+# the estimate carrying a significant +0.34pp bias, and keeping it meant ~20 min of
+# every recalibration plus a second params file maintained for something no longer
+# displayed. Recoverable from git if it is ever wanted back.
+# The headline threshold moved 0.05 -> 0.10 on 2026-08-02 to match RDP 2024-04.
+# The 0.05 deviation had been justified by SPEC-SWEEP-RESULTS.md, but that sweep
+# fixed the targeted-predictor selection once on the FULL sample and forced it at
+# every historical as-of -- a look-ahead that flattered the stricter threshold
+# most, because the advantage scales with how many series are admitted. Re-run
+# without it, alpha=0.05 vs 0.10 is not statistically distinguishable (paired test
+# on squared error, full sample n=49: p=0.43; post-COVID n=17: p=0.63), so the
+# tie now breaks toward the paper.
 # (big-events). Both on panel B3_nab_wmi (exclude AiG). Bias-aware CI level-bands
 # from pipeline/seed/ci_params_v2*.json. yoy = 4-quarter QoQ chain.
 #
@@ -32,7 +45,6 @@ suppressMessages({ library(jsonlite) })
 AIG       <- c("aig_pmi", "aig_pci", "aig_psi")   # B3_nab_wmi panel excludes the AiG block
 GDP_LAG   <- 60L                                  # National Accounts ~9wk after quarter-end
 CI_QA     <- "../pipeline/seed/ci_params_v2.json"
-CI_UMIDAS <- "../pipeline/seed/ci_params_v2_umidas.json"
 
 # Accurate publication lags (days from END of reference month). Corrects the
 # coarse backtest map (.lag_for_id) after the 2026-06-11 Fable review, which showed
@@ -154,10 +166,11 @@ emit_v2_json <- function(repo_root = "..", mondays = NULL, rebuild_vintages = FA
     #
     # ci_level_band centres the interval on (qoq - bias). Publishing the RAW qoq
     # alongside that interval meant the headline figure was not the centre of its
-    # own range, and for the stress model it became incoherent: its bias is
-    # +0.34pp (t=4.9) while the 68% half-width is 0.28pp, so the offset EXCEEDS
-    # the half-width and the published point necessarily fell OUTSIDE its own
-    # 68% interval, whatever the number happened to be.
+    # own range. On the now-removed stress spec this had become incoherent: its
+    # bias was +0.34pp (t=4.9) against a 68% half-width of 0.28pp, so the offset
+    # EXCEEDED the half-width and the published point necessarily fell OUTSIDE
+    # its own interval. The headline has never had a significant bias, but the
+    # correction stays wired up in case that changes.
     #
     # If the model demonstrably runs hot by a statistically significant margin,
     # the bias-corrected value is the better estimate — so that is what we
@@ -199,9 +212,8 @@ emit_v2_json <- function(repo_root = "..", mondays = NULL, rebuild_vintages = FA
   dt_m   <- format(max(wide_m$date[has_any]), "%Y-%m")
   cat(sprintf("[as_of %s] data through %s\n", latest_m, dt_m))
 
-  qa       <- mk(tfs_m, gdp_m, "v2_qa_a05", "MAI to QA U-MIDAS (precision)", 0.05, "qa", CI_QA)
+  qa       <- mk(tfs_m, gdp_m, "v2_qa_a10", "MAI to QA U-MIDAS (precision)", 0.10, "qa", CI_QA)
   headline <- qa
-  stress   <- mk(tfs_m, gdp_m, "v2_umidas_a20", "MAI to full U-MIDAS (stress / big-events)", 0.20, "umidas", CI_UMIDAS)
   data_through <- dt_m
 
   this_vintage <- list(
@@ -229,7 +241,7 @@ emit_v2_json <- function(repo_root = "..", mondays = NULL, rebuild_vintages = FA
       tfs_i    <- transform_panel(wide_i, "seed/panel_info.csv")
       ids_i    <- setdiff(names(wide_i), "date")
       has_i    <- rowSums(!is.na(as.matrix(wide_i[, ids_i]))) > 0
-      qa_i     <- mk(tfs_i, gdp_i, "v2_qa_a05", "MAI to QA U-MIDAS (precision)", 0.05, "qa", CI_QA)
+      qa_i     <- mk(tfs_i, gdp_i, "v2_qa_a10", "MAI to QA U-MIDAS (precision)", 0.10, "qa", CI_QA)
       cat(sprintf("  [as_of %s] %s QoQ %+.2f%%\n", m_i, qa_i$target_quarter, qa_i$qoq_growth_pct))
       vlog[[length(vlog) + 1L]] <- list(
         run_date = m_i, target_quarter = qa_i$target_quarter,
@@ -262,7 +274,7 @@ emit_v2_json <- function(repo_root = "..", mondays = NULL, rebuild_vintages = FA
     target_quarter = headline$target_quarter,
     data_through   = data_through,
     prev_level     = list(value = round(prev_level), date = as.character(pl$date), source = pl$source),
-    models         = list(headline = headline, stress = stress),
+    models         = list(headline = headline),
     vintages       = vintages,
     v1_comparison  = v1,
     note           = "STAGED v2 emit (parallel to live latest.json). Monday cadence; headline = latest Monday. Pending James approval."
@@ -271,8 +283,8 @@ emit_v2_json <- function(repo_root = "..", mondays = NULL, rebuild_vintages = FA
   jsonlite::write_json(out, out_path, pretty = TRUE, auto_unbox = TRUE, na = "null")
   cat(sprintf("\nWROTE %s\n", normalizePath(out_path, mustWork = FALSE)))
   for (v in vintages) cat(sprintf("  vintage %s (%s): QoQ %+.2f%%\n", v$run_date, v$target_quarter, v$qoq_growth_pct))
-  cat(sprintf("  HEADLINE (%s) %s: QoQ %+.2f%% | STRESS: QoQ %+.2f%%\n",
-              latest_m, headline$target_quarter, headline$qoq_growth_pct, stress$qoq_growth_pct))
+  cat(sprintf("  HEADLINE (%s) %s: QoQ %+.2f%%\n",
+              latest_m, headline$target_quarter, headline$qoq_growth_pct))
   invisible(out)
 }
 

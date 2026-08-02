@@ -1,11 +1,12 @@
-#### Bias-aware empirical confidence bands ####
+#### Empirical confidence bands ####
 # Replaces the old hardcoded +/-0.7% (68%) / +/-1.4% (95%) multiplicative bands
 # with intervals derived from the model's actual POOS backtest error.
 #
 # Backtest error is defined as `forecast - actual`, so a positive mean error =>
 # the model OVER-predicts. The interval for the *actual* is centred on
 # (qoq - bias) and spanned by z * sd, where sd is the dispersion of errors about
-# their mean.
+# their mean. For v2, bias is always 0 -- see the note below -- so the band is
+# simply qoq +/- z * sd.
 #
 # NOTE on sd: this comment used to say sd = sqrt(rmse^2 - bias^2). That is the
 # population identity; the generators actually use the sample sd() (n-1 divisor),
@@ -13,11 +14,15 @@
 # The two differ by the n/(n-1) factor. Do not "fix" the code to match the old
 # comment.
 #
-# NOTE on the bias term: for v2 this is now applied ONLY where the bias is
-# statistically distinguishable from zero at that information stage — see
-# nowcasting_v2/R/compute_ci_params_v2.R. So `bias_pp` is frequently 0 and the
-# band is then centred on the published point. It is non-zero (and the band
-# deliberately offset) only where the model demonstrably runs hot or cold.
+# NOTE on the bias term: v2 no longer applies one. compute_ci_params_v2.R sets
+# qoq_bias_applied_pp = 0 always, so v2's bands are centred on the model's raw
+# output. RDP 2024-04 does not bias-correct: the word does not appear in the
+# paper, its replication code applies no ex-post adjustment to forecasts, its
+# MIDAS regression already fits an intercept (which absorbs a constant offset
+# in-sample), and it evaluates on RMSE -- a loss that penalises bias and variance
+# jointly. Subtracting the mean error afterwards therefore double-counts, and
+# publishes a number that none of our RMSE figures describe. The measured bias is
+# still reported (qoq_bias_pp, bias_t) so the site can disclose it.
 # v1's flat seed/ci_params.json still applies its bias unconditionally.
 #
 # Params (qoq_bias_pp, qoq_sd_pp, z_68, z_95) come from seed/ci_params.json,

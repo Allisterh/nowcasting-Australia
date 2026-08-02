@@ -27,12 +27,21 @@
 #
 # Two deliberate departures from the old compute_ci_params.R:
 #
-#  1. BIAS APPLIED ONLY WHERE SIGNIFICANT. The old generator always subtracted the
-#     mean error. On its n=17 window that bias was not distinguishable from zero
-#     (headline t=1.53), yet subtracting it shifted the interval by ~half a
-#     standard deviation and pushed the published point off-centre in its own band.
-#     We t-test per stage. Note this cuts both ways: with the larger weekly n the
-#     stress model's bias IS significant (t=3.53) and does get applied.
+#  1. BIAS IS MEASURED AND REPORTED, BUT NEVER APPLIED. RDP 2024-04 does not
+#     bias-correct: the word "bias" does not appear in the paper, its replication
+#     code applies no adjustment to its forecasts, and it evaluates purely on RMSE
+#     -- a loss that already penalises bias and variance jointly. Subtracting the
+#     mean error afterwards would publish a number that none of our RMSE figures
+#     describe, and would be a deviation from the paper dressed up as fidelity.
+#
+#     So `qoq_bias_applied_pp` is always 0. The measured bias and its t-statistic
+#     are still emitted (`qoq_bias_pp`, `bias_t`, `bias_significant`) so the site
+#     can DISCLOSE a systematic tendency rather than silently correct for it --
+#     which is also more useful to a reader.
+#
+#     This matters: at alpha = 0.10 the measured bias is +0.34pp with t = 4.7.
+#     Applying it would have moved the published Q2 nowcast from +0.47% to +0.13%
+#     and turned most of the evolution chart negative.
 #
 #  2. t(df), NOT the normal. sd is estimated, not known. At n=17 the old z=1.96
 #     made the 95% band 8.2% too narrow.
@@ -100,11 +109,11 @@ stats_for <- function(e) {
   tstat <- bias / (sdv / sqrt(n))
   sig   <- abs(tstat) > qt(1 - BIAS_ALPHA / 2, n - 1L)
   list(n = n,
-       # bias is REPORTED always, but APPLIED only when significant
+       # Measured and reported for disclosure; NEVER applied -- see note above.
        qoq_bias_pp        = round(bias, 4),
        bias_t             = round(tstat, 3),
        bias_significant   = sig,
-       qoq_bias_applied_pp = if (sig) round(bias, 4) else 0,
+       qoq_bias_applied_pp = 0,
        qoq_sd_pp          = round(sdv, 4),
        qoq_rmse_pp        = round(rmse, 4),
        t_68               = round(qt(0.84134, n - 1L), 4),   # one-sd-equivalent quantile
@@ -126,7 +135,7 @@ for (j in sort(unique(b$n_months_in_quarter))) {
   by_jt[[as.character(j)]] <- s
   cat(sprintf("  jt=%d: n=%2d  bias %+0.4f (t=%+.2f%s)  sd %.4f  t95 %.3f\n",
               j, s$n, s$qoq_bias_pp, s$bias_t,
-              if (s$bias_significant) ", APPLIED" else ", not applied", s$qoq_sd_pp, s$t_95))
+              if (s$bias_significant) ", SIGNIFICANT but not applied" else ", n.s.", s$qoq_sd_pp, s$t_95))
 }
 
 params <- list(
@@ -136,9 +145,10 @@ params <- list(
                               "only (>= %s). Pre-2020 errors are significantly tighter (F=2.97, p<0.0001)",
                               "so pooling them would understate current uncertainty."), CALIB_FROM),
   calibrated_from = as.character(CALIB_FROM),
-  method      = paste("interval = point - bias_applied +/- t(df) * sd, where bias_applied is 0",
-                      "unless the stage's bias is significant at the 5% level. Stages with fewer",
-                      "than MIN_N observations fall back to `pooled`."),
+  method      = paste("interval = point +/- t(df) * sd, centred on the model's raw output.",
+                      "The measured bias is reported (qoq_bias_pp, bias_t) but NOT applied:",
+                      "RDP 2024-04 does not bias-correct and evaluates on RMSE, which already",
+                      "penalises bias. Stages with fewer than MIN_N observations fall back to `pooled`."),
   min_n       = MIN_N,
   bias_alpha  = BIAS_ALPHA,
   pooled      = pooled,

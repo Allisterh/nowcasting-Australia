@@ -3,7 +3,7 @@ import type { V2Model } from "@/lib/types";
 
 // PREVIEW ONLY — a functional read-only view of the staged v2 emit so James can
 // eyeball the real numbers in the browser. This is NOT the final designed UI
-// (the headline/stress toggle, CI band shading, comparison line, and backcast
+// (CI band shading, comparison line, and backcast
 // table on the real dashboard are still to be built to the jw_pal design system).
 
 function pct(n: number) {
@@ -54,7 +54,6 @@ export default function V2Preview() {
 
       <div className="grid gap-4 sm:grid-cols-2">
         <ModelCard m={latestV2.models.headline} accent="text-black" />
-        <ModelCard m={latestV2.models.stress} accent="text-label" />
       </div>
 
       {latestV2.v1_comparison && (
