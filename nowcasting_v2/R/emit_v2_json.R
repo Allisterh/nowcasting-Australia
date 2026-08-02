@@ -86,7 +86,21 @@ CI_UMIDAS <- "../pipeline/seed/ci_params_v2_umidas.json"
   (prod(1 + c(last3, nowcast_qoq) / 100) - 1) * 100
 }
 
-emit_v2_json <- function(repo_root = "..", mondays = NULL) {
+#' @param rebuild_vintages If TRUE, recompute the nowcast for EVERY Monday in the
+#'   cadence instead of only the latest, replacing data/vintages_v2.json wholesale.
+#'
+#'   Default FALSE, and it must stay that way for the weekly cron. The log is
+#'   deliberately append-only: recomputing history on every run lets data
+#'   revisions silently rewrite what was already published (the 2026-06-15
+#'   non_res_ba leak extended the DFM window to 1965 and moved every past point).
+#'
+#'   Use this ONLY after a deliberate model change, when leaving the old points in
+#'   place would be the more misleading option — e.g. the 2026-08-02 fidelity work,
+#'   after which eight of the nine points came from a model with a known
+#'   look-ahead in its predictor selection. Rebuilding then makes the series
+#'   internally consistent, at the cost that it no longer shows exactly what was
+#'   published live on each of those Mondays.
+emit_v2_json <- function(repo_root = "..", mondays = NULL, rebuild_vintages = FALSE) {
   cat("=== emit_v2_json (Monday cadence, staged) ===\n")
 
   # ---- shared inputs (full panel; truncated per as_of below) ----
@@ -200,9 +214,36 @@ emit_v2_json <- function(repo_root = "..", mondays = NULL) {
   vintage_path <- file.path(repo_root, "data", "vintages_v2.json")
   vlog <- if (file.exists(vintage_path))
     jsonlite::fromJSON(vintage_path, simplifyVector = FALSE) else list()
-  # upsert by run_date (idempotent same-day re-runs); never touch prior Mondays
-  vlog <- Filter(function(r) !identical(as.character(r$run_date), latest_m), vlog)
-  vlog[[length(vlog) + 1L]] <- this_vintage
+
+  if (rebuild_vintages) {
+    # Deliberate full rebuild (see the roxygen note on the argument). Recompute
+    # every Monday in the cadence under the CURRENT model and discard the old log.
+    cat(sprintf("[rebuild_vintages] recomputing all %d Mondays -- this REPLACES published history\n",
+                length(mondays)))
+    vlog <- list()
+    for (m_i in mondays) {
+      if (identical(m_i, latest_m)) { vlog[[length(vlog) + 1L]] <- this_vintage; next }
+      as_of_i  <- as.Date(m_i)
+      wide_i   <- .truncate_acc(wide_full, as_of_i)
+      gdp_i    <- .truncate_gdp(gdp_full, as_of_i, gdp_lag = GDP_LAG)
+      tfs_i    <- transform_panel(wide_i, "seed/panel_info.csv")
+      ids_i    <- setdiff(names(wide_i), "date")
+      has_i    <- rowSums(!is.na(as.matrix(wide_i[, ids_i]))) > 0
+      qa_i     <- mk(tfs_i, gdp_i, "v2_qa_a05", "MAI to QA U-MIDAS (precision)", 0.05, "qa", CI_QA)
+      cat(sprintf("  [as_of %s] %s QoQ %+.2f%%\n", m_i, qa_i$target_quarter, qa_i$qoq_growth_pct))
+      vlog[[length(vlog) + 1L]] <- list(
+        run_date = m_i, target_quarter = qa_i$target_quarter,
+        point = qa_i$gdp_chain_volume_millions, qoq_growth_pct = qa_i$qoq_growth_pct,
+        days_until_release = if (is.na(release_date)) NA_integer_ else as.integer(as_of_i - release_date),
+        ci_68_low = qa_i$ci_68_low, ci_68_high = qa_i$ci_68_high,
+        ci_95_low = qa_i$ci_95_low, ci_95_high = qa_i$ci_95_high,
+        data_through = format(max(wide_i$date[has_i]), "%Y-%m"))
+    }
+  } else {
+    # upsert by run_date (idempotent same-day re-runs); never touch prior Mondays
+    vlog <- Filter(function(r) !identical(as.character(r$run_date), latest_m), vlog)
+    vlog[[length(vlog) + 1L]] <- this_vintage
+  }
   vlog <- vlog[order(vapply(vlog, function(r) as.character(r$run_date), character(1)))]
   jsonlite::write_json(vlog, vintage_path, pretty = TRUE, auto_unbox = TRUE, na = "null")
   vintages <- vlog
