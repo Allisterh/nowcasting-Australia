@@ -183,6 +183,31 @@ fits an intercept). Now that the bias has an identifiable cause, fixing the caus
 is strictly better than subtracting the symptom. The site currently discloses the
 tendency instead — see the accuracy line under the headline.
 
+**External corroboration (2026-08-08).** The Melbourne Institute's nowcast for
+the same quarter, 2026 Q2, is **+0.2% QoQ / 1.7% year-ended**, published 30 July.
+Ours is +0.47% / +2.01%. A third party running a different method on the same
+economy sits ~0.27pp below us — close to the measured bias, and consistent with
+the diagnosis rather than with our being unluckily wrong in one quarter.
+
+They also state, unprompted: "Our output growth nowcast, taken together with
+hours worked in the June quarter, imply a further fall in labour productivity
+occurred." That is direct support for the labour-composition hypothesis above —
+the wedge between labour inputs and output is exactly what makes a panel with
+four correlated labour series overshoot. It moves that hypothesis from
+speculation to worth testing, though still not measured.
+
+Their method differs from ours in kind, which is why the comparison is
+informative rather than circular: they build a MONTHLY GDP series by temporal
+disaggregation — constructed so that at quarterly frequency it coincides with
+log real quarterly GDP, interpolating the historic ABS quarterly values together
+with the nowcast, guided by monthly indicators. No factor model, no MIDAS
+regression. Inputs: labour market, housing and business lending, household
+spending, housing approvals, consumer expectations, trade conditions, commodity
+prices. They publish no uncertainty band either. Contact is A/Prof Tim Robinson.
+Caveat: this is from their site blurb and search-indexed excerpts — the report
+PDFs sit behind Cloudflare and could not be read in full, so if a methodology
+box exists in them it has not been checked.
+
 **Reproducing the numbers.** Era means from `nowcasting_v2/data_raw/rt_dgdp_qtr.csv`;
 forecast/actual pairs from `data/backcasts.json` (17 quarters, 2022 Q1–2026 Q1);
 bias and sd from `pipeline/seed/ci_params_v2.json`.
