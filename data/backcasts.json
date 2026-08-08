@@ -3,10 +3,50 @@
   "basis": "pseudo-out-of-sample backtest (hypothetical; not produced in real time)",
   "note": "These are BACKTESTED estimates, shown to give the model a track record. They are not live nowcasts. Each is the last as-of before that quarter's GDP release, re-run using only data published at the time.",
   "source": "nowcasting_v2/cache/ci_recalib/qa_a10_acc.csv",
-  "n": 12,
-  "mae_pp": 0.309,
-  "hit_rate_pct": 91.7,
+  "n": 17,
+  "mae_pp": 0.369,
+  "hit_rate_pct": 94.1,
   "backcasts": [
+    {
+      "target_quarter": "2022 Q1",
+      "qoq_forecast_pct": 1.44,
+      "qoq_actual_pct": 0.93,
+      "error_pp": 0.51,
+      "direction_correct": true,
+      "is_backcast": true
+    },
+    {
+      "target_quarter": "2022 Q2",
+      "qoq_forecast_pct": 1.94,
+      "qoq_actual_pct": 0.99,
+      "error_pp": 0.95,
+      "direction_correct": true,
+      "is_backcast": true
+    },
+    {
+      "target_quarter": "2022 Q3",
+      "qoq_forecast_pct": 0.84,
+      "qoq_actual_pct": 0.48,
+      "error_pp": 0.35,
+      "direction_correct": true,
+      "is_backcast": true
+    },
+    {
+      "target_quarter": "2022 Q4",
+      "qoq_forecast_pct": 0.98,
+      "qoq_actual_pct": 0.83,
+      "error_pp": 0.16,
+      "direction_correct": true,
+      "is_backcast": true
+    },
+    {
+      "target_quarter": "2023 Q1",
+      "qoq_forecast_pct": 1.07,
+      "qoq_actual_pct": 0.48,
+      "error_pp": 0.59,
+      "direction_correct": true,
+      "is_backcast": true
+    },
     {
       "target_quarter": "2023 Q2",
       "qoq_forecast_pct": 0.85,

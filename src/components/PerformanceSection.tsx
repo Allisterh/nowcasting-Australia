@@ -32,10 +32,10 @@ export default function PerformanceSection({ performance, isBacktest = false }: 
         </p>
       )}
       <div className="grid grid-cols-3 gap-3 mb-4">
-        <Tile label="MAE" value={`${performance.mae_pct.toFixed(2)}% of GDP`} sub={formatMillions(performance.mae_millions)} />
+        <Tile label="MAE" value={`${performance.mae_pct.toFixed(2)}pp`} sub={formatMillions(performance.mae_millions)} />
         <Tile
           label="Bias"
-          value={formatPct(performance.bias_pct)}
+          value={`${performance.bias_pct > 0 ? "+" : ""}${performance.bias_pct.toFixed(2)}pp`}
           sub={`${formatMillions(performance.bias_millions)} · ${performance.bias_millions < 0 ? "underpredicts" : performance.bias_millions > 0 ? "overpredicts" : "neutral"}`}
         />
         <Tile
