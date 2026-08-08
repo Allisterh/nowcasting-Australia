@@ -76,3 +76,113 @@ Pending work the user has flagged for later.
 - **`jt = 0` and `jt = 1` have never been calibrated.** Every CI parameter is estimated from backtest as-ofs, and production only ever reaches `jt = 2` or `3`, so `ci_params_for_stage()` has no bucket for the stages a next-quarter line would spend most of its life in and will fall back to the pooled band. Before shipping that line, either calibrate those stages explicitly (the backtest can be driven to them by targeting the *following* quarter) or state on the chart that the early band is pooled, not stage-specific.
 - It must draw its confidence band from its own information stage, not the current quarter's. The per-stage CI work (`compute_ci_params_v2.R`, `ci_params_for_stage()`) already supports this — pass the next-quarter nowcast's own `n_months_in_quarter`.
 - Don't let the two lines share a `prev_level`. That was exactly the `emit_v2_json.R:123` bug: the stress model's level and YoY were computed off the quarter before the *headline's* target, understating its level by a whole quarter of growth. A next-quarter nowcast needs the current quarter's (still unreleased, hence nowcast) level as its anchor — which means its level is a compounding of two estimates and should be presented with that uncertainty, or presented as growth only.
+
+---
+
+## Over-optimism: the model forecasts the long-run mean, not the current regime
+
+**Finding (2026-08-08).** The +0.34pp bias is almost entirely a level offset, and
+its cause is identifiable. Mean QoQ GDP growth by era:
+
+| era | mean QoQ growth |
+|---|---:|
+| 1978–2019 | +0.775% |
+| 2000–2019 | +0.700% |
+| 2010–2019 | +0.642% |
+| 2022–now | +0.503% |
+| full sample | +0.819% |
+| **model's mean forecast, 2022–now** | **+0.843%** |
+
+The model's average forecast is the full-sample mean. The gap between that mean
+and the current regime is +0.316pp; the measured bias is +0.340pp. That is the
+whole of it, to within two hundredths.
+
+**Mechanism.** The MAI is standardised, so it is mean-zero by construction, and
+the U-MIDAS intercept is fitted over 1978–2026. "Activity around its historical
+normal" therefore maps to "growth around its historical normal", where normal is
+an average dominated by a much higher-growth era. A permanent downshift in trend
+growth is invisible to a mean-zero factor. Note the era column is monotonic —
+this is not a 2022 shock but a decades-long drift, so it will keep widening.
+
+**The signal itself is fine; only the level is wrong.** Over the 17 calibration
+quarters: correlation between forecast and actual +0.66, and 58% of the mean
+squared error is pure level offset. Residual sd after removing the offset is
+0.298 against RMSE 0.447 — so correcting the level alone would take RMSE from
+0.45 to about 0.30 without touching the forecasting. For scale, a constant
+"always predict +0.50" scores 0.293, currently better than the model; that is a
+hindsight benchmark, not a real-time one, but it is not a flattering comparison.
+
+**Second contributor, suspected but NOT measured.** The current selection is 12
+series: four yield/spread measures, four labour (`emp`, `ft_emp`, `ue`, `ud`),
+two credit, plus `household_spending` and `wmi_sent`. The four labour series are
+highly correlated, so they push one strongly-weighted signal into the factor.
+Australia post-2022 is exactly the environment where that misleads — record
+immigration drove employment and hours up while output per hour fell, so labour
+indicators read "strong" while GDP did not follow. Treat as a plausible
+amplifier, not an established cause. (Do NOT re-run the old "share of |loading|"
+diagnostic to test this: that statistic is a DFM2 normalisation artefact, since
+the first column's loading is pinned to exactly 1.0.)
+
+**What RDP 2024-04 says about this (checked 2026-08-08).**
+
+- It *does* address structural drift — but only in the PREDICTORS. §3: rather
+  than a full-sample mean it uses "dynamic demeaning" on each series, a rolling
+  20-year backward-looking mean, following Kamber, Morley and Wong (2018),
+  explicitly "as a way of controlling for potential structural breaks in the
+  central tendency of each series". We already implement this
+  (`transform_panel.R`, `.RBA_ROLL_MONTHS <- 240L`).
+- It does NOT apply that device to the TARGET. GDP growth enters the U-MIDAS
+  with a plain intercept (their Equation 10). So the predictor side is protected
+  against drift in central tendency and the target side is not — in the paper
+  and in ours identically. That gap is exactly the mechanism above.
+- The word "bias" does not appear in the paper at all. Systematic over- or
+  under-prediction is never discussed.
+- **Their evaluation sample ends 2022:Q2.** The paper stops right at the start of
+  the low-growth regime that produces our bias, so this is not a defect they
+  could have seen.
+- **Their benchmark is a sample mean model**, and their own result is more
+  sobering than the headline: the 2x win is "primarily because of how well model
+  M1 predicted the significant decline in quarterly GDP growth that occurred in
+  2020:Q2". Excluding COVID, "the three 'M' models are outperformed by the sample
+  mean model in both the shorter three-year and longer full sample horizons",
+  with only QA narrowly ahead. Our ~1.04 relative RMSE against a full-sample-mean
+  benchmark over 2022-2026 is therefore disappointing but not far outside what
+  the paper itself reports once 2020 is removed.
+- Unrelated but settled while looking: the 1978 start is data availability, not a
+  modelling choice — footnote 17, the Labour Force Survey began February 1978.
+
+**Preferred fix, and it is arguably NOT a deviation.** Apply the paper's own
+dynamic-demeaning device to the target: subtract a rolling 20-year backward-
+looking mean from GDP growth before the U-MIDAS regression, and add it back to
+the prediction. This uses the paper's tool, its window length and its stated
+rationale ("structural breaks in the central tendency"), just applied to the one
+series they left out. It needs no ad hoc bias correction, no sample truncation,
+and it adapts automatically as trend growth moves rather than being re-tuned. It
+is also strictly real-time — a backward-looking window uses no future data.
+Test this BEFORE the sample-start option below.
+
+**The fallback test.** One backtest with a later estimation start — 2000,
+say — and check whether the bias collapses while the +0.66 correlation survives.
+About 30 minutes. It directly tests the diagnosis: if the cause is the sample
+anchoring the intercept on a higher-growth era, a shorter sample fixes most of
+it. If the bias survives a 2000 start, the trend story is wrong and the panel
+composition becomes the prime suspect instead.
+
+**Fidelity tension to settle before acting.** `sample_start = "1978-04-01"` in
+`build_mai.R` is the paper's value, hard-coded there, and we deliberately moved
+*to* it on 2026-08-02 for fidelity. Shortening it is a real deviation. The
+argument for doing it anyway: the paper evaluates an average over 1988–2023,
+where a slow level drift washes out, whereas we publish a live number in a
+low-growth regime where it does not. It is also a sample-window choice rather
+than a method change, which sits on the "our own panel" side of the line. If we
+do it, document it beside the other accepted deviations in the review report.
+
+**Do not patch this with a bias correction.** That was considered and rejected on
+2026-08-02 (the paper does not bias-correct, and its MIDAS regression already
+fits an intercept). Now that the bias has an identifiable cause, fixing the cause
+is strictly better than subtracting the symptom. The site currently discloses the
+tendency instead — see the accuracy line under the headline.
+
+**Reproducing the numbers.** Era means from `nowcasting_v2/data_raw/rt_dgdp_qtr.csv`;
+forecast/actual pairs from `data/backcasts.json` (17 quarters, 2022 Q1–2026 Q1);
+bias and sd from `pipeline/seed/ci_params_v2.json`.
