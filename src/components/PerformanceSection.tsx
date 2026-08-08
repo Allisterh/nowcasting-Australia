@@ -64,8 +64,7 @@ export default function PerformanceSection({ performance, isBacktest = false }: 
             <th className="py-2">Quarter</th>
             <th className="py-2">{isBacktest ? "Simulated nowcast" : "Final nowcast"}</th>
             <th className="py-2">Actual</th>
-            <th className="py-2">Error ($M)</th>
-            <th className="py-2">Error (%)</th>
+            <th className="py-2">Error (pp)</th>
             <th className="py-2">Our (YE)</th>
             <th className="py-2">RBA (YE)</th>
             <th className="py-2">Gap (pp)</th>
@@ -77,13 +76,17 @@ export default function PerformanceSection({ performance, isBacktest = false }: 
             .map((e) => (
             <tr key={e.target_quarter} className="border-b border-border">
               <td className="py-2">{e.target_quarter}</td>
-              <td className="py-2">{formatMillions(e.final_nowcast)}</td>
-              <td className="py-2">{formatMillions(e.actual)}</td>
-              <td className={`py-2 ${e.error_millions > 0 ? "text-teal" : "text-[#c0392b]"}`}>
-                {e.error_millions > 0 ? "+" : ""}{e.error_millions.toLocaleString()}
+              <td className="py-2">
+                {e.qoq_nowcast_pct == null ? formatMillions(e.final_nowcast) : formatPct(e.qoq_nowcast_pct)}
               </td>
-              <td className={`py-2 ${e.error_pct > 0 ? "text-teal" : "text-[#c0392b]"}`}>
-                {formatPct(e.error_pct)}
+              <td className="py-2">
+                {e.qoq_actual_pct == null ? formatMillions(e.actual) : formatPct(e.qoq_actual_pct)}
+              </td>
+              <td className={`py-2 ${(e.qoq_error_pp ?? e.error_pct) > 0 ? "text-teal" : "text-[#c0392b]"}`}>
+                {(() => {
+                  const v = e.qoq_error_pp ?? e.error_pct;
+                  return `${v > 0 ? "+" : v < 0 ? "−" : ""}${Math.abs(v).toFixed(2)}`;
+                })()}
               </td>
               <td className="py-2 text-label">
                 {e.yoy_nowcast == null ? "—" : `${e.yoy_nowcast.toFixed(2)}%`}

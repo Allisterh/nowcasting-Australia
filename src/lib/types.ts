@@ -104,6 +104,11 @@ export interface AccuracyError {
   actual: number;
   error_millions: number;
   error_pct: number;
+  // QoQ growth per quarter — what the table displays. Optional: v1's
+  // performance.json and pre-2026-08 v2 payloads carry levels only.
+  qoq_nowcast_pct?: number;
+  qoq_actual_pct?: number;
+  qoq_error_pp?: number;
   yoy_nowcast: number | null;
   yoy_actual: number | null;
   yoy_rba: number | null;

@@ -44,6 +44,13 @@ for q in sorted(set(bc) & set(gq), key=gq.index):
     row = {
         "target_quarter": q, "final_nowcast": fc_level, "actual": actual,
         "error_millions": em, "error_pct": round(em / actual * 100, 2),
+        # QoQ growth is what the site's table shows, and what the model actually
+        # forecasts -- the levels above are derived from it via `prev`. Carrying
+        # the growth figures through means the table's error column is literally
+        # the difference of its own two adjacent columns, which a reader can check.
+        "qoq_nowcast_pct": bc[q]["qoq_forecast_pct"],
+        "qoq_actual_pct":  bc[q]["qoq_actual_pct"],
+        "qoq_error_pp":    round(bc[q]["qoq_forecast_pct"] - bc[q]["qoq_actual_pct"], 2),
         "yoy_nowcast": None, "yoy_actual": None, "yoy_rba": None,
         "somp_release": None, "edge_pp": None,
     }
