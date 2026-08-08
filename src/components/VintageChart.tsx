@@ -4,7 +4,6 @@ import { useState } from "react";
 import {
   ComposedChart,
   Scatter,
-  Area,
   XAxis,
   YAxis,
   ZAxis,
@@ -33,7 +32,6 @@ type VintagePoint = {
   x: number;
   y: number;
   runDate: string;
-  range: [number, number]; // [low, high] growth pp — the 68% likely range (shaded)
 };
 type ActualPoint = { kind: "actual"; x: number; y: number; actualQuarter: string };
 type HoverState = { point: VintagePoint | ActualPoint; cx: number; cy: number } | null;
@@ -46,20 +44,17 @@ export default function VintageChart({ nowcasts, latest, targetQuarter }: Vintag
     (v) => v.target_quarter === plotQuarter,
   );
   const vintagePoints: VintagePoint[] = relevant
-    .map((v) => {
-      // The CI in the vintage record is a $M level band; convert it to a
-      // growth-pp band around this point so it plots on the QoQ-growth axis.
-      const prev = v.point / (1 + v.qoq_growth_pct / 100);
-      const lowPp = (v.ci_68_low / prev - 1) * 100;
-      const highPp = (v.ci_68_high / prev - 1) * 100;
-      return {
-        kind: "vintage" as const,
-        x: v.days_until_release,
-        y: v.qoq_growth_pct,
-        runDate: v.run_date,
-        range: [lowPp, highPp] as [number, number],
-      };
-    })
+    // No shaded band: the vintage records carry a +/- 1 sd error range, which the
+    // chart used to shade and call "about a 2-in-3 chance". Measured coverage was
+    // 41%, because the model's errors are not centred on zero. The site now
+    // discloses the track record instead of drawing an interval -- see the note in
+    // NowcastHeadline.tsx.
+    .map((v) => ({
+      kind: "vintage" as const,
+      x: v.days_until_release,
+      y: v.qoq_growth_pct,
+      runDate: v.run_date,
+    }))
     .sort((a, b) => a.x - b.x);
 
   const actualPoint: ActualPoint = {
@@ -69,11 +64,11 @@ export default function VintageChart({ nowcasts, latest, targetQuarter }: Vintag
     actualQuarter: latest.latest_actual.quarter,
   };
 
-  // Y-domain must include the shaded band extents (and 0, for the baseline).
+  // Y-domain spans the nowcast path, the actual, and 0 for the baseline.
   const yVals = [
     0,
     actualPoint.y,
-    ...vintagePoints.flatMap((p) => p.range),
+    ...vintagePoints.map((p) => p.y),
   ].filter((v) => Number.isFinite(v));
   // Round to nice 0.25%% gridlines so the axis labels are sensible.
   const STEP = 0.25;
@@ -109,7 +104,7 @@ export default function VintageChart({ nowcasts, latest, targetQuarter }: Vintag
     <section className="mb-10">
       <p className="font-headline text-3xl text-black">Nowcast evolution</p>
       <p className="text-xs text-label mb-2">
-        Each green point is a weekly nowcast for {latest.target_quarter}; the shaded band is its likely range (about a 2-in-3 chance). As new indicator data arrives through the quarter, the nowcast evolves. The line traces those revisions up to the ABS GDP release. The dark-teal circle shows the previous quarter&rsquo;s actual GDP growth for context.
+        Each green point is a weekly nowcast for {latest.target_quarter}. As new indicator data arrives through the quarter, the nowcast evolves. The line traces those revisions up to the ABS GDP release. The dark-teal circle shows the previous quarter&rsquo;s actual GDP growth for context.
       </p>
       <div className="h-[320px] relative">
         <ResponsiveContainer>
@@ -147,17 +142,6 @@ export default function VintageChart({ nowcasts, latest, targetQuarter }: Vintag
             <ZAxis range={[80, 80]} />
             {/* 0% baseline */}
             <ReferenceLine y={0} stroke={chartColors.label} strokeWidth={1} />
-            {/* Shaded 68% likely-range band (behind the points) */}
-            <Area
-              data={vintagePoints}
-              dataKey="range"
-              type="linear"
-              stroke="none"
-              fill={chartColors.band}
-              fillOpacity={0.18}
-              isAnimationActive={false}
-              activeDot={false}
-            />
             <Scatter
               data={vintagePoints}
               dataKey="y"

@@ -28,6 +28,9 @@
       "ci_n": 17,
       "ci_sd_pp": 0.2988,
       "ci_bias_pp": 0,
+      "err_mae_pp": 0.37,
+      "err_bias_pp": 0.34,
+      "err_n": 17,
       "ci_stage": "3"
     }
   },
@@ -161,10 +164,5 @@
     "gdp_chain_volume_millions": 700066,
     "source": "data/latest.json"
   },
-  "note": "STAGED v2 emit (parallel to live latest.json). Monday cadence; headline = latest Monday. Pending James approval.",
-  "data_updates": {
-    "run_date": "2026-08-03",
-    "nowcast_delta_pp": 0.0,
-    "series": []
-  }
+  "note": "STAGED v2 emit (parallel to live latest.json). Monday cadence; headline = latest Monday. Pending James approval."
 }

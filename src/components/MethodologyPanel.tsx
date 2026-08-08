@@ -31,52 +31,9 @@ export default function MethodologyPanel() {
             .
           </p>
           <p>
-            The MAI is a single monthly activity factor extracted by a dynamic factor model. It
-            starts from a candidate panel of about 30 monthly series spanning labour, household
-            spending, trade, credit, financial markets, and business and consumer surveys — but
-            following the paper, a targeted-predictor step first tests each candidate against
-            quarterly GDP growth and keeps only those that clear a significance threshold. In
-            practice that leaves roughly a third of the panel, so the factor is built from around
-            ten series rather than all thirty. The U-MIDAS step then regresses quarterly GDP growth
-            on the mixed-frequency MAI, accommodating the ragged edge where the latest month of some
-            series has not yet been published. Estimates are re-run weekly as new observations
-            arrive, and the selection is re-run with them.
-          </p>
-          <p>
-            The estimate uses the paper&rsquo;s own targeted-predictor selection threshold, and
-            follows it in fitting a separate regression for each stage of the quarter. Once all
-            three months of a quarter are in hand it uses the paper&rsquo;s quarter-average model;
-            earlier in the quarter, when only one or two months exist, it uses the paper&rsquo;s
-            corresponding partial-quarter model instead. Either way the model is tuned for the
-            accumulated run of monthly data rather than for fast reaction to a single release.
-          </p>
-          <p>
-            The likely ranges are derived from the model&rsquo;s out-of-sample backtest errors: we
-            take the distribution of past nowcast errors against final GDP and size the interval from
-            that spread. The calibration re-runs the model at every past Monday rather than only at
-            quarter-ends, so the range reflects the amount of data actually available at each point
-            in the quarter, and the published figure always sits at the centre of its own range.
-          </p>
-          <p>
-            The figure shown is the model&rsquo;s own output. It is not adjusted after the fact,
-            because the paper does not adjust its own — the MIDAS regression already fits an
-            intercept, and the paper evaluates on root mean squared error, which penalises a
-            systematic tendency and random error together. Correcting again afterwards would
-            publish a number that none of the accuracy figures above describe.
-          </p>
-          <p>
-            Measured against the past four years, the estimate has run about 0.34 percentage
-            points high on average. That is a real tendency rather than noise, and it is disclosed
-            here rather than silently subtracted, so you can read the headline with it in mind.
-          </p>
-          <p>
-            These ranges widened in August 2026. That was a correction, not a deterioration: the
-            earlier calibration let the model see GDP figures that had not been published at the
-            time it was supposedly forecasting them, which made its historical accuracy look better
-            than it was. The current ranges are calibrated on post-2020 quarters only, because the
-            model&rsquo;s errors are measurably larger in that period than before it. They describe
-            performance in ordinary quarters and do not price in another pandemic-scale shock. They
-            remain estimated from a modest number of quarters, so treat them as approximate.
+            The main deviation from the RBA&rsquo;s methodology is the choice of input variables:
+            ours are limited to data that is freely and publicly available, so the panel behind the
+            indicator is not the same as the paper&rsquo;s. The estimation method follows the paper.
           </p>
         </div>
       )}

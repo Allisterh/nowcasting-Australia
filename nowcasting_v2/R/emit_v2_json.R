@@ -194,6 +194,13 @@ emit_v2_json <- function(repo_root = "..", mondays = NULL, rebuild_vintages = FA
          # above is the family; this is the specific estimator on the day.
          estimator = nc$model,
          ci_basis = ci$basis, ci_n = cp$n, ci_sd_pp = cp$sd_pp, ci_bias_pp = cp$bias_pp,
+         # Track-record disclosure, published in place of a probability interval.
+         # The ci_* band fields above remain for the record but the site does not
+         # render them as a confidence level -- centred on an uncorrected point,
+         # the 68% band only achieved 41% coverage. See compute_ci_params_v2.R.
+         err_mae_pp  = if (is.na(cp$mae_pp)) NULL else round(cp$mae_pp, 2),
+         err_bias_pp = if (is.na(cp$bias_measured_pp)) NULL else round(cp$bias_measured_pp, 2),
+         err_n       = cp$n,
          # which information stage's params were used ("pooled" if this stage was
          # too thin to calibrate; "flat" for legacy params). Surfaced so the site
          # can say what the band is conditioned on.

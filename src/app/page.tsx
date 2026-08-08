@@ -24,7 +24,6 @@ export default function Home() {
       {v2 ? (
         <NowcastHeadline
           headline={v2.models.headline}
-          prevLevel={v2.prev_level.value}
           gdp={data.gdp}
         />
       ) : (

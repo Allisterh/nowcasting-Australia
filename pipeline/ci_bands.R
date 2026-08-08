@@ -80,21 +80,34 @@ load_ci_params <- function(path = "seed/ci_params.json") {
 #' Returns list(bias_pp, sd_pp, z_68, z_95, n, stage) where `stage` is the stage
 #' actually used ("pooled" when falling back) so callers can surface it.
 ci_params_for_stage <- function(p, jt = NULL) {
-  flat <- function(bias, sd, z68, z95, n, stage) {
-    list(bias_pp = bias, sd_pp = sd, z_68 = z68, z_95 = z95, n = n, stage = stage)
+  # `bias_pp` is the bias APPLIED to the interval centre (always 0 for v2).
+  # `bias_measured_pp` and `mae_pp` are the track-record figures the site
+  # publishes INSTEAD of a probability interval -- see compute_ci_params_v2.R.
+  # Keep the two strictly separate: one moves numbers, the other only describes
+  # them.
+  flat <- function(bias, sd, z68, z95, n, stage, bias_measured = NA_real_, mae = NA_real_) {
+    list(bias_pp = bias, sd_pp = sd, z_68 = z68, z_95 = z95, n = n, stage = stage,
+         bias_measured_pp = bias_measured, mae_pp = mae)
   }
 
   if (is.null(p$schema) || p$schema != "v2-ci-by-stage-1") {
-    return(flat(p$qoq_bias_pp, p$qoq_sd_pp, p$z_68, p$z_95, p$n, "flat"))
+    # v1's flat params apply their bias, and carry no MAE.
+    return(flat(p$qoq_bias_pp, p$qoq_sd_pp, p$z_68, p$z_95, p$n, "flat",
+                bias_measured = p$qoq_bias_pp))
   }
 
   s <- NULL
   if (!is.null(jt) && !is.na(jt) && !is.null(p$by_jt)) {
     s <- p$by_jt[[as.character(jt)]]
   }
+  stage <- as.character(jt)
   if (is.null(s)) {
     s <- p$pooled
-    return(flat(s$qoq_bias_applied_pp, s$qoq_sd_pp, s$t_68, s$t_95, s$n, "pooled"))
+    stage <- "pooled"
   }
-  flat(s$qoq_bias_applied_pp, s$qoq_sd_pp, s$t_68, s$t_95, s$n, as.character(jt))
+  # qoq_mae_pp is absent from params generated before 2026-08-08; NA is handled
+  # downstream by omitting the disclosure rather than printing a blank.
+  mae <- if (is.null(s$qoq_mae_pp)) NA_real_ else s$qoq_mae_pp
+  flat(s$qoq_bias_applied_pp, s$qoq_sd_pp, s$t_68, s$t_95, s$n, stage,
+       bias_measured = s$qoq_bias_pp, mae = mae)
 }

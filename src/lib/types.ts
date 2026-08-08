@@ -143,10 +143,18 @@ export interface V2Model {
   // complete quarter, "UMIDAS-full" below it. Optional — vintages emitted before
   // per-stage dispatch (840e636) predate the field.
   estimator?: string;
+  // Error-dispersion fields kept for the record. The site does NOT render these as
+  // a confidence interval: centred on an uncorrected point estimate the 68% band
+  // achieved 41% coverage. Re-measure before presenting them as a probability.
   ci_basis: string;
   ci_n: number;
   ci_sd_pp: number;
   ci_bias_pp: number;
+  // Track record published in place of an interval, per the Atlanta Fed's GDPNow.
+  // Optional: absent from payloads emitted before 2026-08-08.
+  err_mae_pp?: number;
+  err_bias_pp?: number;
+  err_n?: number;
   // Which information stage's CI params were used ("pooled" if this stage was too
   // thin to calibrate). Optional for the same reason.
   ci_stage?: number | string;

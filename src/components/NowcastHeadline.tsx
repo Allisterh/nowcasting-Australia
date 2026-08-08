@@ -7,22 +7,23 @@ import { chartColors } from "@/lib/chartTheme";
 
 interface Props {
   headline: V2Model;
-  prevLevel: number;
   gdp: GdpSeries;
 }
 
-// 68% likely range in growth terms, derived from the published level band so it
-// matches the data exactly. Returns plain {low, high} percentages.
-function growthRange(m: V2Model, prev: number) {
-  return {
-    low: (m.ci_68_low / prev - 1) * 100,
-    high: (m.ci_68_high / prev - 1) * 100,
-  };
-}
+// We deliberately publish no interval. The band this used to show was the point
+// estimate +/- one standard deviation of past errors, labelled "about a 2-in-3
+// chance" -- but the model's errors are not centred on zero (it runs ~0.34pp
+// high), so that range actually contained the eventual figure in 7 of 17
+// quarters, not 2 in 3. Rather than shift the band off the published number, we
+// disclose the track record, which is what the Atlanta Fed's GDPNow does: it
+// publishes no confidence band, only its average error. RDP 2024-04 likewise
+// evaluates on RMSE and publishes no interval.
+//
+// The ci_* fields remain in the payload for the record. Do not render them as a
+// confidence level without re-measuring coverage first.
 
-export default function NowcastHeadline({ headline, prevLevel, gdp }: Props) {
+export default function NowcastHeadline({ headline, gdp }: Props) {
   const model = headline;
-  const range = growthRange(model, prevLevel);
 
   const bars = [
     ...gdp.series.slice(-12).map((q) => ({ quarter: q.quarter, growth: q.qoq_pct, isNowcast: false })),
@@ -49,10 +50,15 @@ export default function NowcastHeadline({ headline, prevLevel, gdp }: Props) {
         </div>
       </div>
 
-      {/* Likely range — styled to match the 'growth this quarter' label */}
-      <div className="mt-3 text-xs text-label">
-        Likely range: {formatPct(range.low)} to {formatPct(range.high)} (about a 2-in-3 chance)
-      </div>
+      {/* Track record in place of an interval — see the note at the top of this file */}
+      {model.err_mae_pp != null && model.err_bias_pp != null && (
+        <div className="mt-3 text-xs text-label">
+          Over the last {model.err_n} quarters this estimate has missed the eventual figure by{" "}
+          {model.err_mae_pp.toFixed(2)}pp on average
+          {model.err_bias_pp > 0.05 && `, and has tended to run ${model.err_bias_pp.toFixed(2)}pp high`}
+          {model.err_bias_pp < -0.05 && `, and has tended to run ${Math.abs(model.err_bias_pp).toFixed(2)}pp low`}.
+        </div>
+      )}
 
       {/* Last 12 quarters + this quarter's estimate */}
       <div className="mt-4 h-20">

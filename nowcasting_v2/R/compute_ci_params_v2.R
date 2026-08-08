@@ -43,6 +43,22 @@
 #     Applying it would have moved the published Q2 nowcast from +0.47% to +0.13%
 #     and turned most of the evolution chart negative.
 #
+#     CONSEQUENCE, measured 2026-08-08. Because the errors are not centred on
+#     zero, an interval centred on the raw output and spanned by z*sd does not
+#     have the coverage its label claims: the 68% band contained the eventual
+#     figure in 7 of 17 quarters (41%), at BOTH stages. The 95% band is roughly
+#     right (94% / 88%) only because it is wide enough to absorb the bias. This is
+#     not a calculation error -- "+/- 1 sd" and "68% confident" are simply
+#     different objects once the mean error is non-zero.
+#
+#     The site's response is to STOP PUBLISHING AN INTERVAL and disclose the track
+#     record instead (qoq_mae_pp and qoq_bias_pp), which is what the Atlanta Fed's
+#     GDPNow does -- it publishes no confidence band at all, only its MAE and RMSE
+#     -- and what RDP 2024-04 does, evaluating purely on RMSE. The band fields are
+#     still emitted for the record; nothing in the UI renders them as a
+#     probability. Do not re-label these as a confidence interval without first
+#     re-measuring coverage.
+#
 #  2. t(df), NOT the normal. sd is estimated, not known. At n=17 the old z=1.96
 #     made the 95% band 8.2% too narrow.
 #
@@ -116,6 +132,11 @@ stats_for <- function(e) {
        qoq_bias_applied_pp = 0,
        qoq_sd_pp          = round(sdv, 4),
        qoq_rmse_pp        = round(rmse, 4),
+       # Mean absolute error: the "typical miss" the site publishes in place of an
+       # interval (see the disclosure note in the header). MAE rather than RMSE
+       # because it is the one a reader can interpret without further explanation
+       # -- it is literally the average size of the miss.
+       qoq_mae_pp         = round(mean(abs(e)), 4),
        t_68               = round(qt(0.84134, n - 1L), 4),   # one-sd-equivalent quantile
        t_95               = round(qt(0.975,   n - 1L), 4))
 }
