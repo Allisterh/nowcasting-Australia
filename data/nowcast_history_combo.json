@@ -278,16 +278,32 @@
       "target_quarter": "2026 Q3",
       "kind": "nowcast",
       "horizon": "current",
-      "qoq_growth_pct": 0.5352,
-      "v2_qoq_growth_pct": 0.61,
+      "qoq_growth_pct": 0.5151,
+      "v2_qoq_growth_pct": 0.57,
       "v2_run_date": "2026-09-07",
       "v3_qoq_growth_pct": 0.4603,
       "months_with_data": 2,
       "data_through": "2026-08",
-      "ci_68_low": 0.3913,
-      "ci_68_high": 0.6791,
-      "ci_95_low": 0.1839,
-      "ci_95_high": 0.8865
+      "ci_68_low": 0.3712,
+      "ci_68_high": 0.659,
+      "ci_95_low": 0.1638,
+      "ci_95_high": 0.8664
+    },
+    {
+      "run_date": "2026-09-14",
+      "target_quarter": "2026 Q3",
+      "kind": "nowcast",
+      "horizon": "current",
+      "qoq_growth_pct": 0.5086,
+      "v2_qoq_growth_pct": 0.57,
+      "v2_run_date": "2026-09-07",
+      "v3_qoq_growth_pct": 0.4472,
+      "months_with_data": 2,
+      "data_through": "2026-08",
+      "ci_68_low": 0.3647,
+      "ci_68_high": 0.6525,
+      "ci_95_low": 0.1573,
+      "ci_95_high": 0.8599
     }
   ]
 }

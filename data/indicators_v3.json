@@ -1,6 +1,6 @@
 {
   "schema": "v3-indicators-1",
-  "generated_at": "2026-09-10T15:35:49+00:00",
+  "generated_at": "2026-09-13T22:36:48+00:00",
   "indicators": [
     {
       "id": "employment",
@@ -850,10 +850,6 @@
       "source": "v2 panel",
       "series": [
         {
-          "date": "2022-06",
-          "value": 13.0
-        },
-        {
           "date": "2022-07",
           "value": 20.0
         },
@@ -1048,9 +1044,13 @@
         {
           "date": "2026-07",
           "value": 4.0
+        },
+        {
+          "date": "2026-08",
+          "value": -1.0
         }
       ],
-      "last_release_date": "2026-08-13"
+      "last_release_date": "2026-09-13"
     },
     {
       "id": "building_approvals",

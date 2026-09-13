@@ -371,6 +371,22 @@
       "months_with_data": 2,
       "estimate_asof": "2026-09-10",
       "backfilled": true
+    },
+    {
+      "run_date": "2026-09-14",
+      "target_quarter": "2026 Q3",
+      "kind": "nowcast",
+      "qoq_growth_pct": 0.4472,
+      "model_qoq_growth_pct": 0.5103,
+      "bias_correction_pp": 0.0631,
+      "target": "first_print",
+      "ci_95_low": -0.3724,
+      "ci_68_low": 0.0264,
+      "ci_68_high": 0.8439,
+      "ci_95_high": 1.2272,
+      "data_through": "2026-08",
+      "months_with_data": 2,
+      "estimate_asof": "2026-09-11"
     }
   ]
 }
