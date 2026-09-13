@@ -1740,8 +1740,8 @@
       ],
       "last_release_date": "2026-09-03",
       "next_release_estimate": "2026-10-01",
-      "updated_this_run": true,
-      "prev_period": "2026-06",
+      "updated_this_run": false,
+      "prev_period": "2026-07",
       "latest_period": "2026-07"
     },
     {
@@ -1956,8 +1956,8 @@
           "value": 17687.0
         }
       ],
-      "last_release_date": "2026-09-01",
-      "next_release_estimate": "2026-09-08",
+      "last_release_date": "2026-09-08",
+      "next_release_estimate": "2026-09-30",
       "updated_this_run": false,
       "prev_period": "2026-07",
       "latest_period": "2026-07"
@@ -2834,8 +2834,8 @@
       ],
       "last_release_date": "2026-09-02",
       "next_release_estimate": "2026-10-02",
-      "updated_this_run": true,
-      "prev_period": "2026-07",
+      "updated_this_run": false,
+      "prev_period": "2026-08",
       "latest_period": "2026-08"
     },
     {
@@ -3056,8 +3056,8 @@
       ],
       "last_release_date": "2026-09-02",
       "next_release_estimate": "2026-10-02",
-      "updated_this_run": true,
-      "prev_period": "2026-07",
+      "updated_this_run": false,
+      "prev_period": "2026-08",
       "latest_period": "2026-08"
     },
     {
@@ -3278,8 +3278,8 @@
       ],
       "last_release_date": "2026-09-02",
       "next_release_estimate": "2026-10-02",
-      "updated_this_run": true,
-      "prev_period": "2026-07",
+      "updated_this_run": false,
+      "prev_period": "2026-08",
       "latest_period": "2026-08"
     },
     {
@@ -3500,8 +3500,8 @@
       ],
       "last_release_date": "2026-09-02",
       "next_release_estimate": "2026-10-02",
-      "updated_this_run": true,
-      "prev_period": "2026-07",
+      "updated_this_run": false,
+      "prev_period": "2026-08",
       "latest_period": "2026-08"
     },
     {
@@ -3722,8 +3722,8 @@
       ],
       "last_release_date": "2026-09-02",
       "next_release_estimate": "2026-10-02",
-      "updated_this_run": true,
-      "prev_period": "2026-07",
+      "updated_this_run": false,
+      "prev_period": "2026-08",
       "latest_period": "2026-08"
     },
     {
@@ -3944,8 +3944,8 @@
       ],
       "last_release_date": "2026-09-02",
       "next_release_estimate": "2026-10-02",
-      "updated_this_run": true,
-      "prev_period": "2026-07",
+      "updated_this_run": false,
+      "prev_period": "2026-08",
       "latest_period": "2026-08"
     },
     {
@@ -4384,8 +4384,8 @@
       ],
       "last_release_date": "2026-08-30",
       "next_release_estimate": "2026-09-30",
-      "updated_this_run": true,
-      "prev_period": "2026-06",
+      "updated_this_run": false,
+      "prev_period": "2026-07",
       "latest_period": "2026-07"
     },
     {
@@ -4598,13 +4598,17 @@
         {
           "date": "2026-07",
           "value": -6.0
+        },
+        {
+          "date": "2026-08",
+          "value": -8.0
         }
       ],
-      "last_release_date": "2026-08-11",
-      "next_release_estimate": "2026-09-08",
-      "updated_this_run": false,
+      "last_release_date": "2026-09-08",
+      "next_release_estimate": "2026-10-13",
+      "updated_this_run": true,
       "prev_period": "2026-07",
-      "latest_period": "2026-07"
+      "latest_period": "2026-08"
     },
     {
       "id": "nab_cond",
@@ -4816,13 +4820,17 @@
         {
           "date": "2026-07",
           "value": 4.0
+        },
+        {
+          "date": "2026-08",
+          "value": -1.0
         }
       ],
-      "last_release_date": "2026-08-11",
-      "next_release_estimate": "2026-09-08",
-      "updated_this_run": false,
+      "last_release_date": "2026-09-08",
+      "next_release_estimate": "2026-10-13",
+      "updated_this_run": true,
       "prev_period": "2026-07",
-      "latest_period": "2026-07"
+      "latest_period": "2026-08"
     },
     {
       "id": "nab_trade",
@@ -4998,13 +5006,17 @@
         {
           "date": "2026-07",
           "value": 7.0
+        },
+        {
+          "date": "2026-08",
+          "value": 3.0
         }
       ],
-      "last_release_date": "2026-08-11",
-      "next_release_estimate": "2026-09-08",
-      "updated_this_run": false,
+      "last_release_date": "2026-09-08",
+      "next_release_estimate": "2026-10-13",
+      "updated_this_run": true,
       "prev_period": "2026-07",
-      "latest_period": "2026-07"
+      "latest_period": "2026-08"
     },
     {
       "id": "nab_profit",
@@ -5180,13 +5192,17 @@
         {
           "date": "2026-07",
           "value": 1.0
+        },
+        {
+          "date": "2026-08",
+          "value": -9.0
         }
       ],
-      "last_release_date": "2026-08-11",
-      "next_release_estimate": "2026-09-08",
-      "updated_this_run": false,
+      "last_release_date": "2026-09-08",
+      "next_release_estimate": "2026-10-13",
+      "updated_this_run": true,
       "prev_period": "2026-07",
-      "latest_period": "2026-07"
+      "latest_period": "2026-08"
     },
     {
       "id": "nab_emp",
@@ -5362,13 +5378,17 @@
         {
           "date": "2026-07",
           "value": 3.0
+        },
+        {
+          "date": "2026-08",
+          "value": 3.0
         }
       ],
-      "last_release_date": "2026-08-11",
-      "next_release_estimate": "2026-09-08",
-      "updated_this_run": false,
+      "last_release_date": "2026-09-08",
+      "next_release_estimate": "2026-10-13",
+      "updated_this_run": true,
       "prev_period": "2026-07",
-      "latest_period": "2026-07"
+      "latest_period": "2026-08"
     },
     {
       "id": "nab_forward",
@@ -5544,13 +5564,17 @@
         {
           "date": "2026-07",
           "value": -3.0
+        },
+        {
+          "date": "2026-08",
+          "value": 0.0
         }
       ],
-      "last_release_date": "2026-08-11",
-      "next_release_estimate": "2026-09-08",
-      "updated_this_run": false,
+      "last_release_date": "2026-09-08",
+      "next_release_estimate": "2026-10-13",
+      "updated_this_run": true,
       "prev_period": "2026-07",
-      "latest_period": "2026-07"
+      "latest_period": "2026-08"
     },
     {
       "id": "nab_stocks",
@@ -5884,13 +5908,17 @@
         {
           "date": "2026-07",
           "value": 83.0
+        },
+        {
+          "date": "2026-08",
+          "value": 82.5
         }
       ],
-      "last_release_date": "2026-08-11",
-      "next_release_estimate": "2026-09-08",
-      "updated_this_run": false,
+      "last_release_date": "2026-09-08",
+      "next_release_estimate": "2026-10-13",
+      "updated_this_run": true,
       "prev_period": "2026-07",
-      "latest_period": "2026-07"
+      "latest_period": "2026-08"
     },
     {
       "id": "anz_ads",
@@ -6326,8 +6354,8 @@
           "value": 75.0
         }
       ],
-      "last_release_date": "2026-09-01",
-      "next_release_estimate": "2026-09-08",
+      "last_release_date": "2026-09-08",
+      "next_release_estimate": "2026-09-15",
       "updated_this_run": false,
       "prev_period": "2026-07",
       "latest_period": "2026-07"
@@ -6542,13 +6570,17 @@
         {
           "date": "2026-08",
           "value": 88.9
+        },
+        {
+          "date": "2026-09",
+          "value": 84.4
         }
       ],
-      "last_release_date": "2026-08-11",
-      "next_release_estimate": "2026-09-08",
-      "updated_this_run": false,
+      "last_release_date": "2026-09-08",
+      "next_release_estimate": "2026-10-13",
+      "updated_this_run": true,
       "prev_period": "2026-08",
-      "latest_period": "2026-08"
+      "latest_period": "2026-09"
     }
   ]
 }

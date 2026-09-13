@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-09-07T07:03:25Z",
+  "generated_at": "2026-09-13T21:34:23Z",
   "target_quarter": "2026 Q3",
   "data_through": "2026-09",
   "next_gdp_release_date": "2026-12-02",
   "nowcast": {
-    "gdp_chain_volume_millions": 704515,
-    "qoq_growth_pct": 0.72,
-    "yoy_growth_pct": 2.36,
-    "ci_68_low": 701155,
-    "ci_68_high": 704989,
-    "ci_95_low": 699315,
-    "ci_95_high": 706828
+    "gdp_chain_volume_millions": 704453,
+    "qoq_growth_pct": 0.71,
+    "yoy_growth_pct": 2.35,
+    "ci_68_low": 701093,
+    "ci_68_high": 704927,
+    "ci_95_low": 699253,
+    "ci_95_high": 706766
   },
   "latest_actual": {
     "quarter": "2026 Q2",
@@ -19,20 +19,14 @@
     "released_days_before_next": -91
   },
   "data_updates": {
-    "run_date": "2026-09-07",
-    "nowcast_delta_pp": null,
+    "run_date": "2026-09-13",
+    "nowcast_delta_pp": -0.01,
     "series": [
       {
-        "id": "goods_exp",
-        "name": "Goods Exports",
-        "prev_period": "2026-06",
-        "latest_period": "2026-07"
-      },
-      {
-        "id": "goods_imp",
-        "name": "Goods Imports",
-        "prev_period": "2026-06",
-        "latest_period": "2026-07"
+        "id": "bus_conf",
+        "name": "Business Confidence",
+        "prev_period": "2026-07",
+        "latest_period": "2026-08"
       }
     ]
   }
