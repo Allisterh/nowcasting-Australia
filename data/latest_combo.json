@@ -2,9 +2,9 @@
   "schema": "combo-1",
   "status": "refused",
   "method": "equal-weight average of v2 and v3",
-  "generated_at": "2026-10-04T23:32:33+00:00",
-  "as_of": "2026-10-05",
+  "generated_at": "2026-10-11T23:53:33+00:00",
+  "as_of": "2026-10-12",
   "refusal_reason": "stale input",
-  "refusal_detail": "ANZ-Indeed Job Ads is 96 days old, against a 89-day budget",
+  "refusal_detail": "ANZ-Indeed Job Ads is 103 days old, against a 89-day budget",
   "horizons": []
 }
