@@ -1550,8 +1550,8 @@
       ],
       "last_release_date": "2026-09-29",
       "next_release_estimate": "2026-11-04",
-      "updated_this_run": true,
-      "prev_period": "2026-07",
+      "updated_this_run": false,
+      "prev_period": "2026-08",
       "latest_period": "2026-08"
     },
     {
@@ -1772,8 +1772,8 @@
       ],
       "last_release_date": "2026-10-01",
       "next_release_estimate": "2026-11-05",
-      "updated_this_run": true,
-      "prev_period": "2026-07",
+      "updated_this_run": false,
+      "prev_period": "2026-08",
       "latest_period": "2026-08"
     },
     {
@@ -1992,10 +1992,10 @@
           "value": 16953.0
         }
       ],
-      "last_release_date": "2026-09-30",
-      "next_release_estimate": "2026-10-07",
-      "updated_this_run": true,
-      "prev_period": "2026-07",
+      "last_release_date": "2026-10-07",
+      "next_release_estimate": "2026-11-02",
+      "updated_this_run": false,
+      "prev_period": "2026-08",
       "latest_period": "2026-08"
     },
     {
@@ -2216,8 +2216,8 @@
       ],
       "last_release_date": "2026-09-30",
       "next_release_estimate": "2026-10-30",
-      "updated_this_run": true,
-      "prev_period": "2026-07",
+      "updated_this_run": false,
+      "prev_period": "2026-08",
       "latest_period": "2026-08"
     },
     {
@@ -2438,8 +2438,8 @@
       ],
       "last_release_date": "2026-09-30",
       "next_release_estimate": "2026-10-30",
-      "updated_this_run": true,
-      "prev_period": "2026-07",
+      "updated_this_run": false,
+      "prev_period": "2026-08",
       "latest_period": "2026-08"
     },
     {
@@ -2660,8 +2660,8 @@
       ],
       "last_release_date": "2026-09-30",
       "next_release_estimate": "2026-10-30",
-      "updated_this_run": true,
-      "prev_period": "2026-07",
+      "updated_this_run": false,
+      "prev_period": "2026-08",
       "latest_period": "2026-08"
     },
     {
@@ -2886,8 +2886,8 @@
       ],
       "last_release_date": "2026-10-02",
       "next_release_estimate": "2026-11-02",
-      "updated_this_run": true,
-      "prev_period": "2026-08",
+      "updated_this_run": false,
+      "prev_period": "2026-09",
       "latest_period": "2026-09"
     },
     {
@@ -3112,8 +3112,8 @@
       ],
       "last_release_date": "2026-10-02",
       "next_release_estimate": "2026-11-02",
-      "updated_this_run": true,
-      "prev_period": "2026-08",
+      "updated_this_run": false,
+      "prev_period": "2026-09",
       "latest_period": "2026-09"
     },
     {
@@ -3338,8 +3338,8 @@
       ],
       "last_release_date": "2026-10-02",
       "next_release_estimate": "2026-11-02",
-      "updated_this_run": true,
-      "prev_period": "2026-08",
+      "updated_this_run": false,
+      "prev_period": "2026-09",
       "latest_period": "2026-09"
     },
     {
@@ -3556,13 +3556,17 @@
         {
           "date": "2026-08",
           "value": 0.044
+        },
+        {
+          "date": "2026-09",
+          "value": 0.24
         }
       ],
-      "last_release_date": "2026-09-02",
-      "next_release_estimate": "2026-10-02",
-      "updated_this_run": false,
+      "last_release_date": "2026-10-02",
+      "next_release_estimate": "2026-11-02",
+      "updated_this_run": true,
       "prev_period": "2026-08",
-      "latest_period": "2026-08"
+      "latest_period": "2026-09"
     },
     {
       "id": "scrigbag5",
@@ -3778,13 +3782,17 @@
         {
           "date": "2026-08",
           "value": 0.114
+        },
+        {
+          "date": "2026-09",
+          "value": 0.288
         }
       ],
-      "last_release_date": "2026-09-02",
-      "next_release_estimate": "2026-10-02",
-      "updated_this_run": false,
+      "last_release_date": "2026-10-02",
+      "next_release_estimate": "2026-11-02",
+      "updated_this_run": true,
       "prev_period": "2026-08",
-      "latest_period": "2026-08"
+      "latest_period": "2026-09"
     },
     {
       "id": "scrigbag10",
@@ -4000,13 +4008,17 @@
         {
           "date": "2026-08",
           "value": 0.505
+        },
+        {
+          "date": "2026-09",
+          "value": 0.613
         }
       ],
-      "last_release_date": "2026-09-02",
-      "next_release_estimate": "2026-10-02",
-      "updated_this_run": false,
+      "last_release_date": "2026-10-02",
+      "next_release_estimate": "2026-11-02",
+      "updated_this_run": true,
       "prev_period": "2026-08",
-      "latest_period": "2026-08"
+      "latest_period": "2026-09"
     },
     {
       "id": "firmmbab90",
@@ -4218,13 +4230,17 @@
         {
           "date": "2026-08",
           "value": 4.51
+        },
+        {
+          "date": "2026-09",
+          "value": 4.67
         }
       ],
-      "last_release_date": "2026-09-02",
-      "next_release_estimate": "2026-10-02",
-      "updated_this_run": false,
+      "last_release_date": "2026-10-02",
+      "next_release_estimate": "2026-11-02",
+      "updated_this_run": true,
       "prev_period": "2026-08",
-      "latest_period": "2026-08"
+      "latest_period": "2026-09"
     },
     {
       "id": "credit_card",
@@ -4235,23 +4251,23 @@
       "series": [
         {
           "date": "2022-04",
-          "value": 30582.3
+          "value": 30598.6
         },
         {
           "date": "2022-05",
-          "value": 30944.9
+          "value": 30947.1
         },
         {
           "date": "2022-06",
-          "value": 31607.2
+          "value": 31614.7
         },
         {
           "date": "2022-07",
-          "value": 31755.2
+          "value": 31769.9
         },
         {
           "date": "2022-08",
-          "value": 31853.6
+          "value": 31843.0
         },
         {
           "date": "2022-09",
@@ -4259,194 +4275,198 @@
         },
         {
           "date": "2022-10",
-          "value": 33062.7
+          "value": 33034.6
         },
         {
           "date": "2022-11",
-          "value": 32649.6
+          "value": 32657.3
         },
         {
           "date": "2022-12",
-          "value": 32658.8
+          "value": 32615.7
         },
         {
           "date": "2023-01",
-          "value": 32721.1
+          "value": 32721.4
         },
         {
           "date": "2023-02",
-          "value": 33142.3
+          "value": 33164.4
         },
         {
           "date": "2023-03",
-          "value": 32847.8
+          "value": 32862.7
         },
         {
           "date": "2023-04",
-          "value": 33730.2
+          "value": 33746.2
         },
         {
           "date": "2023-05",
-          "value": 33363.9
+          "value": 33373.0
         },
         {
           "date": "2023-06",
-          "value": 33576.3
+          "value": 33598.5
         },
         {
           "date": "2023-07",
-          "value": 34347.4
+          "value": 34349.4
         },
         {
           "date": "2023-08",
-          "value": 33837.8
+          "value": 33812.7
         },
         {
           "date": "2023-09",
-          "value": 34563.1
+          "value": 34557.3
         },
         {
           "date": "2023-10",
-          "value": 34116.1
+          "value": 34096.4
         },
         {
           "date": "2023-11",
-          "value": 34365.6
+          "value": 34367.6
         },
         {
           "date": "2023-12",
-          "value": 34511.7
+          "value": 34469.6
         },
         {
           "date": "2024-01",
-          "value": 34965.1
+          "value": 34966.0
         },
         {
           "date": "2024-02",
-          "value": 35040.2
+          "value": 35072.3
         },
         {
           "date": "2024-03",
-          "value": 35053.1
+          "value": 35076.2
         },
         {
           "date": "2024-04",
-          "value": 35243.1
+          "value": 35271.3
         },
         {
           "date": "2024-05",
-          "value": 35239.7
+          "value": 35262.0
         },
         {
           "date": "2024-06",
-          "value": 35896.8
+          "value": 35896.2
         },
         {
           "date": "2024-07",
-          "value": 35570.1
+          "value": 35598.5
         },
         {
           "date": "2024-08",
-          "value": 36039.9
+          "value": 35961.4
         },
         {
           "date": "2024-09",
-          "value": 36058.1
+          "value": 36042.3
         },
         {
           "date": "2024-10",
-          "value": 36033.3
+          "value": 36011.9
         },
         {
           "date": "2024-11",
-          "value": 36382.8
+          "value": 36395.7
         },
         {
           "date": "2024-12",
-          "value": 36832.8
+          "value": 36787.8
         },
         {
           "date": "2025-01",
-          "value": 36795.0
+          "value": 36812.4
         },
         {
           "date": "2025-02",
-          "value": 37290.5
+          "value": 37343.7
         },
         {
           "date": "2025-03",
-          "value": 37520.8
+          "value": 37531.2
         },
         {
           "date": "2025-04",
-          "value": 37891.1
+          "value": 37934.2
         },
         {
           "date": "2025-05",
-          "value": 38178.9
+          "value": 38198.5
         },
         {
           "date": "2025-06",
-          "value": 38534.8
+          "value": 38534.7
         },
         {
           "date": "2025-07",
-          "value": 38442.5
+          "value": 38502.4
         },
         {
           "date": "2025-08",
-          "value": 39124.8
+          "value": 38969.9
         },
         {
           "date": "2025-09",
-          "value": 39078.7
+          "value": 39074.1
         },
         {
           "date": "2025-10",
-          "value": 39241.7
+          "value": 39219.3
         },
         {
           "date": "2025-11",
-          "value": 39960.2
+          "value": 39962.4
         },
         {
           "date": "2025-12",
-          "value": 38774.3
+          "value": 38740.3
         },
         {
           "date": "2026-01",
-          "value": 40459.8
+          "value": 40481.0
         },
         {
           "date": "2026-02",
-          "value": 39578.0
+          "value": 39643.3
         },
         {
           "date": "2026-03",
-          "value": 40721.2
+          "value": 40757.3
         },
         {
           "date": "2026-04",
-          "value": 39488.1
+          "value": 39534.0
         },
         {
           "date": "2026-05",
-          "value": 40683.9
+          "value": 40700.9
         },
         {
           "date": "2026-06",
-          "value": 40024.4
+          "value": 40038.4
         },
         {
           "date": "2026-07",
-          "value": 40560.5
+          "value": 40655.8
+        },
+        {
+          "date": "2026-08",
+          "value": 41248.0
         }
       ],
-      "last_release_date": "2026-08-30",
-      "next_release_estimate": "2026-09-30",
-      "updated_this_run": false,
+      "last_release_date": "2026-09-30",
+      "next_release_estimate": "2026-10-30",
+      "updated_this_run": true,
       "prev_period": "2026-07",
-      "latest_period": "2026-07"
+      "latest_period": "2026-08"
     },
     {
       "id": "nab_conf",
@@ -6418,8 +6438,8 @@
           "value": 75.0
         }
       ],
-      "last_release_date": "2026-09-29",
-      "next_release_estimate": "2026-10-06",
+      "last_release_date": "2026-10-06",
+      "next_release_estimate": "2026-10-13",
       "updated_this_run": false,
       "prev_period": "2026-07",
       "latest_period": "2026-07"

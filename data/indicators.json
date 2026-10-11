@@ -5858,9 +5858,7 @@
       ],
       "last_release_date": "2026-09-29",
       "next_release_estimate": "2026-11-04",
-      "updated_this_run": true,
-      "prev_period": "2026-07",
-      "latest_period": "2026-08"
+      "updated_this_run": false
     },
     {
       "id": "cons_conf",
@@ -7151,7 +7149,7 @@
         }
       ],
       "last_release_date": "2026-09-05",
-      "next_release_estimate": "2026-10-05",
+      "next_release_estimate": "2026-11-05",
       "updated_this_run": false
     },
     {
@@ -8442,11 +8440,9 @@
           "value": 16953
         }
       ],
-      "last_release_date": "2026-09-30",
-      "next_release_estimate": "2026-10-07",
-      "updated_this_run": true,
-      "prev_period": "2026-07",
-      "latest_period": "2026-08"
+      "last_release_date": "2026-10-07",
+      "next_release_estimate": "2026-11-02",
+      "updated_this_run": false
     },
     {
       "id": "bus_conf",
@@ -11014,9 +11010,7 @@
       ],
       "last_release_date": "2026-10-01",
       "next_release_estimate": "2026-11-05",
-      "updated_this_run": true,
-      "prev_period": "2026-07",
-      "latest_period": "2026-08"
+      "updated_this_run": false
     },
     {
       "id": "services_exp",
@@ -12744,9 +12738,7 @@
       ],
       "last_release_date": "2026-10-01",
       "next_release_estimate": "2026-11-05",
-      "updated_this_run": true,
-      "prev_period": "2026-07",
-      "latest_period": "2026-08"
+      "updated_this_run": false
     },
     {
       "id": "services_imp",
