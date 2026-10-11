@@ -1,6 +1,6 @@
 {
   "schema": "v3-indicators-1",
-  "generated_at": "2026-10-04T23:28:37+00:00",
+  "generated_at": "2026-10-11T23:54:42+00:00",
   "indicators": [
     {
       "id": "employment",
@@ -1680,7 +1680,7 @@
           "value": 47433.0
         }
       ],
-      "last_release_date": "2026-10-06"
+      "last_release_date": "2026-10-01"
     },
     {
       "id": "imports",
@@ -1890,7 +1890,7 @@
           "value": -46938.0
         }
       ],
-      "last_release_date": "2026-10-06"
+      "last_release_date": "2026-10-01"
     },
     {
       "id": "commodity_prices",
