@@ -3,8 +3,8 @@
   "status": "ok",
   "basis": "abs_first_print",
   "target": "first_print",
-  "generated_at": "2026-10-11T23:48:55+00:00",
-  "as_of": "2026-10-12",
+  "generated_at": "2026-10-18T22:30:40+00:00",
+  "as_of": "2026-10-19",
   "target_quarter": "2026 Q3",
   "data_through": "2026-09",
   "prev_level": {
@@ -15,27 +15,27 @@
     {
       "quarter": "2026 Q3",
       "kind": "nowcast",
-      "qoq_growth_pct": 0.4451,
-      "model_qoq_growth_pct": 0.5082,
-      "annualised_growth_pct": 2.0485,
-      "ci_68_low": 0.0282,
-      "ci_68_high": 0.842,
-      "ci_95_low": -0.3639,
-      "ci_95_high": 1.2205,
+      "qoq_growth_pct": 0.4661,
+      "model_qoq_growth_pct": 0.5292,
+      "annualised_growth_pct": 2.1337,
+      "ci_68_low": 0.0528,
+      "ci_68_high": 0.8627,
+      "ci_95_low": -0.3531,
+      "ci_95_high": 1.2604,
       "months_with_data": 3,
       "release_date": "2026-12-02",
-      "gdp_chain_volume_millions": 702574
+      "gdp_chain_volume_millions": 702721
     },
     {
       "quarter": "2026 Q4",
       "kind": "forecast",
-      "qoq_growth_pct": 0.4278,
-      "model_qoq_growth_pct": 0.4909,
-      "annualised_growth_pct": 1.9782,
-      "ci_68_low": -0.0125,
-      "ci_68_high": 0.83,
-      "ci_95_low": -0.4232,
-      "ci_95_high": 1.2812,
+      "qoq_growth_pct": 0.4661,
+      "model_qoq_growth_pct": 0.5292,
+      "annualised_growth_pct": 2.1335,
+      "ci_68_low": 0.0294,
+      "ci_68_high": 0.8606,
+      "ci_95_low": -0.3744,
+      "ci_95_high": 1.2995,
       "months_with_data": 0,
       "release_date": "2027-03-03"
     }
@@ -205,6 +205,22 @@
       "data_through": "2026-09",
       "months_with_data": 3,
       "estimate_asof": "2026-09-11"
+    },
+    {
+      "run_date": "2026-10-19",
+      "target_quarter": "2026 Q3",
+      "kind": "nowcast",
+      "qoq_growth_pct": 0.4661,
+      "model_qoq_growth_pct": 0.5292,
+      "bias_correction_pp": 0.0631,
+      "target": "first_print",
+      "ci_95_low": -0.3531,
+      "ci_68_low": 0.0528,
+      "ci_68_high": 0.8627,
+      "ci_95_high": 1.2604,
+      "data_through": "2026-09",
+      "months_with_data": 3,
+      "estimate_asof": "2026-09-11"
     }
   ],
   "next_gdp_release_date": "2026-12-02",
@@ -250,6 +266,6 @@
   "estimate": {
     "estimated_at": "2026-09-11T03:43:25+00:00",
     "asof": "2026-09-11",
-    "age_days": 31
+    "age_days": 38
   }
 }
