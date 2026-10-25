@@ -1,8 +1,8 @@
 {
   "schema": "combo-indicators-1",
-  "generated_at": "2026-10-18T22:34:02+00:00",
+  "generated_at": "2026-10-25T22:49:29+00:00",
   "sources": {
-    "v3": "2026-10-18T22:34:02+00:00",
+    "v3": "2026-10-25T22:49:29+00:00",
     "v2": null
   },
   "indicators": [
@@ -220,8 +220,8 @@
         "v3"
       ],
       "next_release_estimate": "2026-11-19",
-      "updated_this_run": true,
-      "prev_period": "2026-08",
+      "updated_this_run": false,
+      "prev_period": "2026-09",
       "latest_period": "2026-09"
     },
     {
@@ -438,8 +438,8 @@
         "v3"
       ],
       "next_release_estimate": "2026-11-19",
-      "updated_this_run": true,
-      "prev_period": "2026-08",
+      "updated_this_run": false,
+      "prev_period": "2026-09",
       "latest_period": "2026-09"
     },
     {
@@ -656,8 +656,8 @@
         "v3"
       ],
       "next_release_estimate": "2026-11-02",
-      "updated_this_run": true,
-      "prev_period": "2026-08",
+      "updated_this_run": false,
+      "prev_period": "2026-09",
       "latest_period": "2026-09"
     },
     {
@@ -874,9 +874,7 @@
       ],
       "next_release_estimate": "2026-11-05",
       "next_release_basis": "rule",
-      "updated_this_run": true,
-      "prev_period": "2026-08",
-      "latest_period": "2026-09"
+      "updated_this_run": false
     },
     {
       "id": "nab_conditions",
@@ -1092,8 +1090,8 @@
         "v3"
       ],
       "next_release_estimate": "2026-11-10",
-      "updated_this_run": true,
-      "prev_period": "2026-08",
+      "updated_this_run": false,
+      "prev_period": "2026-09",
       "latest_period": "2026-09"
     },
     {
@@ -3182,8 +3180,8 @@
       ],
       "last_release_date": "2026-10-15",
       "next_release_estimate": "2026-11-19",
-      "updated_this_run": true,
-      "prev_period": "2026-08",
+      "updated_this_run": false,
+      "prev_period": "2026-09",
       "latest_period": "2026-09",
       "models": [
         "v2"
@@ -3411,8 +3409,8 @@
       ],
       "last_release_date": "2026-10-15",
       "next_release_estimate": "2026-11-19",
-      "updated_this_run": true,
-      "prev_period": "2026-08",
+      "updated_this_run": false,
+      "prev_period": "2026-09",
       "latest_period": "2026-09",
       "models": [
         "v2"
@@ -3640,8 +3638,8 @@
       ],
       "last_release_date": "2026-10-15",
       "next_release_estimate": "2026-11-19",
-      "updated_this_run": true,
-      "prev_period": "2026-08",
+      "updated_this_run": false,
+      "prev_period": "2026-09",
       "latest_period": "2026-09",
       "models": [
         "v2"
@@ -3869,8 +3867,8 @@
       ],
       "last_release_date": "2026-10-15",
       "next_release_estimate": "2026-11-19",
-      "updated_this_run": true,
-      "prev_period": "2026-08",
+      "updated_this_run": false,
+      "prev_period": "2026-09",
       "latest_period": "2026-09",
       "models": [
         "v2"
@@ -6826,8 +6824,8 @@
       ],
       "last_release_date": "2026-10-13",
       "next_release_estimate": "2026-11-10",
-      "updated_this_run": true,
-      "prev_period": "2026-08",
+      "updated_this_run": false,
+      "prev_period": "2026-09",
       "latest_period": "2026-09",
       "models": [
         "v2"
@@ -7019,8 +7017,8 @@
       ],
       "last_release_date": "2026-10-13",
       "next_release_estimate": "2026-11-10",
-      "updated_this_run": true,
-      "prev_period": "2026-08",
+      "updated_this_run": false,
+      "prev_period": "2026-09",
       "latest_period": "2026-09",
       "models": [
         "v2"
@@ -7212,8 +7210,8 @@
       ],
       "last_release_date": "2026-10-13",
       "next_release_estimate": "2026-11-10",
-      "updated_this_run": true,
-      "prev_period": "2026-08",
+      "updated_this_run": false,
+      "prev_period": "2026-09",
       "latest_period": "2026-09",
       "models": [
         "v2"
@@ -7405,8 +7403,8 @@
       ],
       "last_release_date": "2026-10-13",
       "next_release_estimate": "2026-11-10",
-      "updated_this_run": true,
-      "prev_period": "2026-08",
+      "updated_this_run": false,
+      "prev_period": "2026-09",
       "latest_period": "2026-09",
       "models": [
         "v2"
@@ -7598,8 +7596,8 @@
       ],
       "last_release_date": "2026-10-13",
       "next_release_estimate": "2026-11-10",
-      "updated_this_run": true,
-      "prev_period": "2026-08",
+      "updated_this_run": false,
+      "prev_period": "2026-09",
       "latest_period": "2026-09",
       "models": [
         "v2"
@@ -7952,8 +7950,8 @@
       ],
       "last_release_date": "2026-10-13",
       "next_release_estimate": "2026-11-10",
-      "updated_this_run": true,
-      "prev_period": "2026-08",
+      "updated_this_run": false,
+      "prev_period": "2026-09",
       "latest_period": "2026-09",
       "models": [
         "v2"
@@ -8171,8 +8169,8 @@
           "value": 75.0
         }
       ],
-      "last_release_date": "2026-10-13",
-      "next_release_estimate": "2026-10-20",
+      "last_release_date": "2026-10-20",
+      "next_release_estimate": "2026-10-27",
       "updated_this_run": false,
       "prev_period": "2026-07",
       "latest_period": "2026-07",
@@ -8402,8 +8400,8 @@
       ],
       "last_release_date": "2026-10-13",
       "next_release_estimate": "2026-11-10",
-      "updated_this_run": true,
-      "prev_period": "2026-09",
+      "updated_this_run": false,
+      "prev_period": "2026-10",
       "latest_period": "2026-10",
       "models": [
         "v2"
