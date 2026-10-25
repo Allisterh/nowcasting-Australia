@@ -1294,9 +1294,7 @@
       ],
       "last_release_date": "2026-10-15",
       "next_release_estimate": "2026-11-19",
-      "updated_this_run": true,
-      "prev_period": "2026-08",
-      "latest_period": "2026-09"
+      "updated_this_run": false
     },
     {
       "id": "unemp_rate",
@@ -2592,9 +2590,7 @@
       ],
       "last_release_date": "2026-10-15",
       "next_release_estimate": "2026-11-19",
-      "updated_this_run": true,
-      "prev_period": "2026-08",
-      "latest_period": "2026-09"
+      "updated_this_run": false
     },
     {
       "id": "part_rate",
@@ -3890,9 +3886,7 @@
       ],
       "last_release_date": "2026-10-15",
       "next_release_estimate": "2026-11-19",
-      "updated_this_run": true,
-      "prev_period": "2026-08",
-      "latest_period": "2026-09"
+      "updated_this_run": false
     },
     {
       "id": "hours_worked",
@@ -5188,9 +5182,7 @@
       ],
       "last_release_date": "2026-10-15",
       "next_release_estimate": "2026-11-19",
-      "updated_this_run": true,
-      "prev_period": "2026-08",
-      "latest_period": "2026-09"
+      "updated_this_run": false
     },
     {
       "id": "household_spending",
@@ -7178,9 +7170,7 @@
       ],
       "last_release_date": "2026-10-05",
       "next_release_estimate": "2026-11-05",
-      "updated_this_run": true,
-      "prev_period": "2026-08",
-      "latest_period": "2026-09"
+      "updated_this_run": false
     },
     {
       "id": "building_approvals",
@@ -9752,9 +9742,7 @@
       ],
       "last_release_date": "2026-10-13",
       "next_release_estimate": "2026-11-10",
-      "updated_this_run": true,
-      "prev_period": "2026-08",
-      "latest_period": "2026-09"
+      "updated_this_run": false
     },
     {
       "id": "goods_exp",

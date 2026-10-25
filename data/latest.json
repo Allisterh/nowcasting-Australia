@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-18T21:32:22Z",
+  "generated_at": "2026-10-25T21:42:20Z",
   "target_quarter": "2026 Q3",
   "data_through": "2026-10",
   "next_gdp_release_date": "2026-12-02",
@@ -19,45 +19,8 @@
     "released_days_before_next": -91
   },
   "data_updates": {
-    "run_date": "2026-10-18",
-    "nowcast_delta_pp": -0.05,
-    "series": [
-      {
-        "id": "employment",
-        "name": "Employment",
-        "prev_period": "2026-08",
-        "latest_period": "2026-09"
-      },
-      {
-        "id": "unemp_rate",
-        "name": "Unemployment Rate",
-        "prev_period": "2026-08",
-        "latest_period": "2026-09"
-      },
-      {
-        "id": "part_rate",
-        "name": "Participation Rate",
-        "prev_period": "2026-08",
-        "latest_period": "2026-09"
-      },
-      {
-        "id": "hours_worked",
-        "name": "Hours Worked",
-        "prev_period": "2026-08",
-        "latest_period": "2026-09"
-      },
-      {
-        "id": "cons_conf",
-        "name": "Consumer Confidence",
-        "prev_period": "2026-08",
-        "latest_period": "2026-09"
-      },
-      {
-        "id": "bus_conf",
-        "name": "Business Confidence",
-        "prev_period": "2026-08",
-        "latest_period": "2026-09"
-      }
-    ]
+    "run_date": "2026-10-25",
+    "nowcast_delta_pp": 0,
+    "series": []
   }
 }
