@@ -63,7 +63,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
       </head>
-      <body className="font-body antialiased">{children}</body>
+      <body className="font-body antialiased">
+        {children}
+        <script
+          defer
+          type="module"
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token":"2745f56caaef4b9dad31c531289aa344"}'
+        />
+      </body>
     </html>
   );
 }
