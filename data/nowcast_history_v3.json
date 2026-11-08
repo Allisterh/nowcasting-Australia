@@ -499,6 +499,38 @@
       "data_through": "2026-09",
       "months_with_data": 3,
       "estimate_asof": "2026-09-11"
+    },
+    {
+      "run_date": "2026-11-09",
+      "target_quarter": "2026 Q3",
+      "kind": "nowcast",
+      "qoq_growth_pct": 0.461,
+      "model_qoq_growth_pct": 0.5241,
+      "bias_correction_pp": 0.0631,
+      "target": "first_print",
+      "ci_95_low": -0.3641,
+      "ci_68_low": 0.0474,
+      "ci_68_high": 0.8586,
+      "ci_95_high": 1.2529,
+      "data_through": "2026-10",
+      "months_with_data": 3,
+      "estimate_asof": "2026-09-11"
+    },
+    {
+      "run_date": "2026-11-09",
+      "target_quarter": "2026 Q4",
+      "kind": "forecast",
+      "qoq_growth_pct": 0.4592,
+      "model_qoq_growth_pct": 0.5223,
+      "bias_correction_pp": 0.0631,
+      "target": "first_print",
+      "ci_95_low": -0.3853,
+      "ci_68_low": 0.0214,
+      "ci_68_high": 0.8473,
+      "ci_95_high": 1.3037,
+      "data_through": "2026-10",
+      "months_with_data": 1,
+      "estimate_asof": "2026-09-11"
     }
   ]
 }
